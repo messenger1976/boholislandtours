@@ -183,26 +183,84 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Mobile menu toggle
+    // Mobile menu toggle - Ultra simple and reliable approach
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    
     if (mobileMenuToggle && navMenu) {
-        mobileMenuToggle.addEventListener('click', () => {
+        // Force button to be clickable with inline styles
+        mobileMenuToggle.style.pointerEvents = 'auto';
+        mobileMenuToggle.style.cursor = 'pointer';
+        mobileMenuToggle.style.zIndex = '1004';
+        mobileMenuToggle.style.position = 'relative';
+        mobileMenuToggle.style.touchAction = 'manipulation';
+        mobileMenuToggle.setAttribute('tabindex', '0');
+        mobileMenuToggle.setAttribute('role', 'button');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        
+        // Simple toggle function
+        function toggleMenu() {
             const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
-            mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
+            const newState = !isExpanded;
+            
+            mobileMenuToggle.setAttribute('aria-expanded', newState);
             mobileMenuToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
             document.body.classList.toggle('menu-open');
+            
+            console.log('Menu toggled:', newState ? 'open' : 'closed');
+        }
+        
+        // Close menu function
+        function closeMenu() {
+            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            mobileMenuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+        
+        // Use onclick - most reliable across all devices
+        mobileMenuToggle.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMenu();
+        };
+        
+        // Also add click listener as backup
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMenu();
+        }, true);
+        
+        // Touch handler for mobile
+        let touchStartTime = 0;
+        mobileMenuToggle.addEventListener('touchstart', function(e) {
+            touchStartTime = Date.now();
+        }, { passive: true });
+        
+        mobileMenuToggle.addEventListener('touchend', function(e) {
+            const touchDuration = Date.now() - touchStartTime;
+            if (touchDuration < 300) { // Quick tap
+                e.preventDefault();
+                e.stopPropagation();
+                toggleMenu();
+            }
+        }, { passive: false });
+        
+        // Keyboard support
+        mobileMenuToggle.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMenu();
+            }
         });
 
         // Close menu when clicking on a link (except dropdown toggles)
         const navLinks = navMenu.querySelectorAll('.nav-link:not(.dropdown-toggle)');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                mobileMenuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.classList.remove('menu-open');
+                closeMenu();
             });
         });
         
@@ -232,16 +290,54 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close menu when clicking outside
+        // Close menu when clicking outside or on overlay
         document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                mobileMenuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.classList.remove('menu-open');
+            // Check if click is outside menu and toggle button
+            if (navMenu.classList.contains('active') && 
+                !navMenu.contains(e.target) && 
+                !mobileMenuToggle.contains(e.target) &&
+                !e.target.closest('.mobile-menu-toggle')) {
+                closeMenu();
             }
         });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+        
+        // Close menu when clicking overlay (body.menu-open::before)
+        document.body.addEventListener('click', function(e) {
+            if (document.body.classList.contains('menu-open') && 
+                navMenu.classList.contains('active') &&
+                !navMenu.contains(e.target) &&
+                !mobileMenuToggle.contains(e.target)) {
+                closeMenu();
+            }
+        });
+        
+        // Debug: Log when button is found and test click
+        console.log('Mobile menu toggle initialized:', mobileMenuToggle);
+        console.log('Nav menu found:', navMenu);
+        
+        // Test if button is clickable
+        setTimeout(() => {
+            const rect = mobileMenuToggle.getBoundingClientRect();
+            console.log('Button position:', rect);
+            console.log('Button computed styles:', window.getComputedStyle(mobileMenuToggle));
+            
+            // Test click programmatically
+            mobileMenuToggle.addEventListener('test-click', function() {
+                console.log('Test click event fired!');
+                toggleMenu();
+            });
+        }, 100);
+    } else {
+        console.error('Mobile menu elements not found:', { mobileMenuToggle, navMenu });
     }
+
 
     if (document.body.querySelector('.room-content-section')) {
         populateRoomDetails();

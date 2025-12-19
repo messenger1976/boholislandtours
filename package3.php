@@ -760,56 +760,6 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-            const body = document.body;
-
-            if (mobileMenuToggle) {
-                mobileMenuToggle.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    navMenu.classList.toggle('active');
-                    body.classList.toggle('menu-open');
-                });
-            }
-
-            // Close menu when clicking on a link
-            const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenuToggle.classList.remove('active');
-                    navMenu.classList.remove('active');
-                    body.classList.remove('menu-open');
-                });
-            });
-
-            // Dropdown toggle for mobile and desktop
-            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-            dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const dropdownItem = toggle.closest('.nav-item');
-                    document.querySelectorAll('.nav-item.dropdown').forEach(item => {
-                        if (item !== dropdownItem) {
-                            item.classList.remove('show');
-                        }
-                    });
-                    dropdownItem.classList.toggle('show');
-                });
-            });
-
-            // Close dropdowns when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.nav-item.dropdown')) {
-                    document.querySelectorAll('.nav-item.dropdown').forEach(item => {
-                        item.classList.remove('show');
-                    });
-                }
-            });
-        });
-    </script>
+    <!-- Mobile menu handled by script.js -->
 </body>
 </html>

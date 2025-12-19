@@ -588,31 +588,6 @@
 
     <script src="api-config.js"></script>
     <script src="script.js"></script>
-    <script>
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-            const body = document.body;
-
-            if (mobileMenuToggle) {
-                mobileMenuToggle.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    navMenu.classList.toggle('active');
-                    body.classList.toggle('menu-open');
-                });
-            }
-
-            // Close menu when clicking on a link
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenuToggle.classList.remove('active');
-                    navMenu.classList.remove('active');
-                    body.classList.remove('menu-open');
-                });
-            });
-        });
-    </script>
+    <!-- Mobile menu handled by script.js -->
 </body>
 </html>
