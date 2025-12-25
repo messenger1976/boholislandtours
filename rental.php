@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 
     <!-- Primary Meta Tags -->
-    <title>Car & Van Rental Bohol | Affordable Vehicle Rentals for Bohol Tours | Bohol Island Tours</title>
-    <meta name="title" content="Car & Van Rental Bohol | Affordable Vehicle Rentals for Bohol Tours">
-    <meta name="description" content="Bohol car & van rental services with professional drivers. Modern fleet: Hyundai Starex, Nissan Urvan, Toyota HiAce, Kia Rio. Affordable rates for Chocolate Hills tour, island hopping & all Bohol destinations. Book now!">
-    <meta name="keywords" content="car rental Bohol, van rental Bohol, vehicle rental Bohol, Bohol tour transport, Bohol car hire, Bohol van hire, Tagbilaran car rental, Bohol transportation">
+    <title>Car & Van Rental Bohol | Professional Drivers | Bohol Island Tours</title>
+    <meta name="title" content="Car & Van Rental Bohol | Professional Drivers | Bohol Island Tours">
+    <meta name="description" content="Bohol car & van rental with professional drivers. Modern fleet: Toyota HiAce, Toyota Grandia, Toyota Vios. Perfect for Chocolate Hills tours, island hopping, countryside tours. Affordable rates for all Bohol destinations. Contact Ms. Annabele: 09179507562">
+    <meta name="keywords" content="car rental Bohol, van rental Bohol, vehicle rental Bohol, Bohol tour transport, Bohol car hire, Toyota HiAce, Toyota Grandia, professional drivers, Chocolate Hills tours, island hopping transport, Tagbilaran car rental, affordable Bohol transportation, Ms. Annabele Bohol rental">
     <meta name="author" content="Bohol Island Tours">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="English">
@@ -17,8 +17,8 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.boholislandtours.com/rental.php">
-    <meta property="og:title" content="Car & Van Rental Bohol | Affordable Vehicle Rentals for Bohol Tours">
-    <meta property="og:description" content="Bohol car & van rental services with professional drivers. Modern fleet: Hyundai Starex, Nissan Urvan, Toyota HiAce, Kia Rio. Affordable rates for Chocolate Hills tour, island hopping & all Bohol destinations. Book now!">
+    <meta property="og:title" content="Car & Van Rental Bohol | Professional Drivers | Bohol Island Tours">
+    <meta property="og:description" content="Bohol car & van rental with professional drivers and modern fleet. Perfect for Chocolate Hills, island hopping, countryside tours. Affordable rates. Contact Ms. Annabele: 09179507562 or email: boholislandtours@gmail.com">
     <meta property="og:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/manmade_forest.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -28,8 +28,8 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.boholislandtours.com/rental.php">
-    <meta property="twitter:title" content="Car & Van Rental Bohol | Affordable Vehicle Rentals for Bohol Tours">
-    <meta property="twitter:description" content="Bohol car & van rental with professional drivers. Modern fleet: Hyundai Starex, Nissan Urvan, Toyota HiAce. Affordable rates for all Bohol destinations.">
+    <meta property="twitter:title" content="Car & Van Rental Bohol | Professional Drivers | Bohol Island Tours">
+    <meta property="twitter:description" content="Bohol car & van rental with professional drivers. Toyota HiAce, Grandia, Vios fleet. Affordable rates for all destinations. Book with Ms. Annabele: 09179507562">
     <meta property="twitter:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/manmade_forest.jpg">
 
     <!-- Additional SEO Meta Tags -->

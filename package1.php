@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 
     <!-- Primary Meta Tags -->
-    <title>2 Days 1 Night Bohol Tour Package | Affordable Bohol Tours | Bohol Island Tours</title>
-    <meta name="title" content="2 Days 1 Night Bohol Tour Package | Affordable Bohol Tours">
-    <meta name="description" content="Book our best-selling 2 Days 1 Night Bohol tour package! Visit Chocolate Hills, Tarsier Sanctuary, Loboc River, enjoy dolphin watching & island hopping at Balicasag. 6 flexible travel plans from ₱1,500. Book now!">
-    <meta name="keywords" content="2 days 1 night Bohol tour, Bohol tour package, Bohol countryside tour, Bohol island hopping, Bohol dolphin watching, affordable Bohol tours">
+    <title>2 Days 1 Night Bohol Tour Package | 5 Flexible Plans | Bohol Island Tours</title>
+    <meta name="title" content="2 Days 1 Night Bohol Tour Package | 5 Flexible Plans | Bohol Island Tours">
+    <meta name="description" content="Book your 2 Days 1 Night Bohol tour! Choose from 5 packages: Countryside + Dolphin + Islands, Countryside + Islands, Countryside only, or Danao Adventure. Includes hotels, transport, meals. Contact Ms. Annabele now!">
+    <meta name="keywords" content="2 days 1 night Bohol tour, Bohol tour package, Bohol countryside tour, Bohol island hopping, Bohol dolphin watching, Balicasag island, Virgin island, Panglao tour, Danao adventure park, affordable Bohol tours, Ms. Annabele Bohol tours">
     <meta name="author" content="Bohol Island Tours">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="English">
@@ -17,8 +17,8 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.boholislandtours.com/package1.php">
-    <meta property="og:title" content="2 Days 1 Night Bohol Tour Package | Affordable Bohol Tours">
-    <meta property="og:description" content="Experience Bohol with our affordable 2 Days 1 Night tour package. Includes countryside tour, dolphin watching, island hopping, and more.">
+    <meta property="og:title" content="2 Days 1 Night Bohol Tour Package | 5 Flexible Plans | Bohol Island Tours">
+    <meta property="og:description" content="Experience Bohol with our affordable 2 Days 1 Night tour package. 5 flexible plans: Countryside + Dolphin + Islands, Countryside tours, or Danao Adventure. Hotels & transport included. Contact Ms. Annabele: 09179507562">
     <meta property="og:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -28,8 +28,8 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.boholislandtours.com/package1.php">
-    <meta property="twitter:title" content="2 Days 1 Night Bohol Tour Package | Affordable Bohol Tours">
-    <meta property="twitter:description" content="Book our best-selling 2 Days 1 Night Bohol tour package! Visit Chocolate Hills, Tarsier Sanctuary, Loboc River, enjoy dolphin watching & island hopping at Balicasag.">
+    <meta property="twitter:title" content="2 Days 1 Night Bohol Tour Package | 5 Flexible Plans | Bohol Island Tours">
+    <meta property="twitter:description" content="Book our 2 Days 1 Night Bohol tour! 5 packages from countryside tours to island hopping & Danao Adventure. Professional drivers, hotels, meals included. Call: 09179507562">
     <meta property="twitter:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg">
 
     <!-- Additional SEO Meta Tags -->

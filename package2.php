@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 
     <!-- Primary Meta Tags -->
-    <title>3 Days 2 Nights Bohol Tour Package | Affordable Bohol Tours | Bohol Island Tours</title>
-    <meta name="title" content="3 Days 2 Nights Bohol Tour Package | Affordable Bohol Tours">
-    <meta name="description" content="Explore Bohol with our popular 3 Days 2 Nights tour package! Countryside tour, dolphin watching, Balicasag island hopping, plus free time to relax. Multiple plans available. Perfect Bohol getaway!">
-    <meta name="keywords" content="3 days 2 nights Bohol tour, Bohol tour package, Bohol countryside tour, Bohol island hopping, Bohol dolphin watching, extended Bohol tours">
+    <title>3 Days 2 Nights Bohol Tour Package | 5 Flexible Plans | Bohol Island Tours</title>
+    <meta name="title" content="3 Days 2 Nights Bohol Tour Package | 5 Flexible Plans | Bohol Island Tours">
+    <meta name="description" content="Book your 3 Days 2 Nights Bohol tour! 5 packages: Full tour with islands & dolphins, Countryside + islands, Countryside only, or adventure options. Free time included. Hotels, meals, transport. Contact Ms. Annabele!">
+    <meta name="keywords" content="3 days 2 nights Bohol tour, Bohol tour package, Bohol countryside tour, Bohol island hopping, Bohol dolphin watching, Balicasag, Panglao island, free days, affordable Bohol tours, extended Bohol getaway, Ms. Annabele Bohol">
     <meta name="author" content="Bohol Island Tours">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="English">
@@ -17,8 +17,8 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.boholislandtours.com/package2.php">
-    <meta property="og:title" content="3 Days 2 Nights Bohol Tour Package | Affordable Bohol Tours">
-    <meta property="og:description" content="Explore Bohol with our popular 3 Days 2 Nights tour package! Countryside tour, dolphin watching, Balicasag island hopping, plus free time to relax. Multiple plans available.">
+    <meta property="og:title" content="3 Days 2 Nights Bohol Tour Package | 5 Flexible Plans | Bohol Island Tours">
+    <meta property="og:description" content="Explore Bohol with our 3 Days 2 Nights tour package! 5 flexible plans with countryside tours, island hopping, dolphin watching, plus free relaxation time. Hotels & meals included. Call 09179507562">
     <meta property="og:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -28,8 +28,8 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.boholislandtours.com/package2.php">
-    <meta property="twitter:title" content="3 Days 2 Nights Bohol Tour Package | Affordable Bohol Tours">
-    <meta property="twitter:description" content="Explore Bohol with our popular 3 Days 2 Nights tour package! Countryside tour, dolphin watching, Balicasag island hopping, plus free time to relax.">
+    <meta property="twitter:title" content="3 Days 2 Nights Bohol Tour Package | 5 Flexible Plans | Bohol Island Tours">
+    <meta property="twitter:description" content="3 Days 2 Nights Bohol tour with 5 flexible plans! Island hopping, dolphin watching, countryside tours & free days. Professional guides, meals included. Book now!">
     <meta property="twitter:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg">
 
     <!-- Additional SEO Meta Tags -->

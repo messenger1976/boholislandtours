@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 
     <!-- Primary Meta Tags -->
-    <title>4 Days 3 Nights Bohol Tour Package | Affordable Bohol Tours | Bohol Island Tours</title>
-    <meta name="title" content="4 Days 3 Nights Bohol Tour Package | Affordable Bohol Tours">
-    <meta name="description" content="Perfect 4 Days 3 Nights Bohol tour package! Extended stay includes Chocolate Hills, Tarsier Sanctuary, Loboc River, island hopping, plus free days for optional activities. Book your Bohol adventure!">
-    <meta name="keywords" content="4 days 3 nights Bohol tour, Bohol tour package, Bohol countryside tour, Bohol island hopping, Bohol dolphin watching, extended Bohol tours">
+    <title>4 Days 3 Nights Bohol Tour Package | 5 Flexible Plans | Bohol Island Tours</title>
+    <meta name="title" content="4 Days 3 Nights Bohol Tour Package | 5 Flexible Plans | Bohol Island Tours">
+    <meta name="description" content="Book your 4 Days 3 Nights Bohol tour! 5 packages: Full experience with islands & dolphins, Countryside tours, or adventure options. Multiple free days, 4-star hotels, meals included. Contact Ms. Annabele: 09179507562">
+    <meta name="keywords" content="4 days 3 nights Bohol tour, Bohol tour package, extended Bohol vacation, Bohol countryside tour, Bohol island hopping, dolphin watching, Balicasag, Panglao, free days, affordable luxury tour, Ms. Annabele Bohol tours">
     <meta name="author" content="Bohol Island Tours">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="English">
@@ -17,8 +17,8 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.boholislandtours.com/package3.php">
-    <meta property="og:title" content="4 Days 3 Nights Bohol Tour Package | Affordable Bohol Tours">
-    <meta property="og:description" content="Perfect 4 Days 3 Nights Bohol tour package! Extended stay includes Chocolate Hills, Tarsier Sanctuary, Loboc River, island hopping, plus free days for optional activities.">
+    <meta property="og:title" content="4 Days 3 Nights Bohol Tour Package | 5 Flexible Plans | Bohol Island Tours">
+    <meta property="og:description" content="Perfect 4 Days 3 Nights Bohol tour with 5 flexible plans! Extended stay with countryside tours, island hopping, dolphin watching, plus free days. 4-star hotels, meals included. Call 09179507562">
     <meta property="og:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -28,8 +28,8 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.boholislandtours.com/package3.php">
-    <meta property="twitter:title" content="4 Days 3 Nights Bohol Tour Package | Affordable Bohol Tours">
-    <meta property="twitter:description" content="Perfect 4 Days 3 Nights Bohol tour package! Extended stay includes Chocolate Hills, Tarsier Sanctuary, Loboc River, island hopping, plus free days.">
+    <meta property="twitter:title" content="4 Days 3 Nights Bohol Tour Package | 5 Flexible Plans | Bohol Island Tours">
+    <meta property="twitter:description" content="4 Days 3 Nights Bohol getaway with 5 plans! Chocolate Hills, island hopping, dolphin watching, plus free beach time. Meals & hotels included. Book now!">
     <meta property="twitter:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg">
 
     <!-- Additional SEO Meta Tags -->

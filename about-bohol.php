@@ -7,8 +7,8 @@
     <!-- Primary Meta Tags -->
     <title>About Bohol Island | Complete Guide to Bohol Philippines Tourism | Bohol Island Tours</title>
     <meta name="title" content="About Bohol Island | Complete Guide to Bohol Philippines Tourism">
-    <meta name="description" content="Discover everything about Bohol Island - from Chocolate Hills to Tarsier Sanctuary. Learn about climate, culture, transportation, and why Bohol is the Philippines' top tourist destination.">
-    <meta name="keywords" content="about Bohol, Bohol Philippines, Bohol island guide, Bohol tourism, Bohol culture, Bohol climate, Bohol transportation, Bohol history, Chocolate Hills, Tarsier Sanctuary">
+    <meta name="description" content="Discover everything about Bohol Island - Chocolate Hills, Tarsier Sanctuary, beaches & culture. Get tour packages (2-5 days), rental services, travel tips. Contact Ms. Annabele (09179507562) or email boholislandtours@gmail.com. Your complete Bohol guide!">
+    <meta name="keywords" content="about Bohol, Bohol Philippines, Bohol island guide, Bohol tourism, Bohol tour packages, Bohol culture, climate, transportation, history, Chocolate Hills, Tarsier Sanctuary, Bohol beaches, island hopping, Ms. Annabele Bohol tours, Bohol travel tips, Tagbilaran, Panglao">
     <meta name="author" content="Bohol Island Tours">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="English">
@@ -18,7 +18,7 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://www.boholislandtours.com/about-bohol.php">
     <meta property="og:title" content="About Bohol Island | Complete Guide to Bohol Philippines Tourism">
-    <meta property="og:description" content="Discover everything about Bohol Island - from Chocolate Hills to Tarsier Sanctuary. Learn about climate, culture, transportation, and why Bohol is the Philippines' top tourist destination. Complete guide to Bohol Philippines tourism.">
+    <meta property="og:description" content="Complete Bohol Island guide: Chocolate Hills, Tarsier, beaches, culture & travel tips. Browse our tour packages (2-5 days), car rentals, accommodation. Contact Ms. Annabele: 09179507562. Plan your Bohol adventure today!">
     <meta property="og:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -31,7 +31,7 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.boholislandtours.com/about-bohol.php">
     <meta property="twitter:title" content="About Bohol Island | Complete Guide to Bohol Philippines Tourism">
-    <meta property="twitter:description" content="Discover everything about Bohol Island - from Chocolate Hills to Tarsier Sanctuary. Learn about climate, culture, transportation, and why Bohol is the Philippines' top tourist destination.">
+    <meta property="twitter:description" content="Complete Bohol Island guide with travel tips, attractions & tour packages. Contact Ms. Annabele: 09179507562. Plan your perfect Bohol getaway!">
     <meta property="twitter:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg">
 
     <!-- Additional SEO Meta Tags -->

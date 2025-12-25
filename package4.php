@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 
     <!-- Primary Meta Tags -->
-    <title>5 Days 4 Nights Bohol Tour Package | Affordable Bohol Tours | Bohol Island Tours</title>
-    <meta name="title" content="5 Days 4 Nights Bohol Tour Package | Affordable Bohol Tours">
-    <meta name="description" content="Ultimate 5 Days 4 Nights Bohol tour package! Comprehensive Bohol experience with all major attractions, dolphin watching, island hopping, and multiple free days. Best value extended stay package!">
-    <meta name="keywords" content="5 days 4 nights Bohol tour, Bohol tour package, Bohol countryside tour, Bohol island hopping, Bohol dolphin watching, extended Bohol tours">
+    <title>5 Days 4 Nights Bohol Tour Package | Ultimate Experience | Bohol Island Tours</title>
+    <meta name="title" content="5 Days 4 Nights Bohol Tour Package | Ultimate Experience | Bohol Island Tours">
+    <meta name="description" content="Book our ultimate 5 Days 4 Nights Bohol tour! 5 comprehensive packages including all attractions: Chocolate Hills, Tarsier, Dolphin watching, Island hopping, Panglao & Danao adventures. Multiple free days, 4-star hotels, meals. Contact Ms. Annabele: 09179507562">
+    <meta name="keywords" content="5 days 4 nights Bohol tour, Bohol tour package, ultimate Bohol experience, Bohol countryside tour, island hopping, dolphin watching, Balicasag, Panglao tour, Danao adventure park, chocolate hills, tarsier sanctuary, free days, luxury Bohol vacation, Ms. Annabele Bohol">
     <meta name="author" content="Bohol Island Tours">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="English">
@@ -17,8 +17,8 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.boholislandtours.com/package4.php">
-    <meta property="og:title" content="5 Days 4 Nights Bohol Tour Package | Affordable Bohol Tours">
-    <meta property="og:description" content="Ultimate 5 Days 4 Nights Bohol tour package! Comprehensive Bohol experience with all major attractions, dolphin watching, island hopping, and multiple free days.">
+    <meta property="og:title" content="5 Days 4 Nights Bohol Tour Package | Ultimate Experience | Bohol Island Tours">
+    <meta property="og:description" content="Ultimate 5 Days 4 Nights Bohol experience! 5 comprehensive packages covering all attractions: Chocolate Hills, dolphins, islands, Panglao, Danao adventure. Multiple free days, luxury hotels, meals included. Call 09179507562">
     <meta property="og:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -28,8 +28,8 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.boholislandtours.com/package4.php">
-    <meta property="twitter:title" content="5 Days 4 Nights Bohol Tour Package | Affordable Bohol Tours">
-    <meta property="twitter:description" content="Ultimate 5 Days 4 Nights Bohol tour package! Comprehensive Bohol experience with all major attractions, dolphin watching, island hopping, and multiple free days.">
+    <meta property="twitter:title" content="5 Days 4 Nights Bohol Tour Package | Ultimate Experience | Bohol Island Tours">
+    <meta property="twitter:description" content="Ultimate 5 Days 4 Nights Bohol experience! All attractions: Chocolate Hills, dolphin watching, island hopping, Panglao & Danao. Multiple free days, luxury hotels. Book now!">
     <meta property="twitter:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg">
 
     <!-- Additional SEO Meta Tags -->
