@@ -25,9 +25,9 @@
                 <a href="index.php#destinations" class="nav-link dropdown-toggle">Destinations</a>
                 <ul class="dropdown-menu">
                     <li><a href="destinations.php#countryside" class="dropdown-item">Country Side Tour</a></li>
-                    <li><a href="destinations.php#danao-sagbayan" class="dropdown-item">Danao-Sagbayan Tour</a></li>
-                    <li><a href="destinations.php#mag-aso-falls" class="dropdown-item">Mag-Aso Falls Tour</a></li>
-                    <li><a href="destinations.php#catigbian" class="dropdown-item">Catigbian Tour</a></li>
+                    <li><a href="destinations.php#danao-adventure-park" class="dropdown-item">Danao Adventure Park Tour</a></li>
+                    <li><a href="destinations.php#mirror-of-the-world" class="dropdown-item">Mirror of the World Tour</a></li>
+                    <li><a href="destinations.php#can-umantad-falls" class="dropdown-item">Can-umantad Falls and Anda Tour</a></li>
                     <li><a href="destinations.php#panglao-island" class="dropdown-item">Panglao Island Tour</a></li>
                     <li><a href="destinations.php#island-hopping" class="dropdown-item">Island Hopping Tour</a></li>
                 </ul>

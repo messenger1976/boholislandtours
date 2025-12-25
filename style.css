@@ -1004,6 +1004,37 @@ body {
     color: var(--text-dark);
     text-align: center;
 }
+.floating-fb-btn {
+    position: fixed;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: transparent;
+    color: #1877F2; /* Facebook brand color for icon */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: none;
+    z-index: 1002; /* above footer & chat bubble */
+    transition: transform 0.2s ease;
+}
+.floating-fb-btn:hover {
+    transform: translateY(-50%) scale(1.05);
+}
+.floating-fb-icon {
+    display: inline-flex;
+    line-height: 1;
+}
+@media (max-width: 480px) {
+    .floating-fb-btn {
+        width: 60px;
+        height: 60px;
+    }
+}
 
 /* Newsletter */
 .newsletter-section {

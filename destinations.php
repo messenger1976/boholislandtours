@@ -7,8 +7,8 @@
     <!-- Primary Meta Tags -->
     <title>Bohol Tourist Destinations | Explore Bohol's Top Attractions | Bohol Island Tours</title>
     <meta name="title" content="Bohol Tourist Destinations | Explore Bohol's Top Attractions">
-    <meta name="description" content="Complete guide to Bohol's must-visit destinations: Chocolate Hills, Tarsier Sanctuary, Loboc River, Panglao Island, Island Hopping, Danao Adventure Park, Sagbayan Peak, Mag-Aso Falls & more. Plan your perfect Bohol itinerary!">
-    <meta name="keywords" content="Bohol destinations, Bohol attractions, Chocolate Hills, Tarsier Sanctuary, Loboc River, Panglao Island, Bohol island hopping, Danao Adventure Park, Sagbayan Peak, Mag-Aso Falls">
+    <meta name="description" content="Complete guide to Bohol's must-visit destinations: Chocolate Hills, Tarsier Sanctuary, Loboc River, Panglao Island, Island Hopping, Danao Adventure Park, Sagbayan Peak, Mirror of the World & more. Plan your perfect Bohol itinerary!">
+    <meta name="keywords" content="Bohol destinations, Bohol attractions, Chocolate Hills, Tarsier Sanctuary, Loboc River, Panglao Island, Bohol island hopping, Danao Adventure Park, Sagbayan Peak, Mirror of the World, Bohollywood">
     <meta name="author" content="Bohol Island Tours">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="English">
@@ -18,7 +18,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.boholislandtours.com/destinations.php">
     <meta property="og:title" content="Bohol Tourist Destinations | Explore Bohol's Top Attractions">
-    <meta property="og:description" content="Complete guide to Bohol's must-visit destinations: Chocolate Hills, Tarsier Sanctuary, Loboc River, Panglao Island, Island Hopping, Danao Adventure Park, Sagbayan Peak, Mag-Aso Falls & more. Plan your perfect Bohol itinerary!">
+    <meta property="og:description" content="Complete guide to Bohol's must-visit destinations: Chocolate Hills, Tarsier Sanctuary, Loboc River, Panglao Island, Island Hopping, Danao Adventure Park, Sagbayan Peak, Mirror of the World & more. Plan your perfect Bohol itinerary!">
     <meta property="og:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -29,7 +29,7 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.boholislandtours.com/destinations.php">
     <meta property="twitter:title" content="Bohol Tourist Destinations | Explore Bohol's Top Attractions">
-    <meta property="twitter:description" content="Complete guide to Bohol's must-visit destinations: Chocolate Hills, Tarsier Sanctuary, Loboc River, Panglao Island, Island Hopping, Danao Adventure Park, Sagbayan Peak, Mag-Aso Falls & more. Plan your perfect Bohol itinerary!">
+    <meta property="twitter:description" content="Complete guide to Bohol's must-visit destinations: Chocolate Hills, Tarsier Sanctuary, Loboc River, Panglao Island, Island Hopping, Danao Adventure Park, Sagbayan Peak, Mirror of the World & more. Plan your perfect Bohol itinerary!">
     <meta property="twitter:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg">
 
     <!-- Additional SEO Meta Tags -->
@@ -80,9 +80,9 @@
                     "position": 3,
                     "item": {
                         "@type": "TouristDestination",
-                        "name": "Mag-Aso Falls Tour",
-                        "url": "https://www.boholislandtours.com/destinations.php#mag-aso-falls",
-                        "description": "Discover Mag-Aso Falls, a beautiful 25-meter waterfall with natural pool, and visit the historic Punta Cruz Watchtower"
+                        "name": "Mirror of the World Tour",
+                        "url": "https://www.boholislandtours.com/destinations.php#mirror-of-the-world",
+                        "description": "Experience miniature world landmarks at Mirror of the World park and explore Bohollywood, Bohol's premier film and tourism destination"
                     }
                 },
                 {
@@ -90,9 +90,9 @@
                     "position": 4,
                     "item": {
                         "@type": "TouristDestination",
-                        "name": "Catigbian Tour",
-                        "url": "https://www.boholislandtours.com/destinations.php#catigbian",
-                        "description": "Explore Catigbian's agricultural heritage, scenic countryside, and rural Bohol culture"
+                        "name": "Can-umantad Falls and Anda Tour",
+                        "url": "https://www.boholislandtours.com/destinations.php#can-umantad-falls",
+                        "description": "Visit Can-umantad Falls in Candijay and enjoy Anda's white-sand beaches and cave pools on this nature-and-sea day tour"
                     }
                 },
                 {
@@ -155,7 +155,7 @@
                 "name": "What are the top tourist destinations in Bohol?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Bohol's top destinations include Chocolate Hills (iconic cone-shaped hills), Tarsier Sanctuary (world's smallest primate), Loboc River (scenic cruise), Panglao Island (beaches and diving), Balicasag Island (marine sanctuary), Danao Adventure Park (extreme activities), Sagbayan Peak (360-degree views), and Mag-Aso Falls (waterfall)."
+                    "text": "Bohol's top destinations include Chocolate Hills (iconic cone-shaped hills), Tarsier Sanctuary (world's smallest primate), Loboc River (scenic cruise), Panglao Island (beaches and diving), Balicasag Island (marine sanctuary), Danao Adventure Park (extreme activities), Sagbayan Peak (360-degree views), and Mirror of the World (miniature world landmarks and Bohollywood)."
                 }
             },
             {
@@ -342,7 +342,7 @@
                 <!-- Country Side Tour -->
                 <section id="countryside" class="destination-section">
                     <h2>Country Side Tour</h2>
-                    <img src="https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg" alt="Bohol Countryside Tour featuring Chocolate Hills, Tarsier Sanctuary, and Loboc River - iconic Bohol attractions" class="destination-image">
+                    <img src="img/boholcountrysidetour.png" alt="Bohol Countryside Tour featuring Chocolate Hills, Tarsier Sanctuary, and Loboc River - iconic Bohol attractions" class="destination-image">
                     <p class="lead-text">
                         Experience the best of Bohol's countryside with visits to iconic landmarks, natural wonders, and cultural sites that showcase the island's rich heritage.
                     </p>
@@ -379,10 +379,10 @@
                     </div>
                 </section>
 
-                <!-- Danao-Sagbayan Tour -->
-                <section id="danao-sagbayan" class="destination-section">
-                    <h2>Danao-Sagbayan Tour</h2>
-                    <img src="https://www.boholislandtours.com/wp-content/uploads/2015/12/manmade_forest.jpg" alt="Danao Adventure Park extreme activities and Sagbayan Peak 360-degree view of Chocolate Hills Bohol" class="destination-image">
+                <!-- Danao Adventure Park Tour -->
+                <section id="danao-adventure-park" class="destination-section">
+                    <h2>Danao Adventure Park Tour</h2>
+                    <img src="img/danaoadventureparktour.png" alt="Danao Adventure Park extreme activities and Sagbayan Peak 360-degree view of Chocolate Hills Bohol" class="destination-image">
                     <p class="lead-text">
                         Combine adventure and panoramic views with a visit to Danao Adventure Park and Sagbayan Peak for an unforgettable Bohol experience.
                     </p>
@@ -410,19 +410,7 @@
                         </ul>
                     </div>
                     
-                    <div class="destination-info-box">
-                        <h3>Sagbayan Peak</h3>
-                        <p>
-                            Sagbayan Peak is a mountain resort and recreation center situated in the town of Sagbayan, approximately 45 miles northwest of Tagbilaran City. The resort offers a spectacular 360-degree view of the renowned Chocolate Hills and the distant blue sea separating Bohol from Cebu. This panoramic perspective has attracted nature-loving tourists seeking a serene environment and breathtaking scenery.
-                        </p>
-                        <ul>
-                            <li>360-degree viewing deck of Chocolate Hills</li>
-                            <li>Beautiful gardens and recreational facilities</li>
-                            <li>Perfect spot for photography</li>
-                            <li>Peaceful and serene atmosphere</li>
-                        </ul>
-                    </div>
-                    
+                                        
                     <div class="destination-highlights">
                         <div class="highlight-item">
                             <h4>Duration</h4>
@@ -439,29 +427,30 @@
                     </div>
                 </section>
 
-                <!-- Mag-Aso Falls Tour -->
-                <section id="mag-aso-falls" class="destination-section">
-                    <h2>Mag-Aso Falls Tour</h2>
-                    <img src="https://www.boholislandtours.com/wp-content/uploads/2015/12/manmade_forest.jpg" alt="Mag-Aso Falls Bohol" class="destination-image">
+                <!-- Mirror of the World Tour -->
+                <section id="mirror-of-the-world" class="destination-section">
+                    <h2>Mirror of the World Tour/Bohollywood</h2>
+                    <img src="img/mirroroftheworldtour.png" alt="Mirror of the World/Bohollywood Bohol" class="destination-image">
                     <p class="lead-text">
-                        Discover the natural beauty of Mag-Aso Falls, one of Bohol's hidden gems, along with a visit to Punta Cruz Watchtower in Maribojoc.
+                        Experience a unique journey through miniature world landmarks and Bohol's entertainment destination. Visit the Mirror of the World park featuring scaled replicas of famous global monuments, and explore Bohollywood, the province's premier film and tourism attraction.
                     </p>
                     
                     <div class="destination-info-box">
-                        <h3>Mag-Aso Falls</h3>
+                        <h3>Mirror of the World</h3>
                         <p>
-                            Mag-Aso Falls is a beautiful waterfall located in Antequera, Bohol. The name "Mag-Aso" means "smoke" in the local dialect, which refers to the mist that rises from the cascading water. The falls feature a stunning 25-meter drop into a natural pool, making it perfect for swimming and relaxation.
+                            The Mirror of the World is a fascinating theme park located in Loay, Bohol, featuring miniature replicas of world-famous landmarks and monuments. Visitors can "travel the world" in one location by viewing scaled-down versions of iconic structures like the Eiffel Tower, Taj Mahal, Great Wall of China, Statue of Liberty, and many more. This educational and entertaining attraction offers a unique photo opportunity and cultural experience perfect for families and tourists.
                         </p>
-                        <h3>Punta Cruz Watchtower</h3>
+                        <h3>Bohollywood</h3>
                         <p>
-                            The Punta Cruz Watchtower in Maribojoc is a historic stone watchtower built during the Spanish colonial period. It served as a lookout point to warn locals of approaching pirates. The tower offers panoramic views of the sea and surrounding areas.
+                            Bohollywood is Bohol's vibrant film and tourism destination that showcases the province's potential as a film production location. This attraction features scenic spots, creative installations, and themed areas that celebrate both local culture and cinema. Visitors can explore various sets, take memorable photos, and experience the creative spirit of Bohol's growing film industry.
                         </p>
                         <ul>
-                            <li>Swimming in natural pools</li>
-                            <li>Photography opportunities</li>
-                            <li>Historical site visit</li>
-                            <li>Scenic views</li>
-                            <li>Nature trekking</li>
+                            <li>View miniature replicas of world-famous monuments</li>
+                            <li>Photo opportunities with global landmarks</li>
+                            <li>Educational cultural experience</li>
+                            <li>Film-themed attractions and sets</li>
+                            <li>Creative installations and art displays</li>
+                            <li>Family-friendly activities</li>
                         </ul>
                     </div>
                     
@@ -472,49 +461,49 @@
                         </div>
                         <div class="highlight-item">
                             <h4>Activities</h4>
-                            <p>Swimming, Trekking, Photography</p>
+                            <p>Sightseeing, Photography, Cultural Tour</p>
                         </div>
                         <div class="highlight-item">
                             <h4>Best For</h4>
-                            <p>Nature lovers and history enthusiasts</p>
+                            <p>Families, photographers, and culture enthusiasts</p>
                         </div>
                     </div>
                 </section>
 
-                <!-- Catigbian Tour -->
-                <section id="catigbian" class="destination-section">
-                    <h2>Catigbian Tour</h2>
-                    <img src="https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg" alt="Catigbian Bohol Tour - scenic countryside, agricultural farms, and rural Bohol culture experience" class="destination-image">
+                <!-- Can-umantad Falls and Anda Tour -->
+                <section id="can-umantad-falls" class="destination-section">
+                    <h2>Can-umantad Falls and Anda Tour</h2>
+                    <img src="img/canumantadfallsandandatour.png" alt="Can-umantad Falls and Anda Bohol Tour - waterfall trek, white sand beach, and cave pools" class="destination-image">
                     <p class="lead-text">
-                        Explore the charming municipality of Catigbian, known for its agricultural heritage, scenic landscapes, and local attractions.
+                        Experience Bohol's top nature-and-sea combo: trek to the towering Can-umantad Falls in Candijay, then unwind on Anda's white-sand beach and swim in its crystal-clear cave pools.
                     </p>
                     
                     <div class="destination-info-box">
-                        <h3>Catigbian Attractions:</h3>
+                        <h3>Tour Highlights:</h3>
                         <p>
-                            Catigbian is a municipality in Bohol known for its agricultural activities and scenic countryside. The area offers visitors a glimpse into rural Bohol life with its farms, rolling hills, and natural attractions.
+                            This day tour pairs the refreshing cascade of Can-umantad Falls with Anda's coastal gems. Enjoy a scenic drive, a short trek to the falls, beach time on powdery sands, and dips in iconic cave pools.
                         </p>
                         <ul>
-                            <li>Agricultural farms and plantations</li>
-                            <li>Scenic countryside views</li>
-                            <li>Local farming experiences</li>
-                            <li>Rural Bohol culture</li>
-                            <li>Natural landscapes</li>
+                            <li>Can-umantad Falls (Candijay) trek and swim</li>
+                            <li>Anda white-sand beach relaxation</li>
+                            <li>Cave pool dip (e.g., Cabagnow/Combento)</li>
+                            <li>Scenic countryside views en route</li>
+                            <li>Ample photo opportunities</li>
                         </ul>
                     </div>
                     
                     <div class="destination-highlights">
                         <div class="highlight-item">
                             <h4>Duration</h4>
-                            <p>Half to Full Day Tour</p>
+                            <p>Full Day Tour</p>
                         </div>
                         <div class="highlight-item">
-                            <h4>Focus</h4>
-                            <p>Agricultural and Cultural Experience</p>
+                            <h4>Activities</h4>
+                            <p>Trekking, Swimming (falls & cave pools), Beach Time, Photography</p>
                         </div>
                         <div class="highlight-item">
                             <h4>Best For</h4>
-                            <p>Cultural immersion and nature enthusiasts</p>
+                            <p>Nature lovers, swimmers, and adventure seekers</p>
                         </div>
                     </div>
                 </section>
@@ -522,7 +511,7 @@
                 <!-- Panglao Island Tour -->
                 <section id="panglao-island" class="destination-section">
                     <h2>Panglao Island Tour</h2>
-                    <img src="https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg" alt="Panglao Island Bohol - pristine white sand beaches, crystal-clear waters, and world-class diving spots" class="destination-image">
+                    <img src="img/panglaoislandtour.png" alt="Panglao Island Bohol - pristine white sand beaches, crystal-clear waters, and world-class diving spots" class="destination-image">
                     <p class="lead-text">
                         Discover Panglao Island's pristine beaches, crystal-clear waters, and world-class diving spots that make it one of the Philippines' top beach destinations.
                     </p>
@@ -531,12 +520,12 @@
                         <h3>Tour Highlights:</h3>
                         <ul>
                             <li><strong>Dauis Church</strong> - Visit the beautiful Dauis Church, also known as the Our Lady of the Assumption Church, one of the oldest churches in Bohol</li>
-                            <li><strong>Bayoyoy, the Dwarf Man</strong> - Meet Bayoyoy, known for his unique story and local fame</li>
-                            <li><strong>Bingag Zoo - Ostrich Watching</strong> - See ostriches and other exotic animals at Bingag Zoo</li>
+                            <li><strong>Panglao Church Watch Tower</strong> - Historic 19th-century coral-stone bell tower beside St. Augustine Parish, overlooking the coast</li>
                             <li><strong>Hinagdanan Cave</strong> - Explore this natural cave with an underground pool perfect for swimming</li>
                             <li><strong>Bohol Bee Farm</strong> - Visit the organic farm and apiary, learn about beekeeping, and sample organic products</li>
                             <li><strong>Alona Beach</strong> - Relax on the white sand beach and enjoy water activities</li>
                             <li><strong>Diving and Snorkeling</strong> - Explore the vibrant marine life and coral reefs</li>
+                            <li><strong>Moadto Strip Mall</strong> - Shopping and dining area with local and international options</li>
                         </ul>
                     </div>
                     
@@ -584,10 +573,12 @@
                     
                     <div class="destination-info-box">
                         <h3>Balicasag Island</h3>
+                        <img src="img/balicasagisland.png" alt="Panglao Island Bohol - pristine white sand beaches, crystal-clear waters, and world-class diving spots" class="destination-image">
                         <p>
                             Balicasag Island is a protected marine sanctuary located off the coast of Panglao. The island is renowned for its pristine coral reefs, clear waters, and diverse marine ecosystem. It's considered one of the best diving and snorkeling spots in the Philippines, offering encounters with sea turtles, various species of fish, and beautiful coral formations.
                         </p>
                         <h3>Virgin Island</h3>
+                        <img src="img/virginisland.png" alt="Panglao Island Bohol - pristine white sand beaches, crystal-clear waters, and world-class diving spots" class="destination-image">
                         <p>
                             Virgin Island (also known as Pungtud Island) is a sandbar that emerges from the sea during low tide. It features crystal-clear waters and fine white sand, creating a picturesque setting perfect for photography and relaxation. The island offers a unique experience of being surrounded by water on all sides.
                         </p>

@@ -376,312 +376,332 @@
         <div class="container">
             <div class="package-content">
                 
+                <h3>PACKAGE A: Countryside Tour + Dolphin Watching and Balicasag and Virgin Island Hopping + Panglao Tour</h3>
+                
                 <div class="inclusions-box">
-                    <h3>Inclusions:</h3>
+                    <h4>Inclusions:</h4>
                     <ul>
-                        <li>Air conditioned transport</li>
-                        <li>All entrance fees</li>
-                        <li>Buffet Lunch (Lunch will be served during the River Cruise)</li>
-                        <li>Hotel Transfer</li>
-                        <li>Tour Driver (Driver will serve as tour guide during the tour)</li>
+                        <li>2D1N Accommodation in Panglao</li>
+                        <li>Car/Van Rentals</li>
+                        <li>Loboc River Cruise with Buffet Lunch (lunch will be served during the cruise)</li>
+                        <li>Boat Rental and Local Guide</li>
+                        <li>Snorkeling, Turtle Watching, and Fish Sanctuary</li>
+                        <li>Entrance Fees</li>
+                        <li>Complimentary Airport Transfers</li>
+                        <li>Driver/Tour Driver (driver will served as tour guide during the tour)</li>
                     </ul>
                 </div>
 
                 <div class="rates-box">
-                    <h3>Car and Van Rates:</h3>
-                    <ul>
-                        <li>Rates may change without prior notice.</li>
-                        <li>Hotel/Resort Accommodation is NOT INCLUDED in the package.</li>
-                        <li>Children ages 7 years old and above are considered FULL of charge</li>
-                        <li>Children ages 4 – 6 years old are given Php100.00 discount.</li>
-                        <li>Children ages 3 years old and below are FREE of charge</li>
+                    <h4>NOT Included:</h4>
+                    <ul style="color: #d32f2f;">
+                        <li>Airfare</li>
+                        <li>Other Meals and Snacks</li>
+                        <li>ATV Ride Fee / Extra Activity Fees</li>
                     </ul>
                 </div>
 
-                <h3>Bohol Tour Packages:</h3>
+                <div class="travel-plan">
+                    <h4>PROPOSED ITINERARY:</h4>
+                    <h5 style="color: var(--dark-blue); margin-top: 1.5rem;">Day 1</h5>
+                    <p><strong>Arrival.</strong></p>
+                    <p><strong>Bohol Countryside Tour (8hrs)</strong></p>
+                    <p><strong>Places to be visited:</strong></p>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>Chocolate Hills in Carmen</li>
+                        <li>Tarsier</li>
+                        <li>Python</li>
+                        <li>Butterfly Garden</li>
+                        <li>Manmade Forest</li>
+                        <li>Souvenir Shop</li>
+                        <li>Hanging Bridge</li>
+                        <li>Loboc River Cruise with Buffet Lunch</li>
+                        <li>Blood Compact</li>
+                        <li>Baclayon Church</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Check in to hotel in Panglao.</strong></p>
+                    
+                    <h5 style="color: var(--dark-blue); margin-top: 1.5rem;">Day 2</h5>
+                    <p><strong>Dolphin Watching and Balicasag and Virgin Island Hopping (5-6hrs)</strong></p>
+                    <p><strong>A.M.</strong><br>6:00 AM to 10:30 AM</p>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>Dolphin Watching</li>
+                        <li>Balicasag Island</li>
+                        <li>Snorkeling, Turtle Watching, and Fish Sanctuary</li>
+                        <li>Virgin Island (Temporarily Closed)</li>
+                        <li>Back to the resort</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>P.M.</strong><br>11:00AM – 12:00 NOON, Hotel Check out.</p>
+                    <p style="margin-top: 1rem;"><strong>Panglao Tour (4hrs)</strong></p>
+                    <p><strong>Places to be visited:</strong></p>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>Panglao Church Watch Tower</li>
+                        <li>Moadto Strip Mall</li>
+                        <li>Hinagdanan Cave</li>
+                        <li>Bohol Bee Farm</li>
+                        <li>Dauis Church</li>
+                        <li>Alona Beach Viewing</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Drop off at the Airport or Tagbilaran Seaport.</strong><br><strong>End of Service!</strong></p>
+                </div>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 2px solid var(--gold);">
+
+                <h3>PACKAGE B: Countryside Tour + Dolphin Watching and Balicasag and Virgin Island Tour</h3>
+                
+                <div class="inclusions-box">
+                    <h4>Inclusions:</h4>
+                    <ul>
+                        <li>2D1N Accommodation in Panglao</li>
+                        <li>Car/Van Rentals</li>
+                        <li>Loboc River Cruise with Buffet Lunch (lunch will be served during the cruise)</li>
+                        <li>Entrance Fees</li>
+                        <li>Complimentary Airport Transfers</li>
+                        <li>Driver/Tour Driver (driver will served as tour guide during the tour)</li>
+                    </ul>
+                </div>
+
+                <div class="rates-box">
+                    <h4>NOT Included:</h4>
+                    <ul style="color: #d32f2f;">
+                        <li>Airfare</li>
+                        <li>Other Meals and Snacks</li>
+                        <li>ATV Ride Fee / Extra Activity Fees</li>
+                    </ul>
+                </div>
+
+                <div class="travel-plan">
+                    <h4>PROPOSED ITINERARY:</h4>
+                    <h5 style="color: var(--dark-blue); margin-top: 1.5rem;">Day 1</h5>
+                    <p><strong>Arrival.</strong></p>
+                    <p><strong>Bohol Countryside Tour (8hrs)</strong></p>
+                    <p><strong>Places to be visited:</strong></p>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>Chocolate Hills in Carmen</li>
+                        <li>Tarsier</li>
+                        <li>Python</li>
+                        <li>Butterfly Garden</li>
+                        <li>Manmade Forest</li>
+                        <li>Souvenir Shop</li>
+                        <li>Hanging Bridge</li>
+                        <li>Loboc River Cruise with Buffet Lunch</li>
+                        <li>Blood Compact</li>
+                        <li>Baclayon Church</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Check in to hotel in Panglao.</strong></p>
+                    
+                    <h5 style="color: var(--dark-blue); margin-top: 1.5rem;">Day 2</h5>
+                    <p><strong>Dolphin Watching and Balicasag Island and Virgin Island Hopping (5-6hrs)</strong></p>
+                    <p><strong>A.M.</strong><br>6:00 AM to 10:30 AM</p>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>Dolphin Watching</li>
+                        <li>Balicasag Island</li>
+                        <li>Snorkeling, Turtle Watching, and Fish Sanctuary</li>
+                        <li>Virgin Island (Temporarily Closed)</li>
+                        <li>Back to the resort</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>11:00AM, Hotel Check out.<br>Transfer to the Airport or Tagbilaran Seaport.</strong></p>
+                    <p style="margin-top: 1rem;"><strong>End of Service!</strong></p>
+                </div>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 2px solid var(--gold);">
+
+                <h3>PACKAGE C: Countryside Tour + Panglao Tour</h3>
+                
+                <div class="inclusions-box">
+                    <h4>Inclusions:</h4>
+                    <ul>
+                        <li>2D1N Accommodation in Panglao</li>
+                        <li>Car/Van Rentals</li>
+                        <li>Loboc River Cruise with Buffet Lunch (lunch will be served during the cruise)</li>
+                        <li>Entrance Fees</li>
+                        <li>Complimentary Airport Transfers</li>
+                        <li>Driver/Tour Driver (driver will served as tour guide during the tour)</li>
+                    </ul>
+                </div>
+
+                <div class="rates-box">
+                    <h4>NOT Included:</h4>
+                    <ul style="color: #d32f2f;">
+                        <li>Airfare</li>
+                        <li>Other Meals and Snacks</li>
+                        <li>ATV Ride Fee / Extra Activity Fees</li>
+                    </ul>
+                </div>
+
+                <div class="travel-plan">
+                    <h4>PROPOSED ITINERARY:</h4>
+                    <h5 style="color: var(--dark-blue); margin-top: 1.5rem;">Day 1</h5>
+                    <p><strong>Arrival.</strong></p>
+                    <p><strong>Bohol Countryside Tour (8hrs)</strong></p>
+                    <p><strong>Places to be visited:</strong></p>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>Chocolate Hills in Carmen</li>
+                        <li>Tarsier</li>
+                        <li>Python</li>
+                        <li>Butterfly Garden</li>
+                        <li>Manmade Forest</li>
+                        <li>Souvenir Shop</li>
+                        <li>Hanging Bridge</li>
+                        <li>Loboc River Cruise with Buffet Lunch</li>
+                        <li>Blood Compact</li>
+                        <li>Baclayon Church</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Check in to hotel in Panglao.</strong></p>
+                    
+                    <h5 style="color: var(--dark-blue); margin-top: 1.5rem;">Day 2</h5>
+                    <p><strong>11:00AM, Hotel Check out.</strong></p>
+                    <p><strong>Panglao Tour (4hrs)</strong></p>
+                    <p><strong>Places to be visited:</strong></p>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>Panglao Church Watch Tower</li>
+                        <li>Moadto Strip Mall</li>
+                        <li>Hinagdanan Cave</li>
+                        <li>Bohol Bee Farm</li>
+                        <li>Dauis Church</li>
+                        <li>Alona Beach Viewing</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Drop off at the Airport or Tagbilaran Seaport.</strong></p>
+                    <p style="margin-top: 1rem;"><strong>End of Service!</strong></p>
+                </div>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 2px solid var(--gold);">
+
+                <h3>PACKAGE D: Countryside Tour Only</h3>
+                
+                <div class="inclusions-box">
+                    <h4>Inclusions:</h4>
+                    <ul>
+                        <li>2D1N Accommodation in Panglao</li>
+                        <li>Car/Van Rentals</li>
+                        <li>Loboc River Cruise with Buffet Lunch (lunch will be served during the cruise)</li>
+                        <li>Entrance Fees</li>
+                        <li>Complimentary Airport Transfers</li>
+                        <li>Driver/Tour Driver (driver will served as tour guide during the tour)</li>
+                    </ul>
+                </div>
+
+                <div class="rates-box">
+                    <h4>NOT Included:</h4>
+                    <ul style="color: #d32f2f;">
+                        <li>Airfare</li>
+                        <li>Other Meals and Snacks</li>
+                        <li>ATV Ride Fee / Extra Activity Fees</li>
+                    </ul>
+                </div>
+
+                <div class="travel-plan">
+                    <h4>PROPOSED ITINERARY:</h4>
+                    <h5 style="color: var(--dark-blue); margin-top: 1.5rem;">Day 1</h5>
+                    <p><strong>Arrival.</strong></p>
+                    <p><strong>Bohol Countryside Tour (8hrs)</strong></p>
+                    <p><strong>Places to be visited:</strong></p>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>Chocolate Hills in Carmen</li>
+                        <li>Tarsier</li>
+                        <li>Python</li>
+                        <li>Butterfly Garden</li>
+                        <li>Manmade Forest</li>
+                        <li>Souvenir Shop</li>
+                        <li>Hanging Bridge</li>
+                        <li>Loboc River Cruise with Buffet Lunch</li>
+                        <li>Blood Compact</li>
+                        <li>Baclayon Church</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Check in to hotel in Panglao.</strong></p>
+                    
+                    <h5 style="color: var(--dark-blue); margin-top: 1.5rem;">Day 2</h5>
+                    <p><strong>11:00AM, Hotel Check out.<br>Transfer to the Airport or Tagbilaran Seaport.</strong></p>
+                    <p style="margin-top: 1rem;"><strong>End of Service!</strong></p>
+                </div>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 2px solid var(--gold);">
+
+                <h3>PACKAGE E: Countryside Tour + Danao Adventure Park Tour</h3>
+                
+                <div class="inclusions-box">
+                    <h4>Inclusions:</h4>
+                    <ul>
+                        <li>2D1N Accommodation in Panglao</li>
+                        <li>Car/Van Rentals</li>
+                        <li>Loboc River Cruise with Buffet Lunch (lunch will be served during the cruise)</li>
+                        <li>Entrance Fees</li>
+                        <li>Complimentary Airport Transfers</li>
+                        <li>Driver/Tour Driver (driver will served as tour guide during the tour)</li>
+                    </ul>
+                </div>
+
+                <div class="rates-box">
+                    <h4>NOT Included:</h4>
+                    <ul style="color: #d32f2f;">
+                        <li>Airfare</li>
+                        <li>Other Meals and Snacks</li>
+                        <li>ATV Ride Fee / Per Activity Fee in Danao Adventure Park</li>
+                    </ul>
+                </div>
+
+                <div class="travel-plan">
+                    <h4>PROPOSED ITINERARY:</h4>
+                    <h5 style="color: var(--dark-blue); margin-top: 1.5rem;">Day 1</h5>
+                    <p><strong>Arrival.</strong></p>
+                    <p><strong>Bohol Countryside Tour (8hrs)</strong></p>
+                    <p><strong>Places to be visited:</strong></p>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>Chocolate Hills in Carmen</li>
+                        <li>Tarsier</li>
+                        <li>Python</li>
+                        <li>Butterfly Garden</li>
+                        <li>Manmade Forest</li>
+                        <li>Souvenir Shop</li>
+                        <li>Hanging Bridge</li>
+                        <li>Loboc River Cruise with Buffet Lunch</li>
+                        <li>Blood Compact</li>
+                        <li>Baclayon Church</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Check in to hotel in Panglao.</strong></p>
+                    
+                    <h5 style="color: var(--dark-blue); margin-top: 1.5rem;">Day 2</h5>
+                    <p><strong>7:00AM, Hotel Check out.</strong></p>
+                    <p><strong>Danao Tour (8hrs)</strong></p>
+                    <p><strong>Place to be visited:</strong></p>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>Danao Extreme Adventure Park</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Drop off at the Airport or Tagbilaran Seaport.</strong><br><strong>End of Service!</strong></p>
+                </div>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 2px solid var(--gold);">
+
+                <h3>OPTIONAL TOURS AND SERVICES OFFERED</h3>
                 <ul class="tour-list">
-                    <li>Bohol Countryside Tour</li>
-                    <li>Panglao Island Tour</li>
-                    <li>E.A.T. Danao Adventure Tour</li>
-                    <li>Dolphin Watching, Snorkeling, Balicasag and Virgin Island Hopping</li>
-                    <li>Sagbayan Peak Tour</li>
-                    <li>Tagbilaran City Tour</li>
-                    <li>Loboc Eco Adventure</li>
-                    <li>Mag-aso Fall / Punta Cruz Maribojoc Watchtower Tour</li>
-                    <li>Firefly Watching in Loay</li>
+                    <li>Mirror of the World Tour</li>
+                    <li>Danao Adventure Park Tour</li>
+                    <li>Anda Tour</li>
+                    <li>Can-Umantad Falls Tour</li>
+                    <li>Alicia Panoramic Tour</li>
+                    <li>Twin Falls Tour</li>
                 </ul>
 
-                <div class="travel-plan">
-                    <h4>Travel Plan 1: 2D/1N Bohol Tour Package (Countryside Tour Only)</h4>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Days</th>
-                                <th>Activities</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Day 1</strong></td>
-                                <td>
-                                    Arrival<br>
-                                    Bohol Country Side<br>
-                                    Bohol Tourist Spots to be visited:<br>
-                                    • Blood Compact<br>
-                                    • Baclayon Church<br>
-                                    • Prony the Phyton in Albur<br>
-                                    • Tarsier<br>
-                                    • Loboc River Cruise (Lunch will be served during the River Cruise)<br>
-                                    • Sipatan Hanging Bridge<br>
-                                    • Man-made Forest<br>
-                                    • Butterfly Garden<br>
-                                    • Chocolate Hills in Carmen<br>
-                                    • Aproniana Souvenir Shop<br>
-                                    Check - In to Resort
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Day 2</strong></td>
-                                <td>Check-out<br>Transfer to Tagbilaran City Port</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="travel-plan">
-                    <h4>Travel Plan 2: 2D/1N Bohol Tour Package (E.A.T. Danao Adventure Tour Only)</h4>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Days</th>
-                                <th>Activities</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Day 1</strong></td>
-                                <td>
-                                    Arrival<br>
-                                    Extreme Adventure Tour - E. A. T. Danao Adventure Tour<br>
-                                    Activities you can have in Danao Adventure Park:<br>
-                                    • Zipline or Suislide<br>
-                                    • Skyride or Cable Car<br>
-                                    • Plunge or Canyon Swing<br>
-                                    • River Trekking<br>
-                                    • River Tubbing<br>
-                                    • River Kayaking<br>
-                                    • Wall Climbing<br>
-                                    • Village Tour<br>
-                                    • Organic Farm Visitation<br>
-                                    • Camping<br>
-                                    • Rappelling<br>
-                                    • Root Climbing<br>
-                                    • Caving<br>
-                                    Check-in To Resort
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Day 2</strong></td>
-                                <td>Check-out<br>Transfer to Tagbilaran City Port</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="travel-plan">
-                    <h4>Travel Plan 3: 2D/1N Bohol Tour Package (Countryside Tour and Dolphin Watching and Balicasag and Virgin Island Hopping)</h4>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Days</th>
-                                <th>Activities</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Day 1</strong></td>
-                                <td>
-                                    Arrival<br>
-                                    Bohol Countryside Tour<br>
-                                    Places to be visited:<br>
-                                    • Blood Compact<br>
-                                    • Baclayon Church<br>
-                                    • Prony the Phyton in Albur<br>
-                                    • Loboc River Cruise (Lunch will be served during the River Cruise)<br>
-                                    • Sipatan Hanging Bridge<br>
-                                    • Man-made Forest<br>
-                                    • Butterfly Garden<br>
-                                    • Chocolate Hills in Carmen<br>
-                                    • Aproniana Souvenir Shop<br>
-                                    Check - In to Resort
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Day 2</strong></td>
-                                <td>
-                                    Dolphin Watching, Balicasag and Virgin Island Hopping and Snorkeling<br>
-                                    Starts around 5:30 a.m. - 6:00 a.m. until 11:00 a.m.<br>
-                                    Check-out<br>
-                                    Transfer to Tagbilaran City Pier or Airport
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="travel-plan">
-                    <h4>Travel Plan 4: 2D/1N Bohol Tour Package (E.A.T. Danao Adventure Tour and Countryside Tour)</h4>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Days</th>
-                                <th>Activities</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Day 1</strong></td>
-                                <td>
-                                    Arrival<br>
-                                    Extreme Adventure Tour - E. A. T. Danao Adventure Tour<br>
-                                    Activities you can have in Danao Adventure Park:<br>
-                                    • Zipline or Suislide<br>
-                                    • Skyride or Cable Car<br>
-                                    • Plunge or Canyon Swing<br>
-                                    • River Trekking<br>
-                                    • River Tubbing<br>
-                                    • River Kayaking<br>
-                                    • Wall Climbing<br>
-                                    • Village Tour<br>
-                                    • Organic Farm Visitation<br>
-                                    • Camping<br>
-                                    • Rappelling<br>
-                                    • Root Climbing<br>
-                                    • Caving<br>
-                                    Check-in To Resort
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Day 2</strong></td>
-                                <td>
-                                    Bohol Countryside Tour<br>
-                                    Bohol Tourist Spots to be visited:<br>
-                                    • Blood Compact<br>
-                                    • Baclayon Church<br>
-                                    • Prony the Phyton in Albur<br>
-                                    • Loboc River Cruise (Lunch will be served during the River Cruise)<br>
-                                    • Sipatan Hanging Bridge<br>
-                                    • Man-made Forest<br>
-                                    • Butterfly Garden<br>
-                                    • Chocolate Hills in Carmen<br>
-                                    • Aproniana Souvenir Shop<br>
-                                    Check-out<br>
-                                    Transfer to Tagbilaran City Pier or Airport
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="travel-plan">
-                    <h4>Travel Plan 5: 2D/1N Bohol Tour Package (Countryside Tour and Panglao Island Tour)</h4>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Days</th>
-                                <th>Activities</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Day 1</strong></td>
-                                <td>
-                                    Arrival<br>
-                                    Bohol Countryside Tour<br>
-                                    Bohol Tourist Spots to be visited:<br>
-                                    • Blood Compact<br>
-                                    • Baclayon Church<br>
-                                    • Prony the Phyton in Albur<br>
-                                    • Loboc River Cruise (Lunch will be served during the River Cruise)<br>
-                                    • Sipatan Hanging Bridge<br>
-                                    • Man-made Forest<br>
-                                    • Butterfly Garden<br>
-                                    • Chocolate Hills in Carmen<br>
-                                    • Aproniana Souvenir Shop<br>
-                                    Check - In to Resort
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Day 2</strong></td>
-                                <td>
-                                    Panglao Island Tour<br>
-                                    Bohol Tourist Spots to be visited:<br>
-                                    • Dauis Church<br>
-                                    • Bayoyoy, the dwarf man<br>
-                                    • Bingag Zoo - Ostrich Watching<br>
-                                    • Hinagdanan Cave<br>
-                                    • Bohol Bee Farm<br>
-                                    Check-out<br>
-                                    Transfer to Tagbilaran City Pier or Airport
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="travel-plan">
-                    <h4>Travel Plan 6: 2D/1N Bohol Tour Package (Countryside Tour and Panglao Island Tour and Dolphin Watching and Balicasag and Virgin Island Hopping)</h4>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Days</th>
-                                <th>Activities</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Day 1</strong></td>
-                                <td>
-                                    Arrival<br>
-                                    Bohol Countryside Tour<br>
-                                    Bohol Tourist Spots to be visited:<br>
-                                    • Blood Compact<br>
-                                    • Baclayon Church<br>
-                                    • Prony the Phyton in Albur<br>
-                                    • Loboc River Cruise (Lunch will be served during the River Cruise)<br>
-                                    • Sipatan Hanging Bridge<br>
-                                    • Man-made Forest<br>
-                                    • Butterfly Garden<br>
-                                    • Chocolate Hills in Carmen<br>
-                                    • Aproniana Souvenir Shop<br>
-                                    Check - In to Resort
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Day 2</strong></td>
-                                <td>
-                                    Dolphin Watching, Balicasag and Virgin Island Hopping and Snorkeling<br>
-                                    Starts around 5:30 a.m. - 6:00 a.m. until 11:00 a.m.<br>
-                                    Check-out<br>
-                                    Panglao Island Tour<br>
-                                    Bohol Tourist Spots to be visited:<br>
-                                    • Dauis Church<br>
-                                    • Bayoyoy, the dwarf man<br>
-                                    • Bingag Zoo - Ostrich Watching<br>
-                                    • Hinagdanan Cave<br>
-                                    • Bohol Bee Farm<br>
-                                    Transfer to Tagbilaran City Pier or Airport
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div style="background: linear-gradient(135deg, rgba(178, 148, 91, 0.1) 0%, rgba(42, 58, 90, 0.1) 100%); padding: 2rem; border-radius: 10px; margin: 3rem 0; text-align: center;">
-                    <p style="font-size: 1.1rem; color: #444; margin-bottom: 1rem;">
-                        We offer you a cheap and affordable Bohol Tour Packages for an unforgettable and memorable stay in Bohol. You may choose from the following proposed itinerary.
+                <div style="background: linear-gradient(135deg, rgba(178, 148, 91, 0.1) 0%, rgba(42, 58, 90, 0.1) 100%); padding: 2rem; border-radius: 10px; margin: 3rem 0;">
+                    <p style="color: #444; margin-bottom: 1rem;">
+                        <strong>Thank you for your interest at our services. We are pleased to provide you with a quotation.</strong>
                     </p>
-                    <a href="contact.php" class="cta-button">Contact Now</a>
+                    <p style="color: #444; margin-bottom: 1rem;">
+                        <strong>To assist you faster, may we kindly request the following details:</strong>
+                    </p>
+                    <ul style="color: #444;">
+                        <li><strong>Travel Plan Dates / Complete Flight Details (if any):</strong></li>
+                        <li><strong>Number of Adults:</strong></li>
+                        <li><strong>Number of Children:</strong></li>
+                        <li><strong>Age of each Child:</strong></li>
+                    </ul>
+                    <p style="color: #444; margin-top: 1rem;">
+                        <strong>Once we receive the information, we'll send the quotation right away.</strong>
+                    </p>
+                </div>
+
+                <div style="text-align: center; padding: 2rem; margin-top: 2rem;">
+                    <a href="contact.php" class="cta-button">Contact Us for Quotation</a>
                 </div>
 
             </div>

@@ -61,3 +61,50 @@
         </div>
     </div>
 </footer>
+
+<!-- Facebook Messenger Chat Plugin -->
+<div id="fb-root"></div>
+<div id="fb-customer-chat" class="fb-customerchat"></div>
+<script>
+    // Replace with your Facebook Page ID
+    (function initMessengerChat() {
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute('page_id', 'YOUR_PAGE_ID'); // TODO: set your real Page ID
+        chatbox.setAttribute('attribution', 'biz_inbox');
+        // Optional theme color (match your brand)
+        // chatbox.setAttribute('theme_color', '#0d6efd');
+    })();
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml: true,
+            version: 'v19.0'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Floating Facebook Button -->
+<a
+    href="https://www.facebook.com/boholislandtours.ph"
+    class="floating-fb-btn"
+    aria-label="Open our Facebook Page"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    <span class="floating-fb-icon" aria-hidden="true">
+        <!-- Inline SVG Facebook icon -->
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.312h3.587l-.467 3.622h-3.12V24h6.116C23.403 24 24 23.403 24 22.676V1.325C24 .597 23.403 0 22.675 0z"/>
+        </svg>
+    </span>
+</a>
+
+

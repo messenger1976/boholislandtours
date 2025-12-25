@@ -732,6 +732,8 @@
             }
         }
     </script>
+
+    <?php include 'footer.php'; ?>
     <style>
         .status-badge {
             display: inline-block;

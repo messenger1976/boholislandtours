@@ -442,6 +442,51 @@
 
             </div>
 
+            <!-- Contact Information Section -->
+            <div style="background: linear-gradient(135deg, rgba(42, 58, 90, 0.05) 0%, rgba(178, 148, 91, 0.05) 100%); padding: 3rem; border-radius: 10px; margin: 4rem 0; border-left: 5px solid var(--gold);">
+                <h2 style="color: var(--dark-blue); margin-bottom: 2rem;">Contact Bohol Island Tours</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem;">
+                    <div>
+                        <h3 style="color: var(--gold); margin-bottom: 1.5rem;">Our Team</h3>
+                        <p style="margin-bottom: 1rem;">
+                            <strong>Ms. Annabele</strong><br>
+                            <span style="color: #666; font-size: 0.95rem;">Tour Coordinator</span><br>
+                            <a href="tel:+639179507562" style="color: var(--dark-blue); text-decoration: none; font-weight: 500;">+63 917 950 7562</a>
+                        </p>
+                        <p style="margin-bottom: 1rem;">
+                            <strong>Jesse</strong><br>
+                            <span style="color: #666; font-size: 0.95rem;">Travel Assistant</span><br>
+                            <a href="tel:+639054553829" style="color: var(--dark-blue); text-decoration: none; font-weight: 500;">+63 905 455 3829</a> / <a href="tel:+639125298818" style="color: var(--dark-blue); text-decoration: none; font-weight: 500;">+63 912 529 8818</a>
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--gold); margin-bottom: 1.5rem;">Get in Touch</h3>
+                        <p style="margin-bottom: 1rem;">
+                            <strong>Email:</strong><br>
+                            <a href="mailto:boholislandtours@gmail.com" style="color: var(--dark-blue); text-decoration: none; word-break: break-all;">boholislandtours@gmail.com</a>
+                        </p>
+                        <p style="margin-bottom: 1rem;">
+                            <strong>Facebook:</strong><br>
+                            <a href="https://www.facebook.com/boholislandtours" target="_blank" style="color: var(--dark-blue); text-decoration: none;">Bohol Island Tours</a>
+                        </p>
+                        <p>
+                            <strong>Business Hours:</strong><br>
+                            <span style="color: #666;">Monday - Sunday: 8:00 AM - 6:00 PM</span>
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--gold); margin-bottom: 1.5rem;">Quick Links</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.75rem;"><a href="package1.php" style="color: #555; text-decoration: none; transition: color 0.3s;">→ 2 Days 1 Night Package</a></li>
+                            <li style="margin-bottom: 0.75rem;"><a href="package2.php" style="color: #555; text-decoration: none; transition: color 0.3s;">→ 3 Days 2 Nights Package</a></li>
+                            <li style="margin-bottom: 0.75rem;"><a href="package3.php" style="color: #555; text-decoration: none; transition: color 0.3s;">→ 4 Days 3 Nights Package</a></li>
+                            <li style="margin-bottom: 0.75rem;"><a href="package4.php" style="color: #555; text-decoration: none; transition: color 0.3s;">→ 5 Days 4 Nights Package</a></li>
+                            <li style="margin-bottom: 0.75rem;"><a href="rental.php" style="color: #555; text-decoration: none; transition: color 0.3s;">→ Car & Van Rental</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <!-- Related Links Section for SEO -->
             <div style="background: linear-gradient(135deg, rgba(178, 148, 91, 0.1) 0%, rgba(42, 58, 90, 0.1) 100%); padding: 3rem; border-radius: 10px; margin: 4rem 0;">
                 <h2 style="color: var(--dark-blue); margin-bottom: 2rem; text-align: center;">Explore More About Bohol</h2>

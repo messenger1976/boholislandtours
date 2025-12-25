@@ -344,167 +344,68 @@
         <div class="container">
             <div class="rental-content">
                 
-                <div class="rental-intro">
-                    <p class="lead-text">
-                        Bohol Island Tours and Packages is made to provide affordable tours and packages to the best tourist attraction of the island of Bohol. Here with us, rest assured that you will have the most comfortable and enjoyable tour to Bohol's finest tourist destinations.
-                    </p>
-                    <p>
-                        We have fleet of the latest and modern vehicles for your safety and comfort. Our drivers will serve as your tour guide who will attend to your needs and provide you with information about the places you will visit.
-                    </p>
-                </div>
-
-                <h3>ISLAND TOURS CAR & VAN RATES</h3>
+                <h2>CAR/VAN/COASTER/BUS RENTAL</h2>
                 
-                <div style="overflow-x: auto;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>DESTINATION</th>
-                                <th>CAR RATE</th>
-                                <th>VAN RATE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Chocolate Hills/Country Side Tour</td>
-                                <td>Php 2,000.00</td>
-                                <td>Php 2,500.00</td>
-                            </tr>
-                            <tr>
-                                <td>Sagbayan Peak Tour</td>
-                                <td>Php 2,500.00</td>
-                                <td>Php 3,500.00</td>
-                            </tr>
-                            <tr>
-                                <td>Danao Eco – Adventure Tour</td>
-                                <td>Php 3,000.00</td>
-                                <td>Php 4,000.00</td>
-                            </tr>
-                            <tr>
-                                <td>Loboc Tour</td>
-                                <td>Php 2,000.00</td>
-                                <td>Php 2,500.00</td>
-                            </tr>
-                            <tr>
-                                <td>Panglao Island Tour</td>
-                                <td>Php 2,000.00</td>
-                                <td>Php 2,500.00</td>
-                            </tr>
-                            <tr>
-                                <td>City Tour – First 3 Hours (Excess hours will be charge Php 250.00/hr Additional.)</td>
-                                <td>Php 1,000.00</td>
-                                <td>Php 1,500.00</td>
-                            </tr>
-                            <tr>
-                                <td>Hotel Transfer One Way Trans In/Out Panglao Resort</td>
-                                <td>Php 600.00</td>
-                                <td>Php 700.00</td>
-                            </tr>
-                            <tr>
-                                <td>Punta Cruz/Mag-aso Falls</td>
-                                <td>Php 1,500.00</td>
-                                <td>Php 2,000.00</td>
-                            </tr>
-                            <tr>
-                                <td>Cambuhat Mangroove Dait, Buenavista, Bohol</td>
-                                <td>Php 3,500.00</td>
-                                <td>Php 4,000.00</td>
-                            </tr>
-                            <tr>
-                                <td>Anda Beach Resort Hotel Transfer One Way Transfer In/Out</td>
-                                <td>Php 2,500.00</td>
-                                <td>Php 3,500.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <p><strong>Bohol Island Tours – your trusted partner for an unforgettable Bohol adventure!</strong></p>
+                
+                <p>Experience the beauty of Bohol without breaking the bank. Our affordable tour packages are designed to bring you the island's top tourist attractions comfortably and hassle-free.</p>
+
+                <h3>We offer car, van, and bus rental of the following destinations:</h3>
                 
                 <ul>
-                    <li>The Car/Van rates covers rental, driver and gas.</li>
-                    <li>If you wish to go to other destinations, the price is to be negotiated based on the distance and expected duration of vehicle used.</li>
-                    <li><strong>NOTE:</strong> All prices stated are expressed in Philippine Peso. Prices may change without prior notice.</li>
-                    <li>Hotel reservations for visitors availing any of the Tour Packages is free of charge.</li>
+                    <li>Chocolate Hills Tour / Countryside Tour</li>
+                    <li>Danao Extreme Adventure Park Tour</li>
+                    <li>Danao Sea of Clouds Tour</li>
+                    <li>Panglao Island Tour</li>
+                    <li>Mirror of the World Tour / Bolhollywood Tour</li>
+                    <li>Anda Beach and Cabagnow Cave Pool Tour</li>
+                    <li>Can-umantad Falls and Cadapdapan Rice Terraces Tour</li>
+                    <li>Alicia Panoramic Tour</li>
+                    <li>City Tour</li>
+                    <li>Dimiao Twin Falls / Ingkumhan Falls Tour</li>
+                    <li>Airport/Seaport/Hotel Transfers</li>
                 </ul>
-                
-                <h3>BOHOL BUS RENTAL RATES</h3>
-                
-                <div style="overflow-x: auto;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>DESTINATION</th>
-                                <th>BUS RATE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Chocolate Hills/Country Side Tour</td>
-                                <td>Php 9,000.00</td>
-                            </tr>
-                            <tr>
-                                <td>Sagbayan Peak Tour</td>
-                                <td>Php 10,000.00</td>
-                            </tr>
-                            <tr>
-                                <td>Danao Eco-Adventure Tour</td>
-                                <td>Php 14,000.00</td>
-                            </tr>
-                            <tr>
-                                <td>Loboc Tour</td>
-                                <td>Php 6,500.00</td>
-                            </tr>
-                            <tr>
-                                <td>Panglao Island Tour</td>
-                                <td>Php 6,500.00</td>
-                            </tr>
-                            <tr>
-                                <td>City Tour – First 3 Hours (Excess hours will be charge Php 250.00/hr Additional.)</td>
-                                <td>Php 3,500.00</td>
-                            </tr>
-                            <tr>
-                                <td>Hotel Transfer One Way Trans In/Out Panglao Resort</td>
-                                <td>Php 3,500.00</td>
-                            </tr>
-                            <tr>
-                                <td>Punta Cruz/Mag-aso Falls</td>
-                                <td>Php 6,500.00</td>
-                            </tr>
-                            <tr>
-                                <td>Cambuhat Mangroove Dait, Buenavista, Bohol</td>
-                                <td>Php 12,000.00</td>
-                            </tr>
-                            <tr>
-                                <td>Anda Beach Resort Hotel Transfer One Way Transfer In/Out</td>
-                                <td>Php 7,000.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <div class="info-box">
-                    <h4>Bohol Bus for Rent Description:</h4>
+
+                <div class="rental-intro">
                     <ul style="margin: 0; padding-left: 2rem;">
-                        <li>Fully Airconditioned</li>
-                        <li>55 Seater</li>
+                        <li>For the car, van, and bus rental rates please send us and email at <strong>boholislandtours@gmail.com</strong></li>
+                        <li>The car, van, and bus rental covers vehicle rent, with driver and gas.</li>
+                        <li>If you wish to go to other destinations, the price is to be negotiated based on the distance and expected duration of the vehicle used.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>Bohol Bus for Rent Description:</h3>
+                    <ul style="margin: 0; padding-left: 2rem;">
+                        <li>Fully Air-conditioned</li>
+                        <li>51-seater</li>
                         <li>Ideal for Big Groups</li>
                         <li>Can be used for Educational Tour, etc.</li>
-                        <li>Rental Covers vehicle rent, driver and gas</li>
+                        <li>Rental Covers vehicle rent, with driver and gas.</li>
                     </ul>
                 </div>
-                
+
                 <div class="fleet-box">
-                    <h4>Our fleet of the latest and most modern vehicles for your safety and comfort:</h4>
+                    <h3>Our fleet of the latest and modern vehicles for your safety and comfort:</h3>
                     <ul style="margin: 0; padding-left: 2rem; line-height: 2;">
-                        <li>Hyundai Starex SVX</li>
-                        <li>Nissan Urvan Estate</li>
-                        <li>Nissan Urvan Escapade</li>
-                        <li>Toyota HiAce</li>
-                        <li>Kia Rio</li>
+                        <li>Toyota Hi Ace</li>
+                        <li>Toyota Grandia</li>
+                        <li>Toyota Vios</li>
                     </ul>
-                    <p style="margin-top: 1rem; margin-bottom: 0; color: #666; font-style: italic;">
-                        * Inclusions with driver and gas
-                    </p>
                 </div>
+
+                <div style="background: #f0f8ff; padding: 2rem; border-radius: 8px; margin: 2rem 0; border-left: 4px solid var(--gold);">
+                    <p><strong>With us, you can look forward to:</strong></p>
+                    <ul style="margin: 0; padding-left: 2rem;">
+                        <li>Safe, modern, and well-maintained vehicles for your comfort</li>
+                        <li>Friendly and knowledgeable drivers who double as your tour guides</li>
+                        <li>Smooth, enjoyable, and fully organized travel to Bohol's finest destinations.</li>
+                    </ul>
+                </div>
+
+                <p style="font-size: 1.1rem; color: var(--dark-blue); text-align: center; margin-top: 2rem;">
+                    <strong>Book your Bohol experience with confidence. Let us take you to paradise – comfortable, safely, and affordably!</strong>
+                </p>
 
             </div>
         </div>
