@@ -331,51 +331,7 @@
 </head>
 <body>
 
-    <header class="header">
-        <nav class="navbar">
-            <a href="index.php" class="nav-logo">
-                <img src="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png" alt="Bohol Tours" class="logo-img">
-            </a>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="index.php#home" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="index.php#tours" class="nav-link">Tours</a></li>
-                <li class="nav-item dropdown">
-                    <a href="index.php#tours" class="nav-link dropdown-toggle">Tour Packages</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="package1.php" class="dropdown-item">2 Days 1 Night Bohol Tour Package</a></li>
-                        <li><a href="package2.php" class="dropdown-item">3 Days 2 Nights Bohol Tour Package</a></li>
-                        <li><a href="package3.php" class="dropdown-item">4 Days 3 Nights Bohol Tour Package</a></li>
-                        <li><a href="package4.php" class="dropdown-item">5 Days 4 Nights Bohol Tour Package</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a href="rental.php" class="nav-link active">Car/Van Rental</a></li>
-                <li class="nav-item dropdown">
-                    <a href="destinations.php" class="nav-link dropdown-toggle">Destinations</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="destinations.php#countryside" class="dropdown-item">Country Side Tour</a></li>
-                        <li><a href="destinations.php#danao-sagbayan" class="dropdown-item">Danao-Sagbayan Tour</a></li>
-                        <li><a href="destinations.php#mag-aso-falls" class="dropdown-item">Mag-Aso Falls Tour</a></li>
-                        <li><a href="destinations.php#catigbian" class="dropdown-item">Catigbian Tour</a></li>
-                        <li><a href="destinations.php#panglao-island" class="dropdown-item">Panglao Island Tour</a></li>
-                        <li><a href="destinations.php#island-hopping" class="dropdown-item">Island Hopping Tour</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a href="index.php#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="about-bohol.php" class="nav-link">About Bohol</a></li>
-                <li class="nav-item" style="display: none;"><a href="gallery.php" class="nav-link">Gallery</a></li>
-                <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="header-actions">
-                <a href="index.php#home" class="cta-button">Book Tour</a>
-                <a href="contact.php" class="cta-button-secondary">Get Quote</a>
-            </div>
-        </nav>
-    </header>
+    <?php include 'header.php'; ?>
 
     <section class="page-header" style="background-image: url('https://www.boholislandtours.com/wp-content/uploads/2015/12/manmade_forest.jpg');">
         <div class="page-header-content">
@@ -554,73 +510,10 @@
         </div>
     </main>
 
-    <footer id="contact" class="site-footer">
-        <div class="container">
-            <div class="newsletter-section">
-                <h3>Join Our Newsletter</h3>
-                <p>Sign up to our newsletter to receive our latest news about offers & promotions.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email address">
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
-
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h4>About Bohol Tours</h4>
-                    <p>Your premier gateway to Bohol's natural wonders and cultural heritage. We specialize in creating unforgettable travel experiences with expert local guides and carefully curated itineraries.</p>
-                </div>
-                <div class="footer-column">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.php#home">Home</a></li>
-                        <li><a href="index.php#tours">Tour Packages</a></li>
-                        <li><a href="index.php#destinations">Destinations</a></li>
-                        <li><a href="index.php#about">About Us</a></li>
-                        <li><a href="about-bohol.php">About Bohol</a></li>
-                        <li><a href="rental.php">Car/Van Rental</a></li>
-                        <li style="display: none;"><a href="gallery.php">Gallery</a></li>
-                        <li><a href="contact.php">Contact</a></li>
-                        <li><a href="sitemap.xml">Sitemap</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Contact Us</h4>
-                    <p>
-                        Tourism Center<br>
-                        Tagbilaran City, Bohol 6300<br>
-                        <a href="tel:+639125298818">Smart: +639125298818</a><br>
-                        <a href="tel:+639190805294">Smart: +639190805294</a><br>
-                        <a href="tel:+639179507562">Globe: +639179507562</a><br>
-                        <a href="mailto:boholislandtours@gmail.com">boholislandtours@gmail.com</a>
-                    </p>
-                </div>
-                <div class="footer-column">
-                    <h4>Follow Our Journey</h4>
-                    <p>Stay updated with the latest Bohol travel tips and exclusive offers.</p>
-                    <div class="social-icons">
-                        <a href="#">F</a>
-                        <a href="#">T</a>
-                        <a href="#">I</a>
-                        <a href="#">Y</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Bohol Island Tours. All Rights Reserved.</p>
-                <div class="payment-methods">
-                    <span>Payment methods:</span>
-                    <span>Visa</span>
-                    <span>Mastercard</span>
-                    <span>GCash</span>
-                    <span>PayPal</span>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php include 'footer.php'; ?>
 
     <script src="script.js"></script>
     <!-- Mobile menu handled by script.js -->
 </body>
 </html>
+

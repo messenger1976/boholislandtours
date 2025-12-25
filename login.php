@@ -23,30 +23,7 @@
 </head>
 <body>
 
-    <header class="header">
-        <nav class="navbar">
-            <a href="index.php" class="nav-logo">
-                <img src="img/logo.png" alt="Bodare Logo" class="logo-img">
-            </a>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="index.php#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="rooms.php" class="nav-link">Rooms</a></li>
-                <li class="nav-item"><a href="amenities.php" class="nav-link">Amenities</a></li>
-                <li class="nav-item"><a href="gallery.php" class="nav-link">Gallery</a></li>
-                <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="header-actions">
-                <a href="login.php" id="login-account-btn" class="cta-button-secondary" style="display: none !important;">Login</a>
-                <a href="customer-dashboard.php" id="my-account-btn" class="cta-button-secondary" style="display: none;">My Account</a>
-                <a href="rooms.php" class="cta-button">Book Now</a>
-            </div>
-        </nav>
-    </header>
+    <?php include 'header.php'; ?>
 
     <section class="page-header">
         <div class="page-header-content">
@@ -84,13 +61,7 @@
         </div>
     </main>
 
-    <footer id="contact" class="site-footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2025 Bodare and Community Multi-Purpose Cooperative. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <?php include 'footer.php'; ?>
     
     <script src="api-config.js"></script>
     <script src="booking-api.js"></script>
@@ -297,4 +268,5 @@
     </script>
 </body>
 </html>
+
 
