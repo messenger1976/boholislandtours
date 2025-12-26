@@ -69,7 +69,7 @@
     // Replace with your Facebook Page ID
     (function initMessengerChat() {
         var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute('page_id', 'YOUR_PAGE_ID'); // TODO: set your real Page ID
+        chatbox.setAttribute('page_id', '137067352998686'); // TODO: set your real Page ID
         chatbox.setAttribute('attribution', 'biz_inbox');
         // Optional theme color (match your brand)
         // chatbox.setAttribute('theme_color', '#0d6efd');
