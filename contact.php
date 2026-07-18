@@ -1,3 +1,9 @@
+<?php
+// Always revalidate this page so deployed form changes appear immediately.
+header('Cache-Control: no-cache, no-store, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+header('Expires: 0');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -194,7 +200,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-logo.png">
     <link rel="icon" type="image/png" href="images/favicon-logo.png">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?php echo filemtime(__DIR__ . '/style.css'); ?>">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
@@ -341,8 +347,8 @@
 
 <?php include 'footer.php'; ?>
     
-    <script src="api-config.js"></script>
-    <script src="script.js"></script>
+    <script src="api-config.js?v=<?php echo filemtime(__DIR__ . '/api-config.js'); ?>"></script>
+    <script src="script.js?v=<?php echo filemtime(__DIR__ . '/script.js'); ?>"></script>
     <script>
     (function () {
         var form = document.getElementById('contact-form');
