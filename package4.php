@@ -19,7 +19,7 @@
     <meta property="og:url" content="https://www.boholislandtours.com/package4.php">
     <meta property="og:title" content="5 Days 4 Nights Bohol Tour Package | Ultimate Experience | Bohol Island Tours">
     <meta property="og:description" content="Ultimate 5 Days 4 Nights Bohol experience! 5 comprehensive packages covering all attractions: Chocolate Hills, dolphins, islands, Panglao, Danao adventure. Multiple free days, luxury hotels, meals included. Call 09179507562">
-    <meta property="og:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg">
+    <meta property="og:image" content="https://www.boholislandtours.com/images/panglao-beach.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Bohol Island Tours">
@@ -30,7 +30,7 @@
     <meta property="twitter:url" content="https://www.boholislandtours.com/package4.php">
     <meta property="twitter:title" content="5 Days 4 Nights Bohol Tour Package | Ultimate Experience | Bohol Island Tours">
     <meta property="twitter:description" content="Ultimate 5 Days 4 Nights Bohol experience! All attractions: Chocolate Hills, dolphin watching, island hopping, Panglao & Danao. Multiple free days, luxury hotels. Book now!">
-    <meta property="twitter:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg">
+    <meta property="twitter:image" content="https://www.boholislandtours.com/images/panglao-beach.jpg">
 
     <!-- Additional SEO Meta Tags -->
     <meta name="theme-color" content="#b2945b">
@@ -52,13 +52,13 @@
         "name": "5 Days 4 Nights Bohol Tour Package",
         "description": "Experience Bohol with our affordable 5 Days 4 Nights tour package. Extended stay with countryside tour, dolphin watching, island hopping, and more adventures!",
         "url": "https://www.boholislandtours.com/package4.php",
-        "image": "https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg",
+        "image": "https://www.boholislandtours.com/images/panglao-beach.jpg",
         "tourBookingPage": "https://www.boholislandtours.com/contact.php",
         "provider": {
             "@type": "Organization",
             "name": "Bohol Island Tours",
             "url": "https://www.boholislandtours.com/",
-            "logo": "https://www.boholislandtours.com/img/logo.png",
+            "logo": "https://www.boholislandtours.com/images/logo.png",
             "telephone": "+639125298818",
             "email": "boholislandtours@gmail.com"
         },
@@ -205,11 +205,11 @@
     
     <!-- Apple Touch Icons -->
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="shortcut icon" type="image/png" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="icon" type="image/png" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-logo.png">
+    <link rel="shortcut icon" type="image/png" href="images/favicon-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-logo.png">
+    <link rel="icon" type="image/png" href="images/favicon-logo.png">
     
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
@@ -380,7 +380,7 @@
 
     <?php include 'header.php'; ?>
 
-    <section class="page-header" style="background-image: url('https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg');">
+    <section class="page-header" style="background-image: url('images/panglao-beach.jpg');">
         <div class="page-header-content">
             <h1>FIVE DAYS FOUR NIGHTS 5D/4N BOHOL TOUR PACKAGE</h1>
             <p>Extended stay for a more comprehensive Bohol experience</p>

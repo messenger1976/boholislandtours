@@ -1,7 +1,7 @@
 <header class="header">
     <nav class="navbar">
         <a href="index.php" class="nav-logo">
-            <img src="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png" alt="Bohol Tours" class="logo-img">
+            <img src="images/favicon-logo.png" alt="Bohol Tours" class="logo-img">
         </a>
         <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
             <span></span>

@@ -19,7 +19,7 @@
     <meta property="og:url" content="https://www.boholislandtours.com/rental.php">
     <meta property="og:title" content="Car & Van Rental Bohol | Professional Drivers | Bohol Island Tours">
     <meta property="og:description" content="Bohol car & van rental with professional drivers and modern fleet. Perfect for Chocolate Hills, island hopping, countryside tours. Affordable rates. Contact Ms. Annabele: 09179507562 or email: boholislandtours@gmail.com">
-    <meta property="og:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/manmade_forest.jpg">
+    <meta property="og:image" content="https://www.boholislandtours.com/images/manmade-forest.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Bohol Island Tours">
@@ -30,7 +30,7 @@
     <meta property="twitter:url" content="https://www.boholislandtours.com/rental.php">
     <meta property="twitter:title" content="Car & Van Rental Bohol | Professional Drivers | Bohol Island Tours">
     <meta property="twitter:description" content="Bohol car & van rental with professional drivers. Toyota HiAce, Grandia, Vios fleet. Affordable rates for all destinations. Book with Ms. Annabele: 09179507562">
-    <meta property="twitter:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/manmade_forest.jpg">
+    <meta property="twitter:image" content="https://www.boholislandtours.com/images/manmade-forest.jpg">
 
     <!-- Additional SEO Meta Tags -->
     <meta name="theme-color" content="#b2945b">
@@ -52,8 +52,8 @@
         "name": "Bohol Island Tours Car & Van Rental",
         "description": "Affordable car and van rentals for Bohol tours with professional drivers and modern fleet",
         "url": "https://www.boholislandtours.com/rental.php",
-        "logo": "https://www.boholislandtours.com/img/logo.png",
-        "image": "https://www.boholislandtours.com/wp-content/uploads/2015/12/manmade_forest.jpg",
+        "logo": "https://www.boholislandtours.com/images/logo.png",
+        "image": "https://www.boholislandtours.com/images/manmade-forest.jpg",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Tagbilaran City",
@@ -221,11 +221,11 @@
     
     <!-- Apple Touch Icons -->
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="shortcut icon" type="image/png" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="icon" type="image/png" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-logo.png">
+    <link rel="shortcut icon" type="image/png" href="images/favicon-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-logo.png">
+    <link rel="icon" type="image/png" href="images/favicon-logo.png">
     
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
@@ -333,7 +333,7 @@
 
     <?php include 'header.php'; ?>
 
-    <section class="page-header" style="background-image: url('https://www.boholislandtours.com/wp-content/uploads/2015/12/manmade_forest.jpg');">
+    <section class="page-header" style="background-image: url('images/manmade-forest.jpg');">
         <div class="page-header-content">
             <h1>Car and Van Rentals</h1>
             <p>Safe, comfortable, and affordable transportation for your Bohol adventure</p>

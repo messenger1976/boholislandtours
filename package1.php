@@ -19,7 +19,7 @@
     <meta property="og:url" content="https://www.boholislandtours.com/package1.php">
     <meta property="og:title" content="2 Days 1 Night Bohol Tour Package | 5 Flexible Plans | Bohol Island Tours">
     <meta property="og:description" content="Experience Bohol with our affordable 2 Days 1 Night tour package. 5 flexible plans: Countryside + Dolphin + Islands, Countryside tours, or Danao Adventure. Hotels & transport included. Contact Ms. Annabele: 09179507562">
-    <meta property="og:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg">
+    <meta property="og:image" content="https://www.boholislandtours.com/images/chocolate-hills.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Bohol Island Tours">
@@ -30,7 +30,7 @@
     <meta property="twitter:url" content="https://www.boholislandtours.com/package1.php">
     <meta property="twitter:title" content="2 Days 1 Night Bohol Tour Package | 5 Flexible Plans | Bohol Island Tours">
     <meta property="twitter:description" content="Book our 2 Days 1 Night Bohol tour! 5 packages from countryside tours to island hopping & Danao Adventure. Professional drivers, hotels, meals included. Call: 09179507562">
-    <meta property="twitter:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg">
+    <meta property="twitter:image" content="https://www.boholislandtours.com/images/chocolate-hills.jpg">
 
     <!-- Additional SEO Meta Tags -->
     <meta name="theme-color" content="#b2945b">
@@ -52,13 +52,13 @@
         "name": "2 Days 1 Night Bohol Tour Package",
         "description": "Experience Bohol with our affordable 2 Days 1 Night tour package. Includes countryside tour, dolphin watching, island hopping, and multiple travel plans to suit your preferences.",
         "url": "https://www.boholislandtours.com/package1.php",
-        "image": "https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg",
+        "image": "https://www.boholislandtours.com/images/chocolate-hills.jpg",
         "tourBookingPage": "https://www.boholislandtours.com/contact.php",
         "provider": {
             "@type": "Organization",
             "name": "Bohol Island Tours",
             "url": "https://www.boholislandtours.com/",
-            "logo": "https://www.boholislandtours.com/img/logo.png",
+            "logo": "https://www.boholislandtours.com/images/logo.png",
             "telephone": "+639125298818",
             "email": "boholislandtours@gmail.com"
         },
@@ -190,11 +190,11 @@
     
     <!-- Apple Touch Icons -->
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="shortcut icon" type="image/png" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="icon" type="image/png" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-logo.png">
+    <link rel="shortcut icon" type="image/png" href="images/favicon-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-logo.png">
+    <link rel="icon" type="image/png" href="images/favicon-logo.png">
     
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
@@ -365,7 +365,7 @@
 
     <?php include 'header.php'; ?>
 
-    <section class="page-header" style="background-image: url('https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg');">
+    <section class="page-header" style="background-image: url('images/chocolate-hills.jpg');">
         <div class="page-header-content">
             <h1>TWO DAYS ONE NIGHT 2D/1N BOHOL TOUR PACKAGE</h1>
             <p>Affordable and memorable Bohol tour experience</p>

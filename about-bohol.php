@@ -19,7 +19,7 @@
     <meta property="og:url" content="https://www.boholislandtours.com/about-bohol.php">
     <meta property="og:title" content="About Bohol Island | Complete Guide to Bohol Philippines Tourism">
     <meta property="og:description" content="Complete Bohol Island guide: Chocolate Hills, Tarsier, beaches, culture & travel tips. Browse our tour packages (2-5 days), car rentals, accommodation. Contact Ms. Annabele: 09179507562. Plan your Bohol adventure today!">
-    <meta property="og:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg">
+    <meta property="og:image" content="https://www.boholislandtours.com/images/chocolate-hills.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Bohol Island Tours">
@@ -32,7 +32,7 @@
     <meta property="twitter:url" content="https://www.boholislandtours.com/about-bohol.php">
     <meta property="twitter:title" content="About Bohol Island | Complete Guide to Bohol Philippines Tourism">
     <meta property="twitter:description" content="Complete Bohol Island guide with travel tips, attractions & tour packages. Contact Ms. Annabele: 09179507562. Plan your perfect Bohol getaway!">
-    <meta property="twitter:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg">
+    <meta property="twitter:image" content="https://www.boholislandtours.com/images/chocolate-hills.jpg">
 
     <!-- Additional SEO Meta Tags -->
     <meta name="theme-color" content="#b2945b">
@@ -53,7 +53,7 @@
         "@type": "Article",
         "headline": "About Bohol Island - Complete Guide to Bohol Philippines Tourism",
         "description": "Discover everything about Bohol Island - from Chocolate Hills to Tarsier Sanctuary. Learn about climate, culture, transportation, and why Bohol is the Philippines' top tourist destination.",
-        "image": "https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg",
+        "image": "https://www.boholislandtours.com/images/chocolate-hills.jpg",
         "author": {
             "@type": "Organization",
             "name": "Bohol Island Tours"
@@ -63,7 +63,7 @@
             "name": "Bohol Island Tours",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://www.boholislandtours.com/img/logo.png"
+                "url": "https://www.boholislandtours.com/images/logo.png"
             }
         },
         "datePublished": "2024-01-01",
@@ -171,11 +171,11 @@
     
     <!-- Apple Touch Icons -->
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="shortcut icon" type="image/png" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="icon" type="image/png" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-logo.png">
+    <link rel="shortcut icon" type="image/png" href="images/favicon-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-logo.png">
+    <link rel="icon" type="image/png" href="images/favicon-logo.png">
     
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
@@ -285,7 +285,7 @@
 
     <?php include 'header.php'; ?>
 
-    <section class="page-header" style="background-image: url('https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg');">
+    <section class="page-header" style="background-image: url('images/chocolate-hills.jpg');">
         <div class="page-header-content">
             <h1>About Bohol</h1>
             <p>Discover the wonders and captivating sites of this island paradise</p>

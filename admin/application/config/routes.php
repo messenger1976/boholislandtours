@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'admin/auth/login';
+$route['default_controller'] = 'admin/auth';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
@@ -58,6 +58,7 @@ $route[''] = 'admin/auth/login';
 $route['login'] = 'admin/auth/login';
 $route['logout'] = 'admin/auth/logout';
 $route['dashboard'] = 'admin/dashboard/index';
+$route['dashboard/analytics_data'] = 'admin/dashboard/analytics_data';
 $route['profile'] = 'admin/profile/index';
 $route['profile/update'] = 'admin/profile/update';
 $route['bookings'] = 'admin/bookings/index';
@@ -79,9 +80,18 @@ $route['room_settings'] = 'admin/room_settings/index';
 
 // Inquiry Management routes
 $route['inquiries'] = 'admin/inquiries/index';
-$route['inquiries/(:num)'] = 'admin/inquiries/view/$1';
-$route['inquiries/update_status/(:num)'] = 'admin/inquiries/update_status/$1';
+$route['inquiries/reply'] = 'admin/inquiries/reply';
+$route['inquiries/updatestatus'] = 'admin/inquiries/updatestatus';
+$route['inquiries/fetchinbound'] = 'admin/inquiries/fetchinbound';
+$route['inquiries/poll'] = 'admin/inquiries/poll';
+$route['inquiries/downloadattachment/(:num)'] = 'admin/inquiries/downloadattachment/$1';
 $route['inquiries/delete/(:num)'] = 'admin/inquiries/delete/$1';
+$route['inquiries/(:num)'] = 'admin/inquiries/view/$1';
+
+// Email/SMTP Settings (Inquiries Contact + Account mailers)
+$route['email_settings'] = 'admin/email_settings/index';
+$route['email_settings/update'] = 'admin/email_settings/update';
+$route['email_settings/test'] = 'admin/email_settings/test';
 
 // Customer/Guest Management routes
 $route['customers'] = 'admin/customers/index';
@@ -126,6 +136,7 @@ $route['api/auth/check'] = 'api/auth/check';
 $route['api/auth/forgot-password'] = 'api/auth/forgot_password';
 $route['api/auth/verify-reset-token'] = 'api/auth/verify_reset_token';
 $route['api/auth/reset-password'] = 'api/auth/reset_password';
+$route['api/auth/activate-account'] = 'api/auth/activate_account';
 
 $route['api/booking/availability'] = 'api/booking/check_availability';
 $route['api/booking/get_availability'] = 'api/booking/get_availability';
@@ -140,6 +151,7 @@ $route['api/booking/get_rooms'] = 'api/booking/get_rooms';
 
 $route['api/user/profile'] = 'api/user/profile';
 $route['api/user/update'] = 'api/user/update';
+$route['api/user/change_password'] = 'api/user/change_password';
 
 $route['api/inquiry/submit'] = 'api/inquiry/submit';
 

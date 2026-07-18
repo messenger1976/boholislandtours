@@ -19,7 +19,7 @@
     <meta property="og:url" content="https://www.boholislandtours.com/destinations.php">
     <meta property="og:title" content="Bohol Tourist Destinations | Explore Bohol's Top Attractions">
     <meta property="og:description" content="Complete guide to Bohol's must-visit destinations: Chocolate Hills, Tarsier Sanctuary, Loboc River, Panglao Island, Island Hopping, Danao Adventure Park, Sagbayan Peak, Mirror of the World & more. Plan your perfect Bohol itinerary!">
-    <meta property="og:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg">
+    <meta property="og:image" content="https://www.boholislandtours.com/images/chocolate-hills.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Bohol Island Tours">
@@ -30,7 +30,7 @@
     <meta property="twitter:url" content="https://www.boholislandtours.com/destinations.php">
     <meta property="twitter:title" content="Bohol Tourist Destinations | Explore Bohol's Top Attractions">
     <meta property="twitter:description" content="Complete guide to Bohol's must-visit destinations: Chocolate Hills, Tarsier Sanctuary, Loboc River, Panglao Island, Island Hopping, Danao Adventure Park, Sagbayan Peak, Mirror of the World & more. Plan your perfect Bohol itinerary!">
-    <meta property="twitter:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg">
+    <meta property="twitter:image" content="https://www.boholislandtours.com/images/chocolate-hills.jpg">
 
     <!-- Additional SEO Meta Tags -->
     <meta name="theme-color" content="#b2945b">
@@ -140,7 +140,7 @@
             "url": "https://www.boholislandtours.com/",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://www.boholislandtours.com/img/logo.png"
+                "url": "https://www.boholislandtours.com/images/logo.png"
             }
         }
     }
@@ -199,11 +199,11 @@
     
     <!-- Apple Touch Icons -->
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="shortcut icon" type="image/png" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="icon" type="image/png" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-logo.png">
+    <link rel="shortcut icon" type="image/png" href="images/favicon-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-logo.png">
+    <link rel="icon" type="image/png" href="images/favicon-logo.png">
     
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
@@ -328,7 +328,7 @@
 
     <?php include 'header.php'; ?>
 
-    <section class="page-header" style="background-image: url('https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg');">
+    <section class="page-header" style="background-image: url('images/chocolate-hills.jpg');">
         <div class="page-header-content">
             <h1>Bohol Tourist Destinations</h1>
             <p>Discover the most spectacular natural wonders and cultural treasures of Bohol</p>
@@ -555,7 +555,7 @@
                 <!-- Island Hopping Tour -->
                 <section id="island-hopping" class="destination-section">
                     <h2>Island Hopping Tour</h2>
-                    <img src="https://www.boholislandtours.com/wp-content/themes/boholtours/images/island.jpg" alt="Bohol Island Hopping - dolphin watching, Balicasag Island marine sanctuary snorkeling, and Virgin Island sandbar" class="destination-image">
+                    <img src="images/island.jpg" alt="Bohol Island Hopping - dolphin watching, Balicasag Island marine sanctuary snorkeling, and Virgin Island sandbar" class="destination-image">
                     <p class="lead-text">
                         Experience the best of Bohol's marine life with dolphin watching, snorkeling at Balicasag Island, and a visit to the pristine Virgin Island.
                     </p>

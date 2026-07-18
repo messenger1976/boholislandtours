@@ -9,6 +9,7 @@ class Auth extends CI_Controller {
         $this->load->model('User_model');
         $this->load->model('Customer_model');
         $this->load->model('Password_reset_model');
+        $this->load->model('Email_verification_model');
         $this->load->library('form_validation');
         header('Content-Type: application/json');
     }
@@ -101,7 +102,7 @@ class Auth extends CI_Controller {
             return;
         }
         
-        // Prepare user data (for authentication)
+        // Prepare user data (for authentication) — inactive until email is confirmed
         $user_data = array(
             'first_name' => trim($data['first_name']),
             'last_name' => trim($data['last_name']),
@@ -109,7 +110,8 @@ class Auth extends CI_Controller {
             'phone' => trim($data['phone']),
             'address' => trim($data['address']),
             'password' => $data['password'],
-            'status' => 'active'
+            'email_verified' => 0,
+            'status' => 'inactive'
         );
         
         // Prepare customer data (for detailed customer records)
@@ -120,6 +122,7 @@ class Auth extends CI_Controller {
             'phone' => trim($data['phone']),
             'address' => trim($data['address']),
             'city' => isset($data['city']) ? trim($data['city']) : null,
+            'barangay' => isset($data['barangay']) ? trim($data['barangay']) : null,
             'province' => isset($data['province']) ? trim($data['province']) : null,
             'postal_code' => isset($data['postal_code']) ? trim($data['postal_code']) : null,
             'country' => isset($data['country']) && !empty($data['country']) ? trim($data['country']) : 'Philippines',
@@ -128,7 +131,7 @@ class Auth extends CI_Controller {
             'nationality' => isset($data['nationality']) ? trim($data['nationality']) : null,
             'id_type' => isset($data['id_type']) && !empty($data['id_type']) ? $data['id_type'] : null,
             'id_number' => isset($data['id_number']) ? trim($data['id_number']) : null,
-            'status' => 'active'
+            'status' => 'inactive'
         );
         
         // Start transaction to ensure both records are created
@@ -172,24 +175,51 @@ class Auth extends CI_Controller {
             ]);
             return;
         }
-        
-        // Auto login after registration
+
         $user = $this->User_model->get_user($user_id);
-        $this->session->set_userdata([
-            'user_logged_in' => true,
-            'user_id' => $user->id,
-            'user_email' => $user->email,
-            'user_name' => $user->first_name . ' ' . $user->last_name
-        ]);
-        
+        $token = bin2hex(random_bytes(32));
+        $expires_at = date('Y-m-d H:i:s', strtotime('+24 hours'));
+
+        if (!$this->Email_verification_model->create_token($email, $token, $expires_at)) {
+            $this->output->set_status_header(500);
+            echo json_encode([
+                'success' => false,
+                'message' => 'Your account was created, but we could not prepare the confirmation email. Please contact support.'
+            ]);
+            return;
+        }
+
+        $activate_url = $this->build_frontend_activate_url($token);
+        $name = trim($user->first_name . ' ' . $user->last_name);
+        if ($name === '') {
+            $name = $email;
+        }
+
+        $title = 'BODARE Pension House';
+        $subject = 'Confirm your email - ' . $title;
+        $message = $this->build_activation_email($title, $name, $activate_url);
+
+        $this->load->library('coop_mail');
+        $this->coop_mail->set_profile('account');
+
+        if (!$this->coop_mail->send($email, $subject, $message)) {
+            $smtp_error = $this->coop_mail->get_last_error();
+            log_message('error', 'Registration confirmation email failed: ' . $smtp_error);
+
+            $response = [
+                'success' => false,
+                'message' => 'Your account was created, but we could not send the confirmation email. Please try again later or contact support.'
+            ];
+
+            $this->output->set_status_header(500);
+            echo json_encode($response);
+            return;
+        }
+
         echo json_encode([
             'success' => true,
-            'message' => 'Your account has been created successfully! Welcome to BODARE Pension House.',
-            'user' => [
-                'id' => $user->id,
-                'name' => $user->first_name . ' ' . $user->last_name,
-                'email' => $user->email
-            ]
+            'requires_verification' => true,
+            'message' => 'Your account has been created. Please check your email and click the confirmation link to activate your account before logging in.'
         ]);
     }
     
@@ -260,12 +290,15 @@ class Auth extends CI_Controller {
             return;
         }
         
-        // Check if user is active
+        // Check if user is active / email-confirmed
         if ($user_exists->status != 'active') {
+            $pending_verification = isset($user_exists->email_verified) && (int) $user_exists->email_verified === 0;
             $this->output->set_status_header(401);
             echo json_encode([
                 'success' => false,
-                'message' => 'Your account is not active. Please contact support for assistance.'
+                'message' => $pending_verification
+                    ? 'Please confirm your email first. Check your inbox for the activation link we sent when you registered.'
+                    : 'Your account is not active. Please contact support for assistance.'
             ]);
             return;
         }
@@ -301,10 +334,13 @@ class Auth extends CI_Controller {
                     'message' => 'No account found with this email address. Please register first or check your email.'
                 ]);
             } else if ($user_exists->status != 'active') {
+                $pending_verification = isset($user_exists->email_verified) && (int) $user_exists->email_verified === 0;
                 $this->output->set_status_header(401);
                 echo json_encode([
                     'success' => false,
-                    'message' => 'Your account is not active. Please contact support for assistance.'
+                    'message' => $pending_verification
+                        ? 'Please confirm your email first. Check your inbox for the activation link we sent when you registered.'
+                        : 'Your account is not active. Please contact support for assistance.'
                 ]);
             } else {
                 // User exists and is active, but password is wrong
@@ -348,7 +384,7 @@ class Auth extends CI_Controller {
             $user_id = $this->session->userdata('user_id');
             $user = $this->User_model->get_user($user_id);
             
-            if ($user) {
+            if ($user && (!isset($user->status) || $user->status === 'active')) {
                 echo json_encode([
                     'success' => true,
                     'logged_in' => true,
@@ -359,10 +395,12 @@ class Auth extends CI_Controller {
                     ]
                 ]);
             } else {
+                // Account missing/inactive — clear server session so client can logout account
+                $this->session->unset_userdata(['user_logged_in', 'user_id', 'user_email', 'user_name']);
                 echo json_encode([
                     'success' => true,
                     'logged_in' => false,
-                    'message' => 'User session exists but user not found'
+                    'message' => 'User session is no longer valid'
                 ]);
             }
         } else {
@@ -412,55 +450,94 @@ class Auth extends CI_Controller {
         }
         
         $email = trim(strtolower($data['email']));
-        
-        // Check if user exists
-        $user = $this->User_model->get_user_by_email($email);
-        
-        if (!$user) {
-            // Don't reveal if email exists for security
+
+        // Same message whether or not the account exists (avoid email enumeration).
+        $neutral_message = 'If an account exists with this email, a password reset link has been sent. Please check your inbox and spam folder.';
+
+        try {
+            // Look in the login accounts first, then fall back to customer records
+            // (guests created from bookings may not have a users row yet).
+            $account = $this->User_model->get_user_by_email($email);
+            if (!$account || (isset($account->status) && $account->status !== 'active')) {
+                $account = $this->Customer_model->get_customer_by_email($email);
+            }
+
+            if (!$account || (isset($account->status) && $account->status !== 'active')) {
+                echo json_encode([
+                    'success' => true,
+                    'message' => $neutral_message
+                ]);
+                return;
+            }
+
+            $token = bin2hex(random_bytes(32));
+            $expires_at = date('Y-m-d H:i:s', strtotime('+1 hour'));
+
+            if (!$this->Password_reset_model->create_token($email, $token, $expires_at)) {
+                $this->output->set_status_header(500);
+                echo json_encode([
+                    'success' => false,
+                    'message' => 'Unable to process your request. Please try again later.'
+                ]);
+                return;
+            }
+
+            $reset_url = $this->build_frontend_reset_url($token);
+            $name = trim(
+                (!empty($account->first_name) ? $account->first_name : '') . ' ' .
+                (!empty($account->last_name) ? $account->last_name : '')
+            );
+            if ($name === '') {
+                $name = !empty($account->email) ? $account->email : 'there';
+            }
+
+            $title = 'BODARE Pension House';
+            $subject = 'Reset your password - ' . $title;
+            $message = $this->build_reset_email($title, $name, $reset_url);
+
+            $this->load->library('coop_mail');
+            $this->coop_mail->set_profile('account');
+
+            if (!$this->coop_mail->send($email, $subject, $message)) {
+                $smtp_error = $this->coop_mail->get_last_error();
+                log_message('error', 'Password reset email failed for account mailer: ' . $smtp_error);
+
+                $response = [
+                    'success' => false,
+                    'message' => 'We could not send the reset email right now. Please try again later.'
+                ];
+
+                $this->Password_reset_model->delete_by_email($email);
+                $this->output->set_status_header(500);
+                echo json_encode($response);
+                return;
+            }
+
+            log_message('info', 'Password reset email sent via account mailer.');
+
             echo json_encode([
                 'success' => true,
-                'message' => 'If an account exists with this email, a password reset link has been sent.'
+                'message' => 'If an account exists with this email, a password reset link has been sent. Please check your inbox and spam/junk folder.'
             ]);
-            return;
-        }
-        
-        // Generate token
-        $token = bin2hex(random_bytes(32));
-        $expires_at = date('Y-m-d H:i:s', strtotime('+1 hour'));
-        
-        // Save token
-        if ($this->Password_reset_model->create_token($email, $token, $expires_at)) {
-            // Build reset URL - get the frontend URL
-            $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
-            $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
-            $path = dirname($_SERVER['SCRIPT_NAME']);
-            // Remove /admin from path if present
-            $path = str_replace('/admin', '', $path);
-            if (substr($path, -1) !== '/') {
-                $path .= '/';
+        } catch (Exception $e) {
+            log_message('error', 'Forgot password failed: ' . $e->getMessage());
+            if (isset($email)) {
+                $this->Password_reset_model->delete_by_email($email);
             }
-            $reset_url = $protocol . $host . $path . 'reset-password.php?token=' . $token;
-            
-            // In production, send email here
-            // For now, return the URL in development mode
-            $response = [
-                'success' => true,
-                'message' => 'Password reset instructions have been sent to your email address. Please check your inbox and follow the link to reset your password.'
-            ];
-            
-            // Include token in development mode (remove in production)
-            if (defined('ENVIRONMENT') && ENVIRONMENT === 'development') {
-                $response['token'] = $token;
-                $response['reset_url'] = $reset_url;
-            }
-            
-            echo json_encode($response);
-        } else {
             $this->output->set_status_header(500);
             echo json_encode([
                 'success' => false,
-                'message' => 'Unable to process your request. Please try again later.'
+                'message' => 'We could not process your password reset request right now. Please try again later.'
+            ]);
+        } catch (Error $e) {
+            log_message('error', 'Forgot password failed: ' . $e->getMessage());
+            if (isset($email)) {
+                $this->Password_reset_model->delete_by_email($email);
+            }
+            $this->output->set_status_header(500);
+            echo json_encode([
+                'success' => false,
+                'message' => 'We could not process your password reset request right now. Please try again later.'
             ]);
         }
     }
@@ -574,23 +651,37 @@ class Auth extends CI_Controller {
             return;
         }
         
-        // Get user
+        // Get user login account
         $user = $this->User_model->get_user_by_email($reset_token->email);
-        
-        if (!$user) {
-            $this->output->set_status_header(400);
-            echo json_encode([
-                'success' => false,
-                'message' => 'User account not found.'
-            ]);
-            return;
+
+        if ($user) {
+            $saved = $this->User_model->update_user($user->id, array('password' => $password));
+        } else {
+            // Customer-only record (e.g. created from a booking): create the login account now.
+            $customer = $this->Customer_model->get_customer_by_email($reset_token->email);
+
+            if (!$customer) {
+                $this->output->set_status_header(400);
+                echo json_encode([
+                    'success' => false,
+                    'message' => 'User account not found.'
+                ]);
+                return;
+            }
+
+            $saved = (bool) $this->User_model->register(array(
+                'first_name' => $customer->first_name,
+                'last_name' => $customer->last_name,
+                'email' => strtolower(trim($customer->email)),
+                'phone' => $customer->phone,
+                'address' => $customer->address,
+                'password' => $password,
+                'email_verified' => 1,
+                'status' => 'active'
+            ));
         }
-        
-        // Update password
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $update_data = array('password' => $hashed_password);
-        
-        if ($this->User_model->update_user($user->id, $update_data)) {
+
+        if ($saved) {
             // Mark token as used
             $this->Password_reset_model->mark_as_used($token);
             
@@ -605,6 +696,240 @@ class Auth extends CI_Controller {
                 'message' => 'Unable to reset password. Please try again later.'
             ]);
         }
+    }
+
+    /**
+     * Activate account from email confirmation link
+     */
+    public function activate_account() {
+        $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '*';
+        header('Access-Control-Allow-Origin: ' . $origin);
+        header('Access-Control-Allow-Methods: POST, OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type');
+        header('Access-Control-Allow-Credentials: true');
+        header('Content-Type: application/json');
+
+        if ($this->input->method() === 'options') {
+            exit;
+        }
+
+        if ($this->input->method() !== 'post') {
+            $this->output->set_status_header(405);
+            echo json_encode(['success' => false, 'message' => 'Method not allowed']);
+            return;
+        }
+
+        $data = json_decode(file_get_contents('php://input'), true);
+        if (!$data) {
+            $data = $this->input->post();
+        }
+
+        $token = isset($data['token']) ? trim($data['token']) : '';
+        if ($token === '') {
+            $this->output->set_status_header(400);
+            echo json_encode([
+                'success' => false,
+                'message' => 'Invalid or missing activation link. Please use the link from your confirmation email.'
+            ]);
+            return;
+        }
+
+        $verification = $this->Email_verification_model->get_token($token);
+        if (!$verification) {
+            $this->output->set_status_header(400);
+            echo json_encode([
+                'success' => false,
+                'message' => 'This activation link is invalid or has expired. Please register again or contact support.'
+            ]);
+            return;
+        }
+
+        $user = $this->User_model->get_user_by_email($verification->email);
+        if (!$user) {
+            $this->output->set_status_header(400);
+            echo json_encode([
+                'success' => false,
+                'message' => 'Account not found for this activation link.'
+            ]);
+            return;
+        }
+
+        $this->db->trans_start();
+
+        $this->User_model->update_user($user->id, array(
+            'email_verified' => 1,
+            'status' => 'active'
+        ));
+
+        $customer = $this->Customer_model->get_customer_by_email($verification->email);
+        if ($customer) {
+            $this->Customer_model->update($customer->id, array('status' => 'active'));
+        }
+
+        $this->Email_verification_model->mark_as_used($token);
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) {
+            $this->output->set_status_header(500);
+            echo json_encode([
+                'success' => false,
+                'message' => 'Unable to activate your account right now. Please try again later.'
+            ]);
+            return;
+        }
+
+        echo json_encode([
+            'success' => true,
+            'message' => 'Your email has been confirmed. You can now log in to your account.'
+        ]);
+    }
+
+    /**
+     * Public site root (parent of /admin).
+     */
+    protected function frontend_site_root() {
+        $this->load->helper('url');
+        return rtrim(preg_replace('#/admin/?$#', '', rtrim(base_url(), '/')), '/');
+    }
+
+    /**
+     * Build the public-site reset URL (outside /admin).
+     */
+    protected function build_frontend_reset_url($token) {
+        return $this->frontend_site_root() . '/reset-password.php?token=' . rawurlencode($token);
+    }
+
+    /**
+     * Build the public-site account activation URL.
+     */
+    protected function build_frontend_activate_url($token) {
+        return $this->frontend_site_root() . '/activate-account.php?token=' . rawurlencode($token);
+    }
+
+    /**
+     * HTML email for password reset (same pattern as the main website Forgot flow).
+     */
+    protected function build_reset_email($title, $name, $reset_url) {
+        $safe_title = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
+        $safe_name = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
+        $safe_url = htmlspecialchars($reset_url, ENT_QUOTES, 'UTF-8');
+
+        $logo_src = htmlspecialchars($this->frontend_site_root() . '/img/logo.png', ENT_QUOTES, 'UTF-8');
+        $accent = '#b2945b';
+
+        return '
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Reset Password</title></head>
+<body style="margin:0;padding:0;background:#f5f6fa;font-family:Arial,Helvetica,sans-serif;color:#333;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f5f6fa;padding:24px 12px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="560" cellspacing="0" cellpadding="0" style="background:#ffffff;border-radius:12px;overflow:hidden;max-width:560px;width:100%;">
+          <tr>
+            <td style="background:' . $accent . ';padding:20px 28px;color:#fff;">
+              <div style="font-size:18px;font-weight:bold;">' . $safe_title . '</div>
+              <div style="font-size:13px;opacity:.9;margin-top:4px;">Password reset request</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:28px;">
+              <img src="' . $logo_src . '" alt="' . $safe_title . '" style="max-height:48px;margin-bottom:16px;">
+              <p style="margin:0 0 12px;font-size:15px;">Hi ' . $safe_name . ',</p>
+              <p style="margin:0 0 16px;font-size:15px;line-height:1.6;">
+                We received a request to reset your password. Click the button below to create a new password.
+                This link will expire in <strong>1 hour</strong>.
+              </p>
+              <p style="margin:24px 0;" align="center">
+                <a href="' . $safe_url . '" style="display:inline-block;background:' . $accent . ';color:#ffffff;text-decoration:none;padding:12px 22px;border-radius:6px;font-weight:bold;font-size:15px;">
+                  Reset Password
+                </a>
+              </p>
+              <p style="margin:0 0 12px;font-size:13px;line-height:1.6;color:#555;">
+                If the button does not work, copy and paste this link into your browser:
+              </p>
+              <p style="margin:0 0 18px;font-size:12px;line-height:1.5;word-break:break-all;color:' . $accent . ';">
+                ' . $safe_url . '
+              </p>
+              <p style="margin:0;font-size:13px;line-height:1.6;color:#777;">
+                If you did not request a password reset, you can safely ignore this email. Your password will stay the same.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:16px 28px;background:#f8f9fb;font-size:12px;color:#888;">
+              &copy; ' . date('Y') . ' ' . $safe_title . '
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>';
+    }
+
+    /**
+     * HTML email for account activation / email confirmation.
+     */
+    protected function build_activation_email($title, $name, $activate_url) {
+        $safe_title = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
+        $safe_name = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
+        $safe_url = htmlspecialchars($activate_url, ENT_QUOTES, 'UTF-8');
+
+        $logo_src = htmlspecialchars($this->frontend_site_root() . '/img/logo.png', ENT_QUOTES, 'UTF-8');
+        $accent = '#b2945b';
+
+        return '
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Confirm Your Email</title></head>
+<body style="margin:0;padding:0;background:#f5f6fa;font-family:Arial,Helvetica,sans-serif;color:#333;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f5f6fa;padding:24px 12px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="560" cellspacing="0" cellpadding="0" style="background:#ffffff;border-radius:12px;overflow:hidden;max-width:560px;width:100%;">
+          <tr>
+            <td style="background:' . $accent . ';padding:20px 28px;color:#fff;">
+              <div style="font-size:18px;font-weight:bold;">' . $safe_title . '</div>
+              <div style="font-size:13px;opacity:.9;margin-top:4px;">Confirm your email address</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:28px;">
+              <img src="' . $logo_src . '" alt="' . $safe_title . '" style="max-height:48px;margin-bottom:16px;">
+              <p style="margin:0 0 12px;font-size:15px;">Hi ' . $safe_name . ',</p>
+              <p style="margin:0 0 16px;font-size:15px;line-height:1.6;">
+                Thanks for registering with ' . $safe_title . '. Please confirm your email address to activate your account.
+                This link will expire in <strong>24 hours</strong>.
+              </p>
+              <p style="margin:24px 0;" align="center">
+                <a href="' . $safe_url . '" style="display:inline-block;background:' . $accent . ';color:#ffffff;text-decoration:none;padding:12px 22px;border-radius:6px;font-weight:bold;font-size:15px;">
+                  Activate Account
+                </a>
+              </p>
+              <p style="margin:0 0 12px;font-size:13px;line-height:1.6;color:#555;">
+                If the button does not work, copy and paste this link into your browser:
+              </p>
+              <p style="margin:0 0 18px;font-size:12px;line-height:1.5;word-break:break-all;color:' . $accent . ';">
+                ' . $safe_url . '
+              </p>
+              <p style="margin:0;font-size:13px;line-height:1.6;color:#777;">
+                If you did not create an account, you can safely ignore this email.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:16px 28px;background:#f8f9fb;font-size:12px;color:#888;">
+              &copy; ' . date('Y') . ' ' . $safe_title . '
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>';
     }
 }
 

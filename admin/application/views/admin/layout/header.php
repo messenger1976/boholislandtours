@@ -10,6 +10,10 @@ if (!function_exists('base_url') && isset($this) && is_object($this) && method_e
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0, private">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="Thu, 01 Jan 1970 00:00:00 GMT">
+    <meta name="cache-timestamp" content="<?php echo time(); ?>">
     <title><?php echo isset($title) ? $title . ' - ' : ''; ?>Admin Panel - BODARE Pension House</title>
     
     <!-- Dashlite CSS -->
@@ -3245,10 +3249,28 @@ if (!function_exists('base_url') && isset($this) && is_object($this) && method_e
             
             <!-- Inquiries -->
             <?php if ($admin_id && $this->Admin_model->has_permission($admin_id, 'view_inquiries')): ?>
+            <?php
+            $inquiry_badge_count = 0;
+            if ($this->db->table_exists('inquiry')) {
+                $this->db->where_in('status', array('new', 'guest_replied'));
+                $inquiry_badge_count = (int) $this->db->count_all_results('inquiry');
+            }
+            ?>
             <div class="nk-menu-item">
                 <a href="<?php echo base_url('inquiries'); ?>" class="nk-menu-link <?php echo strpos($current_uri, 'inquiries') !== false ? 'active' : ''; ?>">
                     <span class="nk-menu-icon"><i class="bi bi-envelope"></i></span>
                     <span class="nk-menu-text">Inquiries</span>
+                    <span id="inquiry-menu-badge" class="nk-menu-badge" <?php echo $inquiry_badge_count > 0 ? '' : 'style="display:none;"'; ?>><?php echo $inquiry_badge_count > 0 ? (int) $inquiry_badge_count : ''; ?></span>
+                </a>
+            </div>
+            <?php endif; ?>
+
+            <!-- Email/SMTP Settings -->
+            <?php if ($admin_id && $this->Admin_model->has_permission($admin_id, 'manage_email_settings')): ?>
+            <div class="nk-menu-item">
+                <a href="<?php echo base_url('email_settings'); ?>" class="nk-menu-link <?php echo strpos($current_uri, 'email_settings') !== false ? 'active' : ''; ?>">
+                    <span class="nk-menu-icon"><i class="bi bi-mailbox"></i></span>
+                    <span class="nk-menu-text">Email/SMTP</span>
                 </a>
             </div>
             <?php endif; ?>
@@ -3345,33 +3367,55 @@ if (!function_exists('base_url') && isset($this) && is_object($this) && method_e
         </div>
         <h5 class="nk-header-title"><?php echo isset($title) ? $title : 'Admin Panel'; ?></h5>
         <div class="nk-header-tools">
-            <span class="text-muted me-3 d-none d-md-inline">Welcome, <?php 
+            <span class="text-muted me-3" data-admin-id="<?php echo $this->session->userdata('admin_id'); ?>" data-timestamp="<?php echo time(); ?>">Welcome, <?php 
+                // Get admin info directly from session (source of truth)
                 $admin_name = $this->session->userdata('admin_name');
                 $admin_username = $this->session->userdata('admin_username');
+                $admin_id = $this->session->userdata('admin_id');
+                
+                // CRITICAL: Force use session data, never query database here
                 // Use name if available, otherwise fallback to username
                 $display_name = !empty($admin_name) ? $admin_name : (!empty($admin_username) ? $admin_username : 'Admin');
+                
+                // Output the admin name
                 echo htmlspecialchars($display_name);
             ?></span>
             <div class="user-dropdown">
                 <button class="btn p-0 border-0" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="user-avatar">
                         <?php 
+                        // Get admin info from session (source of truth)
                         $admin_name = $this->session->userdata('admin_name');
                         $admin_username = $this->session->userdata('admin_username');
                         $admin_id = $this->session->userdata('admin_id');
                         
-                        // Get admin data to check for avatar
-                        $this->load->model('Admin_model');
-                        $admin_data = $this->Admin_model->get_admin($admin_id);
-                        
-                        if (!empty($admin_data->avatar) && file_exists(FCPATH . $admin_data->avatar)): ?>
-                            <img src="<?php echo base_url($admin_data->avatar); ?>" alt="Avatar" 
-                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-                        <?php else: 
-                            // Use name if available, otherwise fallback to username
+                        // Validate admin_id before querying database
+                        if (!empty($admin_id) && is_numeric($admin_id)) {
+                            // Get admin data to check for avatar
+                            $this->load->model('Admin_model');
+                            $admin_data = $this->Admin_model->get_admin($admin_id);
+                            
+                            // Safety check: verify the admin from database matches session
+                            if ($admin_data && (int)$admin_data->id == (int)$admin_id) {
+                                if (!empty($admin_data->avatar) && file_exists(FCPATH . $admin_data->avatar)): ?>
+                                    <img src="<?php echo base_url($admin_data->avatar); ?>" alt="Avatar" 
+                                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                                <?php else: 
+                                    // Use name from session (not database) to ensure consistency
+                                    $display_name = !empty($admin_name) ? $admin_name : (!empty($admin_username) ? $admin_username : 'Admin');
+                                    echo strtoupper(substr($display_name, 0, 1)); 
+                                endif;
+                            } else {
+                                // Database mismatch - use session data only
+                                $display_name = !empty($admin_name) ? $admin_name : (!empty($admin_username) ? $admin_username : 'Admin');
+                                echo strtoupper(substr($display_name, 0, 1));
+                            }
+                        } else {
+                            // Invalid admin_id - use session data only
                             $display_name = !empty($admin_name) ? $admin_name : (!empty($admin_username) ? $admin_username : 'Admin');
-                            echo strtoupper(substr($display_name, 0, 1)); 
-                        endif; ?>
+                            echo strtoupper(substr($display_name, 0, 1));
+                        }
+                        ?>
                     </div>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">

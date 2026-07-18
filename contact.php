@@ -19,7 +19,7 @@
     <meta property="og:url" content="https://www.boholislandtours.com/contact.php">
     <meta property="og:title" content="Contact Bohol Island Tours | Book Tours & Get Quotes">
     <meta property="og:description" content="Contact Bohol Island Tours - Your trusted Bohol tour operator. Book tour packages, car rentals, get quotes. Call +63 912 529 8818 or email. Fast response guaranteed!">
-    <meta property="og:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg">
+    <meta property="og:image" content="https://www.boholislandtours.com/images/panglao-beach.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Bohol Island Tours">
@@ -30,7 +30,7 @@
     <meta property="twitter:url" content="https://www.boholislandtours.com/contact.php">
     <meta property="twitter:title" content="Contact Bohol Island Tours | Book Tours & Get Quotes">
     <meta property="twitter:description" content="Contact Bohol Island Tours - Your trusted Bohol tour operator. Book tour packages, car rentals, get quotes. Fast response guaranteed!">
-    <meta property="twitter:image" content="https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg">
+    <meta property="twitter:image" content="https://www.boholislandtours.com/images/panglao-beach.jpg">
 
     <!-- Additional SEO Meta Tags -->
     <meta name="theme-color" content="#b2945b">
@@ -51,7 +51,7 @@
         "@type": "Organization",
         "name": "Bohol Island Tours",
         "url": "https://www.boholislandtours.com/",
-        "logo": "https://www.boholislandtours.com/img/logo.png",
+        "logo": "https://www.boholislandtours.com/images/logo.png",
         "description": "Premium tour packages exploring Bohol's natural wonders including Chocolate Hills, Tarsier Sanctuary, Loboc River, and Panglao Beach",
         "address": {
             "@type": "PostalAddress",
@@ -188,11 +188,11 @@
     
     <!-- Apple Touch Icons -->
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="shortcut icon" type="image/png" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="icon" type="image/png" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-logo.png">
+    <link rel="shortcut icon" type="image/png" href="images/favicon-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-logo.png">
+    <link rel="icon" type="image/png" href="images/favicon-logo.png">
     
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
@@ -230,7 +230,7 @@
 
     <?php include 'header.php'; ?>
 
-    <section class="page-header" style="background-image: url('https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg');">
+    <section class="page-header" style="background-image: url('images/panglao-beach.jpg');">
         <div class="page-header-content">
             <h1>Contact Us</h1>
             <p>Get in touch with us for bookings, inquiries, and customized tour arrangements</p>

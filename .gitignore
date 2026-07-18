@@ -1,0 +1,2 @@
+# Local DB credentials — do not commit
+admin/application/config/database.php

@@ -19,7 +19,7 @@
     <meta property="og:url" content="https://www.boholislandtours.com/">
     <meta property="og:title" content="Bohol Island Tours | Premium Bohol Travel & Tour Packages">
     <meta property="og:description" content="Experience Bohol's natural wonders with affordable tour packages! Explore Chocolate Hills, Tarsier Sanctuary, Loboc River, island hopping, dolphin watching & more. 2-5 day packages from ₱1,500.">
-    <meta property="og:image" content="https://www.boholislandtours.com/img/chocolate-hills-og.jpg">
+    <meta property="og:image" content="https://www.boholislandtours.com/images/chocolate-hills-og.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Bohol Island Tours">
@@ -30,7 +30,7 @@
     <meta property="twitter:url" content="https://www.boholislandtours.com/">
     <meta property="twitter:title" content="Bohol Island Tours | Premium Bohol Travel & Tour Packages">
     <meta property="twitter:description" content="Experience Bohol's natural wonders with affordable tour packages! Explore Chocolate Hills, Tarsier Sanctuary, Loboc River, island hopping, dolphin watching & more. 2-5 day packages from ₱1,500.">
-    <meta property="twitter:image" content="https://www.boholislandtours.com/img/chocolate-hills-twitter.jpg">
+    <meta property="twitter:image" content="https://www.boholislandtours.com/images/chocolate-hills-twitter.jpg">
 
     <!-- Additional SEO Meta Tags -->
     <meta name="theme-color" content="#b2945b">
@@ -52,7 +52,7 @@
         "name": "Bohol Island Tours",
         "description": "Premium tour packages exploring Bohol's natural wonders including Chocolate Hills, Tarsier Sanctuary, Loboc River, and Panglao Beach",
         "url": "https://www.boholislandtours.com/",
-        "logo": "https://www.boholislandtours.com/img/logo.png",
+        "logo": "https://www.boholislandtours.com/images/logo.png",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Tagbilaran City",
@@ -178,8 +178,8 @@
         "@type": "LocalBusiness",
         "@id": "https://www.boholislandtours.com/#organization",
         "name": "Bohol Island Tours",
-        "image": "https://www.boholislandtours.com/img/logo.png",
-        "logo": "https://www.boholislandtours.com/img/logo.png",
+        "image": "https://www.boholislandtours.com/images/logo.png",
+        "logo": "https://www.boholislandtours.com/images/logo.png",
         "url": "https://www.boholislandtours.com/",
         "telephone": "+639125298818",
         "email": "boholislandtours@gmail.com",
@@ -307,11 +307,11 @@
     <link rel="manifest" href="manifest.json">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="shortcut icon" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
-    <link rel="icon" type="image/png" href="https://www.boholislandtours.com/wp-content/themes/boholtours/images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-logo.png">
+    <link rel="shortcut icon" href="images/favicon-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-logo.png">
+    <link rel="icon" type="image/png" href="images/favicon-logo.png">
     
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
@@ -455,7 +455,7 @@
     <div class="slider-container">
         <div class="slides">
             <!-- Slide 1: Manmade Forest -->
-            <div class="slide active" style="background-image: url('https://www.boholislandtours.com/wp-content/uploads/2015/12/manmade_forest.jpg');">
+            <div class="slide active" style="background-image: url('images/manmade-forest.jpg');">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <h2 class="hero-title">BOHOL ISLAND TOURS</h2>
@@ -496,7 +496,7 @@
             </div>
 
             <!-- Slide 2: Blood Compact -->
-            <div class="slide" style="background-image: url('https://www.boholislandtours.com/wp-content/uploads/2015/12/blood_compact.jpg');">
+            <div class="slide" style="background-image: url('images/blood-compact.jpg');">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <h2 class="hero-title">BLOOD COMPACT</h2>
@@ -537,7 +537,7 @@
             </div>
 
             <!-- Slide 3: Chocolate Hills -->
-            <div class="slide" style="background-image: url('https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg');">
+            <div class="slide" style="background-image: url('images/chocolate-hills.jpg');">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <h2 class="hero-title">CHOCOLATE HILLS</h2>
@@ -578,7 +578,7 @@
             </div>
 
             <!-- Slide 4: Panglao Beach -->
-            <div class="slide" style="background-image: url('https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg');">
+            <div class="slide" style="background-image: url('images/panglao-beach.jpg');">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <h2 class="hero-title">PANGLAO BEACH</h2>
@@ -619,7 +619,7 @@
             </div>
 
             <!-- Slide 5: Tarsier Sanctuary -->
-            <div class="slide" style="background-image: url('https://www.boholislandtours.com/wp-content/uploads/2015/12/tarsiers.jpg');">
+            <div class="slide" style="background-image: url('images/tarsiers.jpg');">
                 <div class="hero-overlay"></div>
     <div class="hero-content">
                     <h2 class="hero-title">TARSIER SANCTUARY</h2>
@@ -660,7 +660,7 @@
             </div>
 
             <!-- Slide 6: Loboc River Cruise -->
-            <div class="slide" style="background-image: url('https://www.boholislandtours.com/wp-content/uploads/2015/12/lobocrivercruise-new.jpg');">
+            <div class="slide" style="background-image: url('images/loboc-river-cruise.jpg');">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <h2 class="hero-title">LOBOC RIVER CRUISE</h2>
@@ -701,7 +701,7 @@
             </div>
 
             <!-- Slide 7: Island Hopping -->
-            <div class="slide" style="background-image: url('https://www.boholislandtours.com/wp-content/themes/boholtours/images/island.jpg');">
+            <div class="slide" style="background-image: url('images/island.jpg');">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <h2 class="hero-title">ISLAND HOPPING</h2>
@@ -822,32 +822,32 @@
             <h2 class="section-title">Popular Tour Packages</h2>
             <div class="room-grid">
                 <div class="room-card">
-                    <img src="https://www.boholislandtours.com/wp-content/uploads/2015/12/chocolate_hills_new.jpg" alt="Chocolate Hills Bohol - Iconic cone-shaped hills natural wonder Philippines tourism">
+                    <img src="images/chocolate-hills.jpg" alt="Chocolate Hills Bohol - Iconic cone-shaped hills natural wonder Philippines tourism">
                     <h3>Chocolate Hills Adventure</h3>
                     <p class="room-details"><strong>Price:</strong> ₱1,500 per person<br><strong>Duration:</strong> Full Day<br><strong>Includes:</strong> Transport, Guide, Entrance Fees, Lunch</p>
                 </div>
                 <div class="room-card">
-                    <img src="https://www.boholislandtours.com/wp-content/uploads/2015/12/Panglao-Beach-Bohol-2.jpg" alt="Panglao Beach Bohol - Crystal clear waters white sand beach paradise Philippines">
+                    <img src="images/panglao-beach.jpg" alt="Panglao Beach Bohol - Crystal clear waters white sand beach paradise Philippines">
                     <h3>Panglao Beach Paradise</h3>
                     <p class="room-details"><strong>Price:</strong> ₱2,200 per person<br><strong>Duration:</strong> Full Day<br><strong>Includes:</strong> Boat Transfer, Beach Activities, Snorkeling, Lunch</p>
                 </div> 
                 <div class="room-card">
-                    <img src="https://www.boholislandtours.com/wp-content/uploads/2015/12/tarsiers.jpg" alt="Bohol Tarsier Sanctuary - World's smallest primate endangered species wildlife tour">
+                    <img src="images/tarsiers.jpg" alt="Bohol Tarsier Sanctuary - World's smallest primate endangered species wildlife tour">
                     <h3>Tarsier & Wildlife Tour</h3>
                     <p class="room-details"><strong>Price:</strong> ₱1,800 per person<br><strong>Duration:</strong> Half Day<br><strong>Includes:</strong> Transport, Guide, Sanctuary Entry, Photo Session</p>
                 </div>
                 <div class="room-card">
-                    <img src="https://www.boholislandtours.com/wp-content/uploads/2015/12/lobocrivercruise-new.jpg" alt="Loboc River Cruise Bohol - Scenic river boat cruise Filipino buffet cultural show">
+                    <img src="images/loboc-river-cruise.jpg" alt="Loboc River Cruise Bohol - Scenic river boat cruise Filipino buffet cultural show">
                     <h3>Loboc River Experience</h3>
                     <p class="room-details"><strong>Price:</strong> ₱1,300 per person<br><strong>Duration:</strong> Half Day<br><strong>Includes:</strong> River Cruise, Buffet Lunch, Cultural Show</p>
                 </div>
                 <div class="room-card">
-                    <img src="https://www.boholislandtours.com/wp-content/themes/boholtours/images/island.jpg" alt="Bohol Island Hopping - Balicasag Virgin Island snorkeling marine life adventure">
+                    <img src="images/island.jpg" alt="Bohol Island Hopping - Balicasag Virgin Island snorkeling marine life adventure">
                     <h3>Bohol Island Hopping</h3>
                     <p class="room-details"><strong>Price:</strong> ₱2,500 per person<br><strong>Duration:</strong> Full Day<br><strong>Includes:</strong> Multiple Islands, Snorkeling, Marine Life, Lunch</p>
                 </div>                                                               
                 <div class="room-card">
-                    <img src="https://www.boholislandtours.com/wp-content/uploads/2015/12/manmade_forest.jpg" alt="Bohol Manmade Forest - Century old trees natural attraction Bohol tourism Philippines">
+                    <img src="images/manmade-forest.jpg" alt="Bohol Manmade Forest - Century old trees natural attraction Bohol tourism Philippines">
                     <h3>Ultimate Bohol Experience</h3>
                     <p class="room-details"><strong>Price:</strong> ₱3,500 per person<br><strong>Duration:</strong> 2 Days<br><strong>Includes:</strong> All Major Attractions, Hotel, Meals, Transport</p>
                 </div>
