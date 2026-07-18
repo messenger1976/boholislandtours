@@ -71,6 +71,7 @@ class Inquiry extends CI_Controller {
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|max_length[255]');
         $this->form_validation->set_rules('subject', 'Subject', 'required|trim|max_length[255]');
         $this->form_validation->set_rules('message', 'Message', 'required|trim|max_length[5000]');
+        $this->form_validation->set_rules('phone', 'Phone', 'trim|max_length[50]');
 
         if ($this->form_validation->run() == FALSE) {
             $this->output->set_status_header(400);
@@ -85,7 +86,12 @@ class Inquiry extends CI_Controller {
         $name = $this->security->xss_clean($data['name']);
         $email = $this->security->xss_clean($data['email']);
         $subject = $this->security->xss_clean($data['subject']);
-        $body = trim(strip_tags($data['message']));
+        $phone = isset($data['phone']) ? $this->security->xss_clean(trim(strip_tags($data['phone']))) : '';
+        $includeGuide = !empty($data['include_guide']);
+        $includeAccommodations = !empty($data['include_accommodations']);
+        $userMessage = trim(strip_tags($data['message']));
+        $hasItineraryOptions = array_key_exists('include_guide', $data) || array_key_exists('include_accommodations', $data);
+        $body = $this->composeInquiryMessage($userMessage, $phone, $includeGuide, $includeAccommodations, $hasItineraryOptions);
         $now = date('Y-m-d H:i:s');
         
         $inquiry = array(
@@ -118,7 +124,17 @@ class Inquiry extends CI_Controller {
             }
             
             $inquiryid = (int) $this->db->insert_id();
-            $this->sendInquiryEmails($inquiryid, $name, $email, $subject, $body);
+            $this->sendInquiryEmails(
+                $inquiryid,
+                $name,
+                $email,
+                $subject,
+                $userMessage,
+                $phone,
+                $includeGuide,
+                $includeAccommodations,
+                $hasItineraryOptions
+            );
             
             echo json_encode([
                 'success' => true,
@@ -138,8 +154,27 @@ class Inquiry extends CI_Controller {
         }
     }
     
-    protected function sendInquiryEmails($inquiryid, $name, $email, $subject, $body) {
-        $siteName = 'BODARE Pension House';
+    /**
+     * Append phone and itinerary options after the guest message for storage/admin view.
+     */
+    protected function composeInquiryMessage($userMessage, $phone, $includeGuide, $includeAccommodations, $hasItineraryOptions) {
+        $parts = array($userMessage);
+
+        if ($phone !== '') {
+            $parts[] = 'Phone: ' . $phone;
+        }
+
+        if ($hasItineraryOptions) {
+            $parts[] = "Itinerary Options:\n"
+                . '- Include a Professional Tour Guide: ' . ($includeGuide ? 'Yes' : 'No') . "\n"
+                . '- Include Accommodations: ' . ($includeAccommodations ? 'Yes' : 'No');
+        }
+
+        return implode("\n\n", $parts);
+    }
+
+    protected function sendInquiryEmails($inquiryid, $name, $email, $subject, $userMessage, $phone = '', $includeGuide = FALSE, $includeAccommodations = FALSE, $hasItineraryOptions = FALSE) {
+        $siteName = 'Bohol Island Tours';
         $toEmail = '';
         
         $this->load->library('coop_mail');
@@ -165,15 +200,26 @@ class Inquiry extends CI_Controller {
         $mailTimeout = 8;
         
         if ($toEmail) {
+            $extraRows = '';
+            if ($phone !== '') {
+                $extraRows .= '<tr><td style="padding:6px 0;font-weight:bold;">Phone</td><td>' . htmlspecialchars($phone, ENT_QUOTES, 'UTF-8') . '</td></tr>';
+            }
+            if ($hasItineraryOptions) {
+                $itineraryHtml = 'Include a Professional Tour Guide: ' . ($includeGuide ? 'Yes' : 'No') . '<br />'
+                    . 'Include Accommodations: ' . ($includeAccommodations ? 'Yes' : 'No');
+                $extraRows .= '<tr><td style="padding:6px 0;font-weight:bold;vertical-align:top;">Itinerary Options</td><td>' . $itineraryHtml . '</td></tr>';
+            }
+
             $notifyHtml = '
                 <div style="font-family:Arial,sans-serif;line-height:1.6;color:#333;max-width:640px;margin:0 auto;">
                     <h2 style="color:#02245b;margin-bottom:8px;">New Contact Inquiry</h2>
                     <p>A guest submitted a message through the Contact Us form.</p>
                     <table style="width:100%;border-collapse:collapse;margin:16px 0;">
-                        <tr><td style="padding:6px 0;font-weight:bold;width:110px;">Name</td><td>' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '</td></tr>
+                        <tr><td style="padding:6px 0;font-weight:bold;width:140px;">Name</td><td>' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '</td></tr>
                         <tr><td style="padding:6px 0;font-weight:bold;">Email</td><td>' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . '</td></tr>
                         <tr><td style="padding:6px 0;font-weight:bold;">Subject</td><td>' . htmlspecialchars($subject, ENT_QUOTES, 'UTF-8') . '</td></tr>
-                        <tr><td style="padding:6px 0;font-weight:bold;vertical-align:top;">Message</td><td>' . nl2br(htmlspecialchars($body, ENT_QUOTES, 'UTF-8')) . '</td></tr>
+                        <tr><td style="padding:6px 0;font-weight:bold;vertical-align:top;">Message</td><td>' . nl2br(htmlspecialchars($userMessage, ENT_QUOTES, 'UTF-8')) . '</td></tr>
+                        ' . $extraRows . '
                         <tr><td style="padding:6px 0;font-weight:bold;">Inquiry #</td><td>' . (int) $inquiryid . '</td></tr>
                     </table>
                     <p style="color:#666;font-size:13px;">Reply from the admin panel: Dashboard &rarr; Inquiries.</p>

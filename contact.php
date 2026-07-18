@@ -198,31 +198,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
-        .form-group-contact label {
+        .contact-form-centered .form-group-contact label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
             color: var(--dark-blue);
             font-size: 0.95rem;
         }
-        .form-group-contact input[type="text"],
-        .form-group-contact input[type="email"],
-        .form-group-contact input[type="tel"],
-        .form-group-contact textarea {
+        .contact-form-centered .form-group-contact input[type="text"],
+        .contact-form-centered .form-group-contact input[type="email"],
+        .contact-form-centered .form-group-contact input[type="tel"],
+        .contact-form-centered .form-group-contact textarea {
             width: 100%;
             padding: 0.75rem;
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 1rem;
             font-family: 'Jost', sans-serif;
+            background: #fff;
         }
-        .form-group-contact input[type="text"]:focus,
-        .form-group-contact input[type="email"]:focus,
-        .form-group-contact input[type="tel"]:focus,
-        .form-group-contact textarea:focus {
+        .contact-form-centered .form-group-contact input[type="text"]:focus,
+        .contact-form-centered .form-group-contact input[type="email"]:focus,
+        .contact-form-centered .form-group-contact input[type="tel"]:focus,
+        .contact-form-centered .form-group-contact textarea:focus {
             outline: none;
             border-color: var(--gold);
             box-shadow: 0 0 0 2px rgba(178, 148, 91, 0.2);
+        }
+        .contact-form-centered .cta-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
         }
     </style>
 </head>
@@ -266,25 +271,37 @@
                     You can also reach us by phone or email to make arrangements for your Bohol Tour.
                 </p>
                 
+                <div id="contact-form-alert" style="display:none;margin-bottom:1rem;padding:0.75rem 1rem;border-radius:4px;"></div>
                 <form action="#" class="minimal-form" id="contact-form">
-                    <div class="form-group-contact">
-                        <label for="contact-name">*Name</label>
-                        <input type="text" id="contact-name" name="name" placeholder="Your Full Name" required>
+                    <div class="form-grid-2">
+                        <div class="form-group-contact">
+                            <label for="contact-first-name">*First Name</label>
+                            <input type="text" id="contact-first-name" name="first_name" placeholder="First Name" required maxlength="75">
+                        </div>
+                        <div class="form-group-contact">
+                            <label for="contact-last-name">*Last Name</label>
+                            <input type="text" id="contact-last-name" name="last_name" placeholder="Last Name" required maxlength="75">
+                        </div>
                     </div>
                     
                     <div class="form-group-contact">
                         <label for="contact-email">*Email</label>
-                        <input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required>
+                        <input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required maxlength="255">
+                    </div>
+                    
+                    <div class="form-group-contact">
+                        <label for="contact-subject">*Subject</label>
+                        <input type="text" id="contact-subject" name="subject" placeholder="Subject" required maxlength="255">
                     </div>
                     
                     <div class="form-group-contact">
                         <label for="contact-phone">*Telephone/Cellphone No.</label>
-                        <input type="tel" id="contact-phone" name="phone" placeholder="+63 XXX XXX XXXX" required>
+                        <input type="tel" id="contact-phone" name="phone" placeholder="+63 XXX XXX XXXX" required maxlength="50">
                     </div>
                     
                     <div class="form-group-contact">
                         <label for="contact-message">*Message</label>
-                        <textarea id="contact-message" name="message" placeholder="Your message or inquiry..." rows="8" required></textarea>
+                        <textarea id="contact-message" name="message" placeholder="Your message or inquiry..." rows="8" required maxlength="5000"></textarea>
                     </div>
                     
                     <div class="form-group-contact" style="background: #f9f9f9; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
@@ -304,7 +321,7 @@
                         </div>
                     </div>
                     
-                    <button type="submit" class="cta-button">Send Message</button>
+                    <button type="submit" class="cta-button" id="contact-submit-btn">Send Message</button>
                 </form>
             </div>
 
@@ -324,32 +341,73 @@
 
 <?php include 'footer.php'; ?>
     
+    <script src="api-config.js"></script>
     <script src="script.js"></script>
     <script>
-        // Contact form submission (mobile menu handled by script.js)
-        document.addEventListener('DOMContentLoaded', function() {
-            // Contact form submission
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const formData = {
-                        name: document.getElementById('contact-name').value,
-                        email: document.getElementById('contact-email').value,
-                        phone: document.getElementById('contact-phone').value,
-                        message: document.getElementById('contact-message').value,
-                        includeGuide: document.getElementById('include-guide').checked,
-                        includeAccommodations: document.getElementById('include-accommodations').checked
-                    };
-                    
-                    // Here you can add your form submission logic
-                    // For now, just show an alert
-                    alert('Thank you for your message! We will get back to you soon.');
-                    contactForm.reset();
+    (function () {
+        var form = document.getElementById('contact-form');
+        if (!form || typeof API === 'undefined') return;
+
+        var alertBox = document.getElementById('contact-form-alert');
+        var submitBtn = document.getElementById('contact-submit-btn');
+
+        function showAlert(type, message) {
+            if (!alertBox) return;
+            alertBox.style.display = 'block';
+            alertBox.style.background = type === 'success' ? '#e8f5e9' : '#ffebee';
+            alertBox.style.color = type === 'success' ? '#1b5e20' : '#b71c1c';
+            alertBox.style.border = '1px solid ' + (type === 'success' ? '#a5d6a7' : '#ef9a9a');
+            alertBox.textContent = message;
+            alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            var first = (document.getElementById('contact-first-name').value || '').trim();
+            var last = (document.getElementById('contact-last-name').value || '').trim();
+            var email = (document.getElementById('contact-email').value || '').trim();
+            var subject = (document.getElementById('contact-subject').value || '').trim();
+            var phone = (document.getElementById('contact-phone').value || '').trim();
+            var message = (document.getElementById('contact-message').value || '').trim();
+            var includeGuide = document.getElementById('include-guide').checked;
+            var includeAccommodations = document.getElementById('include-accommodations').checked;
+            var name = (first + ' ' + last).trim();
+
+            if (!name || !email || !subject || !phone || !message) {
+                showAlert('danger', 'Please fill in all required fields.');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            try {
+                var result = await API.request('inquiry/submit', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        subject: subject,
+                        phone: phone,
+                        message: message,
+                        include_guide: includeGuide,
+                        include_accommodations: includeAccommodations
+                    })
                 });
+                if (result && result.success) {
+                    showAlert('success', result.message || 'Thank you! Your message has been sent.');
+                    form.reset();
+                } else {
+                    showAlert('danger', (result && result.message) ? result.message : 'Could not send your message.');
+                }
+            } catch (err) {
+                showAlert('danger', (err && err.message) ? err.message : 'Could not send your message. Please try again.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
             }
         });
+    })();
     </script>
 </body>
 </html>
