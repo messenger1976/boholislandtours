@@ -98,7 +98,7 @@ class Reports extends Admin_Controller {
         fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
         
         // Report Header
-        fputcsv($output, array('BODARE PENSION HOUSE'));
+        fputcsv($output, array('BOHOL ISLAND TOURS'));
         fputcsv($output, array('Daily Sales Report - ' . date('F d, Y', strtotime($date))));
         fputcsv($output, array('Generated on: ' . date('F d, Y h:i A')));
         fputcsv($output, array('')); // Empty row

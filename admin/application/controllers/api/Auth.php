@@ -195,7 +195,7 @@ class Auth extends CI_Controller {
             $name = $email;
         }
 
-        $title = 'BODARE Pension House';
+        $title = 'Bohol Island Tours';
         $subject = 'Confirm your email - ' . $title;
         $message = $this->build_activation_email($title, $name, $activate_url);
 
@@ -491,7 +491,7 @@ class Auth extends CI_Controller {
                 $name = !empty($account->email) ? $account->email : 'there';
             }
 
-            $title = 'BODARE Pension House';
+            $title = 'Bohol Island Tours';
             $subject = 'Reset your password - ' . $title;
             $message = $this->build_reset_email($title, $name, $reset_url);
 

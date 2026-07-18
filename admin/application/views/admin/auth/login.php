@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login - BODARE Pension House</title>
+    <title>Admin Login - Bohol Island Tours</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <style>
@@ -77,7 +77,7 @@
     <div class="login-container">
         <div class="login-header">
             <h3><i class="bi bi-shield-lock"></i> Admin Login</h3>
-            <p class="mb-0 mt-2" style="opacity: 0.9;">BODARE Pension House</p>
+            <p class="mb-0 mt-2" style="opacity: 0.9;">Bohol Island Tours</p>
         </div>
         <div class="login-body">
             <?php if ($this->session->flashdata('error')): ?>

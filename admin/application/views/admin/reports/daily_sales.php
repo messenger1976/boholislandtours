@@ -1,7 +1,7 @@
 <div class="nk-block">
     <!-- Report Header -->
     <div class="print-header" style="display: block; text-align: center; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 2px solid #e2e8f0;">
-        <h1 style="font-size: 28px; margin: 0 0 5px 0; font-weight: bold; color: #1e293b;">BODARE PENSION HOUSE</h1>
+        <h1 style="font-size: 28px; margin: 0 0 5px 0; font-weight: bold; color: #1e293b;">BOHOL ISLAND TOURS</h1>
         <div class="report-date" style="font-size: 16px; color: #64748b; margin-bottom: 5px;">Daily Sales Report - <?php echo date('F d, Y', strtotime($selected_date)); ?></div>
         <div style="font-size: 12px; color: #94a3b8;">Generated on: <?php echo date('F d, Y h:i A'); ?></div>
     </div>
@@ -264,7 +264,7 @@
     
     <!-- Print Footer -->
     <div class="print-footer">
-        <div>BODARE PENSION HOUSE - Daily Sales Report</div>
+        <div>BOHOL ISLAND TOURS - Daily Sales Report</div>
         <div>Page 1 of 1</div>
     </div>
 </div>

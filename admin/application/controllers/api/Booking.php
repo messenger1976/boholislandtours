@@ -552,7 +552,7 @@ class Booking extends CI_Controller {
         
         echo json_encode([
             'success' => true,
-            'message' => 'Your reservation has been confirmed! We look forward to hosting you at BODARE Pension House.',
+            'message' => 'Your reservation has been confirmed! We look forward to serving you at Bohol Island Tours.',
             'booking' => $booking,
             'booking_number' => $booking->booking_number,
             'rooms_booked' => $total_rooms_count,

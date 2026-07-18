@@ -81,7 +81,7 @@ $profile_descriptions = array(
             </div>
             <div class="col-md-6">
                 <label class="form-label" for="from_name">From Name *</label>
-                <input type="text" class="form-control" id="from_name" name="from_name" value="<?php echo $value('from_name', 'BODARE Pension House'); ?>" required>
+                <input type="text" class="form-control" id="from_name" name="from_name" value="<?php echo $value('from_name', 'Bohol Island Tours'); ?>" required>
             </div>
             <div class="col-12">
                 <div class="form-check form-switch">

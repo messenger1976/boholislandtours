@@ -184,7 +184,7 @@ class Coop_mail {
 
     public function send_test($to) {
         $settings = $this->get_settings();
-        $title = $settings && !empty($settings->from_name) ? $settings->from_name : 'BODARE & COMMUNITY MPC';
+        $title = $settings && !empty($settings->from_name) ? $settings->from_name : 'Bohol Island Tours';
         $subject = 'SMTP Test Email - ' . $title;
         $sent_at = date('F j, Y g:i A');
         $message = '

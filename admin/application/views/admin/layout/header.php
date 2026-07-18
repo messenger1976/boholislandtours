@@ -14,7 +14,7 @@ if (!function_exists('base_url') && isset($this) && is_object($this) && method_e
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="Thu, 01 Jan 1970 00:00:00 GMT">
     <meta name="cache-timestamp" content="<?php echo time(); ?>">
-    <title><?php echo isset($title) ? $title . ' - ' : ''; ?>Admin Panel - BODARE Pension House</title>
+    <title><?php echo isset($title) ? $title . ' - ' : ''; ?>Admin Panel - Bohol Island Tours</title>
     
     <!-- Dashlite CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -3200,7 +3200,7 @@ if (!function_exists('base_url') && isset($this) && is_object($this) && method_e
         <div class="nk-sidebar-brand">
             <a href="<?php echo base_url('dashboard'); ?>">
                 <i class="bi bi-building"></i>
-                <span class="nk-menu-text">BODARE Admin</span>
+                <span class="nk-menu-text">Bohol Island Tours Admin</span>
             </a>
         </div>
         <nav class="nk-menu">
@@ -3362,7 +3362,7 @@ if (!function_exists('base_url') && isset($this) && is_object($this) && method_e
         <div class="nk-header-brand">
             <a href="<?php echo base_url('dashboard'); ?>" class="logo-link">
                 <i class="bi bi-building"></i>
-                <span>BODARE</span>
+                <span>Bohol Island Tours</span>
             </a>
         </div>
         <h5 class="nk-header-title"><?php echo isset($title) ? $title : 'Admin Panel'; ?></h5>

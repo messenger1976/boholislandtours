@@ -112,7 +112,7 @@ class Inquiries extends Admin_Controller {
 
 		$now = date('Y-m-d H:i:s');
 		$userid = $this->admin_id;
-		$siteName = 'BODARE Pension House';
+		$siteName = 'Bohol Island Tours';
 		if ($this->db->table_exists('websitebasic')) {
 			$info = $this->db->get('websitebasic')->row();
 			if ($info && !empty($info->title)) {
