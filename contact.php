@@ -1,419 +1,172 @@
 <?php
-// Always revalidate this page so deployed form changes appear immediately.
-header('Cache-Control: no-cache, no-store, must-revalidate, max-age=0');
-header('Pragma: no-cache');
-header('Expires: 0');
+$pageTitle = 'Contact Us | Bohol Island Tours';
+$pageDescription = 'Get in touch for bookings, inquiries, and customized tour arrangements.';
+include __DIR__ . '/includes/head.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-
-    <!-- Primary Meta Tags -->
-    <title>Contact Bohol Island Tours | Book Tours & Get Quotes | Tagbilaran City, Bohol Philippines</title>
-    <meta name="title" content="Contact Bohol Island Tours | Book Tours & Get Quotes">
-    <meta name="description" content="Contact Bohol Island Tours - Your trusted Bohol tour operator. Book tour packages, car rentals, get quotes. Tagbilaran City, Bohol. Call +63 912 529 8818 or email boholislandtours@gmail.com. Fast response guaranteed!">
-    <meta name="keywords" content="contact Bohol tours, book Bohol tour, Bohol tour booking, Bohol contact, Bohol travel agency, Bohol tour packages inquiry, Tagbilaran City contact">
-    <meta name="author" content="Bohol Island Tours">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="language" content="English">
-    <link rel="canonical" href="https://www.boholislandtours.com/contact.php">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.boholislandtours.com/contact.php">
-    <meta property="og:title" content="Contact Bohol Island Tours | Book Tours & Get Quotes">
-    <meta property="og:description" content="Contact Bohol Island Tours - Your trusted Bohol tour operator. Book tour packages, car rentals, get quotes. Call +63 912 529 8818 or email. Fast response guaranteed!">
-    <meta property="og:image" content="https://www.boholislandtours.com/images/panglao-beach.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Bohol Island Tours">
-    <meta property="og:locale" content="en_PH">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.boholislandtours.com/contact.php">
-    <meta property="twitter:title" content="Contact Bohol Island Tours | Book Tours & Get Quotes">
-    <meta property="twitter:description" content="Contact Bohol Island Tours - Your trusted Bohol tour operator. Book tour packages, car rentals, get quotes. Fast response guaranteed!">
-    <meta property="twitter:image" content="https://www.boholislandtours.com/images/panglao-beach.jpg">
-
-    <!-- Additional SEO Meta Tags -->
-    <meta name="theme-color" content="#b2945b">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Bohol Tours">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="geo.region" content="PH-BOH">
-    <meta name="geo.placename" content="Tagbilaran City, Bohol">
-    <meta name="geo.position" content="9.6565;123.8465">
-    <meta name="ICBM" content="9.6565, 123.8465">
-    <link rel="alternate" hreflang="en-ph" href="https://www.boholislandtours.com/contact.php">
-
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Bohol Island Tours",
-        "url": "https://www.boholislandtours.com/",
-        "logo": "https://www.boholislandtours.com/images/logo.png",
-        "description": "Premium tour packages exploring Bohol's natural wonders including Chocolate Hills, Tarsier Sanctuary, Loboc River, and Panglao Beach",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Tourism Center",
-            "addressLocality": "Tagbilaran City",
-            "addressRegion": "Bohol",
-            "postalCode": "6300",
-            "addressCountry": "PH"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "9.6565",
-            "longitude": "123.8465"
-        },
-        "contactPoint": [
-            {
-                "@type": "ContactPoint",
-                "telephone": "+639125298818",
-                "contactType": "customer service",
-                "availableLanguage": "English",
-                "contactOption": "TollFree"
-            },
-            {
-                "@type": "ContactPoint",
-                "telephone": "+639190805294",
-                "contactType": "customer service",
-                "availableLanguage": "English"
-            },
-            {
-                "@type": "ContactPoint",
-                "telephone": "+639179507562",
-                "contactType": "customer service",
-                "availableLanguage": "English"
-            }
-        ],
-        "email": "boholislandtours@gmail.com",
-        "telephone": "+63-38-411-TOUR",
-        "sameAs": [
-            "https://www.facebook.com/boholislandtours",
-            "https://www.instagram.com/boholislandtours"
-        ],
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Bohol Tour Services",
-            "itemListElement": [
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Tour Package Booking",
-                        "description": "Book customized Bohol tour packages"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Car and Van Rental",
-                        "description": "Rent vehicles for Bohol tours"
-                    }
-                }
-            ]
-        },
-        "breadcrumb": {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "https://www.boholislandtours.com/"
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Contact",
-                    "item": "https://www.boholislandtours.com/contact.php"
-                }
-            ]
-        }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "How can I contact Bohol Island Tours?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "You can contact us via phone: +63 912 529 8818 (Smart), +63 919 080 5294 (Smart), or +63 917 950 7562 (Globe). Email us at boholislandtours@gmail.com or fill out our contact form on this page. We're located at Tourism Center, Tagbilaran City, Bohol 6300."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What are your operating hours?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "We operate 7 days a week from 6:00 AM to 10:00 PM. For urgent inquiries or bookings, you can reach us via phone or email at any time, and we'll respond as quickly as possible."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How quickly will I receive a response to my inquiry?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "We typically respond to inquiries within 24 hours. For urgent bookings, we recommend calling us directly for immediate assistance. Email inquiries are usually answered the same day during business hours."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Do you offer custom tour packages?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, we offer customizable tour packages tailored to your preferences, group size, and budget. Contact us with your requirements, and we'll create a personalized itinerary that fits your needs."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What payment methods do you accept?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "We accept various payment methods including cash, bank transfers, GCash, PayPal, Visa, and Mastercard. Payment terms and methods will be discussed when you confirm your booking."
-                }
-            }
-        ]
-    }
-    </script>
-
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- Apple Touch Icons -->
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-logo.png">
-    <link rel="shortcut icon" type="image/png" href="images/favicon-logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-logo.png">
-    <link rel="icon" type="image/png" href="images/favicon-logo.png">
-    
-    <link rel="stylesheet" href="style.css?v=<?php echo filemtime(__DIR__ . '/style.css'); ?>">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <style>
-        .contact-form-centered .form-group-contact label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--dark-blue);
-            font-size: 0.95rem;
-        }
-        .contact-form-centered .form-group-contact input[type="text"],
-        .contact-form-centered .form-group-contact input[type="email"],
-        .contact-form-centered .form-group-contact input[type="tel"],
-        .contact-form-centered .form-group-contact textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-family: 'Jost', sans-serif;
-            background: #fff;
-        }
-        .contact-form-centered .form-group-contact input[type="text"]:focus,
-        .contact-form-centered .form-group-contact input[type="email"]:focus,
-        .contact-form-centered .form-group-contact input[type="tel"]:focus,
-        .contact-form-centered .form-group-contact textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 2px rgba(178, 148, 91, 0.2);
-        }
-        .contact-form-centered .cta-button:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-    </style>
-</head>
 <body>
+<?php include __DIR__ . '/header.php'; ?>
 
-    <?php include 'header.php'; ?>
+<section class="page-hero" style="background-image:url('images/panglao-beach.jpg');">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p class="lead mb-0 opacity-90">Bookings, inquiries &amp; customized tour arrangements</p>
+    </div>
+</section>
 
-    <section class="page-header" style="background-image: url('images/panglao-beach.jpg');">
-        <div class="page-header-content">
-            <h1>Contact Us</h1>
-            <p>Get in touch with us for bookings, inquiries, and customized tour arrangements</p>
+<main class="section">
+    <div class="container">
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon"><i class="bi bi-phone"></i></div>
+                    <h5>Smart</h5>
+                    <p class="mb-1"><a href="tel:+639125298818">+63 912 529 8818</a></p>
+                    <p class="mb-0"><a href="tel:+639190805294">+63 919 080 5294</a></p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon"><i class="bi bi-phone-fill"></i></div>
+                    <h5>Globe</h5>
+                    <p class="mb-0"><a href="tel:+639179507562">+63 917 950 7562</a></p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon"><i class="bi bi-envelope"></i></div>
+                    <h5>Email</h5>
+                    <p class="mb-0"><a href="mailto:boholislandtours@gmail.com">boholislandtours@gmail.com</a></p>
+                </div>
+            </div>
         </div>
-    </section>
 
-    <main class="content-section">
-        <div class="container">
-            
-            <div class="contact-info-grid">
-                <div class="contact-info-card">
-                    <span class="icon">📞</span>
-                    <strong>Smart</strong>
-                    <p><a href="tel:+639125298818">+639125298818</a></p>
-                    <p><a href="tel:+639190805294">+639190805294</a></p>
-                </div>
-                <div class="contact-info-card">
-                    <span class="icon">📱</span>
-                    <strong>Globe</strong>
-                    <p><a href="tel:+639179507562">+639179507562</a></p>
-                </div>
-                <div class="contact-info-card">
-                    <span class="icon">✉️</span>
-                    <strong>Email</strong>
-                    <p><a href="mailto:boholislandtours@gmail.com">boholislandtours@gmail.com</a></p>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm contact-form-centered">
+                    <div class="card-body p-4 p-md-5">
+                        <h2 class="h4 text-center mb-2">Booking and Inquiry Form</h2>
+                        <p class="text-center text-muted mb-4">Send us a message — or call/email to arrange your Bohol tour.</p>
+                        <div id="contact-form-alert" class="alert" style="display:none;"></div>
+                        <form action="#" class="minimal-form" id="contact-form">
+                            <div class="row g-3 form-grid-2">
+                                <div class="col-md-6 form-group-contact">
+                                    <label for="contact-first-name">*First Name</label>
+                                    <input type="text" id="contact-first-name" name="first_name" placeholder="First Name" required maxlength="75">
+                                </div>
+                                <div class="col-md-6 form-group-contact">
+                                    <label for="contact-last-name">*Last Name</label>
+                                    <input type="text" id="contact-last-name" name="last_name" placeholder="Last Name" required maxlength="75">
+                                </div>
+                            </div>
+                            <div class="form-group-contact mt-3">
+                                <label for="contact-email">*Email</label>
+                                <input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required maxlength="255">
+                            </div>
+                            <div class="form-group-contact mt-3">
+                                <label for="contact-subject">*Subject</label>
+                                <input type="text" id="contact-subject" name="subject" placeholder="Subject" required maxlength="255">
+                            </div>
+                            <div class="form-group-contact mt-3">
+                                <label for="contact-phone">*Telephone/Cellphone No.</label>
+                                <input type="tel" id="contact-phone" name="phone" placeholder="+63 XXX XXX XXXX" required maxlength="50">
+                            </div>
+                            <div class="form-group-contact mt-3">
+                                <label for="contact-message">*Message</label>
+                                <textarea id="contact-message" name="message" placeholder="Your message or inquiry..." rows="6" required maxlength="5000"></textarea>
+                            </div>
+                            <div class="form-group-contact bg-light p-3 rounded-3 my-3">
+                                <h3 class="h6">Itinerary Options</h3>
+                                <p class="small text-muted">For customized tours, include details in the message box above.</p>
+                                <div class="form-check mb-2">
+                                    <input type="checkbox" class="form-check-input" id="include-guide" name="include_guide">
+                                    <label class="form-check-label" for="include-guide">Include a Professional Tour Guide</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="include-accommodations" name="include_accommodations">
+                                    <label class="form-check-label" for="include-accommodations">Include Accommodations</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-accent w-100 cta-button" id="contact-submit-btn">Send Message</button>
+                        </form>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="contact-form-centered">
-                <h2>Booking and Inquiry Form</h2>
-                <p style="text-align: center; margin-bottom: 2rem; color: #666;">
-                    If you are interested in any of our activities, just send us a message using the form below. 
-                    You can also reach us by phone or email to make arrangements for your Bohol Tour.
-                </p>
-                
-                <div id="contact-form-alert" style="display:none;margin-bottom:1rem;padding:0.75rem 1rem;border-radius:4px;"></div>
-                <form action="#" class="minimal-form" id="contact-form">
-                    <div class="form-grid-2">
-                        <div class="form-group-contact">
-                            <label for="contact-first-name">*First Name</label>
-                            <input type="text" id="contact-first-name" name="first_name" placeholder="First Name" required maxlength="75">
-                        </div>
-                        <div class="form-group-contact">
-                            <label for="contact-last-name">*Last Name</label>
-                            <input type="text" id="contact-last-name" name="last_name" placeholder="Last Name" required maxlength="75">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group-contact">
-                        <label for="contact-email">*Email</label>
-                        <input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required maxlength="255">
-                    </div>
-                    
-                    <div class="form-group-contact">
-                        <label for="contact-subject">*Subject</label>
-                        <input type="text" id="contact-subject" name="subject" placeholder="Subject" required maxlength="255">
-                    </div>
-                    
-                    <div class="form-group-contact">
-                        <label for="contact-phone">*Telephone/Cellphone No.</label>
-                        <input type="tel" id="contact-phone" name="phone" placeholder="+63 XXX XXX XXXX" required maxlength="50">
-                    </div>
-                    
-                    <div class="form-group-contact">
-                        <label for="contact-message">*Message</label>
-                        <textarea id="contact-message" name="message" placeholder="Your message or inquiry..." rows="8" required maxlength="5000"></textarea>
-                    </div>
-                    
-                    <div class="form-group-contact" style="background: #f9f9f9; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
-                        <h3 style="margin-top: 0; margin-bottom: 1rem; color: var(--dark-blue);">Itinerary Options:</h3>
-                        <p style="margin-bottom: 1rem; color: #666; font-size: 0.95rem;">
-                            For Customized Tour, kindly provide the details of the tour that you want to avail, using the Additional Notes or Message box above.
-                        </p>
-                        <div style="display: flex; flex-direction: column; gap: 1rem;">
-                            <label style="display: flex; align-items: center; cursor: pointer;">
-                                <input type="checkbox" id="include-guide" name="include_guide" style="margin-right: 0.75rem; width: 20px; height: 20px; cursor: pointer;">
-                                <span>Include a Professional Tour Guide</span>
-                            </label>
-                            <label style="display: flex; align-items: center; cursor: pointer;">
-                                <input type="checkbox" id="include-accommodations" name="include_accommodations" style="margin-right: 0.75rem; width: 20px; height: 20px; cursor: pointer;">
-                                <span>Include Accommodations</span>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="cta-button" id="contact-submit-btn">Send Message</button>
-                </form>
-            </div>
-
-            <div class="contact-map-section">
-                <h2>Our Location</h2>
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15720.198338965688!2d123.84650532997193!3d9.65651921313175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aa4db4591a2e79%3A0x869b0c74b1f6365!2sTagbilaran%20City%2C%20Bohol!5e0!3m2!1sen!2sph!4v1729352771569!5m2!1sen!2sph" 
+        <div class="contact-map-section mt-5">
+            <h2 class="h4 text-center mb-3">Our Location</h2>
+            <div class="ratio ratio-21x9 rounded-4 overflow-hidden shadow">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15720.198338965688!2d123.84650532997193!3d9.65651921313175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aa4db4591a2e79%3A0x869b0c74b1f6365!2sTagbilaran%20City%2C%20Bohol!5e0!3m2!1sen!2sph!4v1729352771569!5m2!1sen!2sph"
                     class="google-map"
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-
         </div>
-    </main>
+    </div>
+</main>
 
-<?php include 'footer.php'; ?>
-    
-    <script src="api-config.js?v=<?php echo filemtime(__DIR__ . '/api-config.js'); ?>"></script>
-    <script src="script.js?v=<?php echo filemtime(__DIR__ . '/script.js'); ?>"></script>
-    <script>
-    (function () {
-        var form = document.getElementById('contact-form');
-        if (!form || typeof API === 'undefined') return;
-
-        var alertBox = document.getElementById('contact-form-alert');
-        var submitBtn = document.getElementById('contact-submit-btn');
-
-        function showAlert(type, message) {
-            if (!alertBox) return;
-            alertBox.style.display = 'block';
-            alertBox.style.background = type === 'success' ? '#e8f5e9' : '#ffebee';
-            alertBox.style.color = type === 'success' ? '#1b5e20' : '#b71c1c';
-            alertBox.style.border = '1px solid ' + (type === 'success' ? '#a5d6a7' : '#ef9a9a');
-            alertBox.textContent = message;
-            alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+<?php include __DIR__ . '/footer.php'; ?>
+<?php
+$includeApiConfig = true;
+$extraScripts = <<<'JS'
+<script>
+(function () {
+    var form = document.getElementById('contact-form');
+    if (!form) return;
+    var alertBox = document.getElementById('contact-form-alert');
+    var submitBtn = document.getElementById('contact-submit-btn');
+    function showAlert(type, message) {
+        if (!alertBox) return;
+        alertBox.style.display = 'block';
+        alertBox.className = 'alert alert-' + (type === 'success' ? 'success' : 'danger');
+        alertBox.textContent = message;
+        alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        if (typeof API === 'undefined') { showAlert('danger', 'API not loaded. Please refresh.'); return; }
+        var first = (document.getElementById('contact-first-name').value || '').trim();
+        var last = (document.getElementById('contact-last-name').value || '').trim();
+        var email = (document.getElementById('contact-email').value || '').trim();
+        var subject = (document.getElementById('contact-subject').value || '').trim();
+        var phone = (document.getElementById('contact-phone').value || '').trim();
+        var message = (document.getElementById('contact-message').value || '').trim();
+        var includeGuide = document.getElementById('include-guide').checked;
+        var includeAccommodations = document.getElementById('include-accommodations').checked;
+        var name = (first + ' ' + last).trim();
+        if (!name || !email || !subject || !phone || !message) {
+            showAlert('danger', 'Please fill in all required fields.');
+            return;
         }
-
-        form.addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            var first = (document.getElementById('contact-first-name').value || '').trim();
-            var last = (document.getElementById('contact-last-name').value || '').trim();
-            var email = (document.getElementById('contact-email').value || '').trim();
-            var subject = (document.getElementById('contact-subject').value || '').trim();
-            var phone = (document.getElementById('contact-phone').value || '').trim();
-            var message = (document.getElementById('contact-message').value || '').trim();
-            var includeGuide = document.getElementById('include-guide').checked;
-            var includeAccommodations = document.getElementById('include-accommodations').checked;
-            var name = (first + ' ' + last).trim();
-
-            if (!name || !email || !subject || !phone || !message) {
-                showAlert('danger', 'Please fill in all required fields.');
-                return;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        try {
+            var result = await API.request('inquiry/submit', {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: name, email: email, subject: subject, phone: phone, message: message,
+                    include_guide: includeGuide, include_accommodations: includeAccommodations
+                })
+            });
+            if (result && result.success) {
+                showAlert('success', result.message || 'Thank you! Your message has been sent.');
+                form.reset();
+            } else {
+                showAlert('danger', (result && result.message) ? result.message : 'Could not send your message.');
             }
-
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            try {
-                var result = await API.request('inquiry/submit', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        name: name,
-                        email: email,
-                        subject: subject,
-                        phone: phone,
-                        message: message,
-                        include_guide: includeGuide,
-                        include_accommodations: includeAccommodations
-                    })
-                });
-                if (result && result.success) {
-                    showAlert('success', result.message || 'Thank you! Your message has been sent.');
-                    form.reset();
-                } else {
-                    showAlert('danger', (result && result.message) ? result.message : 'Could not send your message.');
-                }
-            } catch (err) {
-                showAlert('danger', (err && err.message) ? err.message : 'Could not send your message. Please try again.');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Message';
-            }
-        });
-    })();
-    </script>
+        } catch (err) {
+            showAlert('danger', (err && err.message) ? err.message : 'Could not send your message. Please try again.');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+        }
+    });
+})();
+</script>
+JS;
+include __DIR__ . '/includes/scripts.php';
+?>
 </body>
 </html>

@@ -1,0 +1,85 @@
+﻿<script>
+        // Check login status and update header button
+        async function updateLoginButton() {
+            const loginBtn = document.getElementById('login-account-btn');
+            const accountBtn = document.getElementById('my-account-btn');
+            
+            if (!loginBtn || !accountBtn) return;
+            
+            try {
+                if (typeof API !== 'undefined') {
+                    const response = await API.auth.check();
+                    if (response.success && response.logged_in) {
+                        loginBtn.style.display = 'none';
+                        accountBtn.style.display = 'inline-block';
+                    } else {
+                        loginBtn.style.display = 'inline-block';
+                        accountBtn.style.display = 'none';
+                    }
+                } else {
+                    loginBtn.style.display = 'inline-block';
+                    accountBtn.style.display = 'none';
+                }
+            } catch (error) {
+                loginBtn.style.display = 'inline-block';
+                accountBtn.style.display = 'none';
+            }
+        }
+        
+        if (typeof API !== 'undefined') {
+            updateLoginButton();
+        } else {
+            window.addEventListener('load', () => {
+                if (typeof API !== 'undefined') {
+                    updateLoginButton();
+                }
+            });
+        }
+        
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('ServiceWorker registration successful:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+        
+        // Format card number input
+        document.addEventListener('DOMContentLoaded', () => {
+            const cardNumber = document.getElementById('card-number');
+            if (cardNumber) {
+                cardNumber.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\s/g, '');
+                    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                    if (formattedValue.length <= 19) {
+                        e.target.value = formattedValue;
+                    }
+                });
+            }
+            
+            // Format expiry date
+            const cardExpiry = document.getElementById('card-expiry');
+            if (cardExpiry) {
+                cardExpiry.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 2) {
+                        value = value.substring(0, 2) + ' / ' + value.substring(2, 4);
+                    }
+                    e.target.value = value;
+                });
+            }
+            
+            // Format CVC (numbers only)
+            const cardCvc = document.getElementById('card-cvc');
+            if (cardCvc) {
+                cardCvc.addEventListener('input', (e) => {
+                    e.target.value = e.target.value.replace(/\D/g, '');
+                });
+            }
+        });
+    </script>

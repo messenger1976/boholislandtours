@@ -1,0 +1,375 @@
+﻿    <script>
+        // Check if user is logged in and update UI
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Check if API is loaded
+            if (typeof API === 'undefined') {
+                console.error('API configuration not loaded!');
+                return;
+            }
+            
+            const userStr = localStorage.getItem('user');
+            let isLoggedIn = false;
+            let currentUser = null;
+            
+            if (userStr) {
+                try {
+                    currentUser = JSON.parse(userStr);
+                    // Verify session is still valid
+                    try {
+                        const response = await API.auth.check();
+                        if (response.success && response.logged_in) {
+                            isLoggedIn = true;
+                        } else {
+                            // Session expired, clear localStorage
+                            localStorage.removeItem('user');
+                            currentUser = null;
+                        }
+                    } catch (error) {
+                        // API check failed, but user data exists - assume logged in for now
+                        isLoggedIn = true;
+                    }
+                } catch (parseError) {
+                    console.error('Error parsing user data:', parseError);
+                    localStorage.removeItem('user');
+                }
+            }
+            
+            // Update UI based on login status
+            const authHeaderTitle = document.getElementById('auth-header-title');
+            const authButtons = document.getElementById('auth-buttons');
+            const loginLink = document.getElementById('login-link');
+            const registerLink = document.getElementById('register-link');
+            const loggedInInfo = document.getElementById('logged-in-info');
+            const loggedInName = document.getElementById('logged-in-name');
+            const logoutButton = document.getElementById('logout-button');
+            const loginFields = document.getElementById('login-fields');
+            
+            if (isLoggedIn && currentUser) {
+                // User is logged in - update UI
+                if (authHeaderTitle) {
+                    authHeaderTitle.textContent = 'Continue with Your Booking';
+                }
+                
+                // Hide login/register buttons
+                if (authButtons) {
+                    authButtons.style.display = 'none';
+                }
+                
+                // Show logged in info
+                if (loggedInInfo) {
+                    loggedInInfo.style.display = 'block';
+                }
+                
+                // Set user name
+                if (loggedInName && currentUser.name) {
+                    loggedInName.textContent = currentUser.name;
+                }
+                
+                // Hide login form fields
+                if (loginFields) {
+                    loginFields.style.display = 'none';
+                }
+                
+                // Load and display user profile information
+                loadUserAccountInfo();
+                
+                // Show account info and payment sections
+                const accountInfoSection = document.getElementById('account-info-section');
+                const paymentSection = document.getElementById('payment-section');
+                if (accountInfoSection) {
+                    accountInfoSection.style.display = 'block';
+                    // Add required attributes when section is shown
+                    const firstName = document.getElementById('account-first-name');
+                    const lastName = document.getElementById('account-last-name');
+                    const email = document.getElementById('account-email');
+                    const phone = document.getElementById('account-phone');
+                    const address = document.getElementById('account-address');
+                    const city = document.getElementById('account-city');
+                    const province = document.getElementById('account-province');
+                    const postalCode = document.getElementById('account-postal-code');
+                    const country = document.getElementById('account-country');
+                    if (firstName) firstName.setAttribute('required', 'required');
+                    if (lastName) lastName.setAttribute('required', 'required');
+                    if (email) email.setAttribute('required', 'required');
+                    if (phone) phone.setAttribute('required', 'required');
+                    if (address) address.setAttribute('required', 'required');
+                    if (city) city.setAttribute('required', 'required');
+                    if (province) province.setAttribute('required', 'required');
+                    if (postalCode) postalCode.setAttribute('required', 'required');
+                    if (country) country.setAttribute('required', 'required');
+                }
+                if (paymentSection) {
+                    paymentSection.style.display = 'block';
+                    // Add required attribute to payment method when section is shown
+                    const paymentMethod = document.getElementById('payment-method');
+                    if (paymentMethod) paymentMethod.setAttribute('required', 'required');
+                }
+                
+                // Setup logout button
+                if (logoutButton) {
+                    logoutButton.addEventListener('click', async () => {
+                        try {
+                            await API.auth.logout();
+                        } catch (error) {
+                            console.error('Logout error:', error);
+                        } finally {
+                            localStorage.removeItem('user');
+                            // Reload page to show login form
+                            window.location.reload();
+                        }
+                    });
+                }
+            } else {
+                // User is not logged in - show login form
+                if (authHeaderTitle) {
+                    authHeaderTitle.textContent = 'Login to Continue';
+                }
+                
+                // Show login/register buttons
+                if (authButtons) {
+                    authButtons.style.display = 'flex';
+                }
+                
+                // Hide logged in info
+                if (loggedInInfo) {
+                    loggedInInfo.style.display = 'none';
+                }
+                
+                // Show login form fields
+                if (loginFields) {
+                    loginFields.style.display = 'block';
+                }
+                
+                // Remove required attributes from hidden account info fields
+                const accountInfoSection = document.getElementById('account-info-section');
+                const paymentSection = document.getElementById('payment-section');
+                if (accountInfoSection && accountInfoSection.style.display === 'none') {
+                    const requiredFields = [
+                        'account-first-name', 'account-last-name', 'account-email', 
+                        'account-phone', 'account-address', 'account-city', 
+                        'account-province', 'account-postal-code', 'account-country'
+                    ];
+                    requiredFields.forEach(fieldId => {
+                        const field = document.getElementById(fieldId);
+                        if (field) field.removeAttribute('required');
+                    });
+                }
+                if (paymentSection && paymentSection.style.display === 'none') {
+                    const paymentMethod = document.getElementById('payment-method');
+                    if (paymentMethod) paymentMethod.removeAttribute('required');
+                }
+            }
+        });
+        
+        // Load user account information
+        async function loadUserAccountInfo() {
+            try {
+                // Try to get full profile from API
+                const response = await API.user.getProfile();
+                if (response.success && response.user) {
+                    const user = response.user;
+                    displayAccountInfo(user);
+                } else {
+                    // Fallback to localStorage data
+                    const userStr = localStorage.getItem('user');
+                    if (userStr) {
+                        const user = JSON.parse(userStr);
+                        displayAccountInfo(user);
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading user profile:', error);
+                // Fallback to localStorage data
+                const userStr = localStorage.getItem('user');
+                if (userStr) {
+                    const user = JSON.parse(userStr);
+                    displayAccountInfo(user);
+                }
+            }
+        }
+        
+        // Display account information in editable fields
+        function displayAccountInfo(user) {
+            const firstNameEl = document.getElementById('account-first-name');
+            const lastNameEl = document.getElementById('account-last-name');
+            const emailEl = document.getElementById('account-email');
+            const phoneEl = document.getElementById('account-phone');
+            const genderEl = document.getElementById('account-gender');
+            const nationalityEl = document.getElementById('account-nationality');
+            const addressEl = document.getElementById('account-address');
+            const cityEl = document.getElementById('account-city');
+            const provinceEl = document.getElementById('account-province');
+            const postalCodeEl = document.getElementById('account-postal-code');
+            const countryEl = document.getElementById('account-country');
+            const idTypeEl = document.getElementById('account-id-type');
+            const idNumberEl = document.getElementById('account-id-number');
+            
+            // Split name if we have full name but not first/last
+            if (user.first_name || user.last_name) {
+                if (firstNameEl) firstNameEl.value = user.first_name || '';
+                if (lastNameEl) lastNameEl.value = user.last_name || '';
+            } else if (user.name) {
+                // Try to split the name
+                const nameParts = user.name.trim().split(' ');
+                if (nameParts.length >= 2) {
+                    if (firstNameEl) firstNameEl.value = nameParts[0];
+                    if (lastNameEl) lastNameEl.value = nameParts.slice(1).join(' ');
+                } else {
+                    if (firstNameEl) firstNameEl.value = user.name;
+                    if (lastNameEl) lastNameEl.value = '';
+                }
+            }
+            
+            if (emailEl) {
+                emailEl.value = user.email || '';
+            }
+            
+            if (phoneEl) {
+                phoneEl.value = user.phone || '';
+            }
+            
+            if (genderEl) {
+                genderEl.value = user.gender || '';
+            }
+            
+            if (nationalityEl) {
+                nationalityEl.value = user.nationality || '';
+            }
+            
+            if (addressEl) {
+                addressEl.value = user.address || '';
+            }
+            
+            if (cityEl) {
+                cityEl.value = user.city || '';
+            }
+            
+            if (provinceEl) {
+                provinceEl.value = user.province || '';
+            }
+            
+            if (postalCodeEl) {
+                postalCodeEl.value = user.postal_code || '';
+            }
+            
+            if (countryEl) {
+                countryEl.value = user.country || 'Philippines';
+            }
+            
+            if (idTypeEl) {
+                idTypeEl.value = user.id_type || '';
+            }
+            
+            if (idNumberEl) {
+                idNumberEl.value = user.id_number || '';
+            }
+        }
+        
+        // Handle payment method selection
+        document.addEventListener('DOMContentLoaded', () => {
+            const paymentMethod = document.getElementById('payment-method');
+            const cardFields = document.getElementById('card-payment-fields');
+            const payAtHotelMessage = document.getElementById('pay-at-hotel-message');
+            
+            if (paymentMethod) {
+                paymentMethod.addEventListener('change', (e) => {
+                    const method = e.target.value;
+                    
+                    if (method === 'card') {
+                        if (cardFields) cardFields.style.display = 'block';
+                        if (payAtHotelMessage) payAtHotelMessage.style.display = 'none';
+                    } else {
+                        if (cardFields) cardFields.style.display = 'none';
+                        if (payAtHotelMessage) payAtHotelMessage.style.display = 'block';
+                    }
+                });
+                
+                // Set initial state
+                if (paymentMethod.value === 'pay_at_hotel') {
+                    if (cardFields) cardFields.style.display = 'none';
+                    if (payAtHotelMessage) payAtHotelMessage.style.display = 'block';
+                }
+            }
+            
+            // Format card number input
+            const cardNumber = document.getElementById('card-number');
+            if (cardNumber) {
+                cardNumber.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\s/g, '');
+                    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                    if (formattedValue.length > 19) formattedValue = formattedValue.slice(0, 19);
+                    e.target.value = formattedValue;
+                });
+            }
+            
+            // Format expiry date input
+            const cardExpiry = document.getElementById('card-expiry');
+            if (cardExpiry) {
+                cardExpiry.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 2) {
+                        value = value.slice(0, 2) + ' / ' + value.slice(2, 4);
+                    }
+                    e.target.value = value;
+                });
+            }
+            
+            // Format CVC input (numbers only)
+            const cardCvc = document.getElementById('card-cvc');
+            if (cardCvc) {
+                cardCvc.addEventListener('input', (e) => {
+                    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 3);
+                });
+            }
+        });
+        
+        // Check login status and update header button
+        async function updateLoginButton() {
+            const loginBtn = document.getElementById('login-account-btn');
+            const accountBtn = document.getElementById('my-account-btn');
+            
+            if (!loginBtn || !accountBtn) return;
+            
+            try {
+                if (typeof API !== 'undefined') {
+                    const response = await API.auth.check();
+                    if (response.success && response.logged_in) {
+                        loginBtn.style.display = 'none';
+                        accountBtn.style.display = 'inline-block';
+                    } else {
+                        loginBtn.style.display = 'inline-block';
+                        accountBtn.style.display = 'none';
+                    }
+                } else {
+                    loginBtn.style.display = 'inline-block';
+                    accountBtn.style.display = 'none';
+                }
+            } catch (error) {
+                loginBtn.style.display = 'inline-block';
+                accountBtn.style.display = 'none';
+            }
+        }
+        
+        if (typeof API !== 'undefined') {
+            updateLoginButton();
+        } else {
+            window.addEventListener('load', () => {
+                if (typeof API !== 'undefined') {
+                    updateLoginButton();
+                }
+            });
+        }
+        
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('ServiceWorker registration successful:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>

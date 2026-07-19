@@ -1,1127 +1,471 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<?php
+$pageTitle = 'Bohol Island Tours | Premium Bohol Travel & Tour Packages';
+$pageDescription = 'Experience Bohol\'s natural wonders with affordable tour packages! Explore Chocolate Hills, Tarsier Sanctuary, Loboc River, island hopping at Balicasag, dolphin watching & more.';
+$includeSwiper = true;
+$extraHead = <<<'HTML'
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristDestination",
+  "name": "Bohol Island Tours",
+  "url": "https://www.boholislandtours.com/",
+  "telephone": "+639125298818",
+  "email": "boholislandtours@gmail.com"
+}
+</script>
+HTML;
+include __DIR__ . '/includes/head.php';
+?>
+<body class="has-transparent-header">
+<?php include __DIR__ . '/header.php'; ?>
 
-    <!-- Primary Meta Tags -->
-    <title>Bohol Island Tours | Premium Bohol Travel & Tour Packages | Chocolate Hills, Tarsier Sanctuary, Loboc River</title>
-    <meta name="title" content="Bohol Island Tours | Premium Bohol Travel & Tour Packages">
-    <meta name="description" content="Experience Bohol's natural wonders with affordable tour packages! Explore Chocolate Hills, Tarsier Sanctuary, Loboc River, island hopping at Balicasag, dolphin watching & more. 2-5 day packages from ₱1,500. Book your Bohol adventure today!">
-    <meta name="keywords" content="Bohol tours, Bohol travel packages, Chocolate Hills tour, Tarsier Sanctuary, Loboc River cruise, Bohol island hopping, Panglao Beach, Blood Compact Monument, Bohol Philippines tourism">
-    <meta name="author" content="Bohol Island Tours">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="language" content="English">
-    <link rel="canonical" href="https://www.boholislandtours.com/index.php">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.boholislandtours.com/">
-    <meta property="og:title" content="Bohol Island Tours | Premium Bohol Travel & Tour Packages">
-    <meta property="og:description" content="Experience Bohol's natural wonders with affordable tour packages! Explore Chocolate Hills, Tarsier Sanctuary, Loboc River, island hopping, dolphin watching & more. 2-5 day packages from ₱1,500.">
-    <meta property="og:image" content="https://www.boholislandtours.com/images/chocolate-hills-og.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Bohol Island Tours">
-    <meta property="og:locale" content="en_PH">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.boholislandtours.com/">
-    <meta property="twitter:title" content="Bohol Island Tours | Premium Bohol Travel & Tour Packages">
-    <meta property="twitter:description" content="Experience Bohol's natural wonders with affordable tour packages! Explore Chocolate Hills, Tarsier Sanctuary, Loboc River, island hopping, dolphin watching & more. 2-5 day packages from ₱1,500.">
-    <meta property="twitter:image" content="https://www.boholislandtours.com/images/chocolate-hills-twitter.jpg">
-
-    <!-- Additional SEO Meta Tags -->
-    <meta name="theme-color" content="#b2945b">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Bohol Tours">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="geo.region" content="PH-BOH">
-    <meta name="geo.placename" content="Tagbilaran City, Bohol">
-    <meta name="geo.position" content="9.6565;123.8465">
-    <meta name="ICBM" content="9.6565, 123.8465">
-    <link rel="alternate" hreflang="en-ph" href="https://www.boholislandtours.com/">
-
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "TouristDestination",
-        "name": "Bohol Island Tours",
-        "description": "Premium tour packages exploring Bohol's natural wonders including Chocolate Hills, Tarsier Sanctuary, Loboc River, and Panglao Beach",
-        "url": "https://www.boholislandtours.com/",
-        "logo": "https://www.boholislandtours.com/images/logo.png",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Tagbilaran City",
-            "addressRegion": "Bohol",
-            "addressCountry": "PH"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "9.6565",
-            "longitude": "123.8465"
-        },
-        "telephone": "+639125298818",
-        "email": "boholislandtours@gmail.com",
-        "sameAs": [
-            "https://www.facebook.com/boholislandtours",
-            "https://www.instagram.com/boholislandtours"
-        ],
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Bohol Tour Packages",
-            "itemListElement": [
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "TouristTrip",
-                        "name": "2 Days 1 Night Bohol Tour Package",
-                        "description": "Perfect introduction to Bohol with countryside tour, island hopping, and dolphin watching",
-                        "url": "https://www.boholislandtours.com/package1.php",
-                        "duration": "P2D",
-                        "offers": {
-                            "@type": "AggregateOffer",
-                            "priceCurrency": "PHP",
-                            "lowPrice": "1500",
-                            "highPrice": "3500",
-                            "offerCount": "6",
-                            "availability": "https://schema.org/InStock"
-                        }
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "TouristTrip",
-                        "name": "3 Days 2 Nights Bohol Tour Package",
-                        "description": "Extended stay with countryside tour, dolphin watching, island hopping, plus free time to relax",
-                        "url": "https://www.boholislandtours.com/package2.php",
-                        "duration": "P3D",
-                        "offers": {
-                            "@type": "AggregateOffer",
-                            "priceCurrency": "PHP",
-                            "lowPrice": "2000",
-                            "highPrice": "4500",
-                            "offerCount": "6",
-                            "availability": "https://schema.org/InStock"
-                        }
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "TouristTrip",
-                        "name": "4 Days 3 Nights Bohol Tour Package",
-                        "description": "Comprehensive Bohol experience with all major attractions and multiple free days",
-                        "url": "https://www.boholislandtours.com/package3.php",
-                        "duration": "P4D",
-                        "offers": {
-                            "@type": "AggregateOffer",
-                            "priceCurrency": "PHP",
-                            "lowPrice": "2500",
-                            "highPrice": "5500",
-                            "offerCount": "6",
-                            "availability": "https://schema.org/InStock"
-                        }
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "TouristTrip",
-                        "name": "5 Days 4 Nights Bohol Tour Package",
-                        "description": "Ultimate extended stay package with comprehensive Bohol experience and maximum free time",
-                        "url": "https://www.boholislandtours.com/package4.php",
-                        "duration": "P5D",
-                        "offers": {
-                            "@type": "AggregateOffer",
-                            "priceCurrency": "PHP",
-                            "lowPrice": "3000",
-                            "highPrice": "6500",
-                            "offerCount": "6",
-                            "availability": "https://schema.org/InStock"
-                        }
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Car and Van Rental Services",
-                        "description": "Professional car and van rental with drivers for Bohol tours",
-                        "url": "https://www.boholislandtours.com/rental.php",
-                        "offers": {
-                            "@type": "PriceSpecification",
-                            "priceCurrency": "PHP",
-                            "priceRange": "₱2000-₱4500",
-                            "availability": "https://schema.org/InStock"
-                        }
-                    }
-                }
-            ]
-        },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "250",
-            "bestRating": "5",
-            "worstRating": "1"
-        }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "@id": "https://www.boholislandtours.com/#organization",
-        "name": "Bohol Island Tours",
-        "image": "https://www.boholislandtours.com/images/logo.png",
-        "logo": "https://www.boholislandtours.com/images/logo.png",
-        "url": "https://www.boholislandtours.com/",
-        "telephone": "+639125298818",
-        "email": "boholislandtours@gmail.com",
-        "priceRange": "₱₱",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Tourism Center",
-            "addressLocality": "Tagbilaran City",
-            "addressRegion": "Bohol",
-            "postalCode": "6300",
-            "addressCountry": "PH"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "9.6565",
-            "longitude": "123.8465"
-        },
-        "openingHoursSpecification": [
-            {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                    "Sunday"
-                ],
-                "opens": "06:00",
-                "closes": "22:00"
-            }
-        ],
-        "sameAs": [
-            "https://www.facebook.com/boholislandtours",
-            "https://www.instagram.com/boholislandtours"
-        ],
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "250"
-        }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://www.boholislandtours.com/"
-            }
-        ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What are the best tourist attractions in Bohol?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Bohol's top attractions include Chocolate Hills (over 1,200 cone-shaped hills), Tarsier Sanctuary (world's smallest primate), Loboc River (scenic cruise with buffet), Panglao Island (pristine beaches and diving), Blood Compact Monument, and Baclayon Church (oldest stone church in Bohol)."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How much does a Bohol tour package cost?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Our Bohol tour packages range from ₱1,500 to ₱6,500 depending on duration and inclusions. 2 Days 1 Night packages start at ₱1,500 per person, while extended 5 Days 4 Nights packages range from ₱3,000-₱6,500. All packages include transportation, guide services, and selected meals."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What is included in Bohol tour packages?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Our tour packages typically include air-conditioned transportation, professional tour guide, entrance fees to attractions, accommodation (for multi-day tours), selected meals (lunch/buffet), and itinerary activities. Specific inclusions vary by package - check individual package details for complete information."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "When is the best time to visit Bohol?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "The best time to visit Bohol is during the dry season from November to April when weather is sunny and ideal for outdoor activities. Chocolate Hills are most impressive during the dry season (February to May) when they turn brown. Peak tourist season is December to May, but Bohol is beautiful year-round."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Do you offer car and van rentals in Bohol?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, we offer car and van rentals with professional drivers for Bohol tours. Our fleet includes Hyundai Starex, Nissan Urvan, Toyota HiAce, Kia Rio, and other modern vehicles. Rates vary by destination and vehicle type. All rentals include a licensed driver who serves as your tour guide."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How do I book a Bohol tour package?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "You can book by contacting us at +63 912 529 8818 (Smart), +63 919 080 5294 (Smart), or +63 917 950 7562 (Globe). You can also email us at boholislandtours@gmail.com or fill out the contact form on our website. We recommend booking in advance, especially during peak season (December-May)."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Is island hopping included in Bohol tours?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, island hopping is included in many of our packages, featuring dolphin watching (early morning), snorkeling at Balicasag Island marine sanctuary, and visiting Virgin Island sandbar. Island hopping is typically a half-day activity (5:30 AM - 11:00 AM) and includes boat transfers, snorkeling equipment, and lunch."
-                }
-            }
-        ]
-    }
-    </script>
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-logo.png">
-    <link rel="shortcut icon" href="images/favicon-logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-logo.png">
-    <link rel="icon" type="image/png" href="images/favicon-logo.png">
-    
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-
-    <style>
-        /* Hero Slider Styles */
-        .hero-slider {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            width: 100vw;
-            margin-left: calc(-50vw + 50%);
-            margin-right: calc(-50vw + 50%);
-        }
-
-        .slider-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .slides {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slide.active {
-            opacity: 1;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
-            z-index: 1;
-        }
-
-        .slide .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            max-width: 1200px;
-            width: 100%;
-            padding: 0 20px;
-            margin: 0 auto;
-        }
-
-        .slider-nav {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            z-index: 3;
-        }
-
-        .slider-btn {
-            background: rgba(255, 255, 255, 0.8);
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #b2945b;
-        }
-
-        .slider-btn:hover {
-            background: rgba(255, 255, 255, 1);
-            transform: scale(1.1);
-        }
-
-        .slider-dots {
-            display: flex;
-            gap: 10px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            background: #b2945b;
-            transform: scale(1.2);
-        }
-
-        @media (max-width: 768px) {
-            .slider-nav {
-                bottom: 20px;
-                gap: 15px;
-            }
-
-            .slider-btn {
-                width: 40px;
-                height: 40px;
-            }
-
-            .slide .hero-content {
-                padding: 0 15px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <?php include 'header.php'; ?>
-
-<section id="home" class="hero-slider">
-    <div class="slider-container">
-        <div class="slides">
-            <!-- Slide 1: Manmade Forest -->
-            <div class="slide active" style="background-image: url('images/manmade-forest.jpg');">
-                <div class="hero-overlay"></div>
-                <div class="hero-content">
-                    <h2 class="hero-title">BOHOL ISLAND TOURS</h2>
-                    <p class="hero-subtitle">Explore the enchanting Manmade Forest - Bohol's man-made wonder awaits.</p>
-                    <div class="hero-booking-container">
-                        <form class="booking-form">
-                            <div class="form-group">
-                                <label for="destination-0">Destination</label>
-                                <select id="destination-0" name="destination">
-                                    <option value="">Select Destination</option>
-                                    <option value="manmade-forest" selected>Manmade Forest</option>
-                                    <option value="chocolate-hills">Chocolate Hills</option>
-                                    <option value="blood-compact">Blood Compact</option>
-                                    <option value="tarlac">Tarsier Sanctuary</option>
-                                    <option value="loboc">Loboc River</option>
-                                    <option value="alona">Alona Beach</option>
-                                    <option value="island-hopping">Island Hopping</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="travel-date-0">Travel Date</label>
-                                <input type="date" id="travel-date-0" name="travel-date" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="tourists-0">Tourists</label>
-                                <select id="tourists-0" name="tourists">
-                                    <option value="1">1 Person</option>
-                                    <option value="2" selected>2 People</option>
-                                    <option value="3">3 People</option>
-                                    <option value="4">4 People</option>
-                                    <option value="5">5+ People</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="cta-button form-button">Find Tours</button>
-                        </form>
-                    </div>
-                </div>
+<!-- Hero Slider -->
+<section id="home" class="hero-swiper swiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-image:url('images/manmade-forest.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="container hero-content">
+                <span class="badge bg-secondary mb-3">Bohol Highlights</span>
+                <h1>Man-Made Forest</h1>
+                <p>Drive through the iconic mahogany forest corridor — a living tunnel of green on your countryside adventure.</p>
             </div>
-
-            <!-- Slide 2: Blood Compact -->
-            <div class="slide" style="background-image: url('images/blood-compact.jpg');">
-                <div class="hero-overlay"></div>
-                <div class="hero-content">
-                    <h2 class="hero-title">BLOOD COMPACT</h2>
-                    <p class="hero-subtitle">Historic site of the first blood compact between Filipinos and Spaniards.</p>
-                    <div class="hero-booking-container">
-                        <form class="booking-form">
-                            <div class="form-group">
-                                <label for="destination-1">Destination</label>
-                                <select id="destination-1" name="destination">
-                                    <option value="">Select Destination</option>
-                                    <option value="manmade-forest">Manmade Forest</option>
-                                    <option value="chocolate-hills">Chocolate Hills</option>
-                                    <option value="blood-compact" selected>Blood Compact</option>
-                                    <option value="tarlac">Tarsier Sanctuary</option>
-                                    <option value="loboc">Loboc River</option>
-                                    <option value="alona">Alona Beach</option>
-                                    <option value="island-hopping">Island Hopping</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="travel-date-1">Travel Date</label>
-                                <input type="date" id="travel-date-1" name="travel-date" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="tourists-1">Tourists</label>
-                                <select id="tourists-1" name="tourists">
-                                    <option value="1">1 Person</option>
-                                    <option value="2" selected>2 People</option>
-                                    <option value="3">3 People</option>
-                                    <option value="4">4 People</option>
-                                    <option value="5">5+ People</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="cta-button form-button">Find Tours</button>
-                        </form>
-                    </div>
-                </div>
+        </div>
+        <div class="swiper-slide" style="background-image:url('images/chocolate-hills.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="container hero-content">
+                <span class="badge bg-secondary mb-3">Must See</span>
+                <h1>Chocolate Hills</h1>
+                <p>Witness over a thousand cone-shaped hills that turn chocolate-brown in the dry season — Bohol's signature wonder.</p>
             </div>
-
-            <!-- Slide 3: Chocolate Hills -->
-            <div class="slide" style="background-image: url('images/chocolate-hills.jpg');">
-                <div class="hero-overlay"></div>
-                <div class="hero-content">
-                    <h2 class="hero-title">CHOCOLATE HILLS</h2>
-                    <p class="hero-subtitle">See Bohol's iconic rolling hills — a natural wonder like no other.</p>
-                    <div class="hero-booking-container">
-                        <form class="booking-form">
-                            <div class="form-group">
-                                <label for="destination-2">Destination</label>
-                                <select id="destination-2" name="destination">
-                                    <option value="">Select Destination</option>
-                                    <option value="manmade-forest">Manmade Forest</option>
-                                    <option value="chocolate-hills" selected>Chocolate Hills</option>
-                                    <option value="blood-compact">Blood Compact</option>
-                                    <option value="tarlac">Tarsier Sanctuary</option>
-                                    <option value="loboc">Loboc River</option>
-                                    <option value="alona">Alona Beach</option>
-                                    <option value="island-hopping">Island Hopping</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="travel-date-2">Travel Date</label>
-                                <input type="date" id="travel-date-2" name="travel-date" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="tourists-2">Tourists</label>
-                                <select id="tourists-2" name="tourists">
-                                    <option value="1">1 Person</option>
-                                    <option value="2" selected>2 People</option>
-                                    <option value="3">3 People</option>
-                                    <option value="4">4 People</option>
-                                    <option value="5">5+ People</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="cta-button form-button">Find Tours</button>
-                        </form>
-                    </div>
-                </div>
+        </div>
+        <div class="swiper-slide" style="background-image:url('images/tarsiers.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="container hero-content">
+                <span class="badge bg-secondary mb-3">Wildlife</span>
+                <h1>Tarsier Sanctuary</h1>
+                <p>Meet one of the world's smallest primates in a protected sanctuary dedicated to their conservation.</p>
             </div>
-
-            <!-- Slide 4: Panglao Beach -->
-            <div class="slide" style="background-image: url('images/panglao-beach.jpg');">
-                <div class="hero-overlay"></div>
-                <div class="hero-content">
-                    <h2 class="hero-title">PANGLAO BEACH</h2>
-                    <p class="hero-subtitle">Unwind on Panglao’s powdery white sand and crystal-clear waters.</p>
-                    <div class="hero-booking-container">
-                        <form class="booking-form">
-                            <div class="form-group">
-                                <label for="destination-3">Destination</label>
-                                <select id="destination-3" name="destination">
-                                    <option value="">Select Destination</option>
-                                    <option value="manmade-forest">Manmade Forest</option>
-                                    <option value="chocolate-hills">Chocolate Hills</option>
-                                    <option value="blood-compact">Blood Compact</option>
-                                    <option value="tarlac">Tarsier Sanctuary</option>
-                                    <option value="loboc">Loboc River</option>
-                                    <option value="alona" selected>Alona Beach</option>
-                                    <option value="island-hopping">Island Hopping</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="travel-date-3">Travel Date</label>
-                                <input type="date" id="travel-date-3" name="travel-date" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="tourists-3">Tourists</label>
-                                <select id="tourists-3" name="tourists">
-                                    <option value="1">1 Person</option>
-                                    <option value="2" selected>2 People</option>
-                                    <option value="3">3 People</option>
-                                    <option value="4">4 People</option>
-                                    <option value="5">5+ People</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="cta-button form-button">Find Tours</button>
-                        </form>
-                    </div>
-                </div>
+        </div>
+        <div class="swiper-slide" style="background-image:url('images/loboc-river-cruise.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="container hero-content">
+                <span class="badge bg-secondary mb-3">Culture</span>
+                <h1>Loboc River Cruise</h1>
+                <p>Float past lush riverbanks with a Filipino buffet lunch and live cultural entertainment.</p>
             </div>
-
-            <!-- Slide 5: Tarsier Sanctuary -->
-            <div class="slide" style="background-image: url('images/tarsiers.jpg');">
-                <div class="hero-overlay"></div>
-    <div class="hero-content">
-                    <h2 class="hero-title">TARSIER SANCTUARY</h2>
-                    <p class="hero-subtitle">Meet Bohol’s iconic tiny primates — a gentle wildlife experience you’ll never forget.</p>
-                    <div class="hero-booking-container">
-                        <form class="booking-form">
-                            <div class="form-group">
-                                <label for="destination-4">Destination</label>
-                                <select id="destination-4" name="destination">
-                                    <option value="">Select Destination</option>
-                                    <option value="manmade-forest">Manmade Forest</option>
-                                    <option value="chocolate-hills">Chocolate Hills</option>
-                                    <option value="blood-compact">Blood Compact</option>
-                                    <option value="tarlac" selected>Tarsier Sanctuary</option>
-                                    <option value="loboc">Loboc River</option>
-                                    <option value="alona">Alona Beach</option>
-                                    <option value="island-hopping">Island Hopping</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="travel-date-4">Travel Date</label>
-                                <input type="date" id="travel-date-4" name="travel-date" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="tourists-4">Tourists</label>
-                                <select id="tourists-4" name="tourists">
-                                    <option value="1">1 Person</option>
-                                    <option value="2" selected>2 People</option>
-                                    <option value="3">3 People</option>
-                                    <option value="4">4 People</option>
-                                    <option value="5">5+ People</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="cta-button form-button">Find Tours</button>
-                        </form>
-                    </div>
-                </div>
+        </div>
+        <div class="swiper-slide" style="background-image:url('images/panglao-beach.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="container hero-content">
+                <span class="badge bg-secondary mb-3">Beach Escape</span>
+                <h1>Panglao Paradise</h1>
+                <p>Relax on powdery white sand beaches with crystal-clear waters perfect for swimming and snorkeling.</p>
             </div>
+        </div>
+        <div class="swiper-slide" style="background-image:url('images/island.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="container hero-content">
+                <span class="badge bg-secondary mb-3">Adventure</span>
+                <h1>Island Hopping</h1>
+                <p>Explore Balicasag, Virgin Island, and vibrant marine sanctuaries on an unforgettable day at sea.</p>
+            </div>
+        </div>
+        <div class="swiper-slide" style="background-image:url('images/blood-compact.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="container hero-content">
+                <span class="badge bg-secondary mb-3">Heritage</span>
+                <h1>Blood Compact Site</h1>
+                <p>Walk through history at the landmark of the first international treaty of friendship in the Philippines.</p>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-pagination"></div>
+</section>
 
-            <!-- Slide 6: Loboc River Cruise -->
-            <div class="slide" style="background-image: url('images/loboc-river-cruise.jpg');">
-                <div class="hero-overlay"></div>
-                <div class="hero-content">
-                    <h2 class="hero-title">LOBOC RIVER CRUISE</h2>
-                    <p class="hero-subtitle">Drift along Bohol's scenic Loboc River — a culinary and cultural journey awaits.</p>
-        <div class="hero-booking-container">
-            <form class="booking-form">
-                <div class="form-group">
-                                <label for="destination-5">Destination</label>
-                                <select id="destination-5" name="destination">
-                                    <option value="">Select Destination</option>
-                                    <option value="manmade-forest">Manmade Forest</option>
-                                    <option value="chocolate-hills">Chocolate Hills</option>
-                                    <option value="blood-compact">Blood Compact</option>
-                                    <option value="tarlac">Tarsier Sanctuary</option>
-                                    <option value="loboc" selected>Loboc River</option>
-                                    <option value="alona">Alona Beach</option>
-                                    <option value="island-hopping">Island Hopping</option>
-                                </select>
-                </div>
-                <div class="form-group">
-                                <label for="travel-date-5">Travel Date</label>
-                                <input type="date" id="travel-date-5" name="travel-date" required>
-                </div>
-                <div class="form-group">
-                                <label for="tourists-5">Tourists</label>
-                                <select id="tourists-5" name="tourists">
-                                    <option value="1">1 Person</option>
-                                    <option value="2" selected>2 People</option>
-                                    <option value="3">3 People</option>
-                                    <option value="4">4 People</option>
-                                    <option value="5">5+ People</option>
+<!-- Unified Tour Search -->
+<div class="container">
+    <div class="tour-search-card reveal">
+        <form class="booking-form" id="tourSearchForm" action="#" method="post">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-4">
+                    <label class="form-label" for="destination">Destination</label>
+                    <select class="form-select" name="destination" id="destination" required>
+                        <option value="">Choose destination</option>
+                        <option value="chocolate-hills">Chocolate Hills</option>
+                        <option value="panglao">Panglao Beach</option>
+                        <option value="tarsier">Tarsier Sanctuary</option>
+                        <option value="loboc">Loboc River</option>
+                        <option value="island-hopping">Island Hopping</option>
+                        <option value="countryside">Countryside Tour</option>
+                        <option value="full-package">Full Package Tours</option>
                     </select>
                 </div>
-                            <button type="submit" class="cta-button form-button">Find Tours</button>
-            </form>
-                    </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="travel-date">Travel Date</label>
+                    <input type="date" class="form-control" name="travel-date" id="travel-date" required>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label" for="tourists">Tourists</label>
+                    <select class="form-select" name="tourists" id="tourists">
+                        <option value="1">1 Person</option>
+                        <option value="2" selected>2 Persons</option>
+                        <option value="3">3 Persons</option>
+                        <option value="4">4 Persons</option>
+                        <option value="5">5+ Persons</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-accent w-100">
+                        <i class="bi bi-search me-1"></i> Find Tours
+                    </button>
                 </div>
             </div>
-
-            <!-- Slide 7: Island Hopping -->
-            <div class="slide" style="background-image: url('images/island.jpg');">
-                <div class="hero-overlay"></div>
-                <div class="hero-content">
-                    <h2 class="hero-title">ISLAND HOPPING</h2>
-                    <p class="hero-subtitle">Explore Balicasag & Virgin Island — snorkel pristine waters and discover marine wonders.</p>
-                    <div class="hero-booking-container">
-                        <form class="booking-form">
-                            <div class="form-group">
-                                <label for="destination-6">Destination</label>
-                                <select id="destination-6" name="destination">
-                                    <option value="">Select Destination</option>
-                                    <option value="manmade-forest">Manmade Forest</option>
-                                    <option value="chocolate-hills">Chocolate Hills</option>
-                                    <option value="blood-compact">Blood Compact</option>
-                                    <option value="tarlac">Tarsier Sanctuary</option>
-                                    <option value="loboc">Loboc River</option>
-                                    <option value="alona">Alona Beach</option>
-                                    <option value="island-hopping" selected>Island Hopping</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="travel-date-6">Travel Date</label>
-                                <input type="date" id="travel-date-6" name="travel-date" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="tourists-6">Tourists</label>
-                                <select id="tourists-6" name="tourists">
-                                    <option value="1">1 Person</option>
-                                    <option value="2" selected>2 People</option>
-                                    <option value="3">3 People</option>
-                                    <option value="4">4 People</option>
-                                    <option value="5">5+ People</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="cta-button form-button">Find Tours</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slider Navigation -->
-        <div class="slider-nav">
-            <button class="slider-btn prev-btn" aria-label="Previous slide">
-                <i class="bi bi-chevron-left"></i>
-            </button>
-            <div class="slider-dots">
-                <span class="dot active" data-slide="0"></span>
-                <span class="dot" data-slide="1"></span>
-                <span class="dot" data-slide="2"></span>
-                <span class="dot" data-slide="3"></span>
-                <span class="dot" data-slide="4"></span>
-                <span class="dot" data-slide="5"></span>
-                <span class="dot" data-slide="6"></span>
-            </div>
-            <button class="slider-btn next-btn" aria-label="Next slide">
-                <i class="bi bi-chevron-right"></i>
-            </button>
-        </div>
-        </div>
-</section>
-
-    <section id="about" class="content-section">
-        <div class="container">
-            <h1 class="section-title">Discover Bohol with Us</h1>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="lead-text">
-                        Experience the breathtaking beauty of Bohol Island with our comprehensive travel and tour packages designed for every type of traveler.
-                    </p>
-                    <p>
-                        From the iconic Chocolate Hills to pristine white sand beaches, Bohol offers a perfect blend of natural wonders, rich culture, and warm hospitality. Our expert guides and carefully crafted itineraries ensure you experience the best of what this tropical paradise has to offer.
-                    </p>
-                    <p>
-                        Whether you're seeking adventure, relaxation, or cultural immersion, we have the perfect tour package for you. Join us in creating unforgettable memories in one of the Philippines' most beautiful destinations.
-                    </p>
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <i class="bi bi-compass"></i>
-                            <h4>Expert Guides</h4>
-                            <p>Professional local guides with deep knowledge of Bohol's culture and history</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-shield-check"></i>
-                            <h4>Safe Travel</h4>
-                            <p>Your safety is our priority with licensed operators and comprehensive insurance</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-calendar-check"></i>
-                            <h4>Flexible Scheduling</h4>
-                            <p>Customizable tour dates and durations to fit your travel plans</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-star"></i>
-                            <h4>Premium Experience</h4>
-                            <p>High-quality accommodations, transportation, and exclusive experiences</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-cash"></i>
-                            <h4>Best Value</h4>
-                            <p>Competitive pricing with no hidden fees and money-back guarantee</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-heart"></i>
-                            <h4>Personalized Service</h4>
-                            <p>Tailored experiences that cater to your specific interests and preferences</p>
-                        </div>
-                    </div>
-                    <p class="closing-text">
-                        Let us be your gateway to Bohol's wonders. With years of experience in the tourism industry, we guarantee an exceptional travel experience that will leave you with memories to cherish forever. Contact us today to start planning your Bohol adventure!
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="tours" class="content-section bg-light">
-        <div class="container">
-            <h2 class="section-title">Popular Tour Packages</h2>
-            <div class="room-grid">
-                <div class="room-card">
-                    <img src="images/chocolate-hills.jpg" alt="Chocolate Hills Bohol - Iconic cone-shaped hills natural wonder Philippines tourism">
-                    <h3>Chocolate Hills Adventure</h3>
-                    <p class="room-details"><strong>Price:</strong> ₱1,500 per person<br><strong>Duration:</strong> Full Day<br><strong>Includes:</strong> Transport, Guide, Entrance Fees, Lunch</p>
-                </div>
-                <div class="room-card">
-                    <img src="images/panglao-beach.jpg" alt="Panglao Beach Bohol - Crystal clear waters white sand beach paradise Philippines">
-                    <h3>Panglao Beach Paradise</h3>
-                    <p class="room-details"><strong>Price:</strong> ₱2,200 per person<br><strong>Duration:</strong> Full Day<br><strong>Includes:</strong> Boat Transfer, Beach Activities, Snorkeling, Lunch</p>
-                </div> 
-                <div class="room-card">
-                    <img src="images/tarsiers.jpg" alt="Bohol Tarsier Sanctuary - World's smallest primate endangered species wildlife tour">
-                    <h3>Tarsier & Wildlife Tour</h3>
-                    <p class="room-details"><strong>Price:</strong> ₱1,800 per person<br><strong>Duration:</strong> Half Day<br><strong>Includes:</strong> Transport, Guide, Sanctuary Entry, Photo Session</p>
-                </div>
-                <div class="room-card">
-                    <img src="images/loboc-river-cruise.jpg" alt="Loboc River Cruise Bohol - Scenic river boat cruise Filipino buffet cultural show">
-                    <h3>Loboc River Experience</h3>
-                    <p class="room-details"><strong>Price:</strong> ₱1,300 per person<br><strong>Duration:</strong> Half Day<br><strong>Includes:</strong> River Cruise, Buffet Lunch, Cultural Show</p>
-                </div>
-                <div class="room-card">
-                    <img src="images/island.jpg" alt="Bohol Island Hopping - Balicasag Virgin Island snorkeling marine life adventure">
-                    <h3>Bohol Island Hopping</h3>
-                    <p class="room-details"><strong>Price:</strong> ₱2,500 per person<br><strong>Duration:</strong> Full Day<br><strong>Includes:</strong> Multiple Islands, Snorkeling, Marine Life, Lunch</p>
-                </div>                                                               
-                <div class="room-card">
-                    <img src="images/manmade-forest.jpg" alt="Bohol Manmade Forest - Century old trees natural attraction Bohol tourism Philippines">
-                    <h3>Ultimate Bohol Experience</h3>
-                    <p class="room-details"><strong>Price:</strong> ₱3,500 per person<br><strong>Duration:</strong> 2 Days<br><strong>Includes:</strong> All Major Attractions, Hotel, Meals, Transport</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="destinations" class="content-section">
-        <div class="container">
-            <h2 class="section-title">Explore Bohol Destinations</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="lead-text">
-                        Bohol is home to some of the Philippines' most spectacular natural wonders and cultural treasures.
-                    </p>
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <i class="bi bi-mountain"></i>
-                            <h4>Chocolate Hills</h4>
-                            <p>Bohol's iconic landscape of over 1,200 perfectly cone-shaped hills that turn brown during dry season</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-water"></i>
-                            <h4>Panglao Island</h4>
-                            <p>Crystal-clear waters, pristine beaches, and world-class diving spots perfect for relaxation</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-tree"></i>
-                            <h4>Tarsier Sanctuary</h4>
-                            <p>Home to the world's smallest primate - experience these adorable endangered creatures up close</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-boat"></i>
-                            <h4>Loboc River</h4>
-                            <p>Cruise along this scenic river while enjoying a traditional Filipino buffet and cultural performances</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-house"></i>
-                            <h4>Baclayon Church</h4>
-                            <p>The oldest stone church in Bohol, a UNESCO World Heritage Site showcasing Spanish colonial architecture</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-flower3"></i>
-                            <h4>Blood Compact Site</h4>
-                            <p>Historical site commemorating the first treaty of friendship between Filipinos and foreigners</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="video" class="content-section video-section-full-width">
-    <div class="container">
-        <h2 class="section-title">Experience Bohol's Magic</h2>
-        <p class="section-text">
-            Embark on a visual journey through Bohol's most breathtaking destinations. Discover the adventure, culture, and natural beauty that makes this island paradise unforgettable.
-        </p>
+        </form>
     </div>
-
-<div class="video-wrapper">
-    <video autoplay loop muted playsinline>
-        <source src="video/bohol-video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
 </div>
+
+<!-- About -->
+<section id="about" class="section">
+    <div class="container">
+        <div class="text-center mb-2 reveal">
+            <span class="section-badge">Why Travel With Us</span>
+            <h2 class="section-title">Discover Bohol with Us</h2>
+            <p class="section-subtitle">From the iconic Chocolate Hills to pristine beaches, we craft unforgettable journeys across this tropical paradise.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-compass"></i></div>
+                    <h4>Expert Guides</h4>
+                    <p class="mb-0 text-muted">Professional local guides with deep knowledge of Bohol's culture and history.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
+                    <h4>Safe Travel</h4>
+                    <p class="mb-0 text-muted">Licensed operators and your safety as our top priority every step of the way.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-calendar-check"></i></div>
+                    <h4>Flexible Scheduling</h4>
+                    <p class="mb-0 text-muted">Customizable tour dates and durations that fit your travel plans.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-star"></i></div>
+                    <h4>Premium Experience</h4>
+                    <p class="mb-0 text-muted">Quality accommodations, transport, and exclusive curated experiences.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-cash-coin"></i></div>
+                    <h4>Best Value</h4>
+                    <p class="mb-0 text-muted">Competitive pricing with no hidden fees — transparent packages you can trust.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-heart"></i></div>
+                    <h4>Personalized Service</h4>
+                    <p class="mb-0 text-muted">Tailored experiences that match your interests and travel style.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
+<!-- Packages -->
+<section id="tours" class="section section-sand">
+    <div class="container">
+        <div class="text-center reveal">
+            <span class="section-badge">Handpicked Adventures</span>
+            <h2 class="section-title">Popular Tour Packages</h2>
+            <p class="section-subtitle">Choose from day trips to multi-day island experiences — all designed for unforgettable memories.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="card tour-card position-relative">
+                    <span class="duration-badge"><i class="bi bi-clock me-1"></i> Full Day</span>
+                    <span class="price-badge">₱1,500</span>
+                    <img src="images/chocolate-hills.jpg" class="card-img-top" alt="Chocolate Hills Adventure">
+                    <div class="card-body">
+                        <h5 class="card-title">Chocolate Hills Adventure</h5>
+                        <p class="card-text text-muted small">Transport, guide, entrance fees &amp; lunch included.</p>
+                        <a href="package1.php" class="btn btn-outline-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="card tour-card position-relative">
+                    <span class="duration-badge"><i class="bi bi-clock me-1"></i> Full Day</span>
+                    <span class="price-badge">₱2,200</span>
+                    <img src="images/panglao-beach.jpg" class="card-img-top" alt="Panglao Beach Paradise">
+                    <div class="card-body">
+                        <h5 class="card-title">Panglao Beach Paradise</h5>
+                        <p class="card-text text-muted small">Boat transfer, beach activities, snorkeling &amp; lunch.</p>
+                        <a href="destinations.php#panglao-island" class="btn btn-outline-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="card tour-card position-relative">
+                    <span class="duration-badge"><i class="bi bi-clock me-1"></i> Half Day</span>
+                    <span class="price-badge">₱1,800</span>
+                    <img src="images/tarsiers.jpg" class="card-img-top" alt="Tarsier & Wildlife Tour">
+                    <div class="card-body">
+                        <h5 class="card-title">Tarsier &amp; Wildlife Tour</h5>
+                        <p class="card-text text-muted small">Transport, guide, sanctuary entry &amp; photo session.</p>
+                        <a href="destinations.php#countryside" class="btn btn-outline-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="card tour-card position-relative">
+                    <span class="duration-badge"><i class="bi bi-clock me-1"></i> Half Day</span>
+                    <span class="price-badge">₱1,300</span>
+                    <img src="images/loboc-river-cruise.jpg" class="card-img-top" alt="Loboc River Experience">
+                    <div class="card-body">
+                        <h5 class="card-title">Loboc River Experience</h5>
+                        <p class="card-text text-muted small">River cruise, buffet lunch &amp; cultural show.</p>
+                        <a href="destinations.php#countryside" class="btn btn-outline-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="card tour-card position-relative">
+                    <span class="duration-badge"><i class="bi bi-clock me-1"></i> Full Day</span>
+                    <span class="price-badge">₱2,500</span>
+                    <img src="images/island.jpg" class="card-img-top" alt="Bohol Island Hopping">
+                    <div class="card-body">
+                        <h5 class="card-title">Bohol Island Hopping</h5>
+                        <p class="card-text text-muted small">Multiple islands, snorkeling, marine life &amp; lunch.</p>
+                        <a href="destinations.php#island-hopping" class="btn btn-outline-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="card tour-card position-relative">
+                    <span class="duration-badge"><i class="bi bi-moon-stars me-1"></i> Multi-Day</span>
+                    <span class="price-badge">From ₱3,500</span>
+                    <img src="images/bohol-overview.jpg" class="card-img-top" alt="Complete Bohol Packages" onerror="this.src='images/chocolate-hills.jpg'">
+                    <div class="card-body">
+                        <h5 class="card-title">Complete Island Packages</h5>
+                        <p class="card-text text-muted small">2–5 day packages with lodging, tours &amp; transfers.</p>
+                        <a href="package2.php" class="btn btn-outline-primary btn-sm">Explore Packages</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5 reveal">
+            <a href="package1.php" class="btn btn-primary me-2">View All Packages</a>
+            <a href="contact.php" class="btn btn-outline-primary">Get a Custom Quote</a>
+        </div>
+    </div>
+</section>
 
-    
-<?php include 'footer.php'; ?>
+<!-- Destinations preview -->
+<section id="destinations" class="section">
+    <div class="container">
+        <div class="text-center reveal">
+            <span class="section-badge">Explore</span>
+            <h2 class="section-title">Top Destinations</h2>
+            <p class="section-subtitle">Iconic places that make Bohol one of the Philippines' most loved islands.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4 reveal">
+                <a href="destinations.php#countryside" class="text-decoration-none">
+                    <div class="card dest-card position-relative">
+                        <img src="images/chocolate-hills.jpg" class="card-img-top" alt="Countryside">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Countryside Tour</h5>
+                            <p class="small text-muted mb-0">Chocolate Hills, Tarsiers, Loboc River &amp; more</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 reveal">
+                <a href="destinations.php#panglao-island" class="text-decoration-none">
+                    <div class="card dest-card">
+                        <img src="images/panglao-beach.jpg" class="card-img-top" alt="Panglao">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Panglao Island</h5>
+                            <p class="small text-muted mb-0">Beaches, diving &amp; island vibes</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 reveal">
+                <a href="destinations.php#island-hopping" class="text-decoration-none">
+                    <div class="card dest-card">
+                        <img src="images/island.jpg" class="card-img-top" alt="Island Hopping">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Island Hopping</h5>
+                            <p class="small text-muted mb-0">Balicasag, Virgin Island &amp; snorkeling</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <script src="script.js"></script>
+<!-- Stats -->
+<section class="section section-ocean">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-6 col-md-3">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="15">0</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="5000">0</div>
+                    <div class="stat-label">Happy Travelers</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="40">0</div>
+                    <div class="stat-label">Tour Destinations</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="98">0</div>
+                    <div class="stat-label">Satisfaction Rate %</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- Hero Slider JavaScript -->
-    <script>
-        // Hero Slider Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.dot');
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-            let currentSlide = 0;
-            let slideInterval;
+<!-- Video -->
+<section id="video" class="section video-section section-sand">
+    <div class="container">
+        <div class="text-center reveal">
+            <span class="section-badge">Watch</span>
+            <h2 class="section-title">Experience Bohol's Magic</h2>
+            <p class="section-subtitle">A glimpse of the adventure, culture, and natural beauty awaiting you.</p>
+        </div>
+        <div class="video-wrapper reveal">
+            <video autoplay loop muted playsinline>
+                <source src="video/bohol-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</section>
 
-            // Function to show slide
-            function showSlide(index) {
-                // Hide all slides
-                slides.forEach(slide => slide.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
+<!-- Testimonials -->
+<section class="section">
+    <div class="container">
+        <div class="text-center reveal">
+            <span class="section-badge">Reviews</span>
+            <h2 class="section-title">What Travelers Say</h2>
+            <p class="section-subtitle">Real stories from guests who explored Bohol with us.</p>
+        </div>
+        <div class="swiper testimonials-swiper reveal">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                        <p>"The Chocolate Hills tour was breathtaking! Our guide was knowledgeable and the whole day was seamless."</p>
+                        <div class="author">
+                            <div class="author-avatar">MR</div>
+                            <div><strong>Maria R.</strong><br><small class="text-muted">Manila, Philippines</small></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                        <p>"Island hopping exceeded expectations. Crystal waters, great lunch, and a very professional crew."</p>
+                        <div class="author">
+                            <div class="author-avatar">JK</div>
+                            <div><strong>James K.</strong><br><small class="text-muted">Singapore</small></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></div>
+                        <p>"Booked the 3D2N package — perfect mix of countryside, beaches, and downtime. Highly recommended!"</p>
+                        <div class="author">
+                            <div class="author-avatar">AL</div>
+                            <div><strong>Anna L.</strong><br><small class="text-muted">Seoul, Korea</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination mt-4"></div>
+        </div>
+    </div>
+</section>
 
-                // Show current slide
-                slides[index].classList.add('active');
-                dots[index].classList.add('active');
-                currentSlide = index;
-            }
+<!-- CTA -->
+<section class="section section-sand pt-0">
+    <div class="container">
+        <div class="cta-banner reveal">
+            <h2 class="mb-3">Ready for Your Bohol Adventure?</h2>
+            <p class="mb-4 opacity-90">Tell us your dates and group size — we'll craft the perfect itinerary for you.</p>
+            <a href="contact.php" class="btn btn-light btn-lg me-2">Get a Free Quote</a>
+            <a href="package1.php" class="btn btn-outline-light btn-lg">Browse Packages</a>
+        </div>
+    </div>
+</section>
 
-            // Function to next slide
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
-            }
+<?php include __DIR__ . '/footer.php'; ?>
 
-            // Function to previous slide
-            function prevSlide() {
-                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                showSlide(currentSlide);
-            }
-
-            // Auto slide functionality
-            function startAutoSlide() {
-                slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-            }
-
-            function stopAutoSlide() {
-                clearInterval(slideInterval);
-            }
-
-            // Event listeners
-            if (nextBtn && prevBtn) {
-                nextBtn.addEventListener('click', function() {
-                    nextSlide();
-                    stopAutoSlide();
-                    startAutoSlide(); // Restart auto slide after manual navigation
-                });
-
-                prevBtn.addEventListener('click', function() {
-                    prevSlide();
-                    stopAutoSlide();
-                    startAutoSlide(); // Restart auto slide after manual navigation
-                });
-            }
-
-            // Dot navigation
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', function() {
-                    showSlide(index);
-                    stopAutoSlide();
-                    startAutoSlide(); // Restart auto slide after manual navigation
-                });
-            });
-
-            // Pause auto slide on hover
-            const sliderContainer = document.querySelector('.slider-container');
-            if (sliderContainer) {
-                sliderContainer.addEventListener('mouseenter', stopAutoSlide);
-                sliderContainer.addEventListener('mouseleave', startAutoSlide);
-            }
-
-            // Start auto slide
-            startAutoSlide();
-
-            // Keyboard navigation
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'ArrowLeft') {
-                    prevSlide();
-                    stopAutoSlide();
-                    startAutoSlide();
-                } else if (e.key === 'ArrowRight') {
-                    nextSlide();
-                    stopAutoSlide();
-                    startAutoSlide();
-                }
-            });
-        });
-    </script>
-
-    <script>
-        // Tour booking form validation
-        document.addEventListener('DOMContentLoaded', () => {
-            const bookingForms = document.querySelectorAll('.booking-form');
-            
-            // Set minimum date to today for all travel date inputs
-                const today = new Date();
-                const todayString = today.toISOString().split('T')[0];
-
-            bookingForms.forEach((bookingForm) => {
-                const travelDateInput = bookingForm.querySelector('input[type="date"][name="travel-date"]');
-                const destinationSelect = bookingForm.querySelector('select[name="destination"]');
-                const touristsSelect = bookingForm.querySelector('select[name="tourists"]');
-
-                if (travelDateInput) {
-                    travelDateInput.setAttribute('min', todayString);
-                
-                    // Validate travel date
-                    travelDateInput.addEventListener('change', () => {
-                        const travelDate = new Date(travelDateInput.value);
-                        const now = new Date();
-                        now.setHours(0, 0, 0, 0);
-                    
-                        if (travelDate < now) {
-                            alert('Travel date cannot be in the past.');
-                            travelDateInput.value = '';
-                            travelDateInput.focus();
-                    }
-                });
-                }
-                
-                // Handle form submission - find tours
-                    bookingForm.addEventListener('submit', async (e) => {
-                        e.preventDefault();
-                        
-                    const destination = destinationSelect ? destinationSelect.value : '';
-                    const travelDate = travelDateInput ? travelDateInput.value : '';
-                    const tourists = touristsSelect ? touristsSelect.value : '1';
-                        
-                    // Validate required fields
-                    if (!destination) {
-                        alert('Please select a destination.');
-                        if (destinationSelect) destinationSelect.focus();
-                            return false;
-                        }
-                        
-                    if (!travelDate) {
-                        alert('Please select a travel date.');
-                        if (travelDateInput) travelDateInput.focus();
-                            return false;
-                        }
-                        
-                        // Show loading state
-                        const submitButton = bookingForm.querySelector('button[type="submit"]');
-                        const originalButtonText = submitButton.textContent;
-                        submitButton.disabled = true;
-                    submitButton.textContent = 'Finding Tours...';
-                        
-                        try {
-                        // Store search data in localStorage
-                        localStorage.setItem('tourSearchData', JSON.stringify({
-                            destination: destination,
-                            travelDate: travelDate,
-                            tourists: tourists,
-                                    timestamp: new Date().toISOString()
-                                }));
-                                            
-                        // Redirect to tours section with search parameters
-                                const params = new URLSearchParams({
-                            destination: destination,
-                            date: travelDate,
-                            tourists: tourists
-                        });
-
-                        // Scroll to tours section and show results
-                        document.getElementById('tours').scrollIntoView({ behavior: 'smooth' });
-
-                        // Simulate loading (you can replace this with actual API call)
-                        setTimeout(() => {
-                                submitButton.disabled = false;
-                                submitButton.textContent = originalButtonText;
-                            alert('Tour search completed! Check out our available packages below.');
-                        }, 1000);
-
-                        } catch (error) {
-                        console.error('Tour search error:', error);
-                        alert('An error occurred while searching for tours. Please try again.');
-                            submitButton.disabled = false;
-                            submitButton.textContent = originalButtonText;
-                        }
-                    });
-            });
-        });
-        
-        // Register Service Worker for PWA
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then((registration) => {
-                        console.log('ServiceWorker registration successful:', registration.scope);
-                    })
-                    .catch((error) => {
-                        console.log('ServiceWorker registration failed:', error);
-                    });
-            });
-        }
-    </script>
+<?php
+$includeSwiper = true;
+$extraScripts = <<<'JS'
+<script>
+(function () {
+    var form = document.getElementById('tourSearchForm');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var destination = form.querySelector('[name="destination"]').value;
+        var travelDate = form.querySelector('[name="travel-date"]').value;
+        var tourists = form.querySelector('[name="tourists"]').value || '1';
+        if (!destination) { alert('Please select a destination.'); return; }
+        if (!travelDate) { alert('Please select a travel date.'); return; }
+        var travel = new Date(travelDate);
+        var now = new Date(); now.setHours(0,0,0,0);
+        if (travel < now) { alert('Travel date cannot be in the past.'); return; }
+        var btn = form.querySelector('button[type="submit"]');
+        var original = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Finding Tours...';
+        try {
+            localStorage.setItem('tourSearchData', JSON.stringify({
+                destination: destination,
+                travelDate: travelDate,
+                tourists: tourists,
+                timestamp: new Date().toISOString()
+            }));
+        } catch (err) {}
+        var tours = document.getElementById('tours');
+        if (tours) tours.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(function () {
+            btn.disabled = false;
+            btn.innerHTML = original;
+            alert('Tour search completed! Check out our available packages below.');
+        }, 800);
+    });
+})();
+</script>
+JS;
+include __DIR__ . '/includes/scripts.php';
+?>
 </body>
 </html>
-

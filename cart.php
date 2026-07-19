@@ -1,273 +1,202 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" content="Shopping Cart - BODARE Pension House">
-    <meta name="theme-color" content="#b2945b">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="BODARE">
-    <meta name="mobile-web-app-capable" content="yes">
-    <title>Shopping Cart - BODARE Pension House</title>
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- Apple Touch Icons -->
-    <link rel="apple-touch-icon" href="img/logo.png">
-    <link rel="icon" type="image/png" href="img/logo.png">
-    
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-</head>
+<?php
+$pageTitle = 'Shopping Cart | Bohol Island Tours';
+$pageDescription = 'Review your selected rooms and services.';
+$includeApiConfig = true;
+include __DIR__ . '/includes/head.php';
+?>
 <body>
+<?php include __DIR__ . '/header.php'; ?>
 
-    <?php include 'header.php'; ?>
+<section class="page-hero" style="background-image:url('images/panglao-beach.jpg'); min-height:30vh;">
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <p class="lead mb-0 opacity-90">Review your selected rooms and services</p>
+    </div>
+</section>
 
-    <section class="page-header">
-        <div class="page-header-content">
-            <h1>Shopping Cart</h1>
-            <p>Review your selected rooms and services</p>
+<main class="section">
+    <div class="container">
+        <div class="steps-indicator">
+            <div class="step done"><i class="bi bi-check-lg"></i> Select</div>
+            <div class="step active"><i class="bi bi-cart"></i> Cart</div>
+            <div class="step"><i class="bi bi-credit-card"></i> Checkout</div>
+            <div class="step"><i class="bi bi-check-circle"></i> Confirm</div>
         </div>
-    </section>
 
-    <main class="content-section">
-        <div class="container">
-            <div id="cart-container">
-                <!-- Cart items will be loaded here -->
-                <div id="empty-cart-message" style="text-align: center; padding: 3rem; display: none;">
-                    <i class="bi bi-cart-x" style="font-size: 4rem; color: #ccc; margin-bottom: 1rem;"></i>
-                    <h2>Your cart is empty</h2>
-                    <p style="color: #666; margin-bottom: 2rem;">Start adding rooms to your cart to continue.</p>
-                    <a href="rooms.php" class="cta-button">Browse Rooms</a>
-                </div>
-                
-                <div id="cart-items-container" style="display: none;">
-                    <div class="cart-items">
-                        <!-- Cart items will be inserted here -->
-                    </div>
-                    
-                    <!-- Global Extra Services Section -->
-                    <div class="cart-services-section" style="background: #fff; padding: 2rem; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 2rem;">
-                        <h3 style="font-family: var(--font-primary); font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--dark-blue);">Extra Services</h3>
-                        <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-                            <div class="service-item-cart">
-                                <input type="checkbox" id="service-pet" data-name="Pet-Friendly Amenities" data-cost="500" onchange="updateCartServices()">
-                                <label for="service-pet">
-                                    <strong>Pet-Friendly Amenities</strong>
-                                    <span>₱500 / stay</span>
-                                </label>
-                            </div>
-                            <div class="service-item-cart">
-                                <input type="checkbox" id="service-spa" data-name="Spa Services" data-cost="1000" onchange="updateCartServices()">
-                                <label for="service-spa">
-                                    <strong>Spa Services</strong>
-                                    <span>₱1,000 / person</span>
-                                </label>
-                            </div>
-                            <div class="service-item-cart">
-                                <input type="checkbox" id="service-laundry" data-name="Laundry and Cleaning" data-cost="250" onchange="updateCartServices()">
-                                <label for="service-laundry">
-                                    <strong>Laundry and Cleaning</strong>
-                                    <span>₱250 / stay</span>
-                                </label>
+        <div id="cart-container">
+            <div id="empty-cart-message" class="cart-empty" style="display:none;">
+                <i class="bi bi-cart-x display-3 text-muted d-block mb-3"></i>
+                <h2>Your cart is empty</h2>
+                <p class="text-muted mb-4">Start adding rooms to your cart to continue.</p>
+                <a href="rooms.php" class="btn btn-primary cta-button">Browse Rooms</a>
+            </div>
+
+            <div id="cart-items-container" style="display:none;">
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="cart-items"></div>
+
+                        <div class="cart-services-section card border-0 shadow-sm mb-4">
+                            <div class="card-body p-4">
+                                <h3 class="h5 mb-3">Extra Services</h3>
+                                <div class="services-grid row g-3">
+                                    <div class="col-md-4">
+                                        <div class="service-item-cart form-check p-3 border rounded-3 h-100">
+                                            <input type="checkbox" class="form-check-input" id="service-pet" data-name="Pet-Friendly Amenities" data-cost="500" onchange="updateCartServices()">
+                                            <label class="form-check-label" for="service-pet">
+                                                <strong>Pet-Friendly Amenities</strong><br><span class="text-muted small">₱500 / stay</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="service-item-cart form-check p-3 border rounded-3 h-100">
+                                            <input type="checkbox" class="form-check-input" id="service-spa" data-name="Spa Services" data-cost="1000" onchange="updateCartServices()">
+                                            <label class="form-check-label" for="service-spa">
+                                                <strong>Spa Services</strong><br><span class="text-muted small">₱1,000 / person</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="service-item-cart form-check p-3 border rounded-3 h-100">
+                                            <input type="checkbox" class="form-check-input" id="service-laundry" data-name="Laundry and Cleaning" data-cost="250" onchange="updateCartServices()">
+                                            <label class="form-check-label" for="service-laundry">
+                                                <strong>Laundry and Cleaning</strong><br><span class="text-muted small">₱250 / stay</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="services-total" class="mt-3 pt-3 border-top">
+                                    <strong>Services Total: <span id="services-total-amount">₱0.00</span></strong>
+                                </div>
                             </div>
                         </div>
-                        <div id="services-total" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 1.1rem;">
-                            <strong>Services Total: <span id="services-total-amount">₱0.00</span></strong>
-                        </div>
                     </div>
-                    
-                    <div class="cart-summary">
-                        <div class="summary-card">
-                            <h3>Order Summary</h3>
-                            <div class="summary-row">
-                                <span>Rooms Subtotal</span>
-                                <span id="cart-subtotal">₱0.00</span>
+                    <div class="col-lg-4">
+                        <div class="cart-summary">
+                            <div class="summary-card sticky-top" style="top:calc(var(--header-height) + 1rem);">
+                                <h3 class="h5 mb-3">Order Summary</h3>
+                                <div class="d-flex justify-content-between mb-2 summary-row"><span>Rooms Subtotal</span><span id="cart-subtotal">₱0.00</span></div>
+                                <div class="d-flex justify-content-between mb-2 summary-row"><span>Services</span><span id="cart-services-total">₱0.00</span></div>
+                                <div class="d-flex justify-content-between mb-2 summary-row"><span>Total Items</span><span id="cart-item-count">0</span></div>
+                                <hr>
+                                <div class="d-flex justify-content-between summary-total-row mb-3"><span class="fw-bold">Total</span><strong id="cart-total" class="text-primary fs-5">₱0.00</strong></div>
+                                <a href="checkout.php" class="btn btn-accent w-100 cta-button mb-2">Proceed to Checkout</a>
+                                <a href="rooms.php" class="btn btn-outline-primary w-100 cta-button-secondary">Continue Shopping</a>
                             </div>
-                            <div class="summary-row">
-                                <span>Services</span>
-                                <span id="cart-services-total">₱0.00</span>
-                            </div>
-                            <div class="summary-row">
-                                <span>Total Items</span>
-                                <span id="cart-item-count">0</span>
-                            </div>
-                            <div class="summary-total-row">
-                                <span>Total</span>
-                                <strong id="cart-total">₱0.00</strong>
-                            </div>
-                            <a href="checkout.php" class="cta-button" style="width: 100%; margin-top: 1.5rem; text-align: center;">Proceed to Checkout</a>
-                            <a href="rooms.php" class="cta-button-secondary" style="width: 100%; margin-top: 0.5rem; text-align: center;">Continue Shopping</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+</main>
 
-<?php include 'footer.php'; ?>
-    
-    <script src="api-config.js"></script>
-    <script src="script.js"></script>
-    <script>
-        // Load and display cart items
-        function loadCartItems() {
-            const cart = getCart();
-            const cartItemsContainer = document.querySelector('.cart-items');
-            const emptyCartMessage = document.getElementById('empty-cart-message');
-            const cartItemsDiv = document.getElementById('cart-items-container');
-            
-            if (!cart || cart.length === 0) {
-                emptyCartMessage.style.display = 'block';
-                cartItemsDiv.style.display = 'none';
-                return;
-            }
-            
-            emptyCartMessage.style.display = 'none';
-            cartItemsDiv.style.display = 'block';
-            cartItemsContainer.innerHTML = '';
-            
-            cart.forEach(item => {
-                const cartItem = createCartItemElement(item);
-                cartItemsContainer.appendChild(cartItem);
-            });
-            
-            updateCartSummary();
-        }
-        
-        function createCartItemElement(item) {
-            const div = document.createElement('div');
-            div.className = 'cart-item';
-            div.dataset.cartId = item.cartId;
-            
-            const servicesList = item.services && item.services.length > 0 
-                ? item.services.map(s => `${s.name} (₱${s.cost.toLocaleString()})`).join(', ')
-                : 'None';
-            
-            div.innerHTML = `
-                <div class="cart-item-image">
-                    <img src="${item.imageUrl}" alt="${item.roomName}">
-                </div>
-                <div class="cart-item-details">
-                    <h3>${item.roomName}</h3>
-                    <div class="cart-item-info">
-                        <p><strong>Check-in:</strong> ${formatDateDisplay(item.checkin)}</p>
-                        <p><strong>Check-out:</strong> ${formatDateDisplay(item.checkout)}</p>
-                        <p><strong>Nights:</strong> ${item.nights}</p>
-                        <p><strong>Guests:</strong> ${item.adults} Adult(s), ${item.children} Child(ren)</p>
-                        <p><strong>Rooms:</strong> ${item.rooms}</p>
-                        ${item.extraBeds > 0 ? `<p><strong>Extra Beds:</strong> ${item.extraBeds}</p>` : ''}
-                        <p style="color: #999; font-size: 0.85rem;"><em>Services can be added below</em></p>
+<?php include __DIR__ . '/footer.php'; ?>
+<?php
+$includeApiConfig = true;
+$extraScripts = <<<'JS'
+<script>
+function loadCartItems() {
+    const cart = getCart();
+    const cartItemsContainer = document.querySelector('.cart-items');
+    const emptyCartMessage = document.getElementById('empty-cart-message');
+    const cartItemsDiv = document.getElementById('cart-items-container');
+    if (!cart || cart.length === 0) {
+        emptyCartMessage.style.display = 'block';
+        cartItemsDiv.style.display = 'none';
+        return;
+    }
+    emptyCartMessage.style.display = 'none';
+    cartItemsDiv.style.display = 'block';
+    cartItemsContainer.innerHTML = '';
+    cart.forEach(item => cartItemsContainer.appendChild(createCartItemElement(item)));
+    updateCartSummary();
+}
+function createCartItemElement(item) {
+    const div = document.createElement('div');
+    div.className = 'cart-item cart-item-card card border-0 mb-3';
+    div.dataset.cartId = item.cartId;
+    div.innerHTML = `
+        <div class="card-body">
+            <div class="row g-3 align-items-center">
+                <div class="col-md-3 cart-item-image"><img src="${item.imageUrl}" alt="${item.roomName}" class="img-fluid rounded-3" style="height:100px;width:100%;object-fit:cover;"></div>
+                <div class="col-md-6 cart-item-details">
+                    <h3 class="h5 mb-2">${item.roomName}</h3>
+                    <div class="cart-item-info small text-muted">
+                        <p class="mb-1"><strong>Check-in:</strong> ${formatDateDisplay(item.checkin)}</p>
+                        <p class="mb-1"><strong>Check-out:</strong> ${formatDateDisplay(item.checkout)}</p>
+                        <p class="mb-1"><strong>Nights:</strong> ${item.nights} · <strong>Rooms:</strong> ${item.rooms}</p>
+                        <p class="mb-0"><strong>Guests:</strong> ${item.adults} Adult(s), ${item.children} Child(ren)${item.extraBeds > 0 ? ` · Extra Beds: ${item.extraBeds}` : ''}</p>
                     </div>
                 </div>
-                <div class="cart-item-price">
-                    <strong>${item.total}</strong>
-                    <button class="remove-item-btn" onclick="removeCartItem('${item.cartId}')" title="Remove item">
-                        <i class="bi bi-trash"></i>
-                    </button>
+                <div class="col-md-3 cart-item-price text-md-end">
+                    <strong class="d-block mb-2">${item.total}</strong>
+                    <button class="btn btn-sm btn-outline-danger remove-item-btn" onclick="removeCartItem('${item.cartId}')" title="Remove item"><i class="bi bi-trash"></i></button>
                 </div>
-            `;
-            
-            return div;
-        }
-        
-        function formatDateDisplay(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-        }
-        
-        function removeCartItem(cartId) {
-            if (confirm('Are you sure you want to remove this item from your cart?')) {
-                removeFromCart(cartId);
-                loadCartItems();
-            }
-        }
-        
-        // Available services
-        const availableServices = [
-            { id: 'service-pet', name: 'Pet-Friendly Amenities', cost: 500 },
-            { id: 'service-spa', name: 'Spa Services', cost: 1000 },
-            { id: 'service-laundry', name: 'Laundry and Cleaning', cost: 250 }
-        ];
-        
-        function updateCartServices() {
-            const selectedServices = [];
-            availableServices.forEach(service => {
-                const checkbox = document.getElementById(service.id);
-                if (checkbox && checkbox.checked) {
-                    selectedServices.push({
-                        name: service.name,
-                        cost: service.cost
-                    });
-                }
-            });
-            
-            // Save services to localStorage
-            localStorage.setItem('cartServices', JSON.stringify(selectedServices));
-            
-            // Update services total display
-            const servicesTotal = selectedServices.reduce((sum, s) => sum + s.cost, 0);
-            const servicesTotalEl = document.getElementById('services-total-amount');
-            const cartServicesTotalEl = document.getElementById('cart-services-total');
-            
-            if (servicesTotalEl) {
-                servicesTotalEl.textContent = `₱${servicesTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            }
-            if (cartServicesTotalEl) {
-                cartServicesTotalEl.textContent = `₱${servicesTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            }
-            
-            // Update cart total
-            updateCartSummary();
-        }
-        
-        function loadCartServices() {
-            const savedServices = localStorage.getItem('cartServices');
-            if (savedServices) {
-                const services = JSON.parse(savedServices);
-                availableServices.forEach(service => {
-                    const checkbox = document.getElementById(service.id);
-                    if (checkbox) {
-                        const isSelected = services.some(s => s.name === service.name);
-                        checkbox.checked = isSelected;
-                    }
-                });
-            }
-            updateCartServices();
-        }
-        
-        function updateCartSummary() {
-            const cart = getCart();
-            const roomsSubtotal = getCartTotal();
-            
-            // Get services total
-            const savedServices = localStorage.getItem('cartServices');
-            let servicesTotal = 0;
-            if (savedServices) {
-                const services = JSON.parse(savedServices);
-                servicesTotal = services.reduce((sum, s) => sum + s.cost, 0);
-            }
-            
-            const total = roomsSubtotal + servicesTotal;
-            const itemCount = cart.length;
-            
-            document.getElementById('cart-subtotal').textContent = `₱${roomsSubtotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            document.getElementById('cart-services-total').textContent = `₱${servicesTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            document.getElementById('cart-item-count').textContent = itemCount;
-            document.getElementById('cart-total').textContent = `₱${total.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-        }
-        
-        // Load cart on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            loadCartItems();
-            loadCartServices();
-            updateCartBadge();
+            </div>
+        </div>`;
+    return div;
+}
+function formatDateDisplay(dateString) {
+    return new Date(dateString).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+function removeCartItem(cartId) {
+    if (confirm('Are you sure you want to remove this item from your cart?')) {
+        removeFromCart(cartId);
+        loadCartItems();
+    }
+}
+const availableServices = [
+    { id: 'service-pet', name: 'Pet-Friendly Amenities', cost: 500 },
+    { id: 'service-spa', name: 'Spa Services', cost: 1000 },
+    { id: 'service-laundry', name: 'Laundry and Cleaning', cost: 250 }
+];
+function updateCartServices() {
+    const selectedServices = [];
+    availableServices.forEach(service => {
+        const checkbox = document.getElementById(service.id);
+        if (checkbox && checkbox.checked) selectedServices.push({ name: service.name, cost: service.cost });
+    });
+    localStorage.setItem('cartServices', JSON.stringify(selectedServices));
+    const servicesTotal = selectedServices.reduce((sum, s) => sum + s.cost, 0);
+    const fmt = `₱${servicesTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    const el1 = document.getElementById('services-total-amount');
+    const el2 = document.getElementById('cart-services-total');
+    if (el1) el1.textContent = fmt;
+    if (el2) el2.textContent = fmt;
+    updateCartSummary();
+}
+function loadCartServices() {
+    const savedServices = localStorage.getItem('cartServices');
+    if (savedServices) {
+        const services = JSON.parse(savedServices);
+        availableServices.forEach(service => {
+            const checkbox = document.getElementById(service.id);
+            if (checkbox) checkbox.checked = services.some(s => s.name === service.name);
         });
-    </script>
+    }
+    updateCartServices();
+}
+function updateCartSummary() {
+    const cart = getCart();
+    const roomsSubtotal = getCartTotal();
+    const savedServices = localStorage.getItem('cartServices');
+    let servicesTotal = 0;
+    if (savedServices) servicesTotal = JSON.parse(savedServices).reduce((sum, s) => sum + s.cost, 0);
+    const total = roomsSubtotal + servicesTotal;
+    document.getElementById('cart-subtotal').textContent = `₱${roomsSubtotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    document.getElementById('cart-services-total').textContent = `₱${servicesTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    document.getElementById('cart-item-count').textContent = cart.length;
+    document.getElementById('cart-total').textContent = `₱${total.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+}
+document.addEventListener('DOMContentLoaded', () => {
+    loadCartItems();
+    loadCartServices();
+    if (typeof updateCartBadge === 'function') updateCartBadge();
+});
+</script>
+JS;
+include __DIR__ . '/includes/scripts.php';
+?>
 </body>
 </html>
-
-

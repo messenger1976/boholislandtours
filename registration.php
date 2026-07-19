@@ -1,38 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" content="Create an account at BODARE Pension House">
-    <meta name="theme-color" content="#b2945b">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="BODARE">
-    <meta name="mobile-web-app-capable" content="yes">
-    <title>Register Account - BODARE Pension House</title>
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- Apple Touch Icons -->
-    <link rel="apple-touch-icon" href="img/logo.png">
-    <link rel="icon" type="image/png" href="img/logo.png">
-    
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
-</head>
+﻿<?php
+$pageTitle = 'Create Account | Bohol Island Tours';
+$pageDescription = 'Register for faster bookings';
+include __DIR__ . '/includes/head.php';
+?>
 <body>
+<?php include __DIR__ . '/header.php'; ?>
 
-    <?php include 'header.php'; ?>
-
-    <section class="page-header">
-        <div class="page-header-content">
+<section class="page-hero" style="background-image:url('images/panglao-beach.jpg'); min-height:28vh;"><div class="container">
             <h1 id="page-title">Create an Account</h1>
             <p id="page-subtitle">Sign up to make your future bookings even faster.</p>
         </div>
-    </section>
+</section>
 
-    <main class="content-section">
+<main class="content-section">
         <div class="container">
             
             <!-- Registration Form Section -->
@@ -218,97 +198,15 @@
         </div>
     </main>
 
-<?php include 'footer.php'; ?>
-    
-    <script src="api-config.js"></script>
-    <script src="booking-api.js"></script>
-    <script src="script.js"></script>
-    <script>
-        // Check login status and update header button
-        async function updateLoginButton() {
-            const loginBtn = document.getElementById('login-account-btn');
-            const accountBtn = document.getElementById('my-account-btn');
-            
-            if (!loginBtn || !accountBtn) return;
-            
-            try {
-                if (typeof API !== 'undefined') {
-                    const response = await API.auth.check();
-                    if (response.success && response.logged_in) {
-                        loginBtn.style.display = 'none';
-                        accountBtn.style.display = 'inline-block';
-                    } else {
-                        loginBtn.style.display = 'inline-block';
-                        accountBtn.style.display = 'none';
-                    }
-                } else {
-                    loginBtn.style.display = 'inline-block';
-                    accountBtn.style.display = 'none';
-                }
-            } catch (error) {
-                loginBtn.style.display = 'inline-block';
-                accountBtn.style.display = 'none';
-            }
-        }
-        
-        if (typeof API !== 'undefined') {
-            updateLoginButton();
-        } else {
-            window.addEventListener('load', () => {
-                if (typeof API !== 'undefined') {
-                    updateLoginButton();
-                }
-            });
-        }
-        
-        // Register Service Worker for PWA
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then((registration) => {
-                        console.log('ServiceWorker registration successful:', registration.scope);
-                    })
-                    .catch((error) => {
-                        console.log('ServiceWorker registration failed:', error);
-                    });
-            });
-        }
-        
-        // Format card number input
-        document.addEventListener('DOMContentLoaded', () => {
-            const cardNumber = document.getElementById('card-number');
-            if (cardNumber) {
-                cardNumber.addEventListener('input', (e) => {
-                    let value = e.target.value.replace(/\s/g, '');
-                    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
-                    if (formattedValue.length <= 19) {
-                        e.target.value = formattedValue;
-                    }
-                });
-            }
-            
-            // Format expiry date
-            const cardExpiry = document.getElementById('card-expiry');
-            if (cardExpiry) {
-                cardExpiry.addEventListener('input', (e) => {
-                    let value = e.target.value.replace(/\D/g, '');
-                    if (value.length >= 2) {
-                        value = value.substring(0, 2) + ' / ' + value.substring(2, 4);
-                    }
-                    e.target.value = value;
-                });
-            }
-            
-            // Format CVC (numbers only)
-            const cardCvc = document.getElementById('card-cvc');
-            if (cardCvc) {
-                cardCvc.addEventListener('input', (e) => {
-                    e.target.value = e.target.value.replace(/\D/g, '');
-                });
-            }
-        });
-    </script>
 
-    <?php include 'footer.php'; ?>
+
+<?php include __DIR__ . '/footer.php'; ?>
+<?php
+$includeApiConfig = true;
+$includeBookingApi = true;
+
+$extraScripts = file_get_contents(__DIR__ . '/includes/_extra_registration.html');
+include __DIR__ . '/includes/scripts.php';
+?>
 </body>
 </html>

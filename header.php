@@ -1,45 +1,59 @@
-<header class="header">
-    <nav class="navbar">
-        <a href="index.php" class="nav-logo">
-            <img src="images/favicon-logo.png" alt="Bohol Tours" class="logo-img">
-        </a>
-        <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="index.php#home" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="index.php#tours" class="nav-link">Tours</a></li>
-            <li class="nav-item dropdown">
-                <a href="index.php#tours" class="nav-link dropdown-toggle">Tour Packages</a>
-                <ul class="dropdown-menu">
-                    <li><a href="package1.php" class="dropdown-item">2 Days 1 Night Bohol Tour Package</a></li>
-                    <li><a href="package2.php" class="dropdown-item">3 Days 2 Nights Bohol Tour Package</a></li>
-                    <li><a href="package3.php" class="dropdown-item">4 Days 3 Nights Bohol Tour Package</a></li>
-                    <li><a href="package4.php" class="dropdown-item">5 Days 4 Nights Bohol Tour Package</a></li>
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark h-100">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.php">
+                <img src="images/favicon-logo.png" alt="Bohol Island Tours" class="me-2">
+                <span class="d-none d-sm-inline fw-semibold">Bohol Island Tours</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto me-lg-3 align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php#tours">Tours</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="index.php#tours" id="packagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tour Packages</a>
+                        <ul class="dropdown-menu" aria-labelledby="packagesDropdown">
+                            <li><a class="dropdown-item" href="package1.php">2 Days 1 Night</a></li>
+                            <li><a class="dropdown-item" href="package2.php">3 Days 2 Nights</a></li>
+                            <li><a class="dropdown-item" href="package3.php">4 Days 3 Nights</a></li>
+                            <li><a class="dropdown-item" href="package4.php">5 Days 4 Nights</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rental.php">Car/Van Rental</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="index.php#destinations" id="destDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Destinations</a>
+                        <ul class="dropdown-menu" aria-labelledby="destDropdown">
+                            <li><a class="dropdown-item" href="destinations.php#countryside">Country Side Tour</a></li>
+                            <li><a class="dropdown-item" href="destinations.php#danao-adventure-park">Danao Adventure Park</a></li>
+                            <li><a class="dropdown-item" href="destinations.php#mirror-of-the-world">Mirror of the World</a></li>
+                            <li><a class="dropdown-item" href="destinations.php#can-umantad-falls">Can-umantad Falls &amp; Anda</a></li>
+                            <li><a class="dropdown-item" href="destinations.php#panglao-island">Panglao Island</a></li>
+                            <li><a class="dropdown-item" href="destinations.php#island-hopping">Island Hopping</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about-bohol.php">About Bohol</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.php">Contact</a>
+                    </li>
                 </ul>
-            </li>
-            <li class="nav-item"><a href="rental.php" class="nav-link">Car/Van Rental</a></li>
-            <li class="nav-item dropdown">
-                <a href="index.php#destinations" class="nav-link dropdown-toggle">Destinations</a>
-                <ul class="dropdown-menu">
-                    <li><a href="destinations.php#countryside" class="dropdown-item">Country Side Tour</a></li>
-                    <li><a href="destinations.php#danao-adventure-park" class="dropdown-item">Danao Adventure Park Tour</a></li>
-                    <li><a href="destinations.php#mirror-of-the-world" class="dropdown-item">Mirror of the World Tour</a></li>
-                    <li><a href="destinations.php#can-umantad-falls" class="dropdown-item">Can-umantad Falls and Anda Tour</a></li>
-                    <li><a href="destinations.php#panglao-island" class="dropdown-item">Panglao Island Tour</a></li>
-                    <li><a href="destinations.php#island-hopping" class="dropdown-item">Island Hopping Tour</a></li>
-                </ul>
-            </li>
-            <li class="nav-item"><a href="index.php#about" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="about-bohol.php" class="nav-link">About Bohol</a></li>
-            <li class="nav-item" style="display: none;"><a href="gallery.php" class="nav-link">Gallery</a></li>
-            <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
-        </ul>
-        <div class="header-actions">
-            <a href="index.php#home" class="cta-button">Book Tour</a>
-            <a href="contact.php" class="cta-button-secondary">Get Quote</a>
+                <div class="header-cta d-flex gap-2 align-items-center">
+                    <a href="index.php#home" class="btn btn-secondary btn-sm">Book Tour</a>
+                    <a href="contact.php" class="btn btn-outline-light btn-sm">Get Quote</a>
+                </div>
+            </div>
         </div>
     </nav>
 </header>
