@@ -1,22 +1,19 @@
-// Service Worker for BODARE Pension House PWA
-const CACHE_NAME = 'bodare-pwa-v1';
+// Service Worker for Bohol Island Tours PWA
+// Network-first: always try fresh content, fall back to cache when offline.
+const CACHE_NAME = 'bohol-island-tours-pwa-v2';
 const urlsToCache = [
   '/',
   '/index.php',
-  '/rooms.php',
-  '/style.css',
+  '/assets/css/theme.css',
+  '/assets/js/theme.js',
   '/script.js',
-  '/img/logo.png',
-  '/img/main-logo.jpg',
   '/manifest.json'
 ];
 
-// Install event - cache resources
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        console.log('Opened cache');
         return cache.addAll(urlsToCache);
       })
       .catch((error) => {
@@ -26,7 +23,6 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
-// Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -43,45 +39,38 @@ self.addEventListener('activate', (event) => {
   return self.clients.claim();
 });
 
-// Fetch event - serve from cache, fallback to network
 self.addEventListener('fetch', (event) => {
-  // Skip non-GET requests
   if (event.request.method !== 'GET') {
     return;
   }
 
-  // Skip API requests
-  if (event.request.url.includes('/api/')) {
+  // Always go to the network for API calls — never cache them.
+  if (event.request.url.includes('/api/') || event.request.url.includes('/admin/')) {
     return;
   }
 
   event.respondWith(
-    caches.match(event.request)
+    fetch(event.request)
       .then((response) => {
-        // Return cached version or fetch from network
-        return response || fetch(event.request).then((response) => {
-          // Don't cache if not a valid response
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
-
-          // Clone the response
+        // Cache a copy of successful same-origin responses for offline use.
+        if (response && response.status === 200 && response.type === 'basic') {
           const responseToCache = response.clone();
-
-          caches.open(CACHE_NAME)
-            .then((cache) => {
-              cache.put(event.request, responseToCache);
-            });
-
-          return response;
-        });
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
+        }
+        return response;
       })
       .catch(() => {
-        // If both cache and network fail, return offline page if available
-        if (event.request.destination === 'document') {
-          return caches.match('/index.php');
-        }
+        // Network failed — serve from cache if available.
+        return caches.match(event.request).then((cached) => {
+          if (cached) {
+            return cached;
+          }
+          if (event.request.destination === 'document') {
+            return caches.match('/index.php');
+          }
+        });
       })
   );
 });
-
