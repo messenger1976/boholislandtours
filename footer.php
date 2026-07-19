@@ -74,39 +74,12 @@
     </div>
 </footer>
 
-<!-- Facebook Messenger Chat Plugin -->
-<div id="fb-root"></div>
-<div id="fb-customer-chat" class="fb-customerchat"></div>
-<script>
-    (function initMessengerChat() {
-        var chatbox = document.getElementById('fb-customer-chat');
-        if (!chatbox) return;
-        chatbox.setAttribute('page_id', '137067352998686');
-        chatbox.setAttribute('attribution', 'biz_inbox');
-    })();
-
-    window.fbAsyncInit = function() {
-        FB.init({
-            xfbml: true,
-            version: 'v19.0'
-        });
-    };
-
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<a href="https://www.facebook.com/boholislandtours.ph"
-   class="floating-fb-btn"
-   aria-label="Open our Facebook Page"
+<a href="https://m.me/boholislandtours.ph"
+   class="floating-messenger-btn"
+   aria-label="Chat with us on Messenger"
    target="_blank"
    rel="noopener noreferrer">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.312h3.587l-.467 3.622h-3.12V24h6.116C23.403 24 24 23.403 24 22.676V1.325C24 .597 23.403 0 22.675 0z"/>
+        <path d="M12 0C5.373 0 0 4.975 0 11.111c0 3.497 1.745 6.616 4.472 8.652V24l4.086-2.242c1.09.301 2.246.464 3.442.464 6.627 0 12-4.974 12-11.111C24 4.975 18.627 0 12 0zm1.193 14.963l-3.056-3.259-5.963 3.259L10.732 8.1l3.13 3.259L19.752 8.1l-6.559 6.863z"/>
     </svg>
 </a>
