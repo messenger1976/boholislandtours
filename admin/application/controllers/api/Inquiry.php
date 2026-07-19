@@ -176,6 +176,7 @@ class Inquiry extends CI_Controller {
     protected function sendInquiryEmails($inquiryid, $name, $email, $subject, $userMessage, $phone = '', $includeGuide = FALSE, $includeAccommodations = FALSE, $hasItineraryOptions = FALSE) {
         $siteName = 'Bohol Island Tours';
         $toEmail = '';
+        $extraNotifyEmail = 'boholislandtours@gmail.com';
         
         $this->load->library('coop_mail');
         $this->load->library('coop_imap');
@@ -199,7 +200,15 @@ class Inquiry extends CI_Controller {
         $mailHeaders = array('X-BODARE-Inquiry-ID' => (string) $inquiryid);
         $mailTimeout = 8;
         
-        if ($toEmail) {
+        // Notify the main mailbox plus the extra recipient (deduplicated, case-insensitive).
+        $notifyRecipients = array();
+        foreach (array($toEmail, $extraNotifyEmail) as $candidate) {
+            if ($candidate && !in_array(strtolower($candidate), array_map('strtolower', $notifyRecipients), TRUE)) {
+                $notifyRecipients[] = $candidate;
+            }
+        }
+        
+        if (!empty($notifyRecipients)) {
             $extraRows = '';
             if ($phone !== '') {
                 $extraRows .= '<tr><td style="padding:6px 0;font-weight:bold;">Phone</td><td>' . htmlspecialchars($phone, ENT_QUOTES, 'UTF-8') . '</td></tr>';
@@ -225,17 +234,19 @@ class Inquiry extends CI_Controller {
                     <p style="color:#666;font-size:13px;">Reply from the admin panel: Dashboard &rarr; Inquiries.</p>
                 </div>
             ';
-            @$this->coop_mail->send(
-                $toEmail,
-                Coop_imap::tagged_subject($inquiryid, 'New Inquiry: ' . $subject),
-                $notifyHtml,
-                NULL,
-                NULL,
-                $email,
-                $name,
-                $mailTimeout,
-                $mailHeaders
-            );
+            foreach ($notifyRecipients as $notifyRecipient) {
+                @$this->coop_mail->send(
+                    $notifyRecipient,
+                    Coop_imap::tagged_subject($inquiryid, 'New Inquiry: ' . $subject),
+                    $notifyHtml,
+                    NULL,
+                    NULL,
+                    $email,
+                    $name,
+                    $mailTimeout,
+                    $mailHeaders
+                );
+            }
         }
         
         $ackHtml = '

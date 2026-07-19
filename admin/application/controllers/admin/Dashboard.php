@@ -15,8 +15,12 @@ class Dashboard extends Admin_Controller {
     }
     
     public function index() {
-        // Require permission to view dashboard (optional check - can be removed if no permission system)
-        // $this->require_permission('view_dashboard');
+        // Enforce dashboard permission; users without it land on their first accessible page
+        if (!$this->has_permission('view_dashboard')) {
+            // Preserve any flash error set by another controller's require_permission()
+            $this->session->keep_flashdata('error');
+            redirect($this->first_accessible_page());
+        }
         
         // Ensure cache headers are set for this page
         $this->output->set_header('Cache-Control: no-cache, no-store, must-revalidate, max-age=0');
@@ -58,7 +62,44 @@ class Dashboard extends Admin_Controller {
         $this->load->view('admin/layout/footer');
     }
 
+    /**
+     * Find the first page the current admin can access, used as a landing
+     * page when the admin does not have the view_dashboard permission.
+     * Falls back to the profile page, which every logged-in admin can access.
+     */
+    private function first_accessible_page() {
+        $pages = array(
+            'view_bookings' => 'bookings',
+            'view_rooms' => 'rooms',
+            'view_inquiries' => 'inquiries',
+            'view_reports' => 'reports/daily_sales',
+            'view_users' => 'users',
+            'manage_users' => 'users',
+            'manage_groups' => 'groups',
+            'manage_roles' => 'roles',
+            'manage_email_settings' => 'email_settings'
+        );
+        
+        foreach ($pages as $permission => $url) {
+            if ($this->has_permission($permission)) {
+                return $url;
+            }
+        }
+        
+        return 'profile';
+    }
+
     public function analytics_data() {
+        if (!$this->has_permission('view_dashboard')) {
+            $this->output->set_status_header(403);
+            $this->output->set_content_type('application/json');
+            echo json_encode(array(
+                'success' => false,
+                'message' => 'You do not have permission to view dashboard analytics.'
+            ));
+            return;
+        }
+
         $range = $this->input->get('range', TRUE);
         $start_date = $this->input->get('start_date', TRUE);
         $end_date = $this->input->get('end_date', TRUE);

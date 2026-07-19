@@ -3279,12 +3279,14 @@ if (!function_exists('base_url') && isset($this) && is_object($this) && method_e
             ?>
             
             <!-- Dashboard -->
+            <?php if ($admin_id && $this->Admin_model->has_permission($admin_id, 'view_dashboard')): ?>
             <div class="nk-menu-item">
                 <a href="<?php echo base_url('dashboard'); ?>" class="nk-menu-link <?php echo ($current_uri == 'dashboard' || $current_uri == '' || $current_uri == 'login') ? 'active' : ''; ?>">
                     <span class="nk-menu-icon"><i class="bi bi-speedometer2"></i></span>
                     <span class="nk-menu-text">Dashboard</span>
                 </a>
             </div>
+            <?php endif; ?>
             
             <!-- Bookings -->
             <?php if ($admin_id && $this->Admin_model->has_permission($admin_id, 'view_bookings')): ?>

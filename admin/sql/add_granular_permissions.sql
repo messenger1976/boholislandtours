@@ -17,9 +17,11 @@ ON DUPLICATE KEY UPDATE `name` = VALUES(`name`), `description` = VALUES(`descrip
 
 -- Rooms permissions
 INSERT INTO `permissions` (`name`, `slug`, `description`, `module`) VALUES
+('View Rooms', 'view_rooms', 'Permission to view rooms list and availability calendar', 'rooms'),
 ('Add Rooms', 'add_rooms', 'Permission to create new rooms', 'rooms'),
 ('Edit Rooms', 'edit_rooms', 'Permission to edit existing rooms', 'rooms'),
-('Delete Rooms', 'delete_rooms', 'Permission to delete rooms', 'rooms')
+('Delete Rooms', 'delete_rooms', 'Permission to delete rooms', 'rooms'),
+('Manage Rooms', 'manage_rooms', 'Permission to manage room settings', 'rooms')
 ON DUPLICATE KEY UPDATE `name` = VALUES(`name`), `description` = VALUES(`description`);
 
 -- Inquiries permissions
@@ -33,7 +35,7 @@ ON DUPLICATE KEY UPDATE `name` = VALUES(`name`), `description` = VALUES(`descrip
 -- This ensures Super Admin has all permissions
 INSERT INTO `role_permissions` (`role_id`, `permission_id`)
 SELECT 1, `id` FROM `permissions` 
-WHERE `slug` IN ('add_bookings', 'edit_bookings', 'delete_bookings', 'add_users', 'edit_users', 'delete_users', 'add_rooms', 'edit_rooms', 'delete_rooms', 'view_inquiries', 'edit_inquiries', 'delete_inquiries')
+WHERE `slug` IN ('add_bookings', 'edit_bookings', 'delete_bookings', 'add_users', 'edit_users', 'delete_users', 'view_rooms', 'add_rooms', 'edit_rooms', 'delete_rooms', 'manage_rooms', 'view_inquiries', 'edit_inquiries', 'delete_inquiries')
 AND NOT EXISTS (
     SELECT 1 FROM `role_permissions` 
     WHERE `role_permissions`.`role_id` = 1 
