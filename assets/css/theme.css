@@ -1017,6 +1017,17 @@ body.has-transparent-header .site-header:not(.is-scrolled) {
     border-color: var(--teal);
     box-shadow: 0 0 0 0.2rem rgba(20, 184, 166, 0.2);
 }
+/* Honeypot: visually hidden but present in DOM (not display:none) */
+.hp-field {
+    position: absolute !important;
+    left: -10000px !important;
+    top: auto !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
 .form-grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;

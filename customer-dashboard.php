@@ -177,14 +177,19 @@ include __DIR__ . '/includes/head.php';
                 <div class="registration-container">
                     <h2>Send Us an Inquiry</h2>
                     <p style="color: #666; margin-bottom: 1.5rem;">Have a question or need assistance? Fill out the form below and we'll get back to you as soon as possible.</p>
-                    <form id="inquiry-form" class="minimal-form">
+                    <form id="inquiry-form" class="minimal-form" novalidate>
+                        <input type="hidden" id="inquiry-csrf-token" name="csrf_token" value="">
+                        <div class="hp-field" aria-hidden="true">
+                            <label for="inquiry-company-url">Company Website</label>
+                            <input type="text" id="inquiry-company-url" name="company_url" value="" tabindex="-1" autocomplete="off">
+                        </div>
                         <div class="form-group-contact">
                             <label for="inquiry-subject">Subject</label>
-                            <input type="text" id="inquiry-subject" placeholder="What is your inquiry about?" required>
+                            <input type="text" id="inquiry-subject" placeholder="What is your inquiry about?" required maxlength="255">
                         </div>
                         <div class="form-group-contact">
                             <label for="inquiry-message">Message</label>
-                            <textarea id="inquiry-message" rows="6" placeholder="Please provide details about your inquiry..." required style="
+                            <textarea id="inquiry-message" rows="6" placeholder="Please provide details about your inquiry..." required maxlength="5000" style="
                                 width: 100%;
                                 padding: 0.75rem;
                                 border: 1px solid #ddd;

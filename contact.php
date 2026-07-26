@@ -1,6 +1,9 @@
 <?php
 $pageTitle = 'Contact Us | Bohol Island Tours';
 $pageDescription = 'Get in touch for bookings, inquiries, and customized tour arrangements.';
+$extraHead = <<<'HEAD'
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' https://code.jquery.com https://cdn.jsdelivr.net https://www.google.com https://www.gstatic.com; frame-src https://www.google.com https://maps.google.com; connect-src 'self' https://www.google.com;">
+HEAD;
 include __DIR__ . '/includes/head.php';
 ?>
 <body>
@@ -46,21 +49,27 @@ include __DIR__ . '/includes/head.php';
                     <div class="card-body p-4 p-md-5">
                         <h2 class="h4 text-center mb-2">Booking and Inquiry Form</h2>
                         <p class="text-center text-muted mb-4">Send us a message — or call/email to arrange your Bohol tour.</p>
-                        <div id="contact-form-alert" class="alert" style="display:none;"></div>
-                        <form action="#" class="minimal-form" id="contact-form">
+                        <div id="contact-form-alert" class="alert" style="display:none;" role="alert"></div>
+                        <form action="#" class="minimal-form" id="contact-form" novalidate autocomplete="on">
+                            <input type="hidden" name="csrf_token" id="contact-csrf-token" value="">
+                            <!-- Honeypot: leave empty. Hidden from humans, filled by many bots. -->
+                            <div class="hp-field" aria-hidden="true">
+                                <label for="company_url">Company Website</label>
+                                <input type="text" id="company_url" name="company_url" value="" tabindex="-1" autocomplete="off">
+                            </div>
                             <div class="row g-3 form-grid-2">
                                 <div class="col-md-6 form-group-contact">
                                     <label for="contact-first-name">*First Name</label>
-                                    <input type="text" id="contact-first-name" name="first_name" placeholder="First Name" required maxlength="75">
+                                    <input type="text" id="contact-first-name" name="first_name" placeholder="First Name" required maxlength="75" autocomplete="given-name">
                                 </div>
                                 <div class="col-md-6 form-group-contact">
                                     <label for="contact-last-name">*Last Name</label>
-                                    <input type="text" id="contact-last-name" name="last_name" placeholder="Last Name" required maxlength="75">
+                                    <input type="text" id="contact-last-name" name="last_name" placeholder="Last Name" required maxlength="75" autocomplete="family-name">
                                 </div>
                             </div>
                             <div class="form-group-contact mt-3">
                                 <label for="contact-email">*Email</label>
-                                <input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required maxlength="255">
+                                <input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required maxlength="255" autocomplete="email">
                             </div>
                             <div class="form-group-contact mt-3">
                                 <label for="contact-subject">*Subject</label>
@@ -68,7 +77,7 @@ include __DIR__ . '/includes/head.php';
                             </div>
                             <div class="form-group-contact mt-3">
                                 <label for="contact-phone">*Telephone/Cellphone No.</label>
-                                <input type="tel" id="contact-phone" name="phone" placeholder="+63 XXX XXX XXXX" required maxlength="50">
+                                <input type="tel" id="contact-phone" name="phone" placeholder="+63 XXX XXX XXXX" required maxlength="50" autocomplete="tel">
                             </div>
                             <div class="form-group-contact mt-3">
                                 <label for="contact-message">*Message</label>
@@ -117,6 +126,16 @@ $extraScripts = <<<'JS'
     if (!form) return;
     var alertBox = document.getElementById('contact-form-alert');
     var submitBtn = document.getElementById('contact-submit-btn');
+    var csrfInput = document.getElementById('contact-csrf-token');
+    var security = {
+        csrf_token: '',
+        honeypot_field: 'company_url',
+        recaptcha_enabled: false,
+        recaptcha_site_key: '',
+        recaptcha_action: 'contact_submit',
+        ready: false
+    };
+
     function showAlert(type, message) {
         if (!alertBox) return;
         alertBox.style.display = 'block';
@@ -124,9 +143,80 @@ $extraScripts = <<<'JS'
         alertBox.textContent = message;
         alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
+
+    function loadRecaptcha(siteKey) {
+        return new Promise(function (resolve, reject) {
+            if (window.grecaptcha && window.grecaptcha.execute) {
+                resolve();
+                return;
+            }
+            var existing = document.querySelector('script[data-recaptcha-v3]');
+            if (existing) {
+                existing.addEventListener('load', function () { resolve(); });
+                existing.addEventListener('error', function () { reject(new Error('Failed to load CAPTCHA.')); });
+                return;
+            }
+            var s = document.createElement('script');
+            s.src = 'https://www.google.com/recaptcha/api.js?render=' + encodeURIComponent(siteKey);
+            s.async = true;
+            s.defer = true;
+            s.setAttribute('data-recaptcha-v3', '1');
+            s.onload = function () { resolve(); };
+            s.onerror = function () { reject(new Error('Failed to load CAPTCHA.')); };
+            document.head.appendChild(s);
+        });
+    }
+
+    async function getRecaptchaToken() {
+        if (!security.recaptcha_enabled || !security.recaptcha_site_key) {
+            return '';
+        }
+        await loadRecaptcha(security.recaptcha_site_key);
+        return await new Promise(function (resolve, reject) {
+            window.grecaptcha.ready(function () {
+                window.grecaptcha.execute(security.recaptcha_site_key, { action: security.recaptcha_action || 'contact_submit' })
+                    .then(resolve)
+                    .catch(reject);
+            });
+        });
+    }
+
+    async function refreshSecurity() {
+        if (typeof API === 'undefined' || !API.inquiry || !API.inquiry.csrf) {
+            throw new Error('API not loaded. Please refresh.');
+        }
+        var result = await API.inquiry.csrf();
+        if (!result || !result.success || !result.csrf_token) {
+            throw new Error('Could not initialize form security. Please refresh.');
+        }
+        security.csrf_token = result.csrf_token;
+        security.honeypot_field = result.honeypot_field || 'company_url';
+        security.recaptcha_enabled = !!result.recaptcha_enabled;
+        security.recaptcha_site_key = result.recaptcha_site_key || '';
+        security.recaptcha_action = result.recaptcha_action || 'contact_submit';
+        security.ready = true;
+        if (csrfInput) csrfInput.value = security.csrf_token;
+        if (security.recaptcha_enabled) {
+            try { await loadRecaptcha(security.recaptcha_site_key); } catch (e) { /* loaded on submit */ }
+        }
+    }
+
+    refreshSecurity().catch(function (err) {
+        showAlert('danger', (err && err.message) ? err.message : 'Could not initialize form security.');
+        if (submitBtn) submitBtn.disabled = true;
+    });
+
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
         if (typeof API === 'undefined') { showAlert('danger', 'API not loaded. Please refresh.'); return; }
+
+        var honeypot = document.getElementById('company_url');
+        if (honeypot && honeypot.value) {
+            showAlert('success', 'Thank you! Your message has been sent.');
+            form.reset();
+            return;
+        }
+
         var first = (document.getElementById('contact-first-name').value || '').trim();
         var last = (document.getElementById('contact-last-name').value || '').trim();
         var email = (document.getElementById('contact-email').value || '').trim();
@@ -140,16 +230,32 @@ $extraScripts = <<<'JS'
             showAlert('danger', 'Please fill in all required fields.');
             return;
         }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            showAlert('danger', 'Please enter a valid email address.');
+            return;
+        }
+
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
         try {
-            var result = await API.request('inquiry/submit', {
-                method: 'POST',
-                body: JSON.stringify({
-                    name: name, email: email, subject: subject, phone: phone, message: message,
-                    include_guide: includeGuide, include_accommodations: includeAccommodations
-                })
-            });
+            if (!security.ready || !security.csrf_token) {
+                await refreshSecurity();
+            }
+            var recaptchaToken = await getRecaptchaToken();
+            var payload = {
+                name: name,
+                email: email,
+                subject: subject,
+                phone: phone,
+                message: message,
+                include_guide: includeGuide,
+                include_accommodations: includeAccommodations,
+                csrf_token: security.csrf_token,
+                recaptcha_token: recaptchaToken
+            };
+            payload[security.honeypot_field || 'company_url'] = honeypot ? honeypot.value : '';
+
+            var result = await API.inquiry.submit(payload);
             if (result && result.success) {
                 showAlert('success', result.message || 'Thank you! Your message has been sent.');
                 form.reset();
@@ -159,6 +265,7 @@ $extraScripts = <<<'JS'
         } catch (err) {
             showAlert('danger', (err && err.message) ? err.message : 'Could not send your message. Please try again.');
         } finally {
+            try { await refreshSecurity(); } catch (e) { /* ignore */ }
             submitBtn.disabled = false;
             submitBtn.textContent = 'Send Message';
         }
