@@ -6,7 +6,14 @@
  *   $pageTitle, $pageDescription, $pageKeywords, $canonicalUrl
  *   $ogImage, $extraHead (raw HTML), $bodyClass
  *   $includeFlatpickr (bool), $includeSwiper (bool)
+ *   $enableAds (bool, default true) — set false on checkout/auth pages
  */
+if (!isset($enableAds)) {
+    $enableAds = true;
+}
+$GLOBALS['enableAds'] = $enableAds;
+require_once __DIR__ . '/adsense.php';
+
 if (!isset($pageTitle)) {
     $pageTitle = 'Bohol Island Tours | Premium Bohol Travel & Tour Packages';
 }
@@ -111,6 +118,7 @@ if (!headers_sent()) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <?php endif; ?>
     <link rel="stylesheet" href="<?php echo $h(asset_v('assets/css/theme.css')); ?>">
+<?php adsense_render_head(); ?>
 <?php if ($extraHead !== ''): ?>
     <?php echo $extraHead; ?>
 <?php endif; ?>

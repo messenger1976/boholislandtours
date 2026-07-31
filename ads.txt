@@ -1,0 +1,5 @@
+# Google AdSense authorization
+# Replace pub-XXXXXXXXXXXXXXXX with your publisher ID digits (from ca-pub-XXXXXXXXXXXXXXXX)
+# Format: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+# Get the exact line from AdSense → Sites → ads.txt
+google.com, pub-1060012311865896, DIRECT, f08c47fec0942fa0

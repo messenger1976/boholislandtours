@@ -1,6 +1,7 @@
 ﻿<?php
 $pageTitle = 'Login | Bohol Island Tours';
 $pageDescription = 'Login to your account';
+$enableAds = false;
 include __DIR__ . '/includes/head.php';
 ?>
 <body>

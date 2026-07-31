@@ -1,6 +1,7 @@
 ﻿<?php
 $pageTitle = 'My Dashboard | Bohol Island Tours';
 $pageDescription = 'Manage bookings and profile';
+$enableAds = false;
 include __DIR__ . '/includes/head.php';
 ?>
 <body>

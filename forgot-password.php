@@ -1,6 +1,7 @@
 ﻿<?php
 $pageTitle = 'Forgot Password | Bohol Island Tours';
 $pageDescription = 'Reset your password';
+$enableAds = false;
 include __DIR__ . '/includes/head.php';
 ?>
 <body>

@@ -46,6 +46,8 @@ include __DIR__ . '/includes/head.php';
             </div>
         </div>
 
+        <?php adsense_render_unit('in_content', 'adsense-in-content'); ?>
+
         <div class="row g-4 mb-5 flex-lg-row-reverse" id="can-umantad-falls">
             <div class="col-lg-6"><img src="img/canumantadfallsandandatour.png" class="img-fluid rounded-4 shadow" alt="Can-umantad Falls" onerror="this.src='images/island.jpg'"></div>
             <div class="col-lg-6">

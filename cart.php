@@ -2,6 +2,7 @@
 $pageTitle = 'Shopping Cart | Bohol Island Tours';
 $pageDescription = 'Review your selected rooms and services.';
 $includeApiConfig = true;
+$enableAds = false;
 include __DIR__ . '/includes/head.php';
 ?>
 <body>

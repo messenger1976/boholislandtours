@@ -1105,6 +1105,23 @@ body.has-transparent-header .site-header:not(.is-scrolled) {
 .page-header h1 { color: #fff; }
 .page-header p { color: rgba(255,255,255,0.85); }
 
+/* Google AdSense placements */
+.adsense-wrap {
+    overflow: hidden;
+    text-align: center;
+    min-height: 0;
+}
+.adsense-sidebar {
+    margin-top: 1.25rem;
+}
+.adsense-in-content {
+    margin: 2rem 0;
+    padding: 0.5rem 0;
+}
+.adsense-footer {
+    max-width: 970px;
+}
+
 @media (max-width: 575.98px) {
     .section {
         padding: 3.5rem 0;

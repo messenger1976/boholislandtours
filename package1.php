@@ -161,6 +161,7 @@ include __DIR__ . '/includes/head.php';
                         <li>Alicia Panoramic / Twin Falls</li>
                     </ul>
                 </div>
+                <?php adsense_render_unit('sidebar', 'adsense-sidebar'); ?>
             </div>
         </div>
     </div>

@@ -51,6 +51,7 @@ include __DIR__ . '/includes/head.php';
                     <a href="contact.php" class="btn btn-accent w-100 mb-2">Contact Us for Quotation</a>
                     <div class="d-flex gap-2"><a href="package2.php" class="btn btn-outline-primary btn-sm flex-fill">3D/2N</a><a href="package4.php" class="btn btn-outline-primary btn-sm flex-fill">5D/4N</a></div>
                 </div>
+                <?php adsense_render_unit('sidebar', 'adsense-sidebar'); ?>
             </div>
         </div>
     </div>

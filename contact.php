@@ -1,6 +1,7 @@
 <?php
 $pageTitle = 'Contact Us | Bohol Island Tours';
 $pageDescription = 'Get in touch for bookings, inquiries, and customized tour arrangements.';
+$enableAds = false;
 $extraHead = <<<'HEAD'
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' https://code.jquery.com https://cdn.jsdelivr.net https://www.google.com https://www.gstatic.com; frame-src https://www.google.com https://maps.google.com; connect-src 'self' https://www.google.com;">
 HEAD;

@@ -4,6 +4,7 @@ $pageDescription = 'Review and confirm your booking.';
 $includeFlatpickr = true;
 $includeApiConfig = true;
 $includeBookingApi = true;
+$enableAds = false;
 include __DIR__ . '/includes/head.php';
 ?>
 <body>

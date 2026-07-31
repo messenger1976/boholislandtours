@@ -1,6 +1,7 @@
 ﻿<?php
 $pageTitle = 'Create Account | Bohol Island Tours';
 $pageDescription = 'Register for faster bookings';
+$enableAds = false;
 include __DIR__ . '/includes/head.php';
 ?>
 <body>

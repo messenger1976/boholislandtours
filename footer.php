@@ -1,3 +1,9 @@
+<?php
+if (!function_exists('adsense_render_unit')) {
+    require_once __DIR__ . '/includes/adsense.php';
+}
+adsense_render_unit('footer', 'adsense-footer container my-4');
+?>
 <footer id="contact" class="site-footer">
     <div class="container">
         <div class="newsletter-box">

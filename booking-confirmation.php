@@ -2,6 +2,7 @@
 $pageTitle = 'Booking Confirmation | Bohol Island Tours';
 $pageDescription = 'Your booking has been confirmed.';
 $includeApiConfig = true;
+$enableAds = false;
 include __DIR__ . '/includes/head.php';
 ?>
 <body>
