@@ -1,8 +1,9 @@
 <?php
-if (isset($_SERVER['REQUEST_URI'])) {
+if (isset($_SERVER['REQUEST_URI'], $_SERVER['SCRIPT_NAME'])) {
 	$requestPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-	if (is_string($requestPath) && preg_match('#/admin/index\.php/?$#i', $requestPath)) {
-		header('Location: login');
+	if (is_string($requestPath) && preg_match('#/admin(?:/index\.php)?/?$#i', $requestPath)) {
+		$adminBase = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
+		header('Location: ' . $adminBase . '/login', true, 302);
 		exit;
 	}
 }

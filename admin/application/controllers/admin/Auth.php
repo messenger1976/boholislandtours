@@ -12,8 +12,7 @@ class Auth extends CI_Controller {
     }
     
     public function index() {
-        // Redirect to login if index is accessed
-        $this->login();
+        redirect('login');
     }
     
     public function login() {
