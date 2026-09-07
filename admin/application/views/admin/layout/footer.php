@@ -283,7 +283,11 @@ $poll_admin_id = $this->session->userdata('admin_id');
 if ($poll_admin_id && method_exists($this->Admin_model, 'has_permission') && $this->Admin_model->has_permission($poll_admin_id, 'view_inquiries')):
 ?>
 <script>window.INQUIRY_POLL_URL = <?php echo json_encode(base_url('inquiries/poll')); ?>;</script>
-<script src="<?php echo base_url('assets/js/inquiry-poll.js'); ?>"></script>
+<?php
+$inquiry_poll_js = FCPATH . 'assets/js/inquiry-poll.js';
+$inquiry_poll_v = is_file($inquiry_poll_js) ? (int) filemtime($inquiry_poll_js) : time();
+?>
+<script src="<?php echo base_url('assets/js/inquiry-poll.js'); ?>?v=<?php echo $inquiry_poll_v; ?>"></script>
 <?php endif; ?>
 </body>
 </html>
