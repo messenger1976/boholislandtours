@@ -2,126 +2,596 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#eaf5ee">
     <title>Admin Login - Bohol Island Tours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <?php
+        $public_base = preg_replace('#/admin/?$#', '/', rtrim(base_url(), '/'));
+        $logo_url = $public_base . 'images/logo.png';
+        $favicon_url = $public_base . 'images/favicon-logo.png';
+    ?>
+    <link rel="icon" href="<?php echo html_escape($favicon_url); ?>">
     <style>
         :root {
-            --primary-color: #1a2238;
-            --secondary-color: #b2945b;
+            --ink: #1f3a2e;
+            --ink-soft: #355647;
+            --gold: #3f8f6b;
+            --gold-soft: #6bb890;
+            --sand: #f3faf5;
+            --paper: #ffffff;
+            --muted: #5d7368;
+            --line: #d7e8de;
+            --danger: #c0392b;
+            --ok: #1f7a4d;
+            --radius: 1rem;
+            --shadow: 0 16px 40px rgba(31, 58, 46, 0.1);
+            --safe-top: env(safe-area-inset-top, 0px);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+            --safe-left: env(safe-area-inset-left, 0px);
+            --safe-right: env(safe-area-inset-right, 0px);
         }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
         body {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #2a3a5a 100%);
-            min-height: 100vh;
+            margin: 0;
+            min-height: 100%;
+            min-height: 100dvh;
+            font-family: "Manrope", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(120% 80% at 8% -5%, rgba(107, 184, 144, 0.22), transparent 52%),
+                radial-gradient(90% 70% at 100% 100%, rgba(63, 143, 107, 0.14), transparent 48%),
+                linear-gradient(160deg, #f7fcf9 0%, #eaf5ee 48%, #e3f1e8 100%);
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            padding:
+                max(1rem, var(--safe-top))
+                max(1rem, var(--safe-right))
+                max(1rem, var(--safe-bottom))
+                max(1rem, var(--safe-left));
+        }
+
+        .login-shell {
+            width: 100%;
+            max-width: 26rem;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            animation: rise-in 0.55s ease both;
+        }
+
+        .brand-strip {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            gap: 0.75rem;
+            color: var(--ink);
+            padding: 0.25rem 0.15rem;
         }
-        .login-container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+
+        .brand-strip img {
+            width: 2.75rem;
+            height: 2.75rem;
+            object-fit: contain;
+            border-radius: 0.65rem;
+            background: #fff;
+            border: 1px solid var(--line);
+            padding: 0.2rem;
+        }
+
+        .brand-strip .brand-text {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .brand-strip .brand-name {
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.01em;
+        }
+
+        .brand-strip .brand-tag {
+            font-size: 0.78rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .login-card {
+            background: var(--paper);
+            border-radius: calc(var(--radius) + 0.15rem);
+            box-shadow: var(--shadow);
             overflow: hidden;
-            max-width: 400px;
-            width: 100%;
+            border: 1px solid rgba(63, 143, 107, 0.12);
         }
-        .login-header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #2a3a5a 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
+
+        .login-intro {
+            padding: 1.35rem 1.25rem 0.35rem;
         }
-        .login-header h3 {
+
+        .login-intro h1 {
             margin: 0;
-            font-weight: 600;
+            font-family: "Fraunces", Georgia, serif;
+            font-size: clamp(1.45rem, 5vw, 1.75rem);
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: -0.02em;
         }
+
+        .login-intro p {
+            margin: 0.4rem 0 0;
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.45;
+        }
+
         .login-body {
-            padding: 30px;
+            padding: 1rem 1.25rem 1.35rem;
         }
-        .form-control {
-            border-radius: 5px;
-            padding: 12px;
-            border: 1px solid #ddd;
-        }
-        .form-control:focus {
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 0.2rem rgba(178, 148, 91, 0.25);
-        }
-        .btn-login {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #2a3a5a 100%);
+
+        .alert {
             border: none;
-            color: white;
-            padding: 12px;
-            border-radius: 5px;
-            width: 100%;
+            border-radius: 0.75rem;
+            font-size: 0.9rem;
+            padding: 0.8rem 2.4rem 0.8rem 0.9rem;
+        }
+
+        .alert-danger {
+            background: #fdecea;
+            color: var(--danger);
+        }
+
+        .alert-success {
+            background: #e8f6ee;
+            color: var(--ok);
+        }
+
+        .field {
+            margin-bottom: 1rem;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-size: 0.84rem;
             font-weight: 600;
-            transition: all 0.3s;
+            color: var(--ink-soft);
         }
+
+        .control {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .control > i:first-child {
+            position: absolute;
+            left: 0.9rem;
+            color: #7f9b8d;
+            font-size: 1.05rem;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .control .form-control {
+            width: 100%;
+            min-height: 3rem;
+            border: 1.5px solid var(--line);
+            border-radius: 0.8rem;
+            padding: 0.7rem 2.75rem 0.7rem 2.7rem;
+            font-size: 1rem;
+            background: #f5faf7;
+            color: var(--ink);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .control .form-control::placeholder {
+            color: #8fa898;
+        }
+
+        .control .form-control:hover {
+            border-color: #bdd4c6;
+        }
+
+        .control .form-control:focus {
+            outline: none;
+            border-color: var(--gold-soft);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(63, 143, 107, 0.18);
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 0.35rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2.4rem;
+            height: 2.4rem;
+            border: none;
+            border-radius: 0.65rem;
+            background: transparent;
+            color: #6f8c7e;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .toggle-password:hover,
+        .toggle-password:focus-visible {
+            color: var(--ink);
+            background: rgba(63, 143, 107, 0.1);
+            outline: none;
+        }
+
+        .form-meta {
+            display: flex;
+            justify-content: flex-end;
+            margin: -0.25rem 0 1.1rem;
+        }
+
+        .form-meta a,
+        .auth-foot a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 650;
+            font-size: 0.9rem;
+        }
+
+        .form-meta a:hover,
+        .auth-foot a:hover {
+            color: #2f7355;
+            text-decoration: underline;
+            text-underline-offset: 0.15em;
+        }
+
+        .btn-login {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            min-height: 3.05rem;
+            border: none;
+            border-radius: 0.85rem;
+            background: linear-gradient(135deg, #3f8f6b 0%, #57a882 100%);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.01em;
+            box-shadow: 0 10px 22px rgba(63, 143, 107, 0.22);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            background: linear-gradient(135deg, #2a3a5a 0%, var(--primary-color) 100%);
+            color: #fff;
+            transform: translateY(-1px);
+            background: linear-gradient(135deg, #57a882 0%, #3f8f6b 100%);
+            box-shadow: 0 14px 28px rgba(63, 143, 107, 0.28);
         }
-        .input-group-text {
-            background: #f8f9fa;
-            border-right: none;
+
+        .btn-login:active {
+            transform: translateY(0);
         }
-        .form-control.with-icon {
-            border-left: none;
+
+        .btn-login:focus-visible {
+            outline: 3px solid rgba(107, 184, 144, 0.5);
+            outline-offset: 2px;
+        }
+
+        .auth-foot {
+            text-align: center;
+            margin-top: 1.15rem;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .login-note {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.78rem;
+            padding: 0 0.35rem;
+        }
+
+        @keyframes rise-in {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (min-width: 640px) {
+            body {
+                padding:
+                    max(1.5rem, var(--safe-top))
+                    max(1.5rem, var(--safe-right))
+                    max(1.5rem, var(--safe-bottom))
+                    max(1.5rem, var(--safe-left));
+            }
+
+            .login-shell {
+                max-width: 28.5rem;
+            }
+
+            .login-intro {
+                padding: 1.75rem 1.75rem 0.5rem;
+            }
+
+            .login-body {
+                padding: 1rem 1.75rem 1.75rem;
+            }
+        }
+
+        @media (min-width: 960px) {
+            body {
+                align-items: center;
+            }
+
+            .login-shell {
+                max-width: 56rem;
+                display: grid;
+                grid-template-columns: 1.05fr 1fr;
+                gap: 0;
+                background: #fff;
+                border: 1px solid rgba(63, 143, 107, 0.12);
+                border-radius: 1.35rem;
+                overflow: hidden;
+                box-shadow: var(--shadow);
+            }
+
+            .brand-panel {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 2rem;
+                min-height: 32rem;
+                background:
+                    radial-gradient(circle at 18% 18%, rgba(107, 184, 144, 0.28), transparent 42%),
+                    linear-gradient(155deg, #f2faf5 0%, #e5f4eb 55%, #dcefe4 100%);
+                color: var(--ink);
+                border-right: 1px solid rgba(63, 143, 107, 0.1);
+            }
+
+            .brand-strip {
+                padding: 0;
+            }
+
+            .brand-panel .panel-copy h2 {
+                margin: 2rem 0 0.75rem;
+                font-family: "Fraunces", Georgia, serif;
+                font-size: 2rem;
+                line-height: 1.15;
+                font-weight: 700;
+                letter-spacing: -0.02em;
+                color: var(--ink);
+            }
+
+            .brand-panel .panel-copy p {
+                margin: 0;
+                max-width: 23rem;
+                color: var(--muted);
+                line-height: 1.55;
+                font-size: 0.95rem;
+            }
+
+            .brand-panel .spot-list {
+                list-style: none;
+                margin: 1.35rem 0 0;
+                padding: 0;
+                display: grid;
+                gap: 0.55rem;
+            }
+
+            .brand-panel .spot-list li {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.55rem;
+                font-size: 0.88rem;
+                color: var(--ink-soft);
+                line-height: 1.35;
+            }
+
+            .brand-panel .spot-list i {
+                color: var(--gold);
+                margin-top: 0.12rem;
+                flex-shrink: 0;
+            }
+
+            .brand-panel .panel-meta {
+                font-size: 0.82rem;
+                color: var(--muted);
+            }
+
+            .login-card {
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background: var(--paper);
+            }
+
+            .login-note {
+                display: none;
+            }
+
+            .mobile-brand {
+                display: none;
+            }
+        }
+
+        @media (max-width: 959.98px) {
+            .brand-panel {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .login-shell,
+            .btn-login,
+            .control .form-control {
+                animation: none !important;
+                transition: none !important;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-header">
-            <h3><i class="bi bi-shield-lock"></i> Admin Login</h3>
-            <p class="mb-0 mt-2" style="opacity: 0.9;">Bohol Island Tours</p>
-        </div>
-        <div class="login-body">
-            <?php if ($this->session->flashdata('error')): ?>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <?php echo $this->session->flashdata('error'); ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <div class="login-shell">
+        <aside class="brand-panel">
+            <div class="brand-strip">
+                <img src="<?php echo html_escape($logo_url); ?>" alt="">
+                <div class="brand-text">
+                    <span class="brand-name">Bohol Island Tours</span>
+                    <span class="brand-tag">Tours · Stays · Car rental</span>
                 </div>
-            <?php endif; ?>
-            
-            <?php if ($this->session->flashdata('success')): ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <?php echo $this->session->flashdata('success'); ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-            <?php endif; ?>
-            
-            <?php echo form_open('login', array('autocomplete' => 'off')); ?>
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-person"></i></span>
-                        <input type="text" class="form-control with-icon" id="username" name="username" autocomplete="off" value="" required autofocus>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                        <input type="password" class="form-control with-icon" id="password" name="password" autocomplete="current-password" value="" required>
-                    </div>
-                </div>
-                <div class="mb-3 text-end">
-                    <a href="<?php echo site_url('forgot-password'); ?>" style="color: var(--secondary-color); text-decoration: none; font-size: 0.9rem; font-weight: 600;">Forgot password?</a>
-                </div>
-                <button type="submit" class="btn btn-login">
-                    <i class="bi bi-box-arrow-in-right"></i> Login
-                </button>
-            <?php echo form_close(); ?>
-            <div style="text-align: center; margin-top: 18px; font-size: 0.9rem;">
-                Don't have an account? <a href="<?php echo site_url('register'); ?>" style="color: var(--secondary-color); text-decoration: none; font-weight: 600;">Create account</a>
+            </div>
+            <div class="panel-copy">
+                <h2>Discover Bohol with every booking</h2>
+                <p>Manage tour packages, room stays, and island transfers for travelers exploring Bohol’s best destinations.</p>
+                <ul class="spot-list">
+                    <li><i class="bi bi-geo-alt-fill" aria-hidden="true"></i><span>Chocolate Hills &amp; countryside highlights</span></li>
+                    <li><i class="bi bi-geo-alt-fill" aria-hidden="true"></i><span>Tarsier Sanctuary &amp; Loboc River cruise</span></li>
+                    <li><i class="bi bi-geo-alt-fill" aria-hidden="true"></i><span>Panglao beaches &amp; island hopping</span></li>
+                    <li><i class="bi bi-geo-alt-fill" aria-hidden="true"></i><span>Danao adventure &amp; Anda cave pools</span></li>
+                    <li><i class="bi bi-truck" aria-hidden="true"></i><span>Car, van &amp; coaster rentals with drivers</span></li>
+                </ul>
+            </div>
+            <div class="panel-meta">Helping guests experience Bohol, one trip at a time</div>
+        </aside>
+
+        <div class="mobile-brand brand-strip">
+            <img src="<?php echo html_escape($logo_url); ?>" alt="Bohol Island Tours">
+            <div class="brand-text">
+                <span class="brand-name">Bohol Island Tours</span>
+                <span class="brand-tag">Tours · Stays · Car rental</span>
             </div>
         </div>
+
+        <div class="login-card">
+            <div class="login-intro">
+                <h1>Admin login</h1>
+                <p>Enter your credentials to continue.</p>
+            </div>
+            <div class="login-body">
+                <?php if ($this->session->flashdata('error')): ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?php echo $this->session->flashdata('error'); ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($this->session->flashdata('success')): ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?php echo $this->session->flashdata('success'); ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php endif; ?>
+
+                <?php echo form_open('login', array('autocomplete' => 'off', 'class' => 'login-form')); ?>
+                    <div class="field">
+                        <label for="username">Username</label>
+                        <div class="control">
+                            <i class="bi bi-person" aria-hidden="true"></i>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="username"
+                                name="username"
+                                autocomplete="username"
+                                inputmode="text"
+                                enterkeyhint="next"
+                                placeholder="Your username"
+                                value=""
+                                required
+                                autofocus
+                            >
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <div class="control">
+                            <i class="bi bi-lock" aria-hidden="true"></i>
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="password"
+                                name="password"
+                                autocomplete="current-password"
+                                enterkeyhint="go"
+                                placeholder="Your password"
+                                value=""
+                                required
+                            >
+                            <button type="button" class="toggle-password" id="togglePassword" aria-label="Show password" aria-pressed="false">
+                                <i class="bi bi-eye" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-meta">
+                        <a href="<?php echo site_url('forgot-password'); ?>">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-login">
+                        <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i>
+                        <span>Sign in</span>
+                    </button>
+                <?php echo form_close(); ?>
+
+                <div class="auth-foot">
+                    Don't have an account?
+                    <a href="<?php echo site_url('register'); ?>">Create account</a>
+                </div>
+            </div>
+        </div>
+
+        <p class="login-note">Secure staff access only</p>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (function () {
+            var toggle = document.getElementById('togglePassword');
+            var password = document.getElementById('password');
+            if (!toggle || !password) return;
+
+            toggle.addEventListener('click', function () {
+                var show = password.getAttribute('type') === 'password';
+                password.setAttribute('type', show ? 'text' : 'password');
+                toggle.setAttribute('aria-pressed', show ? 'true' : 'false');
+                toggle.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+                toggle.innerHTML = show
+                    ? '<i class="bi bi-eye-slash" aria-hidden="true"></i>'
+                    : '<i class="bi bi-eye" aria-hidden="true"></i>';
+            });
+        })();
+    </script>
 </body>
 </html>
-
