@@ -5,62 +5,6 @@
     </div>
 <?php endif; ?>
 
-<style>
-    .analytics-chart-wrap {
-        position: relative;
-        width: 100%;
-    }
-
-    .analytics-chart-wrap.trend {
-        height: 260px;
-    }
-
-    .analytics-chart-wrap.compact {
-        height: 240px;
-    }
-
-    .analytics-chart-wrap.wide {
-        height: 300px;
-    }
-
-    .analytics-chart-wrap.forecast {
-        height: 280px;
-    }
-</style>
-
-<div class="nk-block">
-    <div class="row g-gs">
-        <div class="col-md-3">
-            <div class="stat-card">
-                <div class="stat-card-icon"><i class="bi bi-calendar-check"></i></div>
-                <div class="stat-card-value"><?php echo $total_bookings; ?></div>
-                <div class="stat-card-label">Total Bookings</div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="stat-card warning">
-                <div class="stat-card-icon"><i class="bi bi-clock-history"></i></div>
-                <div class="stat-card-value"><?php echo $pending_bookings; ?></div>
-                <div class="stat-card-label">Pending</div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="stat-card secondary">
-                <div class="stat-card-icon"><i class="bi bi-check-circle"></i></div>
-                <div class="stat-card-value"><?php echo $confirmed_bookings; ?></div>
-                <div class="stat-card-label">Confirmed</div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="stat-card info">
-                <div class="stat-card-icon"><i class="bi bi-currency-dollar"></i></div>
-                <div class="stat-card-value">₱<?php echo number_format($total_revenue, 2); ?></div>
-                <div class="stat-card-label">Total Revenue</div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <?php
 $status_totals = array('pending' => 0, 'confirmed' => 0, 'cancelled' => 0, 'completed' => 0);
 if (!empty($today_status_analytics) && is_array($today_status_analytics)) {
@@ -74,13 +18,89 @@ if (!empty($today_status_analytics) && is_array($today_status_analytics)) {
 $inventory_summary_today = isset($inventory_summary_today) && is_array($inventory_summary_today)
     ? $inventory_summary_today
     : array('total_units' => 0, 'booked_units' => 0, 'utilization_rate' => 0);
+
+$service_totals = isset($service_totals) && is_array($service_totals)
+    ? $service_totals
+    : array('tours' => 0, 'stays' => 0, 'rentals' => 0);
+$open_inquiries = isset($open_inquiries) ? (int)$open_inquiries : 0;
 ?>
+
+<div class="dashboard-hero">
+    <h1><i class="bi bi-compass me-2"></i>Tourism Booking Engine</h1>
+    <p>Live analytics for Bohol tours, stays, and car/van rentals — bookings, inventory utilization, and guest demand.</p>
+    <div class="hero-pills">
+        <span><i class="bi bi-map"></i> Tours &amp; Packages</span>
+        <span><i class="bi bi-building"></i> Stays</span>
+        <span><i class="bi bi-truck"></i> Car / Van Rental</span>
+    </div>
+</div>
+
+<div class="nk-block">
+    <div class="row g-3">
+        <div class="col-6 col-lg-3">
+            <div class="stat-card">
+                <div class="stat-card-icon"><i class="bi bi-calendar-check"></i></div>
+                <div class="stat-card-value"><?php echo $total_bookings; ?></div>
+                <div class="stat-card-label">Total Bookings</div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="stat-card warning">
+                <div class="stat-card-icon"><i class="bi bi-clock-history"></i></div>
+                <div class="stat-card-value"><?php echo $pending_bookings; ?></div>
+                <div class="stat-card-label">Pending</div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="stat-card secondary">
+                <div class="stat-card-icon"><i class="bi bi-check-circle"></i></div>
+                <div class="stat-card-value"><?php echo $confirmed_bookings; ?></div>
+                <div class="stat-card-label">Confirmed</div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="stat-card info">
+                <div class="stat-card-icon"><i class="bi bi-currency-dollar"></i></div>
+                <div class="stat-card-value">₱<?php echo number_format($total_revenue, 2); ?></div>
+                <div class="stat-card-label">Confirmed Revenue</div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="stat-card tour">
+                <div class="stat-card-icon"><i class="bi bi-map"></i></div>
+                <div class="stat-card-value"><?php echo (int)$service_totals['tours']; ?></div>
+                <div class="stat-card-label">Tour Bookings</div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="stat-card secondary">
+                <div class="stat-card-icon"><i class="bi bi-building"></i></div>
+                <div class="stat-card-value"><?php echo (int)$service_totals['stays']; ?></div>
+                <div class="stat-card-label">Stay Bookings</div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="stat-card fleet">
+                <div class="stat-card-icon"><i class="bi bi-truck"></i></div>
+                <div class="stat-card-value"><?php echo (int)$service_totals['rentals']; ?></div>
+                <div class="stat-card-label">Car / Van Rentals</div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="stat-card warning">
+                <div class="stat-card-icon"><i class="bi bi-envelope-open"></i></div>
+                <div class="stat-card-value"><?php echo $open_inquiries; ?></div>
+                <div class="stat-card-label">Open Inquiries</div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="nk-block">
     <div class="card card-bordered mb-4">
         <div class="card-body">
             <div class="row g-3 align-items-end">
-                <div class="col-md-3">
+                <div class="col-12 col-sm-6 col-lg-3">
                     <label class="form-label">Analytics Range</label>
                     <select class="form-select" id="analyticsRange">
                         <option value="7d" <?php echo (isset($analytics_range['selected']) && $analytics_range['selected'] === '7d') ? 'selected' : ''; ?>>Last 7 Days</option>
@@ -90,34 +110,34 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                         <option value="custom" <?php echo (isset($analytics_range['selected']) && $analytics_range['selected'] === 'custom') ? 'selected' : ''; ?>>Custom</option>
                     </select>
                 </div>
-                <div class="col-md-3" id="customStartWrap" style="display: <?php echo (isset($analytics_range['selected']) && $analytics_range['selected'] === 'custom') ? 'block' : 'none'; ?>;">
+                <div class="col-12 col-sm-6 col-lg-3" id="customStartWrap" style="display: <?php echo (isset($analytics_range['selected']) && $analytics_range['selected'] === 'custom') ? 'block' : 'none'; ?>;">
                     <label class="form-label">Start Date</label>
                     <input type="date" class="form-control" id="analyticsStartDate" value="<?php echo isset($analytics_range['start_date']) ? $analytics_range['start_date'] : ''; ?>">
                 </div>
-                <div class="col-md-3" id="customEndWrap" style="display: <?php echo (isset($analytics_range['selected']) && $analytics_range['selected'] === 'custom') ? 'block' : 'none'; ?>;">
+                <div class="col-12 col-sm-6 col-lg-3" id="customEndWrap" style="display: <?php echo (isset($analytics_range['selected']) && $analytics_range['selected'] === 'custom') ? 'block' : 'none'; ?>;">
                     <label class="form-label">End Date</label>
                     <input type="date" class="form-control" id="analyticsEndDate" value="<?php echo isset($analytics_range['end_date']) ? $analytics_range['end_date'] : ''; ?>">
                 </div>
-                <div class="col-md-2">
+                <div class="col-6 col-lg-2">
                     <button type="button" class="btn btn-primary w-100" id="applyAnalyticsRange">
-                        <i class="bi bi-funnel"></i> Apply Range
+                        <i class="bi bi-funnel"></i> Apply
                     </button>
                 </div>
-                <div class="col-md-2">
+                <div class="col-6 col-lg-2">
                     <button type="button" class="btn btn-outline-secondary w-100" id="quickLast30Days">
-                        <i class="bi bi-arrow-counterclockwise"></i> Use Last 30 Days
+                        <i class="bi bi-arrow-counterclockwise"></i> 30 Days
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row g-gs mb-4">
-        <div class="col-md-4">
+    <div class="row g-3 mb-4">
+        <div class="col-12 col-lg-4">
             <div class="card card-bordered h-100">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span><i class="bi bi-bar-chart-line"></i> Sales Trend</span>
-                    <div class="d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
                         <select class="form-select form-select-sm" id="salesTrendMode" style="width: auto;">
                             <option value="daily" selected>Daily</option>
                             <option value="avg">7d Avg</option>
@@ -137,29 +157,30 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-12 col-lg-4">
             <div class="card card-bordered h-100">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <span><i class="bi bi-pie-chart"></i> Booking Status Mix</span>
+                    <span><i class="bi bi-pie-chart"></i> Service Mix</span>
                     <div class="btn-group btn-group-sm">
-                        <button class="btn btn-outline-secondary chart-export-btn" data-chart="statusMixChart" data-format="csv">CSV</button>
-                        <button class="btn btn-outline-secondary chart-export-btn" data-chart="statusMixChart" data-format="png">PNG</button>
+                        <button class="btn btn-outline-secondary chart-export-btn" data-chart="serviceMixChart" data-format="csv">CSV</button>
+                        <button class="btn btn-outline-secondary chart-export-btn" data-chart="serviceMixChart" data-format="png">PNG</button>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="analytics-chart-wrap compact">
-                        <canvas id="statusMixChart"></canvas>
+                        <canvas id="serviceMixChart"></canvas>
                     </div>
-                    <small class="text-muted d-none" id="statusMixHint">No booking status data in the selected date range.</small>
+                    <div class="service-mix-list mt-3" id="serviceMixList"></div>
+                    <small class="text-muted d-none" id="serviceMixHint">No tour, stay, or rental sales in this range.</small>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-12 col-lg-4">
             <div class="card card-bordered h-100">
-                <div class="card-header"><i class="bi bi-door-open"></i> Inventory Snapshot (Today)</div>
+                <div class="card-header"><i class="bi bi-box-seam"></i> Inventory Snapshot (Today)</div>
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="text-muted">Total Room Units</span>
+                        <span class="text-muted">Sellable Units</span>
                         <strong id="invTotalUnits"><?php echo (int)$inventory_summary_today['total_units']; ?></strong>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-2">
@@ -167,7 +188,7 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                         <strong id="invBookedUnits"><?php echo (int)$inventory_summary_today['booked_units']; ?></strong>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="text-muted">Utilization Rate</span>
+                        <span class="text-muted">Utilization</span>
                         <strong id="invUtilizationText"><?php echo number_format((float)$inventory_summary_today['utilization_rate'], 1); ?>%</strong>
                     </div>
                     <div class="progress" style="height: 8px;">
@@ -189,9 +210,26 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
         </div>
     </div>
 
-    <div class="row g-gs">
-        <div class="col-md-8">
-            <div class="card card-bordered">
+    <div class="row g-3 mb-4">
+        <div class="col-12 col-lg-4">
+            <div class="card card-bordered h-100">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span><i class="bi bi-kanban"></i> Booking Status Mix</span>
+                    <div class="btn-group btn-group-sm">
+                        <button class="btn btn-outline-secondary chart-export-btn" data-chart="statusMixChart" data-format="csv">CSV</button>
+                        <button class="btn btn-outline-secondary chart-export-btn" data-chart="statusMixChart" data-format="png">PNG</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="analytics-chart-wrap compact">
+                        <canvas id="statusMixChart"></canvas>
+                    </div>
+                    <small class="text-muted d-none" id="statusMixHint">No booking status data in the selected date range.</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-8">
+            <div class="card card-bordered h-100">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span><i class="bi bi-graph-up-arrow"></i> Booking Volume vs Revenue</span>
                     <div class="btn-group btn-group-sm">
@@ -207,10 +245,13 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+    </div>
+
+    <div class="row g-3">
+        <div class="col-12 col-lg-4">
             <div class="card card-bordered h-100">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <span><i class="bi bi-trophy"></i> Top Rooms by Revenue</span>
+                    <span><i class="bi bi-trophy"></i> Top Products by Revenue</span>
                     <div class="btn-group btn-group-sm">
                         <button class="btn btn-outline-secondary chart-export-btn" data-chart="topRoomsChart" data-format="csv">CSV</button>
                         <button class="btn btn-outline-secondary chart-export-btn" data-chart="topRoomsChart" data-format="png">PNG</button>
@@ -220,17 +261,14 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                     <div class="analytics-chart-wrap compact">
                         <canvas id="topRoomsChart"></canvas>
                     </div>
-                    <small class="text-muted d-none" id="topRoomsHint">No room sales data in the selected date range.</small>
+                    <small class="text-muted d-none" id="topRoomsHint">No product sales data in the selected date range.</small>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row g-gs mt-1">
-        <div class="col-12">
-            <div class="card card-bordered">
+        <div class="col-12 col-lg-8">
+            <div class="card card-bordered h-100">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <span><i class="bi bi-activity"></i> Occupancy Forecast (Next 30 Days)</span>
+                    <span><i class="bi bi-activity"></i> Utilization Forecast (Next 30 Days)</span>
                     <div class="btn-group btn-group-sm">
                         <button class="btn btn-outline-secondary chart-export-btn" data-chart="occupancyForecastChart" data-format="csv">CSV</button>
                         <button class="btn btn-outline-secondary chart-export-btn" data-chart="occupancyForecastChart" data-format="png">PNG</button>
@@ -247,8 +285,8 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
 </div>
 
 <div class="nk-block">
-    <div class="row g-gs">
-        <div class="col-md-6">
+    <div class="row g-3">
+        <div class="col-12 col-lg-6">
             <div class="card card-bordered">
                 <div class="card-header">
                     <i class="bi bi-calendar-event"></i> Booking Calendar
@@ -257,23 +295,23 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                     <div id="booking-calendar"></div>
                     <div class="mt-3">
                         <small class="text-muted">
-                            <i class="bi bi-info-circle"></i> Hover over calendar days to see room availability. Click on bookings to view details.
+                            <i class="bi bi-info-circle"></i> Hover calendar days for inventory. Click a booking to open details.
                         </small>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-12 col-lg-6">
             <div class="card card-bordered mb-4">
                 <div class="card-header">
-                    <i class="bi bi-door-open"></i> Room Availability (Today)
+                    <i class="bi bi-box-seam"></i> Inventory Availability (Today)
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-sm table-hover">
+                        <table class="table table-sm table-hover no-datatables">
                             <thead>
                                 <tr>
-                                    <th>Room</th>
+                                    <th>Product</th>
                                     <th>Available</th>
                                     <th>Booked</th>
                                     <th>Remaining</th>
@@ -299,7 +337,7 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                                     <?php endforeach; ?>
                                 <?php else: ?>
                                     <tr>
-                                        <td colspan="4" class="text-center text-muted">No rooms available</td>
+                                        <td colspan="4" class="text-center text-muted">No inventory available</td>
                                     </tr>
                                 <?php endif; ?>
                             </tbody>
@@ -313,16 +351,16 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover no-datatables">
                             <thead>
                                 <tr>
                                     <th>Booking ID</th>
-                                    <th>Guest Name</th>
-                                    <th>Earliest Check-In</th>
-                                    <th>Latest Check-Out</th>
+                                    <th>Guest</th>
+                                    <th>Check-In</th>
+                                    <th>Check-Out</th>
                                     <th>Status</th>
                                     <th>Amount</th>
-                                    <th>Actions</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -345,7 +383,7 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                                             <td>₱<?php echo number_format($booking->total_amount, 2); ?></td>
                                             <td>
                                                 <a href="<?php echo base_url('bookings/' . $booking->id); ?>" class="btn btn-sm btn-primary">
-                                                    <i class="bi bi-eye"></i> View
+                                                    <i class="bi bi-eye"></i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -380,6 +418,17 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                 }
             }
 
+            function syncChartTheme() {
+                if (typeof Chart === 'undefined') {
+                    return;
+                }
+                var dark = document.body.classList.contains('dark-mode') || document.documentElement.classList.contains('dark-mode');
+                Chart.defaults.color = dark ? '#c8d6e3' : '#334155';
+                Chart.defaults.borderColor = dark ? '#243746' : '#dbe4ee';
+            }
+
+            syncChartTheme();
+
             var analyticsEndpoint = '<?php echo base_url("dashboard/analytics_data"); ?>';
             var currentRange = <?php echo json_encode(isset($analytics_range) ? $analytics_range : array('selected' => '30d', 'start_date' => date('Y-m-d', strtotime('-29 days')), 'end_date' => date('Y-m-d'))); ?>;
             var latestPayload = {
@@ -389,7 +438,8 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                 today_status_analytics: <?php echo json_encode(isset($today_status_analytics) ? $today_status_analytics : array()); ?>,
                 top_rooms: <?php echo json_encode(isset($top_rooms_analytics) ? $top_rooms_analytics : array()); ?>,
                 inventory_summary: <?php echo json_encode(isset($inventory_summary_today) ? $inventory_summary_today : array('total_units' => 0, 'booked_units' => 0, 'utilization_rate' => 0)); ?>,
-                occupancy_forecast: <?php echo json_encode(isset($occupancy_forecast) ? $occupancy_forecast : array()); ?>
+                occupancy_forecast: <?php echo json_encode(isset($occupancy_forecast) ? $occupancy_forecast : array()); ?>,
+                service_mix: <?php echo json_encode(isset($service_mix_analytics) ? $service_mix_analytics : array()); ?>
             };
 
             var chartInstances = {};
@@ -401,6 +451,28 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
             var applyButton = document.getElementById('applyAnalyticsRange');
             var quickLast30DaysButton = document.getElementById('quickLast30Days');
             var salesTrendModeSelect = document.getElementById('salesTrendMode');
+
+            function refreshChartTheme() {
+                syncChartTheme();
+                Object.keys(chartInstances).forEach(function(id) {
+                    if (chartInstances[id]) {
+                        chartInstances[id].update('none');
+                    }
+                });
+            }
+
+            var darkModeToggleEl = document.getElementById('darkModeToggle');
+            if (darkModeToggleEl) {
+                darkModeToggleEl.addEventListener('change', function() {
+                    setTimeout(refreshChartTheme, 50);
+                });
+            }
+            var themeChipEl = document.getElementById('themeChip');
+            if (themeChipEl) {
+                themeChipEl.addEventListener('click', function() {
+                    setTimeout(refreshChartTheme, 50);
+                });
+            }
 
             function formatCurrency(value) {
                 return 'PHP ' + Number(value || 0).toLocaleString();
@@ -515,8 +587,8 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                         type: 'bar',
                         label: 'Revenue',
                         data: revenue,
-                        borderColor: '#06b6d4',
-                        backgroundColor: 'rgba(6, 182, 212, 0.6)',
+                        borderColor: '#14b8a6',
+                        backgroundColor: 'rgba(20, 184, 166, 0.65)',
                         borderWidth: 1,
                         borderRadius: 4,
                         maxBarThickness: 26
@@ -528,8 +600,8 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                         type: 'line',
                         label: '7-day Avg',
                         data: revenueAvg7,
-                        borderColor: '#0f766e',
-                        backgroundColor: 'rgba(15, 118, 110, 0.15)',
+                        borderColor: '#0e3a5d',
+                        backgroundColor: 'rgba(14, 58, 93, 0.15)',
                         borderWidth: 2,
                         tension: 0.25,
                         pointRadius: 2,
@@ -568,6 +640,50 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                     salesTrendHint.classList.toggle('d-none', !salesNoRevenue);
                 }
 
+                var serviceMix = payload.service_mix || [];
+                var serviceLabels = serviceMix.map(function(item) { return item.label; });
+                var serviceBookings = serviceMix.map(function(item) { return Number(item.bookings_count || 0); });
+                var serviceRevenue = serviceMix.map(function(item) { return Number(item.revenue || 0); });
+                var serviceTotalBookings = serviceBookings.reduce(function(total, value) { return total + value; }, 0);
+
+                upsertChart('serviceMixChart', {
+                    type: 'doughnut',
+                    data: {
+                        labels: serviceLabels,
+                        datasets: [{
+                            label: 'Bookings',
+                            data: serviceBookings,
+                            backgroundColor: ['rgba(14, 165, 233, 0.85)', 'rgba(20, 184, 166, 0.85)', 'rgba(255, 107, 87, 0.85)'],
+                            borderColor: ['#0ea5e9', '#14b8a6', '#ff6b57'],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: { boxWidth: 12, padding: 12 }
+                            }
+                        }
+                    }
+                });
+
+                var serviceMixList = document.getElementById('serviceMixList');
+                if (serviceMixList) {
+                    serviceMixList.innerHTML = serviceMix.map(function(item) {
+                        return '<div class="service-mix-item"><div><strong>' + item.label + '</strong><div class="service-mix-meta">' +
+                            Number(item.bookings_count || 0) + ' bookings</div></div><strong>' + formatCurrencyCompact(item.revenue || 0) + '</strong></div>';
+                    }).join('');
+                }
+
+                var serviceMixHint = document.getElementById('serviceMixHint');
+                if (serviceMixHint) {
+                    serviceMixHint.classList.toggle('d-none', serviceTotalBookings > 0);
+                }
+
                 upsertChart('statusMixChart', {
                     type: 'bar',
                     data: {
@@ -575,8 +691,8 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                         datasets: [{
                             label: 'Bookings',
                             data: statusValues,
-                            backgroundColor: ['rgba(245, 158, 11, 0.75)', 'rgba(16, 185, 129, 0.75)', 'rgba(239, 68, 68, 0.75)', 'rgba(101, 118, 255, 0.75)'],
-                            borderColor: ['#f59e0b', '#10b981', '#ef4444', '#6576ff'],
+                            backgroundColor: ['rgba(245, 158, 11, 0.75)', 'rgba(16, 185, 129, 0.75)', 'rgba(255, 107, 87, 0.75)', 'rgba(14, 58, 93, 0.75)'],
+                            borderColor: ['#f59e0b', '#10b981', '#ff6b57', '#0e3a5d'],
                             borderWidth: 1,
                             borderRadius: 6
                         }]
@@ -615,8 +731,8 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                                 type: 'bar',
                                 label: 'Bookings',
                                 data: bookings,
-                                backgroundColor: 'rgba(101, 118, 255, 0.55)',
-                                borderColor: '#6576ff',
+                                backgroundColor: 'rgba(14, 58, 93, 0.55)',
+                                borderColor: '#0e3a5d',
                                 borderWidth: 1,
                                 yAxisID: 'yBookings'
                             },
@@ -624,8 +740,8 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                                 type: 'line',
                                 label: 'Revenue',
                                 data: revenue,
-                                borderColor: '#10b981',
-                                backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                                borderColor: '#14b8a6',
+                                backgroundColor: 'rgba(20, 184, 166, 0.12)',
                                 tension: 0.3,
                                 yAxisID: 'yRevenue'
                             }
@@ -678,8 +794,8 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                         datasets: [{
                             label: 'Revenue',
                             data: topRoomRevenue,
-                            backgroundColor: 'rgba(239, 68, 68, 0.65)',
-                            borderColor: '#ef4444',
+                            backgroundColor: 'rgba(255, 107, 87, 0.7)',
+                            borderColor: '#ff6b57',
                             borderWidth: 1
                         }]
                     },
@@ -713,10 +829,10 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                     data: {
                         labels: forecastLabels,
                         datasets: [{
-                            label: 'Occupancy %',
+                            label: 'Utilization %',
                             data: forecastRates,
-                            borderColor: '#f59e0b',
-                            backgroundColor: 'rgba(245, 158, 11, 0.15)',
+                            borderColor: '#0ea5e9',
+                            backgroundColor: 'rgba(14, 165, 233, 0.15)',
                             borderWidth: 2,
                             tension: 0.25,
                             fill: true
@@ -778,7 +894,7 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                     })
                     .finally(function() {
                         applyButton.disabled = false;
-                        applyButton.innerHTML = '<i class="bi bi-funnel"></i> Apply Range';
+                        applyButton.innerHTML = '<i class="bi bi-funnel"></i> Apply';
                     });
             }
 
@@ -818,6 +934,11 @@ $inventory_summary_today = isset($inventory_summary_today) && is_array($inventor
                     var statusMap = latestPayload.status_analytics || {};
                     [['pending', 'Pending'], ['confirmed', 'Confirmed'], ['cancelled', 'Cancelled'], ['completed', 'Completed']].forEach(function(item) {
                         rows.push([item[1], statusMap[item[0]] ? Number(statusMap[item[0]].bookings_count || 0) : 0]);
+                    });
+                } else if (chartId === 'serviceMixChart') {
+                    headers = ['Service', 'Bookings', 'Revenue'];
+                    (latestPayload.service_mix || []).forEach(function(item) {
+                        rows.push([item.label || '-', Number(item.bookings_count || 0), Number(item.revenue || 0)]);
                     });
                 } else if (chartId === 'topRoomsChart') {
                     headers = ['Room', 'Sold Units', 'Revenue'];

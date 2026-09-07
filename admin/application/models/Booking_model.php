@@ -881,5 +881,80 @@ class Booking_model extends CI_Model {
         $this->db->order_by('total_revenue', 'DESC');
         return $this->db->get()->result();
     }
+
+    /**
+     * Classify inventory / booking product into tourism service family.
+     * Keywords allow rooms catalog to hold tours, stays, and fleet rentals.
+     */
+    public function classify_service_category($room_name = '', $room_type = '') {
+        $haystack = strtolower(trim($room_name . ' ' . $room_type));
+
+        $rental_keywords = array('car', 'van', 'rental', 'transfer', 'coaster', 'bus', 'vehicle', 'vios', 'hiace', 'grandia', 'fleet', 'driver');
+        foreach ($rental_keywords as $keyword) {
+            if (strpos($haystack, $keyword) !== false) {
+                return 'rentals';
+            }
+        }
+
+        $tour_keywords = array('tour', 'package', 'countryside', 'hopping', 'adventure', 'excursion', 'dolphin');
+        foreach ($tour_keywords as $keyword) {
+            if (strpos($haystack, $keyword) !== false) {
+                return 'tours';
+            }
+        }
+
+        return 'stays';
+    }
+
+    /**
+     * Revenue / booking mix across Tours, Stays, and Car/Van Rentals.
+     */
+    public function get_service_mix_analytics($start_date, $end_date) {
+        $start_date = date('Y-m-d', strtotime($start_date));
+        $end_date = date('Y-m-d', strtotime($end_date));
+
+        $mix = array(
+            'tours' => array('key' => 'tours', 'label' => 'Tours & Packages', 'bookings_count' => 0, 'revenue' => 0),
+            'stays' => array('key' => 'stays', 'label' => 'Stays / Rooms', 'bookings_count' => 0, 'revenue' => 0),
+            'rentals' => array('key' => 'rentals', 'label' => 'Car / Van Rentals', 'bookings_count' => 0, 'revenue' => 0)
+        );
+
+        if ($this->db->table_exists('booking_items')) {
+            $this->db->select('rooms.room_name, rooms.room_type', FALSE);
+            $this->db->select('COUNT(booking_items.id) as bookings_count', FALSE);
+            $this->db->select('COALESCE(SUM(booking_items.subtotal), 0) as revenue', FALSE);
+            $this->db->from('booking_items');
+            $this->db->join('bookings', 'bookings.id = booking_items.booking_id', 'inner');
+            $this->db->join('rooms', 'rooms.id = booking_items.room_id', 'left');
+            $this->db->where('bookings.status !=', 'cancelled');
+            $this->db->where('booking_items.status !=', 'cancelled');
+            $this->db->where('DATE(booking_items.created_at) >=', $start_date);
+            $this->db->where('DATE(booking_items.created_at) <=', $end_date);
+            $this->db->group_by('rooms.id, rooms.room_name, rooms.room_type');
+            $rows = $this->db->get()->result();
+        } else {
+            $this->db->select('rooms.room_name, rooms.room_type', FALSE);
+            $this->db->select('COUNT(bookings.id) as bookings_count', FALSE);
+            $this->db->select('COALESCE(SUM(bookings.total_amount), 0) as revenue', FALSE);
+            $this->db->from('bookings');
+            $this->db->join('rooms', 'rooms.id = bookings.room_id', 'left');
+            $this->db->where('bookings.status !=', 'cancelled');
+            $this->db->where('DATE(bookings.created_at) >=', $start_date);
+            $this->db->where('DATE(bookings.created_at) <=', $end_date);
+            $this->db->group_by('rooms.id, rooms.room_name, rooms.room_type');
+            $rows = $this->db->get()->result();
+        }
+
+        foreach ($rows as $row) {
+            $category = $this->classify_service_category(
+                isset($row->room_name) ? $row->room_name : '',
+                isset($row->room_type) ? $row->room_type : ''
+            );
+            $mix[$category]['bookings_count'] += (int)$row->bookings_count;
+            $mix[$category]['revenue'] += (float)$row->revenue;
+        }
+
+        return array_values($mix);
+    }
 }
 

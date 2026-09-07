@@ -20,7 +20,7 @@ class Rooms extends Admin_Controller {
         // Require permission to view rooms
         $this->require_permission('view_rooms');
         
-        $data['title'] = 'Manage Rooms';
+        $data['title'] = 'Tour Packages Offer';
         $data['rooms'] = $this->Room_model->get_all_rooms();
         $data['can_add'] = $this->has_permission('add_rooms');
         $data['can_edit'] = $this->has_permission('edit_rooms');
@@ -35,15 +35,15 @@ class Rooms extends Admin_Controller {
         // Require permission to add rooms
         $this->require_permission('add_rooms');
         
-        $data['title'] = 'Add New Room';
+        $data['title'] = 'Add Tour Package';
         
         if ($this->input->post()) {
-            $this->form_validation->set_rules('room_name', 'Room Name', 'required');
-            $this->form_validation->set_rules('room_type', 'Room Type', 'required');
-            $this->form_validation->set_rules('room_code', 'Room Code', 'required');
-            $this->form_validation->set_rules('price', 'Price', 'required|numeric');
-            $this->form_validation->set_rules('capacity', 'Capacity', 'required|numeric');
-            $this->form_validation->set_rules('available_rooms', 'Available Rooms', 'required|numeric|greater_than[0]');
+            $this->form_validation->set_rules('room_name', 'Package Name', 'required');
+            $this->form_validation->set_rules('room_type', 'Category', 'required');
+            $this->form_validation->set_rules('room_code', 'Package Code', 'required');
+            $this->form_validation->set_rules('price', 'Starting Price', 'required|numeric');
+            $this->form_validation->set_rules('capacity', 'Max Guests', 'required|numeric');
+            $this->form_validation->set_rules('available_rooms', 'Daily Slots Available', 'required|numeric|greater_than[0]');
             
             if ($this->form_validation->run() == TRUE) {
                 $room_data = array(
@@ -59,10 +59,10 @@ class Rooms extends Admin_Controller {
                 );
                 
                 if ($this->Room_model->create_room($room_data)) {
-                    $this->session->set_flashdata('success', 'Room added successfully');
+                    $this->session->set_flashdata('success', 'Tour package added successfully');
                     redirect('rooms');
                 } else {
-                    $this->session->set_flashdata('error', 'Failed to add room');
+                    $this->session->set_flashdata('error', 'Failed to add tour package');
                 }
             }
         }
@@ -76,7 +76,7 @@ class Rooms extends Admin_Controller {
         // Require permission to edit rooms
         $this->require_permission('edit_rooms');
         
-        $data['title'] = 'Edit Room';
+        $data['title'] = 'Edit Tour Package';
         $data['room'] = $this->Room_model->get_room($id);
         $data['room_images'] = $this->Room_image_model->get_room_images($id);
         
@@ -86,12 +86,12 @@ class Rooms extends Admin_Controller {
         }
         
         if ($this->input->post()) {
-            $this->form_validation->set_rules('room_name', 'Room Name', 'required');
-            $this->form_validation->set_rules('room_type', 'Room Type', 'required');
-            $this->form_validation->set_rules('room_code', 'Room Code', 'required');
-            $this->form_validation->set_rules('price', 'Price', 'required|numeric');
-            $this->form_validation->set_rules('capacity', 'Capacity', 'required|numeric');
-            $this->form_validation->set_rules('available_rooms', 'Available Rooms', 'required|numeric|greater_than[0]');
+            $this->form_validation->set_rules('room_name', 'Package Name', 'required');
+            $this->form_validation->set_rules('room_type', 'Category', 'required');
+            $this->form_validation->set_rules('room_code', 'Package Code', 'required');
+            $this->form_validation->set_rules('price', 'Starting Price', 'required|numeric');
+            $this->form_validation->set_rules('capacity', 'Max Guests', 'required|numeric');
+            $this->form_validation->set_rules('available_rooms', 'Daily Slots Available', 'required|numeric|greater_than[0]');
             
             if ($this->form_validation->run() == TRUE) {
                 $room_data = array(
@@ -107,10 +107,10 @@ class Rooms extends Admin_Controller {
                 );
                 
                 if ($this->Room_model->update_room($id, $room_data)) {
-                    $this->session->set_flashdata('success', 'Room updated successfully');
+                    $this->session->set_flashdata('success', 'Tour package updated successfully');
                     redirect('rooms');
                 } else {
-                    $this->session->set_flashdata('error', 'Failed to update room');
+                    $this->session->set_flashdata('error', 'Failed to update tour package');
                 }
             }
         }
@@ -131,9 +131,9 @@ class Rooms extends Admin_Controller {
         }
         
         if ($this->Room_model->delete_room($id)) {
-            $this->session->set_flashdata('success', 'Room deleted successfully');
+            $this->session->set_flashdata('success', 'Tour package deleted successfully');
         } else {
-            $this->session->set_flashdata('error', 'Failed to delete room');
+            $this->session->set_flashdata('error', 'Failed to delete tour package');
         }
         redirect('rooms');
     }
@@ -256,7 +256,7 @@ class Rooms extends Admin_Controller {
         // Require permission to view rooms
         $this->require_permission('view_rooms');
         
-        $data['title'] = 'Room Availability Calendar';
+        $data['title'] = 'Package Availability Calendar';
         $data['rooms'] = $this->Room_model->get_all_rooms();
         
         $this->load->view('admin/layout/header', $data);

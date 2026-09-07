@@ -2,9 +2,9 @@
     <div class="nk-block-head">
         <div class="nk-block-between">
             <div class="nk-block-head-content">
-                <h3 class="nk-block-title page-title"><i class="bi bi-calendar-check"></i> Room Availability Calendar</h3>
+                <h3 class="nk-block-title page-title"><i class="bi bi-calendar-check"></i> Package Availability Calendar</h3>
                 <div class="nk-block-des text-soft">
-                    <p>View room availability and bookings in calendar format</p>
+                    <p>View tour package availability and bookings in calendar format</p>
                 </div>
             </div>
             <div class="nk-block-head-content">
@@ -13,7 +13,7 @@
                         <ul class="nk-block-tools g-3">
                             <li>
                                 <a href="<?php echo base_url('rooms'); ?>" class="btn btn-outline-light">
-                                    <i class="bi bi-arrow-left"></i> <span>Back to Rooms</span>
+                                    <i class="bi bi-arrow-left"></i> <span>Back to Packages</span>
                                 </a>
                             </li>
                         </ul>
@@ -28,9 +28,9 @@
         <div class="card-inner">
             <div class="row g-3">
                 <div class="col-md-3">
-                    <label for="room-filter" class="form-label">Filter by Room</label>
+                    <label for="room-filter" class="form-label">Filter by Package</label>
                     <select id="room-filter" class="form-select">
-                        <option value="">All Rooms</option>
+                        <option value="">All Packages</option>
                         <?php foreach ($rooms as $room): ?>
                             <option value="<?php echo $room->id; ?>">
                                 <?php echo htmlspecialchars($room->room_name); ?> 
@@ -65,7 +65,7 @@
                 <div class="col-md-3">
                     <div class="d-flex align-items-center">
                         <span class="legend-badge legend-success me-2"></span>
-                        <span class="text-base">Available (All rooms free)</span>
+                        <span class="text-base">Available (All slots free)</span>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const content = `
             <div class="room-details-popover">
                 <div class="info-row">
-                    <span class="info-label"><i class="bi bi-building"></i> Room Name:</span>
+                    <span class="info-label"><i class="bi bi-map"></i> Package Name:</span>
                     <span class="info-value"><strong>${roomData.room_name}</strong></span>
                 </div>
                 <div class="info-row">
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="info-value">${roomData.room_type}</span>
                 </div>
                 <div class="info-row">
-                    <span class="info-label"><i class="bi bi-code-square"></i> Room Code:</span>
+                    <span class="info-label"><i class="bi bi-code-square"></i> Package Code:</span>
                     <span class="info-value"><code>${roomData.room_code || 'N/A'}</code></span>
                 </div>
                 <div class="info-row">
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 ${roomData.room_status && roomData.room_status !== 'active' ? `
                 <div class="info-row">
-                    <span class="info-label"><i class="bi bi-power"></i> Room Status:</span>
+                    <span class="info-label"><i class="bi bi-power"></i> Package Status:</span>
                     <span class="info-value">
                         <span class="badge bg-secondary">${roomData.room_status.charAt(0).toUpperCase() + roomData.room_status.slice(1)}</span>
                     </span>

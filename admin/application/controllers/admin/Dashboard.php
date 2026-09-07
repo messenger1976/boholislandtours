@@ -56,6 +56,21 @@ class Dashboard extends Admin_Controller {
         $data['top_rooms_analytics'] = $this->Booking_model->get_top_rooms_analytics_by_range($range_info['start_date'], $range_info['end_date'], 6);
         $data['inventory_summary_today'] = $this->Booking_model->get_inventory_summary_for_date(date('Y-m-d'));
         $data['occupancy_forecast'] = $this->Booking_model->get_occupancy_forecast(30, date('Y-m-d'));
+        $data['service_mix_analytics'] = $this->Booking_model->get_service_mix_analytics($range_info['start_date'], $range_info['end_date']);
+
+        $data['open_inquiries'] = 0;
+        if ($this->db->table_exists('inquiry')) {
+            $this->db->where_in('status', array('new', 'guest_replied'));
+            $data['open_inquiries'] = (int) $this->db->count_all_results('inquiry');
+        }
+
+        $service_totals = array('tours' => 0, 'stays' => 0, 'rentals' => 0);
+        foreach ($data['service_mix_analytics'] as $mix_row) {
+            if (isset($service_totals[$mix_row['key']])) {
+                $service_totals[$mix_row['key']] = (int) $mix_row['bookings_count'];
+            }
+        }
+        $data['service_totals'] = $service_totals;
         
         $this->load->view('admin/layout/header', $data);
         $this->load->view('admin/dashboard/index', $data);
@@ -111,6 +126,7 @@ class Dashboard extends Admin_Controller {
         $top_rooms = $this->Booking_model->get_top_rooms_analytics_by_range($range_info['start_date'], $range_info['end_date'], 6);
         $inventory_summary = $this->Booking_model->get_inventory_summary_for_date(date('Y-m-d'));
         $occupancy_forecast = $this->Booking_model->get_occupancy_forecast(30, date('Y-m-d'));
+        $service_mix = $this->Booking_model->get_service_mix_analytics($range_info['start_date'], $range_info['end_date']);
 
         $this->output->set_content_type('application/json');
         echo json_encode(array(
@@ -121,7 +137,8 @@ class Dashboard extends Admin_Controller {
             'today_status_analytics' => $today_status,
             'top_rooms' => $top_rooms,
             'inventory_summary' => $inventory_summary,
-            'occupancy_forecast' => $occupancy_forecast
+            'occupancy_forecast' => $occupancy_forecast,
+            'service_mix' => $service_mix
         ));
     }
 
