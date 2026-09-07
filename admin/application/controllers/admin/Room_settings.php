@@ -21,7 +21,7 @@ class Room_settings extends Admin_Controller {
         // Require permission to manage rooms
         $this->require_permission('manage_rooms');
         
-        $data['title'] = 'Room Settings';
+        $data['title'] = 'Package Settings';
         $data['settings'] = $this->Room_settings_model->get_all_settings();
         
         if ($this->input->post()) {

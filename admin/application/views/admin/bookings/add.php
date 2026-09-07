@@ -1,396 +1,465 @@
-<div class="content-card">
-    <!-- Header Section -->
-    <div class="booking-header-section mb-4 p-4 bg-gradient text-white rounded" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-        <div class="d-flex justify-content-between align-items-center">
-            <div>
-                <h4 class="mb-1"><i class="bi bi-plus-circle"></i> Add New Booking</h4>
-                <p class="mb-0 opacity-75">Create a new booking reservation</p>
+<style>
+    .booking-add-page .page-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.65rem;
+        width: 100%;
+    }
+
+    .booking-add-page .page-actions .btn {
+        width: 100%;
+    }
+
+    .booking-add-page .form-section-card {
+        margin-bottom: 1rem;
+    }
+
+    .booking-add-page .form-section-card .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        font-size: 0.95rem;
+    }
+
+    .booking-add-page .form-section-card .card-header .header-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .booking-add-page .package-row {
+        border: 1px solid var(--card-border, #dbe4ee);
+        border-radius: 0.85rem;
+        padding: 1rem;
+        background: var(--surface-2, #f3f7fa);
+        margin-bottom: 0.85rem;
+    }
+
+    .booking-add-page .package-row:last-child {
+        margin-bottom: 0;
+    }
+
+    .booking-add-page .package-row-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin-bottom: 0.85rem;
+    }
+
+    .booking-add-page .package-row-title {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--heading, #1e293b);
+        margin: 0;
+    }
+
+    .booking-add-page .summary-value {
+        min-height: 2.5rem;
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--card-border, #dbe4ee);
+        border-radius: 0.5rem;
+        background: var(--card-bg, #fff);
+        font-weight: 500;
+    }
+
+    .booking-add-page .summary-value.total-amount {
+        color: var(--success, #198754);
+        font-size: 1.15rem;
+        font-weight: 700;
+    }
+
+    .booking-add-page .sticky-actions {
+        position: sticky;
+        bottom: 0;
+        z-index: 20;
+        background: var(--card-bg, #fff);
+        border-top: 1px solid var(--card-border, #dbe4ee);
+        padding: 0.85rem 0;
+        margin-top: 0.5rem;
+    }
+
+    html.dark-mode .booking-add-page .package-row,
+    body.dark-mode .booking-add-page .package-row {
+        background: var(--surface-2, #0f172a);
+        border-color: var(--card-border, #334155);
+    }
+
+    html.dark-mode .booking-add-page .package-row-title,
+    body.dark-mode .booking-add-page .package-row-title {
+        color: var(--heading, #e2e8f0);
+    }
+
+    @media (min-width: 768px) {
+        .booking-add-page .page-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .booking-add-page .page-actions {
+            width: auto;
+            grid-template-columns: auto;
+        }
+
+        .booking-add-page .page-actions .btn {
+            width: auto;
+        }
+
+        .booking-add-page .sticky-actions {
+            position: static;
+            border-top: 0;
+            padding: 0;
+            background: transparent;
+        }
+
+        .booking-add-page .sticky-actions .action-row {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.65rem;
+        }
+
+        .booking-add-page .sticky-actions .btn {
+            width: auto;
+            min-width: 8.5rem;
+        }
+    }
+</style>
+
+<div class="nk-block booking-add-page">
+    <div class="nk-block-head">
+        <div class="page-head">
+            <div class="nk-block-head-content mb-3 mb-md-0">
+                <h3 class="nk-block-title page-title"><i class="bi bi-plus-circle"></i> Add New Booking</h3>
+                <div class="nk-block-des text-soft">
+                    <p class="mb-0">Create a new booking for a tour package or stay.</p>
+                </div>
             </div>
-            <a href="<?php echo base_url('bookings'); ?>" class="btn btn-light">
-                <i class="bi bi-arrow-left"></i> Back to List
-            </a>
+            <div class="page-actions">
+                <a href="<?php echo base_url('bookings'); ?>" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Back to List
+                </a>
+            </div>
         </div>
     </div>
-    
+
     <?php if (validation_errors()): ?>
-        <div class="alert alert-danger">
-            <?php echo validation_errors(); ?>
-        </div>
+        <div class="alert alert-danger"><?php echo validation_errors(); ?></div>
     <?php endif; ?>
-    
+
     <?php if ($this->session->flashdata('error')): ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <?php echo $this->session->flashdata('error'); ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     <?php endif; ?>
-    
-    <?php echo form_open('bookings/add', array('id' => 'booking-form')); ?>
-    
-    <!-- Guest Information - Inline Row -->
-    <div class="card mb-3 shadow-sm">
-        <div class="card-body">
-            <h6 class="card-title mb-3"><i class="bi bi-person-fill text-primary"></i> Guest Information</h6>
-            <div class="row g-3 mb-3">
-                <div class="col-md-12">
-                    <label for="customer_id" class="form-label small fw-bold">Select Existing Customer (Optional)</label>
-                    <select class="form-select" id="customer_id" name="customer_id">
-                        <option value="">-- Select a customer or enter manually --</option>
-                        <?php if (!empty($customers)): ?>
-                            <?php foreach ($customers as $customer): ?>
-                                <?php 
-                                $customer_name = trim($customer->first_name . ' ' . $customer->last_name);
-                                $customer_email = !empty($customer->email) ? $customer->email : '';
-                                $customer_phone = !empty($customer->phone) ? $customer->phone : '';
-                                $display_text = $customer_name;
-                                if ($customer_email) {
-                                    $display_text .= ' (' . $customer_email . ')';
-                                }
-                                ?>
-                                <option value="<?php echo $customer->id; ?>" 
-                                        data-name="<?php echo htmlspecialchars($customer_name); ?>"
-                                        data-email="<?php echo htmlspecialchars($customer_email); ?>"
-                                        data-phone="<?php echo htmlspecialchars($customer_phone); ?>"
-                                        data-address="<?php echo htmlspecialchars(isset($customer->address) ? $customer->address : ''); ?>"
-                                        data-city="<?php echo htmlspecialchars(isset($customer->city) ? $customer->city : ''); ?>"
-                                        data-province="<?php echo htmlspecialchars(isset($customer->province) ? $customer->province : ''); ?>"
-                                        data-country="<?php echo htmlspecialchars(isset($customer->country) ? $customer->country : ''); ?>"
-                                        data-zipcode="<?php echo htmlspecialchars(isset($customer->postal_code) ? $customer->postal_code : ''); ?>">
-                                    <?php echo htmlspecialchars($display_text); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </select>
-                    <small class="form-text text-muted">Selecting a customer will auto-fill the guest information below.</small>
-                </div>
+
+    <?php echo form_open('bookings/add', array('id' => 'booking-form', 'class' => 'booking-add-form')); ?>
+
+        <div class="card card-bordered form-section-card">
+            <div class="card-header">
+                <span class="header-title"><i class="bi bi-person"></i> Guest Information</span>
             </div>
-            <div class="row g-3">
-                <div class="col-md-4">
-                    <label for="guest_name" class="form-label small fw-bold">Full Name *</label>
-                    <input type="text" class="form-control" id="guest_name" name="guest_name" value="<?php echo set_value('guest_name'); ?>" required placeholder="Enter guest name">
-                </div>
-                <div class="col-md-4">
-                    <label for="guest_email" class="form-label small fw-bold">Email Address *</label>
-                    <input type="email" class="form-control" id="guest_email" name="guest_email" value="<?php echo set_value('guest_email'); ?>" required placeholder="guest@example.com">
-                </div>
-                <div class="col-md-4">
-                    <label for="guest_phone" class="form-label small fw-bold">Phone Number *</label>
-                    <input type="text" class="form-control" id="guest_phone" name="guest_phone" value="<?php echo set_value('guest_phone'); ?>" required placeholder="+63 XXX XXX XXXX">
-                </div>
-                <div class="col-md-12">
-                    <label for="guest_address" class="form-label small fw-bold">Address</label>
-                    <textarea class="form-control" id="guest_address" name="guest_address" rows="2" placeholder="Enter street address"><?php echo set_value('guest_address'); ?></textarea>
-                </div>
-                <div class="col-md-3">
-                    <label for="guest_city" class="form-label small fw-bold">City</label>
-                    <input type="text" class="form-control" id="guest_city" name="guest_city" value="<?php echo set_value('guest_city'); ?>" placeholder="Enter city">
-                </div>
-                <div class="col-md-3">
-                    <label for="guest_province" class="form-label small fw-bold">Province</label>
-                    <input type="text" class="form-control" id="guest_province" name="guest_province" value="<?php echo set_value('guest_province'); ?>" placeholder="Enter province">
-                </div>
-                <div class="col-md-3">
-                    <label for="guest_country" class="form-label small fw-bold">Country</label>
-                    <input type="text" class="form-control" id="guest_country" name="guest_country" value="<?php echo set_value('guest_country', 'Philippines'); ?>" placeholder="Enter country">
-                </div>
-                <div class="col-md-3">
-                    <label for="guest_zipcode" class="form-label small fw-bold">Zip Code</label>
-                    <input type="text" class="form-control" id="guest_zipcode" name="guest_zipcode" value="<?php echo set_value('guest_zipcode'); ?>" placeholder="Enter zip code">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label for="customer_id" class="form-label">Select Existing Customer (Optional)</label>
+                        <select class="form-select" id="customer_id" name="customer_id">
+                            <option value="">-- Select a customer or enter manually --</option>
+                            <?php if (!empty($customers)): ?>
+                                <?php foreach ($customers as $customer): ?>
+                                    <?php
+                                    $customer_name = trim($customer->first_name . ' ' . $customer->last_name);
+                                    $customer_email = !empty($customer->email) ? $customer->email : '';
+                                    $customer_phone = !empty($customer->phone) ? $customer->phone : '';
+                                    $display_text = $customer_name;
+                                    if ($customer_email) {
+                                        $display_text .= ' (' . $customer_email . ')';
+                                    }
+                                    ?>
+                                    <option value="<?php echo $customer->id; ?>"
+                                            data-name="<?php echo htmlspecialchars($customer_name); ?>"
+                                            data-email="<?php echo htmlspecialchars($customer_email); ?>"
+                                            data-phone="<?php echo htmlspecialchars($customer_phone); ?>"
+                                            data-address="<?php echo htmlspecialchars(isset($customer->address) ? $customer->address : ''); ?>"
+                                            data-city="<?php echo htmlspecialchars(isset($customer->city) ? $customer->city : ''); ?>"
+                                            data-province="<?php echo htmlspecialchars(isset($customer->province) ? $customer->province : ''); ?>"
+                                            data-country="<?php echo htmlspecialchars(isset($customer->country) ? $customer->country : ''); ?>"
+                                            data-zipcode="<?php echo htmlspecialchars(isset($customer->postal_code) ? $customer->postal_code : ''); ?>">
+                                        <?php echo htmlspecialchars($display_text); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </select>
+                        <small class="form-text text-muted">Selecting a customer auto-fills the guest fields below.</small>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <label for="guest_name" class="form-label">Full Name *</label>
+                        <input type="text" class="form-control" id="guest_name" name="guest_name" value="<?php echo set_value('guest_name'); ?>" required placeholder="Enter guest name">
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <label for="guest_email" class="form-label">Email Address *</label>
+                        <input type="email" class="form-control" id="guest_email" name="guest_email" value="<?php echo set_value('guest_email'); ?>" required placeholder="guest@example.com">
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <label for="guest_phone" class="form-label">Phone Number *</label>
+                        <input type="text" class="form-control" id="guest_phone" name="guest_phone" value="<?php echo set_value('guest_phone'); ?>" required placeholder="+63 XXX XXX XXXX">
+                    </div>
+                    <div class="col-12">
+                        <label for="guest_address" class="form-label">Address</label>
+                        <textarea class="form-control" id="guest_address" name="guest_address" rows="2" placeholder="Enter street address"><?php echo set_value('guest_address'); ?></textarea>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <label for="guest_city" class="form-label">City</label>
+                        <input type="text" class="form-control" id="guest_city" name="guest_city" value="<?php echo set_value('guest_city'); ?>" placeholder="City">
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <label for="guest_province" class="form-label">Province</label>
+                        <input type="text" class="form-control" id="guest_province" name="guest_province" value="<?php echo set_value('guest_province'); ?>" placeholder="Province">
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <label for="guest_country" class="form-label">Country</label>
+                        <input type="text" class="form-control" id="guest_country" name="guest_country" value="<?php echo set_value('guest_country', 'Philippines'); ?>" placeholder="Country">
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <label for="guest_zipcode" class="form-label">Zip Code</label>
+                        <input type="text" class="form-control" id="guest_zipcode" name="guest_zipcode" value="<?php echo set_value('guest_zipcode'); ?>" placeholder="Zip">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Multiple Room Selection Section -->
-    <div class="card mb-3 shadow-sm">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h6 class="card-title mb-0"><i class="bi bi-door-open text-info"></i> Room Selection</h6>
+
+        <div class="card card-bordered form-section-card">
+            <div class="card-header">
+                <span class="header-title"><i class="bi bi-map"></i> Package Selection</span>
                 <button type="button" class="btn btn-sm btn-outline-primary" id="add-room-btn">
-                    <i class="bi bi-plus-circle"></i> Add Room
+                    <i class="bi bi-plus-circle"></i> Add Package
                 </button>
             </div>
-            
-            <div id="rooms-container">
-                <!-- Room selection rows will be added here dynamically -->
-                <div class="room-row mb-3 p-3 border rounded" data-room-index="0">
-                    <div class="row g-3 align-items-end">
-                        <div class="col-md-3">
-                            <label class="form-label small fw-bold">Select Room *</label>
-                            <select class="form-select room-select" name="room_selections[0][room_id]" data-index="0" required>
-                                <option value="">-- Choose a room --</option>
-                                <?php foreach ($rooms as $room): ?>
-                                    <option value="<?php echo $room->id; ?>" data-price="<?php echo $room->price; ?>" data-name="<?php echo htmlspecialchars($room->room_name); ?>">
-                                        <?php echo htmlspecialchars($room->room_name . ' (' . $room->room_type . ') - ₱' . number_format($room->price, 2) . '/night'); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <label class="form-label small fw-bold">Check-In Date *</label>
-                            <input type="date" class="form-control room-checkin" name="room_selections[0][check_in]" data-index="0" required>
-                        </div>
-                        <div class="col-md-2">
-                            <label class="form-label small fw-bold">Check-Out Date *</label>
-                            <input type="date" class="form-control room-checkout" name="room_selections[0][check_out]" data-index="0" required>
-                        </div>
-                        <div class="col-md-1">
-                            <label class="form-label small fw-bold">Guests</label>
-                            <input type="number" class="form-control room-guests" name="room_selections[0][guests]" value="1" min="1" data-index="0" required>
-                        </div>
-                        <div class="col-md-1">
-                            <label class="form-label small fw-bold">Quantity</label>
-                            <input type="number" class="form-control room-quantity" name="room_selections[0][quantity]" value="1" min="1" data-index="0" required>
-                        </div>
-                        <div class="col-md-1">
-                            <label class="form-label small fw-bold">Price/Night</label>
-                            <input type="text" class="form-control room-price-display" readonly value="₱0.00" style="font-size: 0.85rem;">
-                        </div>
-                        <div class="col-md-1">
-                            <label class="form-label small fw-bold">Subtotal</label>
-                            <input type="text" class="form-control room-subtotal" readonly value="₱0.00" style="font-weight: bold; font-size: 0.85rem;">
-                        </div>
-                        <div class="col-md-1">
-                            <label class="form-label small fw-bold">&nbsp;</label>
-                            <button type="button" class="btn btn-sm btn-danger remove-room-btn w-100" style="display: none;">
-                                <i class="bi bi-trash"></i>
+            <div class="card-body">
+                <div id="rooms-container">
+                    <div class="package-row room-row" data-room-index="0">
+                        <div class="package-row-head">
+                            <p class="package-row-title">Package #1</p>
+                            <button type="button" class="btn btn-sm btn-outline-danger remove-room-btn" style="display: none;">
+                                <i class="bi bi-trash"></i> Remove
                             </button>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-12 col-lg-4">
+                                <label class="form-label">Select Package *</label>
+                                <select class="form-select room-select" name="room_selections[0][room_id]" data-index="0" required>
+                                    <option value="">-- Choose a package --</option>
+                                    <?php foreach ($rooms as $room): ?>
+                                        <option value="<?php echo $room->id; ?>" data-price="<?php echo $room->price; ?>" data-name="<?php echo htmlspecialchars($room->room_name); ?>">
+                                            <?php echo htmlspecialchars($room->room_name . ' (' . $room->room_type . ') - ₱' . number_format($room->price, 2)); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2">
+                                <label class="form-label">Check-In *</label>
+                                <input type="date" class="form-control room-checkin" name="room_selections[0][check_in]" data-index="0" required>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2">
+                                <label class="form-label">Check-Out *</label>
+                                <input type="date" class="form-control room-checkout" name="room_selections[0][check_out]" data-index="0" required>
+                            </div>
+                            <div class="col-6 col-md-2 col-lg-1">
+                                <label class="form-label">Guests</label>
+                                <input type="number" class="form-control room-guests" name="room_selections[0][guests]" value="1" min="1" data-index="0" required>
+                            </div>
+                            <div class="col-6 col-md-2 col-lg-1">
+                                <label class="form-label">Qty</label>
+                                <input type="number" class="form-control room-quantity" name="room_selections[0][quantity]" value="1" min="1" data-index="0" required>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-1">
+                                <label class="form-label">Unit Price</label>
+                                <input type="text" class="form-control room-price-display" readonly value="₱0.00">
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-1">
+                                <label class="form-label">Subtotal</label>
+                                <input type="text" class="form-control room-subtotal fw-bold" readonly value="₱0.00">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Booking Summary - Inline Row -->
-    <div class="card mb-3 shadow-sm border-primary">
-        <div class="card-body bg-light">
-            <h6 class="card-title mb-3"><i class="bi bi-calculator text-primary"></i> Booking Summary</h6>
-            <div class="row g-3">
-                <div class="col-md-2">
-                    <label class="form-label small fw-bold">Total Rooms</label>
-                    <div class="form-control bg-white" id="total-rooms-display">0</div>
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label small fw-bold">Total Guests</label>
-                    <div class="form-control bg-white" id="total-guests-display">0</div>
-                </div>
-                <div class="col-md-3">
-                    <label class="form-label small fw-bold">Earliest Check-In</label>
-                    <div class="form-control bg-white" id="earliest-checkin-display">-</div>
-                </div>
-                <div class="col-md-3">
-                    <label class="form-label small fw-bold">Latest Check-Out</label>
-                    <div class="form-control bg-white" id="latest-checkout-display">-</div>
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label small fw-bold">Total Amount</label>
-                    <div class="form-control bg-white fw-bold text-success fs-5" id="total-amount-display">₱0.00</div>
-                </div>
+
+        <div class="card card-bordered form-section-card">
+            <div class="card-header">
+                <span class="header-title"><i class="bi bi-calculator"></i> Booking Summary</span>
             </div>
-            <div class="row g-3 mt-2">
-                <div class="col-md-12">
-                    <label for="status" class="form-label small fw-bold">Booking Status *</label>
-                    <select class="form-select" id="status" name="status" required>
-                        <option value="pending" <?php echo set_select('status', 'pending', TRUE); ?>>⏳ Pending</option>
-                        <option value="confirmed" <?php echo set_select('status', 'confirmed'); ?>>✅ Confirmed</option>
-                        <option value="cancelled" <?php echo set_select('status', 'cancelled'); ?>>❌ Cancelled</option>
-                        <option value="completed" <?php echo set_select('status', 'completed'); ?>>✔️ Completed</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Additional Notes - Inline Row -->
-    <div class="card mb-3 shadow-sm">
-        <div class="card-body">
-            <h6 class="card-title mb-3"><i class="bi bi-sticky text-warning"></i> Additional Notes</h6>
-            <div class="row">
-                <div class="col-md-12">
-                    <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Any special requests, payment method, or additional information..."><?php echo set_value('notes'); ?></textarea>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <label class="form-label">Total Packages</label>
+                        <div class="summary-value" id="total-rooms-display">0</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <label class="form-label">Total Guests</label>
+                        <div class="summary-value" id="total-guests-display">0</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <label class="form-label">Earliest Check-In</label>
+                        <div class="summary-value" id="earliest-checkin-display">-</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <label class="form-label">Latest Check-Out</label>
+                        <div class="summary-value" id="latest-checkout-display">-</div>
+                    </div>
+                    <div class="col-12 col-md-8 col-lg-2">
+                        <label class="form-label">Total Amount</label>
+                        <div class="summary-value total-amount" id="total-amount-display">₱0.00</div>
+                    </div>
+                    <div class="col-12">
+                        <label for="status" class="form-label">Booking Status *</label>
+                        <select class="form-select" id="status" name="status" required>
+                            <option value="pending" <?php echo set_select('status', 'pending', TRUE); ?>>Pending</option>
+                            <option value="confirmed" <?php echo set_select('status', 'confirmed'); ?>>Confirmed</option>
+                            <option value="cancelled" <?php echo set_select('status', 'cancelled'); ?>>Cancelled</option>
+                            <option value="completed" <?php echo set_select('status', 'completed'); ?>>Completed</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Hidden fields for backward compatibility -->
-    <input type="hidden" id="room_id" name="room_id" value="">
-    <input type="hidden" id="rooms" name="rooms" value="1">
-    <input type="hidden" id="check_in" name="check_in" value="">
-    <input type="hidden" id="check_out" name="check_out" value="">
-    <input type="hidden" id="guests" name="guests" value="1">
-    
-    <!-- Action Buttons -->
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-        <a href="<?php echo base_url('bookings'); ?>" class="btn btn-secondary btn-lg">
-            <i class="bi bi-x-circle"></i> Cancel
-        </a>
-        <button type="submit" class="btn btn-primary btn-lg">
-            <i class="bi bi-check-circle"></i> Create Booking
-        </button>
-    </div>
-    
+
+        <div class="card card-bordered form-section-card">
+            <div class="card-header">
+                <span class="header-title"><i class="bi bi-sticky"></i> Additional Notes</span>
+            </div>
+            <div class="card-body">
+                <label for="notes" class="form-label">Notes</label>
+                <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Any special requests, payment method, or additional information..."><?php echo set_value('notes'); ?></textarea>
+            </div>
+        </div>
+
+        <input type="hidden" id="room_id" name="room_id" value="">
+        <input type="hidden" id="rooms" name="rooms" value="1">
+        <input type="hidden" id="check_in" name="check_in" value="">
+        <input type="hidden" id="check_out" name="check_out" value="">
+        <input type="hidden" id="guests" name="guests" value="1">
+
+        <div class="sticky-actions">
+            <div class="action-row d-grid gap-2 d-md-flex">
+                <a href="<?php echo base_url('bookings'); ?>" class="btn btn-secondary">
+                    <i class="bi bi-x-circle"></i> Cancel
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-check-circle"></i> Create Booking
+                </button>
+            </div>
+        </div>
+
     <?php echo form_close(); ?>
 </div>
-
-<style>
-.booking-header-section {
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-.room-row {
-    background-color: #f8f9fa;
-    transition: all 0.3s ease;
-}
-.room-row:hover {
-    background-color: #e9ecef;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-.room-price-display,
-.room-subtotal {
-    background-color: #f8f9fa;
-}
-body.dark-mode .room-row {
-    background-color: #0f172a;
-}
-body.dark-mode .room-row:hover {
-    background-color: #1e293b;
-}
-body.dark-mode .card-title {
-    color: #e2e8f0;
-}
-.card {
-    border: none;
-    border-radius: 8px;
-}
-.card-title {
-    color: #495057;
-    font-weight: 600;
-}
-.form-label.small {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     let roomIndex = 0;
     const roomsContainer = document.getElementById('rooms-container');
     const addRoomBtn = document.getElementById('add-room-btn');
-    
-    // Set minimum date to today
+    const packageOptionsHtml = <?php
+        $opts = '<option value="">-- Choose a package --</option>';
+        foreach ($rooms as $room) {
+            $opts .= '<option value="' . (int) $room->id . '" data-price="' . htmlspecialchars((string) $room->price, ENT_QUOTES, 'UTF-8') . '" data-name="' . htmlspecialchars($room->room_name, ENT_QUOTES, 'UTF-8') . '">'
+                . htmlspecialchars($room->room_name . ' (' . $room->room_type . ') - ₱' . number_format($room->price, 2), ENT_QUOTES, 'UTF-8')
+                . '</option>';
+        }
+        echo json_encode($opts);
+    ?>;
+
     const today = new Date().toISOString().split('T')[0];
-    
-    // Set min dates for initial room row
+
     const initialCheckIn = document.querySelector('.room-checkin');
     const initialCheckOut = document.querySelector('.room-checkout');
     if (initialCheckIn) initialCheckIn.setAttribute('min', today);
     if (initialCheckOut) initialCheckOut.setAttribute('min', today);
-    
-    // Update remove button visibility
-    function updateRemoveButtons() {
-        const roomRows = document.querySelectorAll('.room-row');
-        roomRows.forEach((row, index) => {
-            const removeBtn = row.querySelector('.remove-room-btn');
-            if (roomRows.length > 1) {
-                removeBtn.style.display = 'block';
-            } else {
-                removeBtn.style.display = 'none';
+
+    function renumberPackageRows() {
+        document.querySelectorAll('.room-row').forEach(function(row, index) {
+            const title = row.querySelector('.package-row-title');
+            if (title) {
+                title.textContent = 'Package #' + (index + 1);
             }
         });
     }
-    
-    // Add new room row
+
+    function updateRemoveButtons() {
+        const roomRows = document.querySelectorAll('.room-row');
+        roomRows.forEach(function(row) {
+            const removeBtn = row.querySelector('.remove-room-btn');
+            if (!removeBtn) return;
+            removeBtn.style.display = roomRows.length > 1 ? '' : 'none';
+        });
+        renumberPackageRows();
+    }
+
     addRoomBtn.addEventListener('click', function() {
         roomIndex++;
         const newRow = document.createElement('div');
-        newRow.className = 'room-row mb-3 p-3 border rounded';
+        newRow.className = 'package-row room-row';
         newRow.setAttribute('data-room-index', roomIndex);
-        
-        // Get dates from first room row or use defaults
+
         const firstCheckIn = document.querySelector('.room-checkin')?.value || today;
         const firstCheckOut = document.querySelector('.room-checkout')?.value || '';
-        const tomorrow = firstCheckOut || (() => {
+        const tomorrow = firstCheckOut || (function() {
             const t = new Date(firstCheckIn);
             t.setDate(t.getDate() + 1);
             return t.toISOString().split('T')[0];
         })();
-        
-        newRow.innerHTML = `
-            <div class="row g-3 align-items-end">
-                <div class="col-md-3">
-                    <label class="form-label small fw-bold">Select Room *</label>
-                    <select class="form-select room-select" name="room_selections[${roomIndex}][room_id]" data-index="${roomIndex}" required>
-                        <option value="">-- Choose a room --</option>
-                        <?php foreach ($rooms as $room): ?>
-                            <option value="<?php echo $room->id; ?>" data-price="<?php echo $room->price; ?>" data-name="<?php echo htmlspecialchars($room->room_name); ?>">
-                                <?php echo htmlspecialchars($room->room_name . ' (' . $room->room_type . ') - ₱' . number_format($room->price, 2) . '/night'); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label small fw-bold">Check-In Date *</label>
-                    <input type="date" class="form-control room-checkin" name="room_selections[${roomIndex}][check_in]" value="${firstCheckIn}" data-index="${roomIndex}" min="${today}" required>
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label small fw-bold">Check-Out Date *</label>
-                    <input type="date" class="form-control room-checkout" name="room_selections[${roomIndex}][check_out]" value="${tomorrow}" data-index="${roomIndex}" min="${today}" required>
-                </div>
-                <div class="col-md-1">
-                    <label class="form-label small fw-bold">Guests</label>
-                    <input type="number" class="form-control room-guests" name="room_selections[${roomIndex}][guests]" value="1" min="1" data-index="${roomIndex}" required>
-                </div>
-                <div class="col-md-1">
-                    <label class="form-label small fw-bold">Quantity</label>
-                    <input type="number" class="form-control room-quantity" name="room_selections[${roomIndex}][quantity]" value="1" min="1" data-index="${roomIndex}" required>
-                </div>
-                <div class="col-md-1">
-                    <label class="form-label small fw-bold">Price/Night</label>
-                    <input type="text" class="form-control room-price-display" readonly value="₱0.00" style="font-size: 0.85rem;">
-                </div>
-                <div class="col-md-1">
-                    <label class="form-label small fw-bold">Subtotal</label>
-                    <input type="text" class="form-control room-subtotal" readonly value="₱0.00" style="font-weight: bold; font-size: 0.85rem;">
-                </div>
-                <div class="col-md-1">
-                    <label class="form-label small fw-bold">&nbsp;</label>
-                    <button type="button" class="btn btn-sm btn-danger remove-room-btn w-100">
-                        <i class="bi bi-trash"></i>
-                    </button>
-                </div>
-            </div>
-        `;
-        
+
+        newRow.innerHTML =
+            '<div class="package-row-head">' +
+                '<p class="package-row-title">Package</p>' +
+                '<button type="button" class="btn btn-sm btn-outline-danger remove-room-btn"><i class="bi bi-trash"></i> Remove</button>' +
+            '</div>' +
+            '<div class="row g-3">' +
+                '<div class="col-12 col-lg-4">' +
+                    '<label class="form-label">Select Package *</label>' +
+                    '<select class="form-select room-select" name="room_selections[' + roomIndex + '][room_id]" data-index="' + roomIndex + '" required>' +
+                        packageOptionsHtml +
+                    '</select>' +
+                '</div>' +
+                '<div class="col-6 col-md-4 col-lg-2">' +
+                    '<label class="form-label">Check-In *</label>' +
+                    '<input type="date" class="form-control room-checkin" name="room_selections[' + roomIndex + '][check_in]" value="' + firstCheckIn + '" data-index="' + roomIndex + '" min="' + today + '" required>' +
+                '</div>' +
+                '<div class="col-6 col-md-4 col-lg-2">' +
+                    '<label class="form-label">Check-Out *</label>' +
+                    '<input type="date" class="form-control room-checkout" name="room_selections[' + roomIndex + '][check_out]" value="' + tomorrow + '" data-index="' + roomIndex + '" min="' + today + '" required>' +
+                '</div>' +
+                '<div class="col-6 col-md-2 col-lg-1">' +
+                    '<label class="form-label">Guests</label>' +
+                    '<input type="number" class="form-control room-guests" name="room_selections[' + roomIndex + '][guests]" value="1" min="1" data-index="' + roomIndex + '" required>' +
+                '</div>' +
+                '<div class="col-6 col-md-2 col-lg-1">' +
+                    '<label class="form-label">Qty</label>' +
+                    '<input type="number" class="form-control room-quantity" name="room_selections[' + roomIndex + '][quantity]" value="1" min="1" data-index="' + roomIndex + '" required>' +
+                '</div>' +
+                '<div class="col-6 col-md-4 col-lg-1">' +
+                    '<label class="form-label">Unit Price</label>' +
+                    '<input type="text" class="form-control room-price-display" readonly value="₱0.00">' +
+                '</div>' +
+                '<div class="col-6 col-md-4 col-lg-1">' +
+                    '<label class="form-label">Subtotal</label>' +
+                    '<input type="text" class="form-control room-subtotal fw-bold" readonly value="₱0.00">' +
+                '</div>' +
+            '</div>';
+
         roomsContainer.appendChild(newRow);
         updateRemoveButtons();
         attachRoomRowEvents(newRow);
-        
-        // Set up date validation for new row
-        const newCheckIn = newRow.querySelector('.room-checkin');
-        const newCheckOut = newRow.querySelector('.room-checkout');
-        if (newCheckIn && newCheckOut) {
-            newCheckIn.addEventListener('change', function() {
-                if (newCheckOut.value && newCheckOut.value <= newCheckIn.value) {
-                    const nextDay = new Date(newCheckIn.value);
-                    nextDay.setDate(nextDay.getDate() + 1);
-                    newCheckOut.value = nextDay.toISOString().split('T')[0];
-                    newCheckOut.setAttribute('min', newCheckIn.value);
-                }
-                calculateRoomSubtotal(newRow);
-                calculateTotals();
-            });
-            newCheckOut.addEventListener('change', function() {
-                newCheckOut.setAttribute('min', newCheckIn.value);
-                calculateRoomSubtotal(newRow);
-                calculateTotals();
-            });
-        }
+        calculateTotals();
     });
-    
-    // Remove room row
+
     roomsContainer.addEventListener('click', function(e) {
         if (e.target.closest('.remove-room-btn')) {
             const roomRow = e.target.closest('.room-row');
@@ -399,32 +468,29 @@ document.addEventListener('DOMContentLoaded', function() {
             calculateTotals();
         }
     });
-    
-    // Attach events to room row
+
     function attachRoomRowEvents(row) {
         const roomSelect = row.querySelector('.room-select');
         const quantityInput = row.querySelector('.room-quantity');
         const guestsInput = row.querySelector('.room-guests');
         const checkInInput = row.querySelector('.room-checkin');
         const checkOutInput = row.querySelector('.room-checkout');
-        const priceDisplay = row.querySelector('.room-price-display');
-        const subtotalDisplay = row.querySelector('.room-subtotal');
-        
+
         roomSelect.addEventListener('change', function() {
             calculateRoomSubtotal(row);
             calculateTotals();
         });
-        
+
         quantityInput.addEventListener('input', function() {
             calculateRoomSubtotal(row);
             calculateTotals();
         });
-        
+
         guestsInput.addEventListener('input', function() {
             calculateRoomSubtotal(row);
             calculateTotals();
         });
-        
+
         if (checkInInput && checkOutInput) {
             checkInInput.addEventListener('change', function() {
                 if (checkOutInput.value && checkOutInput.value <= checkInInput.value) {
@@ -436,7 +502,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 calculateRoomSubtotal(row);
                 calculateTotals();
             });
-            
+
             checkOutInput.addEventListener('change', function() {
                 checkOutInput.setAttribute('min', checkInInput.value);
                 calculateRoomSubtotal(row);
@@ -444,8 +510,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-    
-    // Calculate subtotal for a single room row
+
     function calculateRoomSubtotal(row) {
         const roomSelect = row.querySelector('.room-select');
         const quantityInput = row.querySelector('.room-quantity');
@@ -453,68 +518,62 @@ document.addEventListener('DOMContentLoaded', function() {
         const checkOutInput = row.querySelector('.room-checkout');
         const priceDisplay = row.querySelector('.room-price-display');
         const subtotalDisplay = row.querySelector('.room-subtotal');
-        
+
         const selectedOption = roomSelect.options[roomSelect.selectedIndex];
-        const quantity = parseInt(quantityInput.value) || 1;
+        const quantity = parseInt(quantityInput.value, 10) || 1;
         const checkIn = checkInInput ? checkInInput.value : '';
         const checkOut = checkOutInput ? checkOutInput.value : '';
-        
+
         if (!selectedOption || !selectedOption.value || !checkIn || !checkOut) {
             priceDisplay.value = '₱0.00';
             subtotalDisplay.value = '₱0.00';
             return;
         }
-        
+
         const pricePerNight = parseFloat(selectedOption.getAttribute('data-price')) || 0;
-        
-        // Calculate nights
         const checkInDate = new Date(checkIn);
         const checkOutDate = new Date(checkOut);
         const nights = Math.max(1, Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24)));
-        
         const subtotal = pricePerNight * nights * quantity;
-        
+
         priceDisplay.value = '₱' + pricePerNight.toLocaleString('en-US', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         });
-        
+
         subtotalDisplay.value = '₱' + subtotal.toLocaleString('en-US', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         });
     }
-    
-    // Calculate totals
+
     function calculateTotals() {
-        // Calculate total rooms, guests, amount, and date ranges
         let totalRooms = 0;
         let totalGuests = 0;
         let totalAmount = 0;
         let earliestCheckIn = null;
         let latestCheckOut = null;
-        
-        document.querySelectorAll('.room-row').forEach(row => {
+
+        document.querySelectorAll('.room-row').forEach(function(row) {
             const roomSelect = row.querySelector('.room-select');
             const quantityInput = row.querySelector('.room-quantity');
             const guestsInput = row.querySelector('.room-guests');
             const checkInInput = row.querySelector('.room-checkin');
             const checkOutInput = row.querySelector('.room-checkout');
             const subtotalDisplay = row.querySelector('.room-subtotal');
-            
+
             if (roomSelect.value && checkInInput && checkOutInput && checkInInput.value && checkOutInput.value) {
-                const quantity = parseInt(quantityInput.value) || 1;
-                const guests = parseInt(guestsInput.value) || 1;
+                const quantity = parseInt(quantityInput.value, 10) || 1;
+                const guests = parseInt(guestsInput.value, 10) || 1;
                 totalRooms += quantity;
                 totalGuests += guests * quantity;
-                
+
                 const subtotalText = subtotalDisplay.value.replace(/[₱,]/g, '');
                 totalAmount += parseFloat(subtotalText) || 0;
-                
-                // Track earliest check-in and latest check-out
+
                 const checkIn = checkInInput.value;
                 const checkOut = checkOutInput.value;
-                
+
                 if (!earliestCheckIn || checkIn < earliestCheckIn) {
                     earliestCheckIn = checkIn;
                 }
@@ -523,8 +582,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
-        
-        // Update displays
+
         document.getElementById('total-rooms-display').textContent = totalRooms;
         document.getElementById('total-guests-display').textContent = totalGuests;
         document.getElementById('earliest-checkin-display').textContent = earliestCheckIn ? new Date(earliestCheckIn).toLocaleDateString() : '-';
@@ -533,37 +591,28 @@ document.addEventListener('DOMContentLoaded', function() {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         });
-        
-        // Update hidden fields for backward compatibility (use first room and earliest/latest dates)
+
         const firstRoomSelect = document.querySelector('.room-select');
-        const firstQuantity = document.querySelector('.room-quantity');
         const roomIdField = document.getElementById('room_id');
         const roomsField = document.getElementById('rooms');
         const checkInField = document.getElementById('check_in');
         const checkOutField = document.getElementById('check_out');
         const guestsField = document.getElementById('guests');
-        
+
         if (firstRoomSelect && firstRoomSelect.value) {
             if (roomIdField) roomIdField.value = firstRoomSelect.value;
             if (roomsField) roomsField.value = totalRooms;
         }
-        
-        // Update check-in/check-out and guests for backward compatibility
-        if (earliestCheckIn && checkInField) {
-            checkInField.value = earliestCheckIn;
-        }
-        if (latestCheckOut && checkOutField) {
-            checkOutField.value = latestCheckOut;
-        }
-        if (guestsField) {
-            guestsField.value = totalGuests || 1;
-        }
+
+        if (earliestCheckIn && checkInField) checkInField.value = earliestCheckIn;
+        if (latestCheckOut && checkOutField) checkOutField.value = latestCheckOut;
+        if (guestsField) guestsField.value = totalGuests || 1;
     }
-    
-    // Attach events to initial room row
-    document.querySelectorAll('.room-row').forEach(row => attachRoomRowEvents(row));
-    
-    // Customer selection handler
+
+    document.querySelectorAll('.room-row').forEach(function(row) {
+        attachRoomRowEvents(row);
+    });
+
     const customerSelect = document.getElementById('customer_id');
     const guestNameInput = document.getElementById('guest_name');
     const guestEmailInput = document.getElementById('guest_email');
@@ -573,49 +622,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const guestProvinceInput = document.getElementById('guest_province');
     const guestCountryInput = document.getElementById('guest_country');
     const guestZipcodeInput = document.getElementById('guest_zipcode');
-    
+
     if (customerSelect) {
         customerSelect.addEventListener('change', function() {
             const selectedOption = this.options[this.selectedIndex];
-            
+
             if (selectedOption && selectedOption.value && selectedOption.value !== '') {
-                // Get customer data from data attributes
-                const customerName = selectedOption.getAttribute('data-name') || '';
-                const customerEmail = selectedOption.getAttribute('data-email') || '';
-                const customerPhone = selectedOption.getAttribute('data-phone') || '';
-                const customerAddress = selectedOption.getAttribute('data-address') || '';
-                const customerCity = selectedOption.getAttribute('data-city') || '';
-                const customerProvince = selectedOption.getAttribute('data-province') || '';
-                const customerCountry = selectedOption.getAttribute('data-country') || '';
-                const customerZipcode = selectedOption.getAttribute('data-zipcode') || '';
-                
-                // Fill the guest information fields
-                if (guestNameInput && customerName) {
-                    guestNameInput.value = customerName;
-                }
-                if (guestEmailInput && customerEmail) {
-                    guestEmailInput.value = customerEmail;
-                }
-                if (guestPhoneInput && customerPhone) {
-                    guestPhoneInput.value = customerPhone;
-                }
-                if (guestAddressInput && customerAddress) {
-                    guestAddressInput.value = customerAddress;
-                }
-                if (guestCityInput && customerCity) {
-                    guestCityInput.value = customerCity;
-                }
-                if (guestProvinceInput && customerProvince) {
-                    guestProvinceInput.value = customerProvince;
-                }
-                if (guestCountryInput && customerCountry) {
-                    guestCountryInput.value = customerCountry;
-                }
-                if (guestZipcodeInput && customerZipcode) {
-                    guestZipcodeInput.value = customerZipcode;
-                }
+                if (guestNameInput) guestNameInput.value = selectedOption.getAttribute('data-name') || '';
+                if (guestEmailInput) guestEmailInput.value = selectedOption.getAttribute('data-email') || '';
+                if (guestPhoneInput) guestPhoneInput.value = selectedOption.getAttribute('data-phone') || '';
+                if (guestAddressInput) guestAddressInput.value = selectedOption.getAttribute('data-address') || '';
+                if (guestCityInput) guestCityInput.value = selectedOption.getAttribute('data-city') || '';
+                if (guestProvinceInput) guestProvinceInput.value = selectedOption.getAttribute('data-province') || '';
+                if (guestCountryInput) guestCountryInput.value = selectedOption.getAttribute('data-country') || '';
+                if (guestZipcodeInput) guestZipcodeInput.value = selectedOption.getAttribute('data-zipcode') || '';
             } else {
-                // Clear fields when "Select a customer" is chosen or empty value
                 if (guestNameInput) guestNameInput.value = '';
                 if (guestEmailInput) guestEmailInput.value = '';
                 if (guestPhoneInput) guestPhoneInput.value = '';
@@ -627,8 +648,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    // Initial calculation
+
+    updateRemoveButtons();
     calculateTotals();
 });
 </script>
