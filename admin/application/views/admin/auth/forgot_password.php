@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <?php
         $public_base = preg_replace('#/admin/?$#', '/', rtrim(base_url(), '/'));
-        $logo_url = $public_base . 'images/logo.png';
+        $logo_url = $public_base . 'images/favicon-logo.png';
         $favicon_url = $public_base . 'images/favicon-logo.png';
     ?>
     <link rel="icon" href="<?php echo html_escape($favicon_url); ?>">
@@ -86,13 +86,14 @@
         }
 
         .brand-strip img {
-            width: 2.75rem;
             height: 2.75rem;
+            width: auto;
+            max-width: 7.5rem;
             object-fit: contain;
-            border-radius: 0.65rem;
+            border-radius: 0.45rem;
             background: #fff;
             border: 1px solid var(--line);
-            padding: 0.2rem;
+            padding: 0.2rem 0.35rem;
         }
 
         .brand-strip .brand-text {
