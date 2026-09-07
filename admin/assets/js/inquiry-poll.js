@@ -109,12 +109,21 @@
     function buildTableRow(item, index) {
         var bold = (item.status === 'new' || item.status === 'guest_replied');
         var badge = statusBadgeClass(item.status);
-        var deleteBtn = canDelete()
-            ? '<a href="' + escapeHtml(item.delete_url) + '" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm(\'Delete this inquiry permanently?\');"><i class="bi bi-trash"></i></a>'
+        var deleteUrl = item.delete_url || '';
+        var deleteBtn = canDelete() && deleteUrl
+            ? '<a href="' + escapeHtml(deleteUrl) + '" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm(\'Delete this inquiry permanently?\');"><i class="bi bi-trash"></i></a>'
             : '';
 
         return '' +
-            '<tr class="inquiry-row-link" data-href="' + escapeHtml(item.url) + '" style="cursor:pointer;' + (bold ? 'font-weight:600;' : '') + '">' +
+            '<tr class="inquiry-row-link"' +
+                ' data-href="' + escapeHtml(item.url) + '"' +
+                ' data-name="' + escapeHtml(item.name) + '"' +
+                ' data-email="' + escapeHtml(item.email) + '"' +
+                ' data-subject="' + escapeHtml(item.subject) + '"' +
+                ' data-status="' + escapeHtml(item.status) + '"' +
+                ' data-date="' + escapeHtml(item.date_display) + '"' +
+                ' data-delete-url="' + escapeHtml(canDelete() ? deleteUrl : '') + '"' +
+                ' style="cursor:pointer;' + (bold ? 'font-weight:600;' : '') + '">' +
                 '<td>' + index + '</td>' +
                 '<td>' + escapeHtml(item.name) + '</td>' +
                 '<td>' + escapeHtml(item.email) + '</td>' +
@@ -128,28 +137,153 @@
             '</tr>';
     }
 
-    function buildMobileCard(item) {
-        var bold = (item.status === 'new' || item.status === 'guest_replied');
-        var badge = statusBadgeClass(item.status);
-        var deleteBtn = canDelete()
-            ? '<a href="' + escapeHtml(item.delete_url) + '" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm(\'Delete this inquiry permanently?\');"><i class="bi bi-trash"></i> Delete</a>'
+    function buildMobileCardFromRow(row) {
+        var href = row.getAttribute('data-href') || '';
+        var name = row.getAttribute('data-name') || '';
+        var email = row.getAttribute('data-email') || '';
+        var subject = row.getAttribute('data-subject') || '';
+        var status = row.getAttribute('data-status') || '';
+        var dateDisplay = row.getAttribute('data-date') || '';
+        var deleteUrl = row.getAttribute('data-delete-url') || '';
+        var bold = (status === 'new' || status === 'guest_replied');
+        var badge = statusBadgeClass(status);
+        var deleteBtn = canDelete() && deleteUrl
+            ? '<a href="' + escapeHtml(deleteUrl) + '" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm(\'Delete this inquiry permanently?\');"><i class="bi bi-trash"></i> Delete</a>'
             : '';
 
         return '' +
-            '<div class="mob-list-card inquiry-row-link" data-href="' + escapeHtml(item.url) + '" style="cursor:pointer;' + (bold ? 'font-weight:600;' : '') + '">' +
+            '<div class="mob-list-card inquiry-row-link" data-href="' + escapeHtml(href) + '" style="cursor:pointer;' + (bold ? 'font-weight:600;' : '') + '">' +
                 '<div class="mob-list-card-header">' +
                     '<div class="min-w-0 flex-grow-1">' +
-                        '<div class="mob-list-card-title">' + escapeHtml(item.subject) + '</div>' +
-                        '<div class="mob-list-card-meta">' + escapeHtml(item.name) + ' &middot; ' + escapeHtml(item.email) + '</div>' +
+                        '<div class="mob-list-card-title">' + escapeHtml(subject) + '</div>' +
+                        '<div class="mob-list-card-meta">' + escapeHtml(name) + ' &middot; ' + escapeHtml(email) + '</div>' +
                     '</div>' +
-                    '<span class="badge bg-' + badge + '">' + escapeHtml(statusLabel(item.status)) + '</span>' +
+                    '<span class="badge bg-' + badge + '">' + escapeHtml(statusLabel(status)) + '</span>' +
                 '</div>' +
-                '<div class="mob-list-card-meta"><i class="bi bi-clock"></i> ' + escapeHtml(item.date_display) + '</div>' +
+                '<div class="mob-list-card-meta"><i class="bi bi-clock"></i> ' + escapeHtml(dateDisplay) + '</div>' +
                 '<div class="mob-list-card-actions inquiry-row-actions" onclick="event.stopPropagation();">' +
-                    '<a href="' + escapeHtml(item.url) + '" class="btn btn-sm btn-primary" title="View"><i class="bi bi-eye"></i> View</a> ' +
+                    '<a href="' + escapeHtml(href) + '" class="btn btn-sm btn-primary" title="View"><i class="bi bi-eye"></i> View</a> ' +
                     deleteBtn +
                 '</div>' +
             '</div>';
+    }
+
+    function bindCardClicks() {
+        var cards = document.querySelectorAll('#inquiries-live-cards .inquiry-row-link');
+        Array.prototype.forEach.call(cards, function (row) {
+            row.onclick = function () {
+                var href = row.getAttribute('data-href');
+                if (href) {
+                    window.location = href;
+                }
+            };
+        });
+    }
+
+    function syncInquiryCardsFromDataTable(api) {
+        var cards = document.getElementById('inquiries-live-cards');
+        if (!cards || !api) {
+            return;
+        }
+
+        var pageRows = api.rows({ page: 'current', search: 'applied' }).nodes().toArray();
+        var usable = pageRows.filter(function (row) {
+            return row && !row.querySelector('td[colspan]');
+        });
+
+        if (!usable.length) {
+            cards.innerHTML = '<div class="mob-list-card text-center text-muted py-4">No inquiries found</div>';
+            return;
+        }
+
+        cards.innerHTML = usable.map(buildMobileCardFromRow).join('');
+        bindCardClicks();
+    }
+
+    function placeInquiryCardsHost($table) {
+        var $cards = $('#inquiries-live-cards');
+        if (!$cards.length || !$table.length) {
+            return;
+        }
+        $cards.insertAfter($table);
+    }
+
+    function getInquiryDataTableOptions() {
+        return {
+            pageLength: 10,
+            lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, 'All']],
+            order: [[0, 'asc']],
+            responsive: false,
+            autoWidth: false,
+            language: {
+                search: 'Search:',
+                lengthMenu: 'Show _MENU_ entries',
+                info: 'Showing _START_ to _END_ of _TOTAL_ entries',
+                emptyTable: 'No inquiries found',
+                zeroRecords: 'No matching inquiries'
+            },
+            dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>rt<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>',
+            drawCallback: function () {
+                syncInquiryCardsFromDataTable(this.api());
+            }
+        };
+    }
+
+    function initInquiriesDataTable() {
+        if (!$ || !$.fn || !$.fn.DataTable) {
+            return null;
+        }
+
+        var $table = $('#inquiriesTable');
+        if (!$table.length) {
+            return null;
+        }
+
+        if ($.fn.DataTable.isDataTable($table)) {
+            var existing = $table.DataTable();
+            placeInquiryCardsHost($table);
+            syncInquiryCardsFromDataTable(existing);
+            return existing;
+        }
+
+        if ($table.find('thead th').length === 0) {
+            return null;
+        }
+
+        var tbodyRows = $table.find('tbody tr');
+        if (tbodyRows.length === 0) {
+            return null;
+        }
+
+        var hasOnlyEmpty = tbodyRows.length === 1 && tbodyRows.find('td[colspan]').length > 0;
+        if (hasOnlyEmpty) {
+            var cards = document.getElementById('inquiries-live-cards');
+            if (cards) {
+                cards.innerHTML = '<div class="mob-list-card text-center text-muted py-4">No inquiries found</div>';
+            }
+            return null;
+        }
+
+        try {
+            var dt = $table.DataTable(getInquiryDataTableOptions());
+            placeInquiryCardsHost($table);
+            syncInquiryCardsFromDataTable(dt);
+
+            $table.on('click', 'tr.inquiry-row-link', function (e) {
+                if ($(e.target).closest('.inquiry-row-actions').length) {
+                    return;
+                }
+                var href = this.getAttribute('data-href');
+                if (href) {
+                    window.location = href;
+                }
+            });
+
+            return dt;
+        } catch (e) {
+            console.warn('Inquiry DataTable init failed', e);
+            return null;
+        }
     }
 
     function destroyInquiryDataTable() {
@@ -164,51 +298,7 @@
     }
 
     function reinitInquiryDataTable() {
-        if (!$ || !$.fn || !$.fn.DataTable) {
-            return;
-        }
-        var $table = $('#inquiriesTable');
-        if (!$table.length || $.fn.DataTable.isDataTable($table)) {
-            return;
-        }
-
-        if ($table.find('thead th').length === 0) {
-            return;
-        }
-
-        var tbodyRows = $table.find('tbody tr');
-        if (tbodyRows.length === 0) {
-            return;
-        }
-
-        var hasColspan = false;
-        tbodyRows.each(function () {
-            if ($(this).find('td[colspan]').length > 0) {
-                hasColspan = true;
-                return false;
-            }
-        });
-        if (hasColspan) {
-            return;
-        }
-
-        try {
-            $table.DataTable({
-                pageLength: 10,
-                lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, 'All']],
-                order: [[0, 'asc']],
-                responsive: true,
-                language: {
-                    search: 'Search:',
-                    lengthMenu: 'Show _MENU_ entries',
-                    info: 'Showing _START_ to _END_ of _TOTAL_ entries',
-                    emptyTable: 'No inquiries found'
-                },
-                dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>rt<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>'
-            });
-        } catch (e) {
-            console.warn('Inquiry DataTable reinit failed', e);
-        }
+        initInquiriesDataTable();
     }
 
     function refreshInquiryTableRows(inquiries) {
@@ -225,6 +315,7 @@
                 });
             }
             dt.draw(false);
+            placeInquiryCardsHost($('#inquiriesTable'));
             return;
         }
 
@@ -233,18 +324,6 @@
             tbody.innerHTML = htmlRows;
         }
         reinitInquiryDataTable();
-    }
-
-    function bindRowClicks() {
-        var cards = document.querySelectorAll('#inquiries-live-cards .inquiry-row-link');
-        Array.prototype.forEach.call(cards, function (row) {
-            row.onclick = function () {
-                var href = row.getAttribute('data-href');
-                if (href) {
-                    window.location = href;
-                }
-            };
-        });
     }
 
     function showUpdatedHint(message) {
@@ -303,25 +382,15 @@
         }
 
         var inquiries = Array.isArray(data.inquiries) ? data.inquiries : [];
-        var cards = document.getElementById('inquiries-live-cards');
         var latest = document.getElementById('inquiries-live-latest');
 
         refreshInquiryTableRows(inquiries);
-
-        if (cards) {
-            if (!inquiries.length) {
-                cards.innerHTML = '<div class="mob-list-card text-center text-muted py-4">No inquiries found</div>';
-            } else {
-                cards.innerHTML = inquiries.map(buildMobileCard).join('');
-            }
-        }
 
         if (latest && data.latest_label) {
             latest.textContent = data.latest_label;
         }
 
         updateStatusCounts(data.counts);
-        bindRowClicks();
 
         var imported = parseInt(data.imported, 10) || 0;
         if (imported > 0) {
@@ -406,8 +475,24 @@
         pollTimer = setInterval(pollInquiries, 5000);
     }
 
+    window.initInquiriesDataTable = initInquiriesDataTable;
+    window.syncInquiryCardsFromDataTable = function () {
+        if (!$ || !$.fn || !$.fn.DataTable) {
+            return;
+        }
+        var $table = $('#inquiriesTable');
+        if ($table.length && $.fn.DataTable.isDataTable($table)) {
+            syncInquiryCardsFromDataTable($table.DataTable());
+        }
+    };
+
     if ($) {
-        $(startInquiryPolling);
+        $(function () {
+            if (isLiveListPage()) {
+                initInquiriesDataTable();
+            }
+            startInquiryPolling();
+        });
     } else if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', startInquiryPolling);
     } else {

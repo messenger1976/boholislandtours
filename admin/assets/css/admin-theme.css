@@ -1381,6 +1381,7 @@ body.dark-mode .fc .fc-list-day-cushion {
     gap: 0.35rem;
 }
 
+/* Default dual UI (non-inquiries pages) */
 @media (max-width: 991.98px) {
     .mob-desktop-table {
         display: none !important;
