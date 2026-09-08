@@ -114,12 +114,14 @@ $route['users/view/(:num)'] = 'admin/users/view/$1';
 // Group Management routes
 $route['groups'] = 'admin/groups/index';
 $route['groups/add'] = 'admin/groups/add';
+$route['groups/view/(:num)'] = 'admin/groups/view/$1';
 $route['groups/edit/(:num)'] = 'admin/groups/edit/$1';
 $route['groups/delete/(:num)'] = 'admin/groups/delete/$1';
 
 // Role Management routes
 $route['roles'] = 'admin/roles/index';
 $route['roles/add'] = 'admin/roles/add';
+$route['roles/view/(:num)'] = 'admin/roles/view/$1';
 $route['roles/edit/(:num)'] = 'admin/roles/edit/$1';
 $route['roles/delete/(:num)'] = 'admin/roles/delete/$1';
 

@@ -163,6 +163,28 @@ class Roles extends Admin_Controller {
     }
     
     /**
+     * View role details
+     * Requires: manage_roles permission
+     */
+    public function view($id) {
+        $this->require_permission('manage_roles');
+
+        $role = $this->Role_model->get($id);
+        if (!$role) {
+            show_404();
+            return;
+        }
+
+        $data['title'] = 'Role Details';
+        $data['role'] = $role;
+        $data['permissions'] = $this->Role_model->get_role_permissions($id);
+
+        $this->load->view('admin/layout/header', $data);
+        $this->load->view('admin/roles/view', $data);
+        $this->load->view('admin/layout/footer');
+    }
+
+    /**
      * Delete role
      * Requires: manage_roles permission
      */

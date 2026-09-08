@@ -132,6 +132,28 @@ class Groups extends Admin_Controller {
     }
     
     /**
+     * View user group details
+     * Requires: manage_groups permission
+     */
+    public function view($id) {
+        $this->require_permission('manage_groups');
+
+        $group = $this->User_group_model->get($id);
+        if (!$group) {
+            show_404();
+            return;
+        }
+
+        $data['title'] = 'Group Details';
+        $data['group'] = $group;
+        $data['roles'] = $this->User_group_model->get_group_roles($id);
+
+        $this->load->view('admin/layout/header', $data);
+        $this->load->view('admin/groups/view', $data);
+        $this->load->view('admin/layout/footer');
+    }
+
+    /**
      * Delete user group
      * Requires: manage_groups permission
      */
