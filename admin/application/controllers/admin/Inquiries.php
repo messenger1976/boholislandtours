@@ -20,22 +20,22 @@ class Inquiries extends Admin_Controller {
 	}
 
 	public function allinquiries() {
-		$status = $this->input->get('status');
-		$dateFilter = $this->resolveDateFilter();
+		$filters = $this->resolveListFilters();
+		$status = $filters['status'];
 
 		$this->db->from('inquiry');
 		if (in_array($status, array('new', 'read', 'replied', 'closed', 'guest_replied'), TRUE)) {
 			$this->db->where('status', $status);
 		}
-		$this->applyDateFilter($dateFilter['date_from'], $dateFilter['date_to']);
+		$this->applyDateFilter($filters['date_from'], $filters['date_to']);
 		$this->db->order_by('inquiryid', 'DESC');
 		$data['inquiries'] = $this->db->get()->result();
 		$data['filter_status'] = $status;
-		$data['filter_range'] = $dateFilter['range'];
-		$data['filter_date_from'] = $dateFilter['date_from'];
-		$data['filter_date_to'] = $dateFilter['date_to'];
-		$data['date_query'] = $dateFilter['query'];
-		$data['counts'] = $this->getStatusCounts($dateFilter['date_from'], $dateFilter['date_to']);
+		$data['filter_range'] = $filters['range'];
+		$data['filter_date_from'] = $filters['date_from'];
+		$data['filter_date_to'] = $filters['date_to'];
+		$data['date_query'] = $filters['query'];
+		$data['counts'] = $this->getStatusCounts($filters['date_from'], $filters['date_to']);
 		$data['list_revision'] = $this->buildListRevision($data['inquiries'], $data['counts']);
 		$data['title'] = 'Manage Inquiries';
 		$data['can_delete'] = $this->has_permission('delete_inquiries');
@@ -344,18 +344,18 @@ class Inquiries extends Admin_Controller {
 	 * Filtered inquiry rows + counts for live list refresh (AJAX).
 	 */
 	protected function buildListPollPayload() {
-		$status = $this->input->get('status');
-		$dateFilter = $this->resolveDateFilter();
+		$filters = $this->resolveListFilters();
+		$status = $filters['status'];
 
 		$this->db->from('inquiry');
 		if (in_array($status, array('new', 'read', 'replied', 'closed', 'guest_replied'), TRUE)) {
 			$this->db->where('status', $status);
 		}
-		$this->applyDateFilter($dateFilter['date_from'], $dateFilter['date_to']);
+		$this->applyDateFilter($filters['date_from'], $filters['date_to']);
 		$this->db->order_by('inquiryid', 'DESC');
 		$rows = $this->db->get()->result();
 
-		$counts = $this->getStatusCounts($dateFilter['date_from'], $dateFilter['date_to']);
+		$counts = $this->getStatusCounts($filters['date_from'], $filters['date_to']);
 		$inquiries = array();
 
 		foreach ($rows as $row) {
@@ -392,9 +392,9 @@ class Inquiries extends Admin_Controller {
 			'inquiries' => $inquiries,
 			'filter' => array(
 				'status' => (string) $status,
-				'range' => $dateFilter['range'],
-				'date_from' => $dateFilter['date_from'],
-				'date_to' => $dateFilter['date_to'],
+				'range' => $filters['range'],
+				'date_from' => $filters['date_from'],
+				'date_to' => $filters['date_to'],
 			),
 		);
 	}
@@ -618,16 +618,100 @@ class Inquiries extends Admin_Controller {
 		return $counts;
 	}
 
-	protected function resolveDateFilter() {
-		$today = date('Y-m-d');
-		$range = $this->input->get('range');
-		$allowed = array('today', '7', '30', 'custom');
-		if (!in_array($range, $allowed, TRUE)) {
-			$range = 'today';
+	/**
+	 * Resolve status + date filters from GET, then session, then defaults.
+	 * Defaults (no session): Custom range covering the last 60 days.
+	 * Persists the resolved filters in session for subsequent page loads.
+	 */
+	protected function resolveListFilters() {
+		$sessionKey = 'inquiry_list_filters';
+		$saved = $this->session->userdata($sessionKey);
+		if (!is_array($saved)) {
+			$saved = array();
 		}
 
-		$dateFrom = $this->sanitizeDate($this->input->get('date_from'));
-		$dateTo = $this->sanitizeDate($this->input->get('date_to'));
+		$allowedStatus = array('new', 'read', 'replied', 'closed', 'guest_replied');
+		$getHasStatus = array_key_exists('status', $_GET);
+		$getHasDate = array_key_exists('range', $_GET)
+			|| array_key_exists('date_from', $_GET)
+			|| array_key_exists('date_to', $_GET);
+
+		if ($getHasStatus) {
+			$status = $this->input->get('status');
+			if (!in_array($status, $allowedStatus, TRUE)) {
+				$status = '';
+			}
+		} elseif ($getHasDate) {
+			// Status chips / date form omit status for "All".
+			$status = '';
+		} elseif (isset($saved['status']) && in_array($saved['status'], $allowedStatus, TRUE)) {
+			$status = $saved['status'];
+		} else {
+			$status = '';
+		}
+
+		if ($getHasDate) {
+			$dateFilter = $this->buildDateFilter(
+				$this->input->get('range'),
+				$this->input->get('date_from'),
+				$this->input->get('date_to')
+			);
+		} elseif (!empty($saved['range'])) {
+			$dateFilter = $this->buildDateFilter(
+				isset($saved['range']) ? $saved['range'] : NULL,
+				isset($saved['date_from']) ? $saved['date_from'] : NULL,
+				isset($saved['date_to']) ? $saved['date_to'] : NULL
+			);
+		} else {
+			$dateFilter = $this->defaultDateFilter();
+		}
+
+		$this->session->set_userdata($sessionKey, array(
+			'status' => $status,
+			'range' => $dateFilter['range'],
+			'date_from' => $dateFilter['date_from'],
+			'date_to' => $dateFilter['date_to'],
+		));
+
+		return array(
+			'status' => $status,
+			'range' => $dateFilter['range'],
+			'date_from' => $dateFilter['date_from'],
+			'date_to' => $dateFilter['date_to'],
+			'query' => $dateFilter['query'],
+		);
+	}
+
+	/**
+	 * Default list window: Custom, last 60 days (inclusive).
+	 */
+	protected function defaultDateFilter() {
+		$today = date('Y-m-d');
+		$dateFrom = date('Y-m-d', strtotime('-59 days'));
+		$dateTo = $today;
+		$query = http_build_query(array(
+			'range' => 'custom',
+			'date_from' => $dateFrom,
+			'date_to' => $dateTo,
+		));
+
+		return array(
+			'range' => 'custom',
+			'date_from' => $dateFrom,
+			'date_to' => $dateTo,
+			'query' => $query,
+		);
+	}
+
+	protected function buildDateFilter($range, $dateFromRaw, $dateToRaw) {
+		$today = date('Y-m-d');
+		$allowed = array('today', '7', '30', 'custom');
+		if (!in_array($range, $allowed, TRUE)) {
+			$range = 'custom';
+		}
+
+		$dateFrom = $this->sanitizeDate($dateFromRaw);
+		$dateTo = $this->sanitizeDate($dateToRaw);
 
 		if ($range === 'today') {
 			$dateFrom = $today;
@@ -639,8 +723,11 @@ class Inquiries extends Admin_Controller {
 			$dateFrom = date('Y-m-d', strtotime('-29 days'));
 			$dateTo = $today;
 		} else {
+			if ($dateFrom === NULL && $dateTo === NULL) {
+				return $this->defaultDateFilter();
+			}
 			if ($dateFrom === NULL) {
-				$dateFrom = $today;
+				$dateFrom = date('Y-m-d', strtotime($dateTo . ' -59 days'));
 			}
 			if ($dateTo === NULL) {
 				$dateTo = $today;

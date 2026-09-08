@@ -39,7 +39,7 @@
         if (root && root.getAttribute('data-live-list') === '1') {
             var params = [
                 'list=1',
-                'range=' + encodeURIComponent(root.getAttribute('data-range') || 'today'),
+                'range=' + encodeURIComponent(root.getAttribute('data-range') || 'custom'),
                 'date_from=' + encodeURIComponent(root.getAttribute('data-date-from') || ''),
                 'date_to=' + encodeURIComponent(root.getAttribute('data-date-to') || '')
             ];

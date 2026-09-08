@@ -1,9 +1,9 @@
 <?php
 $filter_status = isset($filter_status) ? $filter_status : '';
-$filter_range = isset($filter_range) ? $filter_range : 'today';
-$filter_date_from = isset($filter_date_from) ? $filter_date_from : date('Y-m-d');
+$filter_range = isset($filter_range) ? $filter_range : 'custom';
+$filter_date_from = isset($filter_date_from) ? $filter_date_from : date('Y-m-d', strtotime('-59 days'));
 $filter_date_to = isset($filter_date_to) ? $filter_date_to : date('Y-m-d');
-$date_query = isset($date_query) ? $date_query : ('range=today&date_from=' . date('Y-m-d') . '&date_to=' . date('Y-m-d'));
+$date_query = isset($date_query) ? $date_query : ('range=custom&date_from=' . $filter_date_from . '&date_to=' . $filter_date_to);
 $can_delete = !empty($can_delete);
 $can_edit = !empty($can_edit);
 
