@@ -99,6 +99,21 @@ $asset_ver = '20260908';
         </div>
         <?php endif; ?>
 
+        <?php
+        $has_calendar_menu = $admin_id && (
+            $this->Admin_model->has_permission($admin_id, 'view_calendar') ||
+            $this->Admin_model->has_permission($admin_id, 'view_bookings')
+        );
+        ?>
+        <?php if ($has_calendar_menu): ?>
+        <div class="nk-menu-item">
+            <a href="<?php echo base_url('calendar'); ?>" class="nk-menu-link <?php echo (strpos($current_uri, 'calendar') === 0 || $current_uri === 'calendar') ? 'active' : ''; ?>">
+                <span class="nk-menu-icon"><i class="bi bi-calendar3"></i></span>
+                <span class="nk-menu-text">Calendar</span>
+            </a>
+        </div>
+        <?php endif; ?>
+
         <?php if ($admin_id && $this->Admin_model->has_permission($admin_id, 'view_rooms')): ?>
         <div class="nk-menu-item">
             <a href="<?php echo base_url('rooms'); ?>" class="nk-menu-link <?php echo strpos($current_uri, 'rooms') !== false ? 'active' : ''; ?>">
