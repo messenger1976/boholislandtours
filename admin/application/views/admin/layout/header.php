@@ -7,7 +7,7 @@ if (!function_exists('base_url') && isset($this) && is_object($this) && method_e
 $public_base = preg_replace('#/admin/?$#', '/', rtrim(base_url(), '/'));
 $logo_url = $public_base . 'images/favicon-logo.png';
 $favicon_url = $public_base . 'images/favicon-logo.png';
-$asset_ver = '20260907';
+$asset_ver = '20260908';
 ?>
 <!DOCTYPE html>
 <html lang="en" class="h-100">
@@ -56,7 +56,7 @@ $asset_ver = '20260907';
 <aside class="nk-sidebar" id="sidebar" aria-label="Admin navigation">
     <div class="nk-sidebar-brand">
         <a href="<?php echo base_url('dashboard'); ?>">
-            <span class="brand-mark"><i class="bi bi-compass"></i></span>
+            <img src="<?php echo html_escape($logo_url); ?>" alt="Bohol Island Tours" class="brand-mark">
             <span class="brand-copy">
                 <span class="brand-name">Bohol Island Tours</span>
                 <span class="brand-tag">Tours · Stays · Car rental</span>
@@ -221,7 +221,7 @@ $asset_ver = '20260907';
 
     <div class="nk-header-brand">
         <a href="<?php echo base_url('dashboard'); ?>" class="logo-link">
-            <i class="bi bi-compass"></i>
+            <img src="<?php echo html_escape($logo_url); ?>" alt="Bohol Island Tours" class="brand-logo">
             <span>Bohol Island Tours</span>
         </a>
     </div>

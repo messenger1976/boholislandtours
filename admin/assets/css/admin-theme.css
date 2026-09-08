@@ -219,16 +219,15 @@ img {
 }
 
 .nk-sidebar-brand .brand-mark {
-    width: 2.35rem;
-    height: 2.35rem;
-    border-radius: 0.7rem;
-    background: linear-gradient(145deg, var(--ocean) 0%, var(--teal) 100%);
-    color: #fff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.55rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    padding: 0.2rem;
+    object-fit: contain;
     flex-shrink: 0;
-    font-size: 1.15rem;
+    display: block;
 }
 
 .nk-sidebar-brand .brand-copy {
@@ -438,6 +437,18 @@ img {
     font-weight: 700;
     font-size: 0.92rem;
     min-width: 0;
+}
+
+.nk-header-brand .logo-link .brand-logo {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.45rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    padding: 0.15rem;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: block;
 }
 
 .nk-header-brand .logo-link span {
